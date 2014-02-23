@@ -11,11 +11,6 @@ $header-height: 30px;
 		padding-bottom: 10px;
 	}
 	a{
-		color: $color-gray01;
-		@include transition(color 0.3s);
-		&:hover{
-			color: $color-main;
-		}
 	}
 	h1{
 		float: left;
