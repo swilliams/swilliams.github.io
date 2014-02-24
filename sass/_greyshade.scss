@@ -47,7 +47,7 @@ body {
 		float: none;
         background-color: #ff5256;
         color: #fff;
-        font-family: "adelle", helvetica;
+        font-family: $heading-font-family;
         font-size: 18px;
         line-height: 1.4em;
         font-weight: 700;
@@ -59,7 +59,7 @@ body {
 	}
 
     h2 {
-        font-family: 'Helvetica', arial, sans-serif;
+        font-family: $heading-font-family;
         font-size: 12px;
         font-weight: normal;
         line-height: 1.2em;
@@ -135,8 +135,8 @@ body {
 					.title {
 						margin-left: 0px;
 						font-size: 26px;
-                        font-family: 'Helvetica', arial, sans-serif;
-                        font-weight: bold;
+                        font-family: $heading-font-family;
+                        /*font-weight: bold;*/
 					}
 					&.single-post .title{
 						text-align: center;
@@ -228,6 +228,7 @@ body {
 		.intrude-less {
 			width: 80%;
 		}
+        text-align: right;
 		#header {
 			width: 100%;
 			padding: 20% 0% 0% 15%;
@@ -235,7 +236,6 @@ body {
 				margin-top: 10px;
 			}
 			.profilepic {
-                text-align: center;
 				img {
 					border-radius: 50%;
 					-moz-border-radius: 50%;
