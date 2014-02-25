@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Quick Tech Tip - Rails &amp; Authlogic"
+date: 2010-06-24 05:12:00
+comments: false
+author: Scott Williams
+categories: []
+---
+<p>I was following along with the <a href="http://github.com/binarylogic/authlogic_example">example project</a> for getting AuthLogic setup on a Rails app, and almost immediately got this error when running <span style="font-family: Courier New;">UserSession.find</span>: </p>
+<p />
+<div>
+<blockquote class="posterous_short_quote">Couldn't find User Session without an ID</blockquote>
+</div>
+<div>After poking around a little bit, I realized that I accidentally set the UserSession model to inherit from the default <span style="font-family: Courier New;">ActiveRecord::Base</span> rather than <span style="color: #444444; line-height: 18px;"><span style="font-family: Courier New;">Authlogic::Session::Base</span></span><span style="color: #444444; font-size: 12px; line-height: 18px;">.</span>
+</div>
+<p />
+<div><span style="color: #444444;"><span style="line-height: 18px;">Changing it to use the proper base class fixed the problem.</span></span></div>
+<div><span style="color: #444444; font-family: Monaco, Courier New, DejaVu Sans Mono, Bitstream Vera Sans Mono, monospace; font-size: 12px; line-height: 18px;">
+</span><div style="">
+<span style="font-size: x-small;"><span style="font-size: 10px;"><em><span style="font-size: small;"><span style="font-size: 12px; font-style: normal;"><br /></span></span></em></span></span><span style="letter-spacing: 0.0px;"> </span>
+</div>
+</div>

@@ -1,0 +1,32 @@
+---
+layout: post
+title: "Your JavaScript Sucks"
+date: 2011-12-17 21:54:00
+comments: false
+author: Scott Williams
+categories: []
+---
+<div class="image-gallery-wrapper"><img src="/images/assets/#img.png" /><img src="/images/assets/eec0ae1fe36acd3711d0d14220544c1f-#img.png" /><img src="/images/assets/fb7c5232fad5b5d285715cc7736be799-#img.png" /><img src="/images/assets/0301d918b74081267a111968382a0de1-#img.png" /><img src="/images/assets/d289ca6657114d067e8c2402eb9d1d91-#img.png" /><img src="/images/assets/2d612e65a03c1803a65a45d2bd314241-#img.jpg" /></div><p>JavaScript has been getting a lot of press lately. You can write <a href="http://nodejs.org/">servers</a> with it, talk to <a href="http://www.couchbase.com/">databases</a>, and of course, it&rsquo;s the most <a href="http://javascript.crockford.com/popular.html">common language</a> in the world. Yet, in its most popular form, client-side scripting on the Internet, it&rsquo;s just a giant mess.</p>
+<p>You know what I&rsquo;m talking about, that mass of thousands of lines of code that does something-but-oh-God-I-hope-it-doesn&rsquo;t-break. I&rsquo;ve written that kind of JavaScript. You have too. It&rsquo;s a big problem that needs to be addressed.</p>
+<h2>Why?</h2>
+<p>First, let&rsquo;s identify the problems. Here&rsquo;s a function that I just made up, but it&rsquo;s not too far from the truth.</p>
+<p>&nbsp;Fig 1 - A Common Site</p>
+<p>How many differentthings are going on here? I can see four right off the bat. <em>Individually,</em> each is not a Bad Thing, but when they&rsquo;re all within the same function, it&rsquo;s a problem.</p>
+<p></p>
+<p>Fig 2 - Event Binding. We&rsquo;re looking for something in the DOM, and then attaching an event handler to it. &nbsp;</p>
+<p></p>
+<p>Fig 3 - AJAX. Specifically, communication with our persistance layer.</p>
+<p></p>
+<p>Fig 4 - Business Logic. This a simplification, but we&rsquo;re analyzing the data and making a logical decision based on it.</p>
+<p></p>
+<p>Fig 5 - DOM/UI Manipulation. We&rsquo;re not just reading the DOM here, but changing it.</p>
+<p>&nbsp;</p>
+<p>And this little ditty is only 11 lines long. This is the equivalent of inlining your security checks right next to SQL statements, all within a UI template. God help you if you want to actually uncovered a bug in this rat nest down the road.</p>
+<p>And let&rsquo;s not even get into testing. How would you even start writing a unit test for this function? (Hint: it sucks)</p>
+<h2>Enter MVC</h2>
+<p>Fortunately, messy code is not a new problem. There is an embarrassment of riches out there to help you get your crap together.</p>
+<p>The MVC pattern has been around since the neolithic era of programming. Rails, Django, ASP.NET MVC, CakePHP, etc. have been making developers&rsquo; lives much easier on the server side for years. And now, some of that has trickled down to JavaScript.</p>
+<p></p>
+<p>A common reaction.</p>
+<p>What makes MVC so popular amongst developers is that it forces you to break your code down into manageable chunks. Mixing AJAX calls and DOM Manipulation in the same functions just doesn&rsquo;t fly there.</p>
+<p>And, you have a bunch to choose from. In future posts, I&rsquo;ll be giving a brief description of some of the popular ones. Spoiler: I myself have been using <a href="http://documentcloud.github.com/backbone/#">Backbone</a> and will be going into deeper detail on that one.</p>

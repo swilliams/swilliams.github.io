@@ -1,0 +1,35 @@
+---
+layout: post
+title: "Big msbuild gotcha"
+date: 2007-09-13 20:19:43
+comments: false
+author: Scott Williams
+categories: []
+---
+<p><a href="http://msdn2.microsoft.com/en-us/library/0k6kkbsd.aspx" title="Msbuild reference on MSDN">Msbuild</a> is not necessarily a "real" component of <a href="http://www.krazyyak.com/category/tfs/">TFS</a>, but it is heavily integrated throughout its build system (as well as Visual Studio 2005), so I'll be recording my thoughts on it as well. It seems to be better than <a href="http://nant.sourceforge.net/">NAnt</a>, a similar open source product,&nbsp;in most regards, but I have spent the better part of a day getting to the bottom of one of its maddening quirks.</p> <p>You can define an <a href="http://msdn2.microsoft.com/en-us/library/646dk05y.aspx" title="ItemGroup element reference on MSDN">&lt;ItemGroup&gt;</a> consisting of files that you can copy, zip up, or do whatever you want with, but the collection it will only be evaluated&nbsp;at the initialization of the script!</p> <p>For example, say you need to deploy all the files compiled by a solution, and then do something else with the binaries. Your build script may look something like this:</p><div class="CodeRay">
+  <div class="code"><pre>&lt;ItemGroup&gt;
+        &lt;WebDeploy Exclude=&quot;@(ExcludedTypes)&quot; Include=&quot;**\**&quot;&gt;
+        &lt;BinDeploy Include=&quot;$(DeployDir)\bin\*.dll&quot;&gt;
+&lt;/ItemGroup&gt;
+
+&lt;Target DependsOn=&quot;Compile&quot; Name=&quot;Deploy&quot;&gt;
+        &lt;Copy DestinationFolder=&quot;$(DeployDir)\%(RecursiveDir)&quot; SourceFiles=&quot;@(WebDeploy)&quot;&gt;
+        &lt;Copy DestinationFolder=&quot;$(BinDeployFolder)&quot; SourceFiles=&quot;@(BinDeploy)&quot;&gt;
+&lt;/Target&gt;</pre></div>
+</div>
+
+<p>The @(BinDeploy)&nbsp;group will evaluate&nbsp;<em>at the start of the script</em>. This means that if you have a "clean" folder setup,&nbsp;the group will be empty, even after the Copy task has been executed.&nbsp;Additionally, if you run the script a second time without deleting the contents of the $(DeployDir), the script will happily copy over the prior build's binaries (even if a Delete task has "deleted" them, and they've been "replaced" by a fresh compile).</p>
+<p>To fix this problem, you need to use the <a href="http://msdn2.microsoft.com/en-us/library/s2y3e43x.aspx" title="CreateItem task reference on MSDN">CreateItem</a> task:</p><div class="CodeRay">
+  <div class="code"><pre>&lt;ItemGroup&gt;
+        &lt;WebDeploy Exclude=&quot;@(ExcludedTypes)&quot; Include=&quot;**\**&quot;&gt;
+
+&lt;Target DependsOn=&quot;Compile&quot; Name=&quot;Deploy&quot;&gt;
+        &lt;Copy DestinationFolder=&quot;$(DeployDir)\%(RecursiveDir)&quot; SourceFiles=&quot;@(WebDeploy)&quot;&gt;
+        &lt;CreateItem Include=&quot;$(PathToCompiledBinaries)\*.dll&quot;&gt;
+                &lt;Output ItemName=&quot;BinDeploy&quot; TaskParameter=&quot;Include&quot; /&gt;
+        &lt;/CreateItem&gt;
+        &lt;Copy DestinationFolder=&quot;$(BinDeployFolder)&quot; SourceFiles=&quot;@(BinDeploy)&quot;&gt;
+&lt;/Target&gt;</pre></div>
+</div>
+
+<p>This will guarantee that @(BinDeploy) isn't created until there are files for it. Do note that this "feature"&nbsp;happens for everything that uses ItemGroups this way; it's not just limited to the Copy task.&nbsp;</p>
