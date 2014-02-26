@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://swilliams.github.io/atom.xml" rel="self"/>
   <link href="http://swilliams.github.io/"/>
-  <updated>2014-02-26T13:38:42-07:00</updated>
+  <updated>2014-02-26T14:27:28-07:00</updated>
   <id>http://swilliams.github.io/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -18,104 +18,202 @@
     <link href="http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
     <updated>2014-02-21T00:00:00-07:00</updated>
     <id>http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
-    <content type="html"><![CDATA[<div><div><div>
-<div><div>
-<p><a href="http://swilliams.github.io/words/2014/1/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&#8217;s take a look at doing that, but customizing our extensions at runtime. </p>
+    <content type="html"><![CDATA[<p><a href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
 
-<p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&#8217;s kind of like when you <code>include</code> a module, it&#8217;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
-</div></div>
-<div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://swilliams.github.io/images/assets/lego%20annotated.png">
-</div>
-			
+<p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
 
-			
-			<div>
-				<div><p><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</p></div>
-			</div>
-			
+<figure>
+    <img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://swilliams.github.io/images/assets/lego-annotated.png">
+    <figcaption><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</figcaption>
+</figure>
 
-		</div>
-	
-	</div>
-</div></div>
-<div><div>
-<h3 id="dynamicallyadding">Dynamically Adding</h3>
+
+<h3>Dynamically Adding</h3>
 
 <p>What if those Legos could generate even more Legos as you were building with them, and then intelligently join themselves together?</p>
 
-<p>If you&#8217;re familiar with Rails, you&#8217;ve seen that you can just declare associations within a model — <code>:has_many</code>, <code>:has_one</code>, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let&#8217;s implement a rudimentary version.</p>
+<p>If you&rsquo;re familiar with Rails, you&rsquo;ve seen that you can just declare associations within a model — <code>:has_many</code>, <code>:has_one</code>, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let&rsquo;s implement a rudimentary version.</p>
 
-<p>Think for a moment about <code>:has_many</code>. What would you expect the line <code>has_many :gerbils</code> methods to do?  You would have to have a <code>gerbils</code> method to retrieve the little fellas, and another one, <code>gerbils=(new_value)</code> to set them (and others to add them and so on, but <a href="http://en.wikipedia.org/wiki/Keep_it_simple_stupid">KISS</a>). You implement that with a generic <code>get_child_models(child_name)</code> method, but that feels like the Java (™ Oracle Corporation) way&#8230; and I have too much self respect to go down that path. Instead we can take advantage of Ruby&#8217;s metaprogramming capabilities and generate them dynamically. </p>
+<p>Think for a moment about <code>:has_many</code>. What would you expect the line <code>has_many :gerbils</code> methods to do?  You would have to have a <code>gerbils</code> method to retrieve the little fellas, and another one, <code>gerbils=(new_value)</code> to set them (and others to add them and so on, but <a href="http://en.wikipedia.org/wiki/Keep_it_simple_stupid">KISS</a>). You implement that with a generic <code>get_child_models(child_name)</code> method, but that feels like the Java (™ Oracle Corporation) way&hellip; and I have too much self respect to go down that path. Instead we can take advantage of Ruby&rsquo;s metaprogramming capabilities and generate them dynamically.</p>
 
 <p>One way to do this is with <code>eval</code>.</p>
 
-<h2 id="awordoneval">A Word on Eval</h2>
+<h2>A Word on Eval</h2>
 
 <p>Ruby has a few versions of <code>eval</code>. They all take strings or blocks and turn them in code that is executed.</p>
 
 <ul>
-<li>There&#8217;s the <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">standard one</a> that executes arbitrary code.</li>
-<li>
-<a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-class_eval">class_eval</a> — similar to vanilla <code>eval</code>, but executes the code in the context of the Class itself. There&#8217;s also <code>module_eval</code> which does the same thing (more or less). Example:</li>
+<li>There&rsquo;s the <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">standard one</a> that executes arbitrary code.</li>
+<li><a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-class_eval">class_eval</a> — similar to vanilla <code>eval</code>, but executes the code in the context of the Class itself. There&rsquo;s also <code>module_eval</code> which does the same thing (more or less). Example:</li>
 </ul>
-</div></div>
-<div><div><pre class="source-code">class Monkey<br>end<br><br>m = Monkey.new<br>Monkey.class_eval %q(def screech() 'Eek Eek' end)<br>m.screech # Eek Eek<br></pre></div></div>
-<div><div><ul>
-<li>
-<a href="">instance_eval</a> — modifies a class, but from an instance point of view, <em>and only for that particular instance</em> (this is called a <a href="http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/39-ruby-s-object-model/lessons/131-singleton-methods-and-metaclasses">Singleton method</a>).</li>
-</ul></div></div>
-<div><div><pre class="source-code">class Monkey<br>end<br><br>m = Monkey.new<br>m2 = Monkey.new<br>m.instance_eval %q(def screech() 'Eek Eek' end)<br>m.screech # Eek Eek<br>m2.screech # NoMethodError: undefined method `screech' for #&lt;Monkey:0x007fa6f768bac8&gt;<br></pre></div></div>
-<div><div><p>Using these techniques you can generate the set of methods for our <code>:has_many</code> implementation.</p></div></div>
-<div><div><pre class="source-code">module Associations<br>  class &lt;&lt; self<br>    def included(base)<br>      base.extend Associations::ClassMethods<br>    end<br>  end<br><br>  module ClassMethods<br>    def has_many(thingies)<br>      code = %(<br>        def #{thingies}<br>          # retrieve stuff from here<br>        end<br><br>        def #{thingies}=(new_value)<br>          # set new_value here<br>        end<br>      )<br>      class_eval code<br>    end<br>  end<br>end<br><br></pre></div></div>
-<div><div><p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p></div></div>
-<div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="This is you with all the gerbil methods." src="http://swilliams.github.io/images/assets/cashew.jpg">
-</div>
-			
 
-			
-			<div>
-				<div><p>This is you with all the gerbil methods.</p></div>
-			</div>
-			
 
-		</div>
-	
-	</div>
-</div></div>
-<div><div>
-<h3 id="caution">Caution</h3>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Monkey</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="no">Monkey</span><span class="o">.</span><span class="n">class_eval</span> <span class="sx">%q(def screech() &#39;Eek Eek&#39; end)</span>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># Eek Eek</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>I&#8217;m not a big fan of <code>eval</code>, at least when using it with strings. The biggest reason is that it makes bugs harder to find. The Ruby interpreter will point out syntax errors when the file loads, but a typo in an evalled string won&#8217;t get caught until runtime. The longer the string, the more likely something bad will creep in there. And some of these dynamically created methods will be long. I&#8217;m talking <a href="http://www.amazon.com/gp/product/B0026L7H20/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026L7H20&amp;linkCode=as2&amp;tag=thepetzoo-20">Lord of the Rings Extended Edition</a> long.</p>
 
-<p>Fortunately there is a better way. The eval methods also take blocks, which work pretty well in most cases. For the purposes of dynamically generating methods, I prefer using <code>define_method</code> (<a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-define_method">source</a>). It&#8217;s available on <code>Module</code> (and therefore classes too) and, just like it says on the tin, is designed to create methods on the fly and add them to a class.</p>
-</div></div>
-<div><div><pre class="source-code">def has_many(thingies)<br>  define_method thingies.to_s do<br>    # retrieve stuff from here<br>  end<br><br>  define_method "#{thingies}=" do<br>    # set new_value here<br>  end<br>end<br><br></pre></div></div>
-<div><div>
-<p>It&#8217;s kinda similar to the eval code, in fact, <code>define_method</code> passes itself along to <code>instance_eval</code>, so when all is said and done, it&#8217;s merely for our convenience. But is easier to test, and will complain loudly if there&#8217;s a syntax error. </p>
+<ul>
+<li><a href="">instance_eval</a> — modifies a class, but from an instance point of view, <em>and only for that particular instance</em> (this is called a <a href="http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/39-ruby-s-object-model/lessons/131-singleton-methods-and-metaclasses">Singleton method</a>).</li>
+</ul>
 
-<p>Working with actual code rather than a string makes refactoring easier too. Let&#8217;s say you want to enable your users to define their own implementations of the generated rodent methods. Pulling that out into its own method is simple:</p>
-</div></div>
-<div><div><pre class="source-code">def add_method_without_clobbering (method_name, &amp;method_definition)<br>  unless method_defined? method_name<br>    define_method method_name, method_definition<br>  end<br>end<br><br>def has_many(thingies)<br>  add_method_without_clobbering thingies.to_s do<br>    # retrieve stuff from here<br>  end<br><br>  add_method_without_clobbering "#{thingies}=" do<br>    # set new_value here<br>  end<br>end<br><br></pre></div></div>
-<div><div>
-<p>That&#8217;s still possible with string evals, but is easier to read in my eyes.</p>
 
-<p>That&#8217;ll wrap up this entry on DSLs. There&#8217;s only one other big piece of the pie I&#8217;d like to cover — blocks, but you can do a whole lot without them.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Monkey</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">m2</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">instance_eval</span> <span class="sx">%q(def screech() &#39;Eek Eek&#39; end)</span>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># Eek Eek</span>
+</span><span class='line'><span class="n">m2</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># NoMethodError: undefined method `screech&#39; for #&lt;Monkey:0x007fa6f768bac8&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Oh, and here&#8217;s a bonus tip too: DSL code can be hard to follow. Document everything, especially the esoteric parts. It might even be a good idea to diagram the path of all the <code>include</code> chain. DSLs can make client code easier to write, but usually at the expense of crazy complexity within the DSL itself.</p>
-</div></div>
-</div></div></div>]]></content>
+
+<p>Using these techniques you can generate the set of methods for our <code>:has_many</code> implementation.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Associations</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">extend</span> <span class="ss">Associations</span><span class="p">:</span><span class="ss">:ClassMethods</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">ClassMethods</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">code</span> <span class="o">=</span> <span class="sx">%(</span>
+</span><span class='line'><span class="sx">        def </span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="sx"></span>
+</span><span class='line'><span class="sx">            # retrieve stuff from here</span>
+</span><span class='line'><span class="sx">        end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">        def </span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="sx">=(new_value)</span>
+</span><span class='line'><span class="sx">            # set new_value here</span>
+</span><span class='line'><span class="sx">        end</span>
+</span><span class='line'><span class="sx">      )</span>
+</span><span class='line'>      <span class="nb">class_eval</span> <span class="n">code</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p>
+
+<figure>
+    <img alt="This is you with all the gerbil methods." src="http://swilliams.github.io/images/assets/cashew.jpg">
+    <figcaption>This is you with all the gerbil methods.</figcaption>
+</figure>
+
+
+<h3>Caution</h3>
+
+<p>I&rsquo;m not a big fan of <code>eval</code>, at least when using it with strings. The biggest reason is that it makes bugs harder to find. The Ruby interpreter will point out syntax errors when the file loads, but a typo in an evalled string won&rsquo;t get caught until runtime. The longer the string, the more likely something bad will creep in there. And some of these dynamically created methods will be long. I&rsquo;m talking <a href="http://www.amazon.com/gp/product/B0026L7H20/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026L7H20&amp;linkCode=as2&amp;tag=thepetzoo-20">Lord of the Rings Extended Edition</a> long.</p>
+
+<p>Fortunately there is a better way. The eval methods also take blocks, which work pretty well in most cases. For the purposes of dynamically generating methods, I prefer using <code>define_method</code> <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-define_method">source</a>. It&rsquo;s available on <code>Module</code> (and therefore classes too) and, just like it says on the tin, is designed to create methods on the fly and add them to a class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">define_method</span> <span class="n">thingies</span><span class="o">.</span><span class="n">to_s</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># retrieve stuff from here</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">define_method</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="s2">=&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># set new_value here</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&rsquo;s kinda similar to the eval code, in fact, <code>define_method</code> passes itself along to <code>instance_eval</code>, so when all is said and done, it&rsquo;s merely for our convenience. But is easier to test, and will complain loudly if there&rsquo;s a syntax error.</p>
+
+<p>Working with actual code rather than a string makes refactoring easier too. Let&rsquo;s say you want to enable your users to define their own implementations of the generated rodent methods. Pulling that out into its own method is simple:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">add_method_without_clobbering</span> <span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">method_definition</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">unless</span> <span class="nb">method_defined?</span> <span class="n">method_name</span>
+</span><span class='line'>    <span class="n">define_method</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">method_definition</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">add_method_without_clobbering</span> <span class="n">thingies</span><span class="o">.</span><span class="n">to_s</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># retrieve stuff from here</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">add_method_without_clobbering</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="s2">=&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># set new_value here</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s still possible with string evals, but is easier to read in my eyes.</p>
+
+<p>That&rsquo;ll wrap up this entry on DSLs. There&rsquo;s only one other big piece of the pie I&rsquo;d like to cover — blocks, but you can do a whole lot without them.</p>
+
+<p>One thing to keep in mind when writing DSLs is that it can be hard to follow along. Document everything, especially the esoteric parts. It might even be a good idea to diagram the path of all the <code>include</code> chain. DSLs can make client code easier to write, but usually at the expense of crazy complexity within the DSL itself.</p>
+]]></content>
   </entry>
   
   <entry>
@@ -123,53 +221,220 @@
     <link href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls/"/>
     <updated>2014-01-26T00:00:00-07:00</updated>
     <id>http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls</id>
-    <content type="html"><![CDATA[<div><div><div>
-<div><div><p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&#8217;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&#8217;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&#8217;ve used a DSL. Rails in particular has a couple different ones:</p></div></div>
-<div><div><pre class="source-code"># Routes<br># config/routes.rb<br>DerptyDerp::Application.routes.draw do<br>  resources :users<br>  resources :dinguses, only: [:new, :show]<br>end<br><br># ActiveRecord<br># app/models/user.rb<br>class User &lt; ActiveRecord::Base<br>  validates :email, presence: true, uniqueness: true<br>  has_one :dingus, dependent: :destroy<br>end<br></pre></div></div>
-<div><div>
-<p>And so on. At first glance, the code that allows this can be intimidating, especially when it&#8217;s been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
+    <content type="html"><![CDATA[<p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&rsquo;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&rsquo;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&rsquo;ve used a DSL. Rails in particular has a couple different ones:</p>
 
-<h2 id="classmethods">Class Methods</h2>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="c1"># Routes</span>
+</span><span class='line'> <span class="c1"># config/routes.rb</span>
+</span><span class='line'> <span class="ss">DerptyDerp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>   <span class="n">resources</span> <span class="ss">:users</span>
+</span><span class='line'>   <span class="n">resources</span> <span class="ss">:dinguses</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1"># ActiveRecord</span>
+</span><span class='line'> <span class="c1"># app/models/user.rb</span>
+</span><span class='line'> <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>   <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'>   <span class="n">has_one</span> <span class="ss">:dingus</span><span class="p">,</span> <span class="ss">dependent</span><span class="p">:</span> <span class="ss">:destroy</span>
+</span><span class='line'> <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And so on. At first glance, the code that allows this can be intimidating, especially when it&rsquo;s been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
+
+<h2>Class Methods</h2>
 
 <p>Did you know that you can execute code right from within a class declaration? Well, you can. Try it!</p>
-</div></div>
-<div><div><pre class="source-code">class Derp<br>  def self.can_eat_sandwiches<br>    puts "I LOVE CATS"<br>  end<br><br>  can_eat_sandwiches<br>end</pre></div></div>
-<div><div><p>When that class is read by the interpreter, it&#8217;ll execute the <code>can_eat_sandwiches</code> method and print the non-sequitur to the console. This&#8217;ll even work through inheritance.</p></div></div>
-<div><div><pre class="source-code">class Herp &lt; Derp<br>  can_eat_sandwiches<br>end<br></pre></div></div>
-<div><div>
-<p>And you&#8217;ll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you&#8217;re doing is calling another method.</p>
 
-<h2 id="putitintoamodule">Put it into a Module</h2>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Derp</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;I LOVE CATS&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There&#8217;s a catch though before you dive in. Traditionally, you&#8217;d include a module like this:</p>
-</div></div>
-<div><div><pre class="source-code">module TheHerppening<br>  def can_eat_sandwiches<br>  end<br>end<br><br>class Sandwichable<br>  include TheHerppening<br>end</pre></div></div>
-<div><div><p>If you know how modules work, you might&#8217;ve noticed that will only add <code>can_eat_sandwiches</code> to <em>instances</em> of <code>Sandwichable</code>, not to <code>Sandwichable</code> itself. Which means that calling <code>can_eat_sandwiches</code> directly in the class won&#8217;t work. But fear not! Ruby can be molded in many dark and fearsome ways. Rather than using <code>include</code>, you can use <code>extend</code> to add methods to a class.</p></div></div>
-<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening<br><br>  can_eat_sandwiches<br>end<br></pre></div></div>
-<div><div><p>Aaaaand we&#8217;re back in business. But, say you wanted to have some methods that needed to be on instances, and some for the class? Can you mix both? Sure. Just wrap them in different modules and add them with the appropriate calls. There&#8217;s even a pattern to follow for naming the modules: <code>ClassMethods</code> and <code>InstanceMethods</code>:</p></div></div>
-<div><div><pre class="source-code">module TheHerppening<br>  module ClassMethods<br>    def can_eat_sandwiches<br>      puts 'DING'<br>    end<br>  end<br><br>  module InstanceMethods<br>    def eat_the_sandwich<br>      puts 'I wish I could marry a sandwich.'<br>    end<br>  end<br>end<br></pre></div></div>
-<div><div><p>They can even be in the same file. As a side note, this is also how you can do namespacing in Ruby. Including these can be a little tedious if you have to add this to lots of classes.</p></div></div>
-<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening::ClassMethods<br>  include TheHerppening::InstanceMethods<br><br>  can_eat_sandwiches<br>end</pre></div></div>
-<div><div>
-<p>Not to mention ugly. And if there&#8217;s one thing a good Ruby coder can&#8217;t stand, it&#8217;s ugly code. Let&#8217;s fix that.</p>
 
-<p><a href="http://ruby-doc.org/core-2.1.0/Module.html">Modules</a> (and classes) have all kinds of meta-programming capabilities built in. I encourage you to go and peruse them at your leisure. What we&#8217;ll focus on here is the <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-included"><code>included</code></a> method.</p>
-</div></div>
-<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def included(base)<br>      base.send :include, Dingus::InstanceMethods<br>      base.extend Dingus::ClassMethods<br>    end<br>  end<br>end</pre></div></div>
-<div><div>
+<p>When that class is read by the interpreter, it&rsquo;ll execute the <code>can_eat_sandwiches</code> method and print the non-sequitur to the console. This&rsquo;ll even work through inheritance.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Herp</span> <span class="o">&lt;</span> <span class="no">Derp</span>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you&rsquo;ll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you&rsquo;re doing is calling another method.</p>
+
+<h2>Put it into a Module</h2>
+
+<p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There&rsquo;s a catch though before you dive in. Traditionally, you&rsquo;d include a module like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">TheHerppening</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">TheHerppening</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you know how modules work, you might&rsquo;ve noticed that will only add <code>can_eat_sandwiches</code> to <em>instances</em> of <code>Sandwichable</code>, not to <code>Sandwichable</code> itself. Which means that calling <code>can_eat_sandwiches</code> directly in the class won&rsquo;t work. But fear not! Ruby can be molded in many dark and fearsome ways. Rather than using <code>include</code>, you can use <code>extend</code> to add methods to a class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">TheHerppening</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Aaaaand we&rsquo;re back in business. But, say you wanted to have some methods that needed to be on instances, and some for the class? Can you mix both? Sure. Just wrap them in different modules and add them with the appropriate calls. There&rsquo;s even a pattern to follow for naming the modules: <code>ClassMethods</code> and <code>InstanceMethods</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">TheHerppening</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">ClassMethods</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;DING&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">InstanceMethods</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">eat_the_sandwich</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;I wish I could marry a sandwich.&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>They can even be in the same file. As a side note, this is also how you can do namespacing in Ruby. Including these can be a little tedious if you have to add this to lots of classes.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>    <span class="kp">extend</span> <span class="ss">TheHerppening</span><span class="p">:</span><span class="ss">:ClassMethods</span>
+</span><span class='line'>    <span class="kp">include</span> <span class="ss">TheHerppening</span><span class="p">:</span><span class="ss">:InstanceMethods</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not to mention ugly. And if there&rsquo;s one thing a good Ruby coder can&rsquo;t stand, it&rsquo;s ugly code. Let&rsquo;s fix that.</p>
+
+<p><a href="http://ruby-doc.org/core-2.1.0/Module.html">Modules</a> (and classes) have all kinds of meta-programming capabilities built in. I encourage you to go and peruse them at your leisure. What we&rsquo;ll focus on here is the <code>[included](http://ruby-doc.org/core-2.1.0/Module.html#method-i-included)</code> method.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Dingus</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">send</span> <span class="ss">:include</span><span class="p">,</span> <span class="ss">Dingus</span><span class="p">:</span><span class="ss">:InstanceMethods</span>
+</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">extend</span> <span class="ss">Dingus</span><span class="p">:</span><span class="ss">:ClassMethods</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>All of a sudden, your class now has all of the extra stuff from the <code>Dingus</code> module inside it.</p>
 
-<p>That might be jumping ahead a few steps, what with the <code>class &lt;&lt; data-preserve-html-node="true" self</code> and all. Don&#8217;t forget that in Ruby, <em>everything</em> is a class, even modules. Conceptually it might be easier to understand if you look at <code>Module</code>&#8217;s ancestors: </p>
-</div></div>
-<div><div><pre class="source-code">&gt; Module.ancestors<br>=&gt; [Module, Object, PP::ObjectMixin, Kernel, BasicObject]<br></pre></div></div>
-<div><div><p>So, a <code>Module</code> is just a subclass of <code>Object</code> and can be treated as such. <a href="http://www.youtube.com/watch?v=WFNEgdwjEhs">Whoa</a>. Specifically, the <code>class &lt;&lt; data-preserve-html-node="true" self</code> allows you to put class level methods on the module (you can also do this to a class as an alternative to <code>def self.whatevers</code>).</p></div></div>
-<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def say_hi<br>      puts 'HI'<br>    end<br>  end<br>end<br><br>Dingus.say_hi # HI<br></pre></div></div>
-<div><div>
+<p>That might be jumping ahead a few steps, what with the <code>class &lt;&lt; self</code> and all. Don&rsquo;t forget that in Ruby, <em>everything</em> is a class, even modules. Conceptually it might be easier to understand if you look at <code>Module</code>&rsquo;s ancestors:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">Module</span><span class="o">.</span><span class="n">ancestors</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="no">Module</span><span class="p">,</span> <span class="no">Object</span><span class="p">,</span> <span class="ss">PP</span><span class="p">:</span><span class="ss">:ObjectMixin</span><span class="p">,</span> <span class="no">Kernel</span><span class="p">,</span> <span class="no">BasicObject</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, a <code>Module</code> is just a subclass of <code>Object</code> and can be treated as such. <a href="http://www.youtube.com/watch?v=WFNEgdwjEhs">Whoa</a>. Specifically, the <code>class &lt;&lt; self</code> allows you to put class level methods on the module (you can also do this to a class as an alternative to <code>def self.whatevers</code>).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Dingus</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">say_hi</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;HI&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Dingus</span><span class="o">.</span><span class="n">say_hi</span> <span class="c1"># HI</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
 
-<p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&#8217;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
-</div></div>
-</div></div></div>]]></content>
+<p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&rsquo;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
+]]></content>
   </entry>
   
   <entry>
