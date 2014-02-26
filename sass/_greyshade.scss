@@ -272,6 +272,17 @@ body {
 	}
 }
 
+figure {
+    margin-top: 10px;
+}
+
+figcaption {
+    display: block;
+    font-family: $sans;
+    font-size: 0.6em;
+    text-align: right;
+}
+
 a {
 	color: $greyshade;
 }
