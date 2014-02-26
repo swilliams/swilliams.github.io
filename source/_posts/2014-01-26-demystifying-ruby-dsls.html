@@ -1,0 +1,55 @@
+---
+layout: post
+title: "Demystifying Ruby DSLs"
+date: 2014-01-26
+comments: false
+author: Scott Williams
+categories: [ruby,code]
+---
+<div><div><div>
+<div><div><p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I'm talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you've ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you've used a DSL. Rails in particular has a couple different ones:</p></div></div>
+<div><div><pre class="source-code"># Routes<br># config/routes.rb<br>DerptyDerp::Application.routes.draw do<br>  resources :users<br>  resources :dinguses, only: [:new, :show]<br>end<br><br># ActiveRecord<br># app/models/user.rb<br>class User &lt; ActiveRecord::Base<br>  validates :email, presence: true, uniqueness: true<br>  has_one :dingus, dependent: :destroy<br>end<br></pre></div></div>
+<div><div>
+<p>And so on. At first glance, the code that allows this can be intimidating, especially when it's been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
+
+<h2 id="classmethods">Class Methods</h2>
+
+<p>Did you know that you can execute code right from within a class declaration? Well, you can. Try it!</p>
+</div></div>
+<div><div><pre class="source-code">class Derp<br>  def self.can_eat_sandwiches<br>    puts "I LOVE CATS"<br>  end<br><br>  can_eat_sandwiches<br>end</pre></div></div>
+<div><div><p>When that class is read by the interpreter, it'll execute the <code>can_eat_sandwiches</code> method and print the non-sequitur to the console. This'll even work through inheritance.</p></div></div>
+<div><div><pre class="source-code">class Herp &lt; Derp<br>  can_eat_sandwiches<br>end<br></pre></div></div>
+<div><div>
+<p>And you'll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you're doing is calling another method.</p>
+
+<h2 id="putitintoamodule">Put it into a Module</h2>
+
+<p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There's a catch though before you dive in. Traditionally, you'd include a module like this:</p>
+</div></div>
+<div><div><pre class="source-code">module TheHerppening<br>  def can_eat_sandwiches<br>  end<br>end<br><br>class Sandwichable<br>  include TheHerppening<br>end</pre></div></div>
+<div><div><p>If you know how modules work, you might've noticed that will only add <code>can_eat_sandwiches</code> to <em>instances</em> of <code>Sandwichable</code>, not to <code>Sandwichable</code> itself. Which means that calling <code>can_eat_sandwiches</code> directly in the class won't work. But fear not! Ruby can be molded in many dark and fearsome ways. Rather than using <code>include</code>, you can use <code>extend</code> to add methods to a class.</p></div></div>
+<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening<br><br>  can_eat_sandwiches<br>end<br></pre></div></div>
+<div><div><p>Aaaaand we're back in business. But, say you wanted to have some methods that needed to be on instances, and some for the class? Can you mix both? Sure. Just wrap them in different modules and add them with the appropriate calls. There's even a pattern to follow for naming the modules: <code>ClassMethods</code> and <code>InstanceMethods</code>:</p></div></div>
+<div><div><pre class="source-code">module TheHerppening<br>  module ClassMethods<br>    def can_eat_sandwiches<br>      puts 'DING'<br>    end<br>  end<br><br>  module InstanceMethods<br>    def eat_the_sandwich<br>      puts 'I wish I could marry a sandwich.'<br>    end<br>  end<br>end<br></pre></div></div>
+<div><div><p>They can even be in the same file. As a side note, this is also how you can do namespacing in Ruby. Including these can be a little tedious if you have to add this to lots of classes.</p></div></div>
+<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening::ClassMethods<br>  include TheHerppening::InstanceMethods<br><br>  can_eat_sandwiches<br>end</pre></div></div>
+<div><div>
+<p>Not to mention ugly. And if there's one thing a good Ruby coder can't stand, it's ugly code. Let's fix that.</p>
+
+<p><a href="http://ruby-doc.org/core-2.1.0/Module.html">Modules</a> (and classes) have all kinds of meta-programming capabilities built in. I encourage you to go and peruse them at your leisure. What we'll focus on here is the <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-included"><code>included</code></a> method.</p>
+</div></div>
+<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def included(base)<br>      base.send :include, Dingus::InstanceMethods<br>      base.extend Dingus::ClassMethods<br>    end<br>  end<br>end</pre></div></div>
+<div><div>
+<p>All of a sudden, your class now has all of the extra stuff from the <code>Dingus</code> module inside it.</p>
+
+<p>That might be jumping ahead a few steps, what with the <code>class &lt;&lt; data-preserve-html-node="true" self</code> and all. Don't forget that in Ruby, <em>everything</em> is a class, even modules. Conceptually it might be easier to understand if you look at <code>Module</code>'s ancestors: </p>
+</div></div>
+<div><div><pre class="source-code">&gt; Module.ancestors<br>=&gt; [Module, Object, PP::ObjectMixin, Kernel, BasicObject]<br></pre></div></div>
+<div><div><p>So, a <code>Module</code> is just a subclass of <code>Object</code> and can be treated as such. <a href="http://www.youtube.com/watch?v=WFNEgdwjEhs">Whoa</a>. Specifically, the <code>class &lt;&lt; data-preserve-html-node="true" self</code> allows you to put class level methods on the module (you can also do this to a class as an alternative to <code>def self.whatevers</code>).</p></div></div>
+<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def say_hi<br>      puts 'HI'<br>    end<br>  end<br>end<br><br>Dingus.say_hi # HI<br></pre></div></div>
+<div><div>
+<p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
+
+<p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We'll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
+</div></div>
+</div></div></div>
