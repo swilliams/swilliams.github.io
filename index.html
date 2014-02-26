@@ -1,104 +1,1036 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content=" Blog Archives Recent Posts ">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Demystifying Ruby DSLs — Part 2 Feb 21st, 2014 Last time we learned about how to use modules to dynamically add functionality to a class. This time &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <link rel="canonical" href="http://swilliams.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://swilliams.github.io/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>Code. Photos. Writing</h2>
   
 </hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:swilliams.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+<nav id="marketing">
+    <p><a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Get the app that I made!</a> It's called <a href="http://zartbonk.com">Zartbonk</a>.</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
 </ul>
 
 </nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/02/21/demystifying-ruby-dsls-part-2/" itemprop="url">Demystifying Ruby DSLs — Part 2</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
   
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+
+
+<time datetime="2014-02-21T00:00:00-07:00" data-updated="true" itemprop="datePublished">Feb 21<span>st</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div>
+<div><div>
+<p><a href="/words/2014/1/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&#8217;s take a look at doing that, but customizing our extensions at runtime. </p>
+
+<p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&#8217;s kind of like when you <code>include</code> a module, it&#8217;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
+</div></div>
+<div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Lego Castle by InSapphoWeTrust on Flickr." src="/images/assets/lego%20annotated.png">
 </div>
-<aside class="sidebar">
+			
+
+			
+			<div>
+				<div><p><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div>
+<div><div>
+<h3 id="dynamicallyadding">Dynamically Adding</h3>
+
+<p>What if those Legos could generate even more Legos as you were building with them, and then intelligently join themselves together?</p>
+
+<p>If you&#8217;re familiar with Rails, you&#8217;ve seen that you can just declare associations within a model — <code>:has_many</code>, <code>:has_one</code>, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let&#8217;s implement a rudimentary version.</p>
+
+<p>Think for a moment about <code>:has_many</code>. What would you expect the line <code>has_many :gerbils</code> methods to do?  You would have to have a <code>gerbils</code> method to retrieve the little fellas, and another one, <code>gerbils=(new_value)</code> to set them (and others to add them and so on, but <a href="http://en.wikipedia.org/wiki/Keep_it_simple_stupid">KISS</a>). You implement that with a generic <code>get_child_models(child_name)</code> method, but that feels like the Java (™ Oracle Corporation) way&#8230; and I have too much self respect to go down that path. Instead we can take advantage of Ruby&#8217;s metaprogramming capabilities and generate them dynamically. </p>
+
+<p>One way to do this is with <code>eval</code>.</p>
+
+<h2 id="awordoneval">A Word on Eval</h2>
+
+<p>Ruby has a few versions of <code>eval</code>. They all take strings or blocks and turn them in code that is executed.</p>
+
+<ul>
+<li>There&#8217;s the <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">standard one</a> that executes arbitrary code.</li>
+<li>
+<a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-class_eval">class_eval</a> — similar to vanilla <code>eval</code>, but executes the code in the context of the Class itself. There&#8217;s also <code>module_eval</code> which does the same thing (more or less). Example:</li>
+</ul>
+</div></div>
+<div><div><pre class="source-code">class Monkey<br>end<br><br>m = Monkey.new<br>Monkey.class_eval %q(def screech() 'Eek Eek' end)<br>m.screech # Eek Eek<br></pre></div></div>
+<div><div><ul>
+<li>
+<a href="">instance_eval</a> — modifies a class, but from an instance point of view, <em>and only for that particular instance</em> (this is called a <a href="http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/39-ruby-s-object-model/lessons/131-singleton-methods-and-metaclasses">Singleton method</a>).</li>
+</ul></div></div>
+<div><div><pre class="source-code">class Monkey<br>end<br><br>m = Monkey.new<br>m2 = Monkey.new<br>m.instance_eval %q(def screech() 'Eek Eek' end)<br>m.screech # Eek Eek<br>m2.screech # NoMethodError: undefined method `screech' for #&lt;Monkey:0x007fa6f768bac8&gt;<br></pre></div></div>
+<div><div><p>Using these techniques you can generate the set of methods for our <code>:has_many</code> implementation.</p></div></div>
+<div><div><pre class="source-code">module Associations<br>  class &lt;&lt; self<br>    def included(base)<br>      base.extend Associations::ClassMethods<br>    end<br>  end<br><br>  module ClassMethods<br>    def has_many(thingies)<br>      code = %(<br>        def #{thingies}<br>          # retrieve stuff from here<br>        end<br><br>        def #{thingies}=(new_value)<br>          # set new_value here<br>        end<br>      )<br>      class_eval code<br>    end<br>  end<br>end<br><br></pre></div></div>
+<div><div><p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p></div></div>
+<div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="This is you with all the gerbil methods." src="/images/assets/cashew.jpg">
+</div>
+			
+
+			
+			<div>
+				<div><p>This is you with all the gerbil methods.</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div>
+<div><div>
+<h3 id="caution">Caution</h3>
+
+<p>I&#8217;m not a big fan of <code>eval</code>, at least when using it with strings. The biggest reason is that it makes bugs harder to find. The Ruby interpreter will point out syntax errors when the file loads, but a typo in an evalled string won&#8217;t get caught until runtime. The longer the string, the more likely something bad will creep in there. And some of these dynamically created methods will be long. I&#8217;m talking <a href="http://www.amazon.com/gp/product/B0026L7H20/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026L7H20&amp;linkCode=as2&amp;tag=thepetzoo-20">Lord of the Rings Extended Edition</a> long.</p>
+
+<p>Fortunately there is a better way. The eval methods also take blocks, which work pretty well in most cases. For the purposes of dynamically generating methods, I prefer using <code>define_method</code> (<a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-define_method">source</a>). It&#8217;s available on <code>Module</code> (and therefore classes too) and, just like it says on the tin, is designed to create methods on the fly and add them to a class.</p>
+</div></div>
+<div><div><pre class="source-code">def has_many(thingies)<br>  define_method thingies.to_s do<br>    # retrieve stuff from here<br>  end<br><br>  define_method "#{thingies}=" do<br>    # set new_value here<br>  end<br>end<br><br></pre></div></div>
+<div><div>
+<p>It&#8217;s kinda similar to the eval code, in fact, <code>define_method</code> passes itself along to <code>instance_eval</code>, so when all is said and done, it&#8217;s merely for our convenience. But is easier to test, and will complain loudly if there&#8217;s a syntax error. </p>
+
+<p>Working with actual code rather than a string makes refactoring easier too. Let&#8217;s say you want to enable your users to define their own implementations of the generated rodent methods. Pulling that out into its own method is simple:</p>
+</div></div>
+<div><div><pre class="source-code">def add_method_without_clobbering (method_name, &amp;method_definition)<br>  unless method_defined? method_name<br>    define_method method_name, method_definition<br>  end<br>end<br><br>def has_many(thingies)<br>  add_method_without_clobbering thingies.to_s do<br>    # retrieve stuff from here<br>  end<br><br>  add_method_without_clobbering "#{thingies}=" do<br>    # set new_value here<br>  end<br>end<br><br></pre></div></div>
+<div><div>
+<p>That&#8217;s still possible with string evals, but is easier to read in my eyes.</p>
+
+<p>That&#8217;ll wrap up this entry on DSLs. There&#8217;s only one other big piece of the pie I&#8217;d like to cover — blocks, but you can do a whole lot without them.</p>
+
+<p>Oh, and here&#8217;s a bonus tip too: DSL code can be hard to follow. Document everything, especially the esoteric parts. It might even be a good idea to diagram the path of all the <code>include</code> chain. DSLs can make client code easier to write, but usually at the expense of crazy complexity within the DSL itself.</p>
+</div></div>
+</div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/26/demystifying-ruby-dsls/" itemprop="url">Demystifying Ruby DSLs</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
   
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
+
+
+<time datetime="2014-01-26T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 26<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div>
+<div><div><p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&#8217;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&#8217;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&#8217;ve used a DSL. Rails in particular has a couple different ones:</p></div></div>
+<div><div><pre class="source-code"># Routes<br># config/routes.rb<br>DerptyDerp::Application.routes.draw do<br>  resources :users<br>  resources :dinguses, only: [:new, :show]<br>end<br><br># ActiveRecord<br># app/models/user.rb<br>class User &lt; ActiveRecord::Base<br>  validates :email, presence: true, uniqueness: true<br>  has_one :dingus, dependent: :destroy<br>end<br></pre></div></div>
+<div><div>
+<p>And so on. At first glance, the code that allows this can be intimidating, especially when it&#8217;s been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
+
+<h2 id="classmethods">Class Methods</h2>
+
+<p>Did you know that you can execute code right from within a class declaration? Well, you can. Try it!</p>
+</div></div>
+<div><div><pre class="source-code">class Derp<br>  def self.can_eat_sandwiches<br>    puts "I LOVE CATS"<br>  end<br><br>  can_eat_sandwiches<br>end</pre></div></div>
+<div><div><p>When that class is read by the interpreter, it&#8217;ll execute the <code>can_eat_sandwiches</code> method and print the non-sequitur to the console. This&#8217;ll even work through inheritance.</p></div></div>
+<div><div><pre class="source-code">class Herp &lt; Derp<br>  can_eat_sandwiches<br>end<br></pre></div></div>
+<div><div>
+<p>And you&#8217;ll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you&#8217;re doing is calling another method.</p>
+
+<h2 id="putitintoamodule">Put it into a Module</h2>
+
+<p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There&#8217;s a catch though before you dive in. Traditionally, you&#8217;d include a module like this:</p>
+</div></div>
+<div><div><pre class="source-code">module TheHerppening<br>  def can_eat_sandwiches<br>  end<br>end<br><br>class Sandwichable<br>  include TheHerppening<br>end</pre></div></div>
+<div><div><p>If you know how modules work, you might&#8217;ve noticed that will only add <code>can_eat_sandwiches</code> to <em>instances</em> of <code>Sandwichable</code>, not to <code>Sandwichable</code> itself. Which means that calling <code>can_eat_sandwiches</code> directly in the class won&#8217;t work. But fear not! Ruby can be molded in many dark and fearsome ways. Rather than using <code>include</code>, you can use <code>extend</code> to add methods to a class.</p></div></div>
+<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening<br><br>  can_eat_sandwiches<br>end<br></pre></div></div>
+<div><div><p>Aaaaand we&#8217;re back in business. But, say you wanted to have some methods that needed to be on instances, and some for the class? Can you mix both? Sure. Just wrap them in different modules and add them with the appropriate calls. There&#8217;s even a pattern to follow for naming the modules: <code>ClassMethods</code> and <code>InstanceMethods</code>:</p></div></div>
+<div><div><pre class="source-code">module TheHerppening<br>  module ClassMethods<br>    def can_eat_sandwiches<br>      puts 'DING'<br>    end<br>  end<br><br>  module InstanceMethods<br>    def eat_the_sandwich<br>      puts 'I wish I could marry a sandwich.'<br>    end<br>  end<br>end<br></pre></div></div>
+<div><div><p>They can even be in the same file. As a side note, this is also how you can do namespacing in Ruby. Including these can be a little tedious if you have to add this to lots of classes.</p></div></div>
+<div><div><pre class="source-code">class Sandwichable<br>  extend TheHerppening::ClassMethods<br>  include TheHerppening::InstanceMethods<br><br>  can_eat_sandwiches<br>end</pre></div></div>
+<div><div>
+<p>Not to mention ugly. And if there&#8217;s one thing a good Ruby coder can&#8217;t stand, it&#8217;s ugly code. Let&#8217;s fix that.</p>
+
+<p><a href="http://ruby-doc.org/core-2.1.0/Module.html">Modules</a> (and classes) have all kinds of meta-programming capabilities built in. I encourage you to go and peruse them at your leisure. What we&#8217;ll focus on here is the <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-included"><code>included</code></a> method.</p>
+</div></div>
+<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def included(base)<br>      base.send :include, Dingus::InstanceMethods<br>      base.extend Dingus::ClassMethods<br>    end<br>  end<br>end</pre></div></div>
+<div><div>
+<p>All of a sudden, your class now has all of the extra stuff from the <code>Dingus</code> module inside it.</p>
+
+<p>That might be jumping ahead a few steps, what with the <code>class &lt;&lt; data-preserve-html-node="true" self</code> and all. Don&#8217;t forget that in Ruby, <em>everything</em> is a class, even modules. Conceptually it might be easier to understand if you look at <code>Module</code>&#8217;s ancestors: </p>
+</div></div>
+<div><div><pre class="source-code">&gt; Module.ancestors<br>=&gt; [Module, Object, PP::ObjectMixin, Kernel, BasicObject]<br></pre></div></div>
+<div><div><p>So, a <code>Module</code> is just a subclass of <code>Object</code> and can be treated as such. <a href="http://www.youtube.com/watch?v=WFNEgdwjEhs">Whoa</a>. Specifically, the <code>class &lt;&lt; data-preserve-html-node="true" self</code> allows you to put class level methods on the module (you can also do this to a class as an alternative to <code>def self.whatevers</code>).</p></div></div>
+<div><div><pre class="source-code">module Dingus<br>  class &lt;&lt; self<br>    def say_hi<br>      puts 'HI'<br>    end<br>  end<br>end<br><br>Dingus.say_hi # HI<br></pre></div></div>
+<div><div>
+<p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
+
+<p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&#8217;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
+</div></div>
+</div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/25/my-computers-through-the-ages-part-ii/" itemprop="url">My Computers Through the Ages Part II</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-25T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 25<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>In <a href="/words/2014/1/9/my-computers-through-the-ages">Part 1</a> I talked about my first few computers. They were an important part of my childhood, and shaped the person I would become and the career I chose. When I went to college I started to build and upgrade my own PCs. Things went well enough at first, but then got a little out of hand.</p>
+
+<h3 id="darkages">Dark Ages</h3>
+
+<p><strong>Custom PC #1</strong> (2000) Since I was still in college, I didn&#8217;t have very much money and bought some dirt cheap parts from websites that may have been run by questionable companies. These parts were leftover from <a href="http://en.wikipedia.org/wiki/Oem">OEMs</a> and didn&#8217;t have real retail boxes. Some would just show up with a minimal layer of bubble wrap around the bare hardware. I had bought a <a href="http://en.wikipedia.org/wiki/Pentium_iii">Pentium III CPU</a>, but screwed up putting the heatsink on it. It was too unstable to run at its advertised speed, so I had to <em>underclock</em> it or it&#8217;d just lock up the whole system within minutes. It could run <a href="http://en.wikipedia.org/wiki/Quake_III_Arena">Quake 3</a> well enough though at that speed.</p>
+
+<p><strong>Custom PC #2</strong> (2001) If at first you don&#8217;t succeed right? This was the only time I strayed away from the Intel and bought an <a href="http://en.wikipedia.org/wiki/Amd_athlon">AMD Athlon processor</a>. I had learned from my mistake and assembled it correctly, but it also had problems and would lock up at odd times. I remember trying to show my parents just what a computer could do by playing an assortment of Led Zeppelin mp3s, and halfway through Stairway it froze and needed to be restarted. I was either not a very good PC builder or kept buying crummy parts. Probably a little from column A and a little from column B.</p>
+
+<p>I hit the nadir of my computer history while putting this computer together. During the assembly I saw that there were some weird red splotches on the inside of the case but couldn&#8217;t figure out what they were. More started to appear and then I realized that I had cut my hand on a sharp hunk of metal from the bargain basement case and I was bleeding all over it.</p>
+
+<h3 id="workingstiff">Working Stiff</h3>
+
+<p><strong>Custom PC #3</strong> (2004) I had a real jobby-job and was earning more than the $Nothing I was in college, so I was finally able to afford computer parts that came in actual boxes, and wouldn&#8217;t require keeping a roll of bandages nearby. I went back to Intel and got a <a href="http://en.wikipedia.org/wiki/Pentium_IV">Pentium 4</a> to run <a href="http://en.wikipedia.org/wiki/Windows_xp">Windows XP</a>. This was my first DIY computer that actually ran ok. It was also the first time I used an LCD monitor. The <a href="http://reviews.cnet.com/lcd-monitors/dell-ultrasharp-1905fp/4505-3174_7-31232074.html">19&#8221; Dell Ultrasharp</a> was a big upgrade to the cumbersome CRTs I had been using.</p>
+
+<p><strong>Custom PC #4</strong> (2007) My last Windows PC, and also the best. My brother-in-law worked at Intel and as &#8220;payment&#8221; for taking some pictures at his wedding gave me a nice <a href="http://en.wikipedia.org/wiki/Core_2_duo#Core_2_Duo">Core 2 Duo</a> CPU. The prior one worked well enough, but was very loud. Pentium 4&#8217;s were known to run hot, and my case required a number of fans to keep mine from melting through to the Earth&#8217;s core. The Core 2 Duo was much quieter. </p>
+
+<p>Honestly, there wasn&#8217;t anything very memorable about this one. It was a Camry — reliable, but otherwise unremarkable. </p>
+
+<p>Things were starting to change for me. I had been a software developer working in the <a href="https://msdn.microsoft.com/">Microsoft stack</a> for a long time and felt a seven year itch to move on to different things.</p>
+
+<h3 id="fruit">Fruit</h3>
+
+<p>I never liked Apple computers. When I was growing up in the early-mid 90s, it was the &#8220;dark&#8221; times for Apple, when they kept releasing unremarkable computers with ancient notions of software. Even when Steve Jobs returned,  I thought of them as too expensive and fluffed up with a bunch of annoying marketing. I especially despised the original iMac<sup>1</sup> with the <a href="http://www.youtube.com/watch?v=83nS4EGKU04">goofy colors</a>, <a href="http://en.wikipedia.org/wiki/Apple_USB_Mouse">awful mouse</a>, and thought that it was dead in the water because it lacked a floppy drive. This wouldn&#8217;t be the first time a technical prediction of mine was hilariously off base.</p>
+
+<p>As time went on I did start to like the industrial design of a few models. The original <a href="http://en.wikipedia.org/wiki/PowerBook_G4#Titanium_PowerBook_G4">Titanium Powerbooks</a> (so thin!), and the <a href="http://en.wikipedia.org/wiki/G4_cube">G4 Cube</a> looked especially nice to my eyes, but they were still way too expensive for my budget.</p>
+
+<p>Around the time they switched over to Intel processors I started to reconsider my position. I liked that they were <a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html">Unixy</a>, making certain kinds of web development easier. Eventually, some of the more garish designs of OS X were <a href="http://arstechnica.com/apple/2007/10/mac-os-x-10-5/3/">stripped back</a>, and I decided to make the leap.</p>
+
+<p>mac 30 years</p>
+
+<p>Apple recently celebrated the <a href="http://www.apple.com/30-years/">30th anniversary of the original Macintosh</a>. I joined the Mac train in 2009, and have [mostly] liked it ever since. Next time I&#8217;ll go into the specifics of the Macs that I&#8217;ve owned, and why I recommend them.</p>
+
+<hr cla data-preserve-html-node="true" ss="footnotes">
+<p><small>
+1. It looked like a suppository, ok?
+</small></p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/20/keep-your-developer-saw-sharp/" itemprop="url">Keep Your Developer Saw Sharp</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-20T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 20<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div>
+<div><div><p>If you’re a software developer, you need to make sure your skills are up to date. If you don’t, you’re doing yourself a disservice.</p></div></div>
+<div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt='"Dremel Moto Jig Saw" from Pete Prodoehl on Flickr' src="/images/assets/5184600234_a99779ddc1_z.jpg">
+</div>
+			
+
+			
+			<div>
+				<div><p><a href="http://www.flickr.com/photos/raster/5184600234/">&#8220;Dremel Moto Jig Saw&#8221;</a> from <a href="http://www.flickr.com/photos/raster/">Pete Prodoehl</a> on Flickr</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div>
+<div><div>
+<p>This is important for several reasons. First, it keeps you marketable. There&#8217;s no such thing as true job security. You might be a vitally important cog in an esoteric process at a corporation, but could still be laid off if certain numbers in an executive&#8217;s spreadsheet don&#8217;t come out in your favor. Even though it&#8217;s a buyers&#8217; market for software developers right now, you might suddenly find yourself looking down the pointy end of an interview table needing to answer a question about something that you always meant to study up on, but never did.</p>
+
+<p>Things change, and practices that were once standard aren&#8217;t any more. In fact, they can be dangerous. For example, I was on a project with a client&#8217;s DBA who hadn&#8217;t really kept up with the times. He would&#8217;ve been a really good <a href="http://en.wikipedia.org/wiki/Microsoft_SQL_Server">SQL Server</a> DBA if it were still 1998. His design for the project included making just under 400 tables, with no fewer than 20 joins for any query. Since the application was very heavily data driven, things bogged down under even light loads. The performance caused many long nights and weekends and &#8220;aggressive conversations&#8221; with managers at the client.</p>
+
+<p>It can be <strong>expensive</strong>. The problems in the above anecdote could&#8217;ve been avoided by adopting a <a href="http://stackoverflow.com/a/460296/736">less normalized</a> approach in the database. Yes, data would&#8217;ve been duplicated, but hardware has gotten <em>so</em> much cheaper it&#8217;s financially irresponsible not consider just buying faster stuff. You could save $10,000 on a new server, but if you&#8217;re paying a team of consultants billing $1,000/hour for <em>weeks</em> of work, <a href="http://www.youtube.com/watch?v=-DGFuHC75aY">you chose poorly</a>.  If StackOverflow got away with just <a href="http://highscalability.com/blog/2011/3/3/stack-overflow-architecture-update-now-at-95-million-page-vi.html">2 database servers in 2011</a>, you can probably do just fine with one.</p>
+
+<p>It makes team dynamics better. I&#8217;ve been a consultant of some form or fashion for nearly seven years now. I&#8217;ve seen good projects, and I&#8217;ve seen bad ones. Bad communication and skill mismatches are traits of projects that go south. When developers are on the same page it makes for much easier conversations. For example, if you are a web developer, I shouldn&#8217;t have to repeatedly explain what <a href="http://en.wikipedia.org/wiki/REST">REST</a> is in 2014, no matter what platform you&#8217;re using.</p>
+
+<p>You&#8217;ll become a better programmer seeing if the grass is greener elsewhere. If all you know is .NET, then you only know the .NET way of doing things. I&#8217;ve taken to <a href="/words/2013/12/16/i-made-an-app">iOS development recently</a>, and at a recent client I used a pattern I learned from working with <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITableView_Class/Reference/Reference.html">UITableViews</a> to do something awesome in JavaScript. Had I never attempted learning Objective C, that wouldn&#8217;t have happened.</p>
+
+<p>Are you a .NET web developer? Try learning something like <a href="http://guides.rubyonrails.org/getting_started.html">Rails</a>, or <a href="http://nodejs.org/about/">Node</a>, or <a href="https://docs.djangoproject.com/en/1.6/intro/overview/">Python</a>. Rails developer? Try Node, or maybe <a href="https://developer.apple.com/devcenter/ios/index.action">iOS</a> or <a href="http://developer.android.com/sdk/index.html">Android</a>. Mobile developer? Try web development, or a competing platform. Maybe even go with a neckbearded technology like <a href="http://clojure.org/">Clojure</a>. The things you learn from moving outside your environment will only benefit you in your day job.</p>
+</div></div>
+</div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks/" itemprop="url">How to Prepare a MacBook Pro for Sale That Was Upgraded to Mavericks</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-13T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 13<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div>
+<div><div>
+<p><strong>Update</strong> — The Internet may yet prove to be useful. <a href="https://twitter.com/afwaller/status/422927205979942912">@afwaller on Twitter said that a bootable USB drive would get around the Apple ID woes listed below.</a> So do that instead. — <strong>End Update</strong></p>
+
+<p>I recently upgraded to a newer MacBook Pro<sup>1</sup>. Since I didn&#8217;t need my older one, I sold it to a friend&#8217;s family. I wanted them to be able to have as close to a new-out-of-the-box experience as possible, so I wiped the drive and prepared to reinstall <a href="http://www.apple.com/osx/">OS X Mavericks</a>. </p>
+
+<p>Back when OSes used to ship on CDs or DVDs you could put the disc into the drive and boot right into what is called &#8220;Recovery&#8221; mode to reinstall things. <a href="http://hivelogic.com/articles/how-to-prepare-a-mac-for-sale">There are some nice guides out there detailing this</a>. Since Apple switched over to download only updates, this is no longer the case.</p>
+
+<p>In order to get back into Recovery mode, restart the computer and hold ⌘R while it boots up. From there you can format the drive and reinstall Mavericks, provided you have an Internet connection. If you created a <a href="http://www.techrepublic.com/blog/apple-in-the-enterprise/how-to-create-a-bootable-usb-to-install-os-x-mavericks/">bootable USB drive</a>, that&#8217;d work too, without needing to be online.</p>
+
+<p>The catch though is that the new user needs to have an Apple ID <em>that has already &#8220;purchased&#8221; Mavericks</em> for the install to continue. This&#8217;ll be my friend&#8217;s first Mac, so they never had the opportunity to buy Mavericks. This is also especially weird because Mavericks is <strong>free</strong>. There doesn&#8217;t appear to be a way to transfer ownership to a separate Apple ID. The solution? <a href="https://discussions.apple.com/message/23573490#23573490">Reinstall the original OS the computer came with</a>. Which means this:</p>
+</div></div>
+<div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="IMG_1843.jpg" src="/images/assets/IMG_1843.jpg">
+</div>
+			
+
+			
+
+		</div>
+	
+	</div>
+</div></div>
+<div><div>
+<p>Yeah, <a href="http://en.wikipedia.org/wiki/Mac_OS_X_Snow_Leopard">OS X 10.6 Snow Leopard</a>. The funny thing about this is that I cleaned out my closet last week and threw away my original Snow Leopard installation DVD thinking I wouldn&#8217;t need it again. So I <em>found</em> a copy somewhere else. Once that finished installing I handed it off and let them go about updating it to Mavericks.</p>
+
+<p>I don&#8217;t know how it&#8217;ll work in a few years when I decide to sell my newest laptop that came with Mavericks already on it. Moral of the story: it&#8217;s just all too rare when semi-complex software &#8220;just works&#8221;.</p>
+
+ <hr class="footnotes">
+<p><small>
+1. <a href="http://support.apple.com/kb/SP691">The 13&#8221; retina Pro</a> for those of you keeping score. Holy wow is it fast. And I didn&#8217;t think the retina screen would be that big of a deal, but it is.
+</small></p>
+</div></div>
+</div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/09/my-computers-through-the-ages/" itemprop="url">My Computers Through the Ages</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 9<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div>
+<div><div>
+<p>I just got my latest computer, a 13&#8221; MacBook Pro with a Retina screen. Before my memory fades too much, I want to list the computers that I have (or my family has) owned, and talk a little about the memories associated with them. I wish I could dig up more pictures of some of these, but almost all of them were not important to be deigned worthy of being stored in the cobwebs of Internet history.</p>
+
+<h3 id="prehistory">Prehistory</h3>
+
+<p><strong>Compaq Portable</strong> (some point in the late 80&#8217;s). My dad used to bring this home every so often from his day job at a large bank. It was called <a href="http://en.wikipedia.org/wiki/Compaq_portable">&#8220;portable&#8221;</a> even though it weighed 28 pounds. I learned how to type on this thing and wrote a few papers in 3rd grade before my teacher told me to stop and work on my handwriting. I believe it ran MS-DOS 3.0.</p>
+</div></div>
+<div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="The Compaq Portable" src="/images/assets/1389282253678.jpg">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<p>The Compaq Portable</p>
+</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div>
+<div><div>
+<p><strong>IBM &#8220;Compatible&#8221;</strong> (early 90&#8217;s. ) Our first family computer. It had an <a href="http://en.wikipedia.org/wiki/80386">80386</a> that ran at a smoking 25 MHz. It lasted us for years and years. I wrote more school papers on it, learned how to hide certain <a href="http://en.wikipedia.org/wiki/Doom_(video_game">games</a>) my mother wouldn&#8217;t approve of<sup>1</sup>, and poked around with a little <a href="http://en.wikipedia.org/wiki/Qbasic">QBasic</a>. It ran MS-DOS 5 and had Windows 3.1. </p>
+
+<p>My earliest memory of this computer was learning that &#8220;hot&#8221; was slang for &#8220;stolen&#8221; because my dad was convinced that some of the parts weren&#8217;t legal&#8230; I think he was joking. Probably.</p>
+</div></div>
+<div>
+<div><div><div><p>I learned the ins and outs of <a href="http://en.wikipedia.org/wiki/WordPerfect#WordPerfect_for_DOS">WordPerfect 5.1</a> to great effect. In 6th grade I was able to astonish one of my classmates by being able to print out 25 copies of the same document without having to re-type the whole thing 25 times. </p></div></div></div>
+<div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="WordPerfect" src="/images/assets/Wordperfect-5.1-dos.png">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<p>WordPerfect</p>
+</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div>
+</div>
+<div><div>
+<p>My first bit of &#8220;programming&#8221; that I could be proud of was a batch script in DOS that would take 10 minutes to run by listing every single file on the system, counting to an insanely high number, prompt the user over and over, and generally be as annoying as possible. I would then try to get my little sister to run it as often as I could just to watch her get angry. One time I left it in the <a href="http://en.wikipedia.org/wiki/AUTOEXEC.BAT">AUTOEXEC.BAT</a> file when my mom needed to use the computer and got in actual trouble.</p>
+
+<p><strong>Unknown Laptop</strong> (mid-late 90&#8217;s) Another computer we got to borrow from my dad. This time with a little known operating system called Windows 95. It was a fairly primitive laptop, though I was fascinated by the LCD and the weird colors it had unless you looked at it straight on. </p>
+
+<p>I didn&#8217;t really use it for much other than writing papers. Although, it was our first computer to really connect to the Internet (the old 386 had a modem, but at 2400 baud it was much to slow to be of any value). In 1997 I signed up for a Hotmail email address and thought I was pretty awesome.</p>
+
+<p><strong>HP Desktop</strong> (early 1998) A huge upgrade from the old family PC. This sported a <a href="http://en.wikipedia.org/wiki/Pentium"><em>Pentium</em></a> processor and Windows 95. I remember being most excited about getting a joystick and being able to run <a href="http://en.wikipedia.org/wiki/TIE_Fighter_(video_game)">TIE Fighter</a>, a game that was already several years old, but one that I had missed out on. It was also our first computer to come with a CD-ROM. I could listen to music <em>on my computer(!)</em>. This was going to be the PC I was going to take to college, but fate intervened.</p>
+
+<h3 id="myownlittlemyprecious">My Own Little&#8230; My Precious</h3>
+
+<p><strong>CTX Desktop</strong> (summer 1998) I was supposed to take the above HP to school with me, and my family had grown used to having a modern computer in the house and wanted to get their own. At Best Buy<sup>2</sup> when my dad was picking it up I jokingly asked &#8220;Hey Dad, how about I take this to school and you guys keep the older HP?&#8221; To my surprise, he thought about it for a second, then said &#8220;ok&#8221;. </p>
+
+<p>That turned out to be fortuitous for me. At The University of Arizona, I learned that it was surprisingly upgradeable for a store-bought PC. By the time I was done with it, I had upgraded the video card, hard drive, memory, sound card, and added a CD burner and network card. Pretty much everything except was replaced for the Celeron processor that shipped with it. I even tinkered with the OS too. Originally, it was loaded with Windows 98. I &#8220;upgraded&#8221; it to Windows 2000, then eventually went back to 98 because of weird USB issues.</p>
+
+<p>Since this was the first computer I could actually call my own, I felt obligated to really get to know it. It was on this computer that I learned how to actually write code, do a little design work, <a href="http://en.wikipedia.org/wiki/Napster">pirate music</a>, and play more games. At this point, I definitely got &#8220;the bug&#8221;.</p>
+
+<p>After this, I built my own PCs for the next few years. I&#8217;ll cover those some other time.</p>
+
+<hr class="footnotes">
+<p><small>
+1. Hello, Mom!
+</small></p>
+
+<p><small>
+2. Remember buying computers at Best Buy?
+</small></p>
+</div></div>
+</div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/06/please-steal-this-app-idea/" itemprop="url">Please Steal This App Idea</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-06T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 6<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>Spurred on by a <a href="https://twitter.com/swilliams/status/420395505852506112">Twitter conversation</a>, I figured I&#8217;d write more about my thoughts on the subject over here. I&#8217;ve always wanted a GOOD photo editor on the iPad, ever since I saw the <a href="https://www.youtube.com/watch?v=6Fk1V5NqoD4&amp;list=PLPlyGeI5oeICPGwwp4HTdNZkpyP0flmhC">demo</a> of the very first one. There have been a few contendors, but they&#8217;ve all fallen short. </p>
+
+<p>iPhoto is supposed to be this solution, but the workflow is aggravating. I&#8217;d love to take a picture on my iPhone, pull up my iPad and edit that picture on the bigger screen, then send it back to my phone (or elsewhere). But there&#8217;s a lag while iCloud syncs, and then somehow I end up with 4 duplicates when I&#8217;m done editing, and another lag while iCloud syncs again, <em>sigh</em>.</p>
+
+<p>I&#8217;ve toyed with the idea of doing it, but it&#8217;d be pretty hard, and time consuming. If anyone is feeling particularly up for a challenge, here&#8217;s how I&#8217;d do it.</p>
+
+<p><strong>Pair with a camera.</strong> Speaking of hard, here we go. DSLR&#8217;s <em>still</em> don&#8217;t have built-in wifi, and neither do most point and shoots<sup>1</sup>. But if someone does have the appropriate adapter, it&#8217;d be killer. Bonus points for setting up some kind of ad hoc wifi network for a camera to connect to, if that&#8217;s even possible. If no direct camera connection is possible, then also have the option of getting the images from a computer, once they&#8217;ve been downloaded there.</p>
+
+<p><strong>Display photos as soon as they are taken.</strong> When I press the shutter, the photo should appear on the iPad within moments. Since photos (especially RAW) can be huge, this&#8217;ll have to be a temporary buffer. If I start to edit a photo, hang onto it, otherwise just keep the last 10 or so around in memory on the iPad. I should be able to swipe through all of the photos in the buffer.</p>
+
+<p><strong>Give me some decent editing tools.</strong> Obviously you wouldn&#8217;t need to add the featureset of Photoshop, but a certain subset would be great:</p>
+
+<ul>
+<li>RAW controls (temperature/tint, exposure, blacks, brightness, etc)</li>
+<li>Curves</li>
+<li>Black &amp; White manipulation</li>
+<li>&#8220;Real&#8221; filters, based on the above controls. We already have Instagram, and don&#8217;t need another way to make a photo look like it was a Polaroid from the 70&#8217;s. Heck, let me make my own filters.</li>
+<li>Basic touch-ups, kinda like Lightroom (smooth skin, eye brightness, etc). Imagine being able to draw a brightness correction with just your finger.</li>
+</ul>
+<p><strong>Simple export.</strong> This might be a problem on iOS. Don&#8217;t draw my ire like iPhoto and its syncing woes. Avoid photos.app until the very end when I <em>want</em> to put a picture in there. Maybe have a companion app for OS X and send a photo there directly from the iPad and avoid the photos app altogether (and save space).</p>
+
+<p>You could whip through that workflow quickly, and not have to fiddle with a mouse and bloated software, or iCloud lag.</p>
+
+<hr class="footnotes">
+<p><small>
+1. I think the camera manufacturers have a secret death wish. You can buy a smartphone with a <a href="http://www.amazon.com/gp/product/B00COYOAYW/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00COYOAYW&amp;linkCode=as2&amp;tag=thepetzoo-20">pretty decent camera, GPS, and wifi built in for $129</a>, but not a <a href="http://www.amazon.com/gp/product/B006U49XM6/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B006U49XM6&amp;linkCode=as2&amp;tag=thepetzoo-20">$6500 dSLR</a>.
+</small></p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup/" itemprop="url">Whither Shootsy, or, How I Tried and Failed a Startup</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-26T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 26<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div>
+<div>
+<div><div><div>
+<p>Did you know that at one point I had aspirations of being an entrepreneur? For the better part of 2010 and 2011 I spent every free moment I had trying to get a startup on its feet<sup>1</sup>. It was aimed at photographers to help them manage their businesses. We called it Shootsy.</p>
+
+<p>You might have noticed that everything in that paragraph is in the past tense, and that&#8217;s for good reason. Shootsy is for all intents and purposes, dead. Here&#8217;s a little bit of the history behind what happened.</p>
+</div></div></div>
+<div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="shootsy-broke.png" src="/images/assets/shootsy-broke.png">
+</div>
+			
+
+			
+
+		</div>
+	
+	</div>
+</div></div></div>
+</div>
+<div><div><div><div>
+<p>It&#8217;s a story that&#8217;s been told over and over: we simply ran out of time. My co-founder <a href="https://twitter.com/carterdea">Carter</a> (who is now a talented, in-demand freelance designer that you should hire) moved 400 miles away to Los Angeles in the pursuit of a woman who would become his wife. As soon as he found work out there, he promptly got overloaded. My day job picked up and I got overloaded with work too. At the time I had a bad feeling about this, but plowed forward anyway.</p>
+
+<p>The math just didn&#8217;t work in our favor. If you have a 40 hour a week job, you can realistically<sup>2</sup> expect to have anywhere between 10-20 extra hours for a side project. If you have a family, expect that to get smaller.</p>
+
+<p>Both of our jobs started to demand 50+ hours a week for an extended period of time, and more often than not, I simply had no time, or was just too tired to work on Shootsy. So it sat there. And sat there. And then it sat there some more. Finally after not writing any code for nearly a year, we agreed to make official what we both had known in our heads: it was done.</p>
+
+<p>There was no other way to cut it. I had failed at launching a business.</p>
+
+<p>The part that really stings though? How close we were. We had a few people beta testing it. We had some advisors that were going to connect us with some important people once we had shipped. I felt that the competition was weak enough to carve out a niche for ourselves<sup>3</sup>. Some important photographers were interested in trying it out.</p>
+
+<p>Despite the whole thing, I don&#8217;t regret trying. I learned some important things about myself in process. I don&#8217;t know if I&#8217;m cut out to run an entire business. I&#8217;m a pretty good second banana, but I can&#8217;t say with 100% certainty that it&#8217;s a good idea to have the buck stop with me. That&#8217;s a hard pill to swallow, and maybe it will change after a few more years, but it&#8217;s a reality I have to accept.</p>
+
+<p>I don&#8217;t know if I&#8217;ll attempt a startup again. <a href="/words/2013/12/16/i-made-an-app">An app</a> is easier. But an app is not a business. An app can be just for fun, which is kind of what <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a> is.</p>
+
+<p><a href="https://twitter.com/danbenjamin">Dan Benjamin</a> once said that you can&#8217;t create a business as a side project. At the time, I thought I would be able to prove him wrong. Now though, he&#8217;s absolutely right. I plan to make more apps in the future, but I don&#8217;t think any of them will become my day job any time soon.</p>
+</div></div></div></div>
+<div><div><div><div>
+<div>
+  <div>
     
-  </ul>
-</section>
+      
+
+        
+
+        
+
+        
+          
+            <div>
+              <div>
+                <a data-title="A Shoot" data-description="" href="/images/assets/01b-shoots-details.png" class="image-slide-anchor content-fit">
+                  <img alt="A Shoot" src="/images/assets/01b-shoots-details.png"></a>
+                <div>A Shoot</div>
+              </div>
+            </div>
+          
+
+          
+        
+
+      
+
+        
+
+        
+
+        
+          
+            <div>
+              <div>
+                <a data-title="Packages and Payments" data-description="" href="/images/assets/01e-shoots-money.png" class="image-slide-anchor content-fit">
+                  <img alt="Packages and Payments" src="/images/assets/01e-shoots-money.png"></a>
+                <div>Packages and Payments</div>
+              </div>
+            </div>
+          
+
+          
+        
+
+      
+
+        
+
+        
+
+        
+          
+            <div>
+              <div>
+                <a data-title="Contacts" data-description="" href="/images/assets/02c-contacts-search.png" class="image-slide-anchor content-fit">
+                  <img alt="Contacts" src="/images/assets/02c-contacts-search.png"></a>
+                <div>Contacts</div>
+              </div>
+            </div>
+          
+
+          
+        
+
+      
+
+        
+
+        
+
+        
+          
+            <div>
+              <div>
+                <a data-title="Locations" data-description="" href="/images/assets/04b-locations-map-view.png" class="image-slide-anchor content-fit">
+                  <img alt="Locations" src="/images/assets/04b-locations-map-view.png"></a>
+                <div>Locations</div>
+              </div>
+            </div>
+          
+
+          
+        
+
+      
+
+        
+
+        
+
+        
+          
+            <div>
+              <div>
+                <a data-title="A Specific Location" data-description="" href="/images/assets/04c-locations-view.png" class="image-slide-anchor content-fit">
+                  <img alt="A Specific Location" src="/images/assets/04c-locations-view.png"></a>
+                <div>A Specific Location</div>
+              </div>
+            </div>
+          
+
+          
+        
+
+      
+    
+  </div>
+
+  
+
+</div>
+
+
+  
+
+
+
+<style type="text/css" id="design-grid-css">
+#block-067079b29ba3bdda823d .sqs-gallery-block-grid { margin-right: -20px; }
+#block-067079b29ba3bdda823d .sqs-gallery-block-grid .sqs-gallery-design-grid-slide .margin-wrapper { margin-right: 20px; margin-bottom: 20px; }
+</style>
+</div></div></div></div>
+<div><div><div><div>
+<p>These are some comps that Carter made. They aren&#8217;t actual screenshots, but the actual app was pretty darn close. If I could, I&#8217;d play some <a href="https://www.youtube.com/watch?v=nSz16ngdsG0">Sarah McLachlan</a> over it.</p>
+
+<hr class="footnotes">
+<p><small>
+1. I even took a 5 week leave of absence (some unpaid) from my day job to focus exclusively on it.
+</small></p>
+
+<p><small>
+2. &#8220;Realistically&#8221; as in a sustainable pace. You simply can&#8217;t pull 80 hour weeks continuously without something giving.
+</small></p>
+
+<p><small>
+3. I still do feel that way. You won&#8217;t ever be acquired for 9 figures, but there&#8217;s enough room to sustain a good business.
+</small></p>
+</div></div></div></div>
+</div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/12/22/putting-the-minimum-in-minimum-viable-product/" itemprop="url">Putting the Minimum in Minimum Viable Product</a></h1>
+    <div class="date">
+
+
+
 
 
 
 
 
   
-</aside>
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Your Name -
+
+<time datetime="2013-12-22T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 22<span>nd</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div>
+<div><div><div><div>
+<p>There&#8217;s a common phrase in product development called <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">&#8220;Minimum Viable Product&#8221;</a>. It means that the first release of your software product should only do the bare minimum needed to survive. This keeps things simple, and prevents scope creep from sneaking in (I mean you could have your app <em>also</em> <a href="http://www.catb.org/jargon/html/Z/Zawinskis-Law.html">read email</a>, but why?). </p>
+
+<p>For <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a>, this meant that the user had to be able to:</p>
+
+<ul>
+<li>Play sounds</li>
+<li>Search sounds</li>
+<li>Add more sounds (through various means)</li>
+</ul>
+<p>And all of that had to happen quickly, otherwise what was the point?</p>
+
+<p>That&#8217;s a good feature list, but there is absolutely more to an app than just checking off a bunch of boxes. I could implement all of those features using giant rectangles with primary colors and almost no interaction. That would certainly be a Minimum Product, but not necessarily a Viable one. </p>
+
+<p>A viable product means that it has enough going for it so that it lives; it doesn&#8217;t just die on the vine. On a mobile device that means it isn&#8217;t just relegated to the dreaded last screen, essentially a junk drawer for unloved apps. Or maybe it&#8217;s just deleted altogether. </p>
+
+<p>I&#8217;m trying to avoid the junk drawer with Zartbonk. There are a few flourishes here and there to make it fun. Sound clips have their waveforms in the background. The progress bar is accurate as it passes across a clip. When a sound plays in the timeline<sup>1</sup> it&#8217;s corresponding one in the grid jiggles. You can repeat a sound bite by tapping and holding a play button. I tried to add fades and pretty animations everywhere I could. </p>
+</div></div></div></div>
+<div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Jiggle" src="/images/assets/jiggle.gif">
+</div>
+			
+
+			
+			<div>
+				<div><p>Jiggle</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div>
+<div><div><div><div>
+<p>All of these things took time. A <em>lot</em> of time. Remember those three bullet points up there? Implementing those was just 20% of the whole time spent on the app. The fine tuning and iterations of design took weeks and weeks.</p>
+
+<p>And even I&#8217;m not immune to the allure of adding more features in there. The whole purpose of the PRO option is to add more than what might be necessary, and to separate from the competition. Looking back, I might not have actually launched with some of the pro features. The timeline in particular was a very tough nut to crack, and still isn&#8217;t as streamlined as I&#8217;d like it.</p>
+
+<p>Perhaps the most important thing to remember is when you have a <em>minimum</em>, it&#8217;s time to consider adding to that. Bugs need to be fixed. Interfaces may need to be refactored. The biggest issue with Zartbonk right now is that editing is pretty painful, especially if you want to edit more than a couple of clips. It&#8217;ll probably take a couple of weeks to get something better in, but that&#8217;s what I&#8217;m working on now.</p>
+
+<p>I could have delayed even longer on shipping and fixed editing first, but that runs the risk of finding something else that needs to be fixed, which could threaten the entire project.</p>
+
+<p>I&#8217;m happy with how I launched 1.0<sup>2</sup>. It wasn&#8217;t perfect, but I think I was able to strike a decent balance between features and viability.</p>
+
+<hr class="footnotes">
+<p><small>
+1. That&#8217;s in Zartbonk PRO. What do you mean you haven&#8217;t upgraded yet?
+</small></p>
+
+<p><small>
+2. Technically I launched on 1.1, which had some critical bug fixes I didn&#8217;t see until after 1.0 launched.
+</small></p>
+</div></div></div></div>
+</div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/12/16/i-made-an-app/" itemprop="url">I Made an App!</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-16T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 16<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div>
+<div><div><div><div>
+<p>One of my goals for this year was to create and release an iOS app. I&#8217;m cutting it close, but I think it&#8217;s finally good enough to actually tell people about it.</p>
+
+<p>I was interested in the idea of making a soundboard for the iPad. A soundboard is something that has lots of sound effects that you can find and play quickly. Radio shows and podcasts use them, especially the &#8220;morning zoo&#8221; ones, and now you can run your own.</p>
+
+<p>It&#8217;s called <a href="http://zartbonk.com">Zartbonk</a>, and <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">I hope you like it</a>. </p>
+
+<p>In order to remove as much friction as possible from getting it into your hands, I&#8217;m going with a &#8220;freemium&#8221; model. The app is <strong>absolutely free</strong>, but has some limitations. You can unlock everything with a single in-app-purchase.</p>
+
+<p>Out of the box it comes with a couple dozen sound effects, including my favorite, the timeless <a href="http://www.youtube.com/watch?v=cdbYsoEasio">Wilhelm Scream</a>, but you can add your own too. You can add sounds from <a href="https://db.tt/7Rr3UKJ">Dropbox</a>, the built-in microphone, or search from thousands of sounds in <a href="http://freesound.org/">freesound&#8217;s library</a>.</p>
+
+<p>I learned <strong>TONS</strong> of things in the process of making this, and I&#8217;ll certainly blog more about my journey from there to here.</p>
+
+<p>I want to hear back from you to. <a href="http://zartbonk.com/contact">Feel free to reach out and contact me if you run into any problems or have questionsp</a>.</p>
+</div></div></div></div>
+<div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8" target="_blank">
+			
+				<div>
+					<img alt="appstore.png" src="/images/assets/appstore.png">
+</div>
+			
+				</a>
+			
+
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div>
+</div>
+		
+		
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+    
+        <a href="/words/page/2/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Scott Williams -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
-</footer>
-  
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
@@ -118,5 +1050,7 @@
 
 
 
+		</div>
+	</div>
 </body>
 </html>

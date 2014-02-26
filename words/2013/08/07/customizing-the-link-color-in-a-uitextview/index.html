@@ -1,0 +1,233 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Customizing the Link Color in a UITextView - Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Customizing the Link Color in a UITextView Aug 7th, 2013 UITextView&#8217;s can automatically detect URLs and treat them accordingly. This is a nice &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p><a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Get the app that I made!</a> It's called <a href="http://zartbonk.com">Zartbonk</a>.</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Customizing the Link Color in a UITextView</h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 7<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody"><div>
+<div>
+<div><div><div><p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&#8217;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into the situation on the right. That contrast between the background and foreground colors makes it pretty hard to read. A quick poke through the docs and on <a href="http://stackoverflow.com/questions/1350423/can-i-change-the-color-of-auto-detected-links-on-uitextview">StackOverflow</a> reveals that there isn&#8217;t any way to change the color of the link, without resorting to <a href="http://stackoverflow.com/a/17294355/736">private API&#8217;s</a>.</p></div></div></div>
+<div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="eww" src="/images/assets/bad%20popover.png">
+</div>
+			
+
+			
+			<div>
+				<div><p>eww</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div>
+</div>
+<div><div><div><div>
+<p>Sooo, the best course of action is to just knuckle down and use a UIWebView to display what you want.</p>
+
+<p>To try to keep things relatively sane, I first added a static <code>html</code> file to my project with this content:</p>
+</div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>&lt;html</span><span>&gt;</span><br><span>&lt;head</span><span>&gt;</span><br><span>&lt;title</span><span>&gt;</span><span>&lt;/title</span><span>&gt;</span><br><span>&lt;style</span><span>&gt;</span><br><span>html</span>, <span>body</span>, <span>div</span> {<br><span>background</span><span>:</span> <span>#3D3D3D</span>;<br><span>font-family</span><span>:</span> <span>HelveticaNeue-Medium</span>, <span>Helvetica</span>;<br><span>font-size</span><span>:</span> <span>12pt</span>;<br><span>color</span><span>:</span> <span>#FAFAF1</span>;<br>       }<br><br><span>a</span> {<br><span>color</span><span>:</span> <span>#FAFAF1</span>;<br>       }<br><span>&lt;/style</span><span>&gt;</span><br><span>&lt;/head</span><span>&gt;</span><br><span>&lt;body</span><span>&gt;</span><br>     REPLACEME<br><span>&lt;/body</span><span>&gt;</span><br><span>&lt;/html</span><span>&gt;</span></pre></div></div></div></div>
+<div><div><div><div>
+<p>The CSS code is inlined in the file. There&#8217;s probably a way to keep it separate and inject it, but I didn&#8217;t need anything fancier than this.</p>
+
+<p>Loading it was pretty straightforward:</p>
+</div></div></div></div>
+<div><div><div><div><pre class="source-code">+ (NSString *)htmlTemplate {<br>  NSString *path = [[NSBundle mainBundle] pathForResource:@"html-template" ofType:@"html"];<br>  return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];<br>}   <br></pre></div></div></div></div>
+<div><div>
+<div><div><p>Then on my controller I called this method from <code>viewDidLoad</code>:</p></div></div>
+<div><div><pre class="source-code">- (void)setContentText:(NSString *)contentText {<br>  NSString *template = [MyTemplateManager htmlTemplate];<br>  NSString *htmlText = [template stringByReplacingOccurrencesOfString:@"REPLACEME" withString:contentText];<br>  [contentView loadHTMLString:htmlText baseURL:nil];<br>}   <br></pre></div></div>
+<div><div><p><code>contentView</code> is the <code>UIWebView</code>. Almost done. If you tap on a link in the webview it&#8217;ll open that link in itself, which might not be what you want. The way around it is to set your controller to be a <code>UIWebViewDelegate</code> and implement <a href="http://stackoverflow.com/a/2899793/736">this method</a>:</p></div></div>
+<div><div><pre class="source-code">- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {<br>  if (navigationType == UIWebViewNavigationTypeLinkClicked) {<br>    [[UIApplication sharedApplication] openURL:[request URL]];<br>    return NO;<br>  }<br>  return YES;<br>}</pre></div></div>
+<div>
+<div><div><div><p>That&#8217;ll open it in Safari. If you want other browsers, well, knock yourself out. This is pretty much a giant mess for something that should be easy, but it&#8217;s just something that would have to be done if you want total control over the UI. The end result looks well enough:</p></div></div></div>
+<div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="yay" src="/images/assets/good%20popover.png">
+</div>
+			
+
+			
+			<div>
+				<div><p>yay</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div>
+</div>
+</div></div>
+</div></div>
+    <div class="tags">Tags: 
+
+</div>
+
+</article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

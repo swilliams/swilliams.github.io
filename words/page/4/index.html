@@ -1,0 +1,700 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="How I Finally Understood Functional Programming With JavaScript May 6th, 2013 Functional programming has always been a bit of a mindbender for me. I &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://swilliams.github.io/words/page/4/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p><a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Get the app that I made!</a> It's called <a href="http://zartbonk.com">Zartbonk</a>.</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/05/06/how-i-finally-understood-functional-programming-with-javascript/" itemprop="url">How I Finally Understood Functional Programming With JavaScript</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T00:00:00-07:00" data-updated="true" itemprop="datePublished">May 6<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div>
+<div><div><div><div>
+<p>Functional programming has always been a bit of a mindbender for me. I’ve read plenty of tutorials on the subject, but it wasn’t until recently that it finally started to click for me.</p>
+
+<p>The basics of partial function application involves something like this.</p>
+</div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>slice</span> = <span>Array</span>.<span>prototype</span>.<span>slice</span>; <span>// just to simplify things</span><br><span>var</span> <span>partial</span> = <span>function</span>(<span>fn</span>) {<br><span>var</span> <span>args</span> = <span>slice</span>.<span>call</span>(<span>arguments</span>, <span>1</span>);<br><span>return</span> <span>function</span>() {<br><span>return</span> <span>fn</span>.<span>apply</span>(<span>this</span>, <span>args</span>.<span>concat</span>(<span>slice</span>.<span>call</span>(<span>arguments</span>)));<br>  };<br>};</pre></div></div></div></div>
+<div><div><div><div>
+<p class="p1">Bwah?</p>
+<p class="p1">What this does is take a function as a parameter. It then takes all the other parameters and hangs on to them. It returns another function, that when called, executes that first one, with the original arguments <em>and</em> any new ones you pass in.</p>
+<p class="p1">Bwah?</p>
+<p>Let’s use a primitive example to try to unwind this thing.</p>
+<p></p>
+</div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>add</span> = <span>function</span>(<span>a</span>, <span>b</span>) {<br><span>return</span> <span>a</span> + <span>b</span>;<br>};<br><br><span>var</span> <span>add5to</span> = <span>partial</span>(<span>add</span>, <span>5</span>);</pre></div></div></div></div>
+<div><div><div><div>
+<p>Now when you call <code>add5to(3)</code> you’ll get 8. Yes, this will always add 5 to whatever you supply to it. Yes, it is absolutely useless.</p>
+
+<p>This is where a lot of tutorials stop, leaving you to think “OMG WHO CARES?!” and then get back to doing important things, like stamp collecting.</p>
+
+<p>And that’s where I stopped for the longest time too. But then when I watched <a href="http://vimeo.com/43382919">this video</a> a light came on to realize that this could be <em>useful</em>. You can use it to build a pretty nice DSL that creates nested DOM elements.</p>
+
+<p>Let’s say you have a function called <code>el</code> that takes  <code>tagName</code>, <code>attributes</code>, and <code>content</code> as parameters.</p>
+</div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>el</span> = <span>function</span>(<span>tagName</span>, <span>attributes</span>, <span>content</span>) {<br><span>// snip</span><br>};<br><span>var</span> <span>element</span> = <span>el</span>(<span>“div</span><span>”</span>, {<span>className</span>: <span>‘foo</span><span>’</span>, <span>id</span>: <span>‘bar</span><span>’</span>}, <span>“Hi</span> <span>I</span><span>’m</span> <span>a</span> <span>div</span>!<span>”</span>);<br><span>// results in:</span><br><span>// &lt;div id=“bar” class=“foo”&gt;Hi I’m a div!&lt;/div&gt;</span></pre></div></div></div></div>
+<div><div><div><div><p>Let’s also say that if you leave out <code>attributes</code>, it treats the second parameter as <code>content</code>.</p></div></div></div></div>
+<div><div><div><div><pre class="source-code">    <span>el</span>(<span>“p</span><span>”</span>, <span>“Call</span> <span>me</span> <span>Ishmael</span>.<span>”</span>);<br><span>// &lt;p&gt;Call me Ishamel.&lt;/p&gt;</span></pre></div></div></div></div>
+<div><div><div><div><p>That in itself is a little useful, but here’s where partial function application comes in. Cram <code>el</code> into <code>partial</code> and stuff starts to get real.</p></div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>div</span> = <span>partial</span>(<span>el</span>, <span>“div</span><span>”</span>);<br><span>var</span> <span>element</span> = <span>div</span>({<span>className</span>: <span>‘foo</span><span>’</span>, <span>id</span>: <span>‘bar</span><span>’</span>}, <span>“Hi</span> <span>I</span><span>’m</span> <span>a</span> <span>div</span>!<span>”</span>)</pre></div></div></div></div>
+<div><div><div><div><p>In fact, we can quickly make functions for many HTML tags.</p></div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>DOM</span> = {};<br>[<span>“div</span><span>”</span>, <span>“p</span><span>”</span>, <span>“ul</span><span>”</span>, <span>“ol</span><span>”</span>, <span>“li</span><span>”</span>].<span>forEach</span>(<span>function</span>(<span>t</span>) {<br><span>DOM</span>[<span>t</span>] = <span>partial</span>(<span>el</span>, <span>t</span>);<br>});</pre></div></div></div></div>
+<div><div><div><div><p>Now you can string a bunch of stuff together.</p></div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>list</span> = <span>DOM</span>.<span>ul</span>(<br>            [<span>DOM</span>.<span>li</span>(<span>“one</span><span>”</span>), <br><span>DOM</span>.<span>li</span>(<span>“two</span><span>”</span>), <br><span>DOM</span>.<span>li</span>(<span>“three</span><span>”</span>)]);</pre></div></div></div></div>
+<div><div><div><div><p>Theeeeen, take into account something like <code>map</code> and you can really start to make some magic.</p></div></div></div></div>
+<div><div><div><div><pre class="source-code"><span>var</span> <span>people</span> = [{<span>name</span>: <span>“Scott</span><span>”</span>}, {<span>name</span>: <span>“Bob</span><span>”</span>}, {<span>name</span>: <span>“Barry</span><span>”</span>}];<br><span>var</span> <span>names</span> = <span>people</span>.<span>map</span>(<span>function</span>(<span>p</span>) {<span>return</span> <span>DOM</span>.<span>li</span>(<span>p</span>.<span>name</span>); });<br><span>var</span> <span>list</span> = <span>DOM</span>.<span>ul</span>(<span>names</span>);</pre></div></div></div></div>
+<div><div><div><div>
+<p>All of a sudden you have a quick list of DOM elements with names of people in them. You can refactor that out some more, but I wanted to just focus on just the <code>partial</code> bit of this.</p>
+
+<p>When would be a good time to use this? When you have a bunch of functions that act similarly but vary slightly on parameters. </p>
+
+<p>The power of this lies in that you can take an incredibly simple function, and then use it to build complex mechanisms out of it. I’m still nowhere near an expert on this, but I think this time the wrinkles in my brain may just sink in.</p>
+</div></div></div></div>
+</div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/04/20/in-which-i-purchased-a-new-car/" itemprop="url">In Which I Purchased a New Car</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-20T00:00:00-07:00" data-updated="true" itemprop="datePublished">Apr 20<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div>
+<div><div><div><div>
+<p>A couple of weeks ago I bought a <a href="http://www.scion.com/cars/FR-S/">Scion FR-S</a>. It’s my first non-boring car and so far I’m really liking it. </p>
+
+<p>To understand why, here’s my car history: <a href="http://www.edmunds.com/ford/ranger/1992/">1992 Ford Ranger</a>, <a href="http://www.edmunds.com/toyota/corolla/1998/">1998 Toyota Corolla</a>, and <a href="http://www.edmunds.com/honda/civic/2005/">2005 Honda Civic</a>. I learned manual transmission on the Ranger, but otherwise that whole lot didn’t do much to stir up passion in the souls of men.</p>
+
+<p>Time was coming around to replace the Civic and I was considering something similarly practical, just a little bigger: an Accord or Camry, probably with the V6 option. I’ve never exactly been a gearhead, though I’ve always appreciated a nice piece of engineering when I’d seen it.</p>
+
+<p>I had been mulling that decision over in my head when I watched a new episode of <a href="https://itunes.apple.com/us/tv-season/episode-1/id593555438?i=598468654">Top Gear</a>. It featured a new Toyota called the GT86. They gave it pretty high praise (which isn’t a given on that show), especially since it had several  traits to get quality performance, but a very economical price. I was intrigued enough to look it up, but couldn’t find it anywhere on Toyota’s website, and moved on.</p>
+
+<p>(Note, I don’t know why I never bothered to look up its <a href="http://www.subaru.com/vehicles/brz/index.html">Subaru cousin</a>. It just never entered my head. Sometimes I am dumb.)</p>
+
+<p>That was the end of that until it came up on the <a href="http://neutral.fm/">Neutral podcast</a>. One of the hosts mentioned that the GT86 was released in the US under Toyota’s Scion label, as the FR-S. I pulled over to look it up on my phone, and sure enough, it was there, <em>and</em> was in the same price range as the Accord and Camry.</p>
+
+<p>Fast forward a few months and I had took one for a test drive. I liked it enough and it had <em>just</em> enough room for a child’s seat in the back to get approval from my [awesome] wife. About a week later we bought it.</p>
+
+<p>Like I said, it’s non-boring, but what does that mean? Well, first of all, the corners. Oh my, the corners. It has such a low center of gravity that you can just throw it around corners and it’ll hug them like a too tight t-shirt on a fat guy. Next is the control. We picked the automatic model because my wife has never driven stick and wasn’t terribly interested in learning. However it has a “Manual mode” which means that you can use shifters to go up and down in gear, without a clutch. This is much more fun than I thought it would be. It allows you to get a little more zip out of the engine, and hit the throttle for the to get some more power when coming out of a turn.</p>
+
+<p>Even though the engine is <em>only</em> 200hp, it’s still more than I’ve been used to, meaning it feels faster to me. A friend of mine took me for a drive in his Mustang GT and showed me what acceleration really feels like with a V8 though.</p>
+
+<p>This is not to say that it is all rainbows and cupcakes. The aforementioned “Manual” shifters are kind of strange. There’s two ways to shift: paddles around the steering wheel, and with the stick itself. The problem with the paddles is that they’re attached to the wheel, and therefore rotate with it. This is annoying when turning and can cause some strange hand contortions to shift. Because of this, I prefer to use the stick to shift the gears, and question the logic of the paddles altogether. You’ll notice that pricier sports cars with paddle shifters attach them to the column, so they don’t rotate. The paddles also mean the cruise control is much further down on the wheel at the 4 o’clock position.</p>
+
+<p>The rest of the interior is lacking in gizmos that a similarly priced family sedan would have. The FR-S doesn’t have steering wheel audio controls (or anything else), satellite navigation (an option is available), automatic seats, or backup sensors. It does have bluetooth audio though, which is pretty nice (except when your wife borrows it when your phone is in range and starts blaring through the speakers).</p>
+
+<p>A prior version of me would have cared more about the lack of those things, but I don’t miss them because the car itself is fun enough. I feel like this might very well turn me into a bit of a car guy. </p>
+
+<p>My wife asked me to articulate why this is a “fun” car, and after thinking about it for a while I think I know why. It’s the exhiliration of taking a turn, feeling the grip on the road as you go around it tightly, and then having your stomach and senses catching up immediately afterwards. Those things aren’t necessarily dangerous, you can do them at low speeds too, but they hit the same points a rollercoaster does. If you like that, then I recommend the FR-S.</p>
+</div></div></div></div>
+<div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Scion FR-S" src="/images/assets/DSC_7895.jpg">
+</div>
+			
+
+			
+			<div>
+				<div><p>Scion FR-S</p></div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div>
+</div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/03/21/things-i-learned-while-making-a-simple-game-for-my-daughters/" itemprop="url">Things I Learned While Making a Simple Game for My Daughters</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-21T00:00:00-07:00" data-updated="true" itemprop="datePublished">Mar 21<span>st</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p><img src="/images/assets/game.png?format=750w" alt="Game Image"></p>
+
+<p>Recently I put together a basic iPad game for my girls (aged 5 and 2). It’s the first real<sup>1</sup> game I’d ever created and I found the process to be interesting enough to warrant some writing. I thought it might be fun for them to have a game that stars both of them exploring the house and finding treasure.</p>
+
+<p><strong>Thing 1.</strong> It was much easier than I thought it would be. I wanted it to have an 8 or 16 bit Zelda mechanic - top down view, dpad to move around. Turns out this is a road that has been well-trodden. I found some great tutorials and tools to make the process go fast. Of course, this didn’t prevent a couple of head-desk-smashing newbie mistakes, but overall wasn’t too bad.</p>
+
+<p>Tools I found useful:</p>
+
+<p><a href="http://www.cocos2d-iphone.org/">Cocos2d</a> The engine that runs the game. I found their API to be pretty easy to understand.</p>
+
+<p><a href="http://www.mapeditor.org/">Tiled Map Editor</a> What I used to make the map. Kind of like how Photoshop works with layers.</p>
+
+<p><a href="http://www.codeandweb.com/texturepacker">Texture Packer</a> Used to make sprite sheets.</p>
+
+<p>Lastly, I found the tutorials on <a href="http://www.raywenderlich.com/tutorials">raywenderlich.com</a> to be invaluable (though some of the sample code had typoes).</p>
+
+<p><strong>Thing 2.</strong> Making graphics is <strong>not</strong> my forté. I found a lot of decent sprites and tilesets to use, but modifying them was tedious. If I ever decide to make something to release commercially, I’ll definitely have to outsource the art.</p>
+
+<p>After some poking around I ended up using a bunch of sprites from these two sources: <a href="http://yms.main.jp/page2/tilesets.html">Pixelated world</a> and <a href="http://untamed.wild-refuge.net/rmxpresources.php?characters">Sithjester</a></p>
+
+<p><strong>Thing 3.</strong> My girls struggled with the virtual dpad. They are quite adept and using the iPad and other kids games (especially the Toca Boca ones), but couldn’t get the knack for the dpad. It is in the lower left corner, and my older daughter kept trying to tap it with her right hand, obscuring the screen. She also kept trying to control movement by swiping, which makes sense given her background with other apps. The character on screen was probably moving too quickly for her to track easily as well.</p>
+
+<p><strong>Thing 4.</strong> Despite Thing 3, both of them loved it. I made character sprites that resembled both of them, and recorded their voices and used them as sound effects. And the map kind of resembles our house too. We spent about a half hour taking turns while Mommy was making dinner.</p>
+
+<p>What I discovered is that the programming and art for making a good, relatively simple game isn’t a big barrier; it’s using both of those within the boundaries of time to make a fun and compelling experience that is the challenge.</p>
+
+<p>Ultimately, I had a lot of fun making it. Now that I have a good idea of what’s involved, I might try my hand at a real product to sell.</p>
+
+<ol>
+<li>I’d made games way back in the day on my TI calculator in High School, but those used the TI Basic and therefore don’t count. I also made a pong clone using XNA one time.</li>
+</ol>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/12/30/your-javascript-sucks-rudiments/" itemprop="url">Your JavaScript Sucks - Rudiments</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-30T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 30<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<blockquote class="posterous_short_quote">
+<p><em>You have to crawl before you walk. You have to punch before you can Hadoken.</em> – Abraham Lincoln</p>
+</blockquote>
+<p>This post is most likely too simplistic for anyone who has done any kind of JavaScript development for a long time, but it’s always best to start at step 1.</p>
+<h2>Do NOT Inline JavaScript Calls in Tags</h2>
+<p>See this?</p>
+<div>
+  <div><pre>&lt;a href="#" onclick="DoSomething()" class="monkeys"&gt;</pre></div>
+</div>
+
+<p>Don’t ever do that.</p>
+<p>Why? For starters, it violates the separation of concerns. Your markup is your <em>Presentation</em>, JavaScript is not. Your JavaScript will manipulate the markup, but it is not markup itself.</p>
+<p>There’s always a workaround for this too. Here’s the equivalent that is unobtrusive using jQuery (you <em>are</em> using jQuery right?):</p>
+<div>
+  <div><pre>$('a.monkeys').click(DoSomething);</pre></div>
+</div>
+
+<p>And you’d put that code with all the other JavaScript in a <code>.js</code> file.</p>
+<h2>Keep It ALL Separate Anyways</h2>
+<p>Keep all of your JavaScript in separate <code>.js</code> files. This means not having any <code>&lt;script&gt;</code> tags that do not have <code>src</code> attributes. No sneaking in functions at the bottom of pages, or inlined in views.</p>
+<p>Again, why? JavaScript hidden amongst HTML is hard to maintain. If you have a bug in a function, how do you find it? If your JavaScript is spread willy-nilly throughout everything, have fun tracking it down. This code is also hard to test; you’d have to pull in all of your markup into your test suite, which is precisely what you should not be doing for <strong>unit</strong> testing.</p>
+<p>Additionally, you can’t minify inlined JavaScript, meaning you are literally slowing your app down by keeping it all spread out.</p>
+<h4>The Exception</h4>
+<p>The biggest exception I can think of for this rule is when you are pre-loading a bunch of data (preferably JSON). If your app is immediately making an AJAX request to retrieve data when the page loads, consider doing this to save the roundtrip:</p>
+<div>
+  <div><pre>&lt;script&gt;
+    myApp.someCollection = @ViewBag.SomeData
+&lt;/script&gt;</pre></div>
+</div>
+
+<h2>Watch Out for Globals</h2>
+<p>By default all JavaScript variables are in the global namespace. This is a Bad Thing. It means that this code right here:</p>
+<div>
+  <div><pre>foo = function() {
+    // blah blah blah
+}</pre></div>
+</div>
+
+<p>Will clobber any other globally named variable named <code>foo</code>. You can limit this with the <code>var</code> keyword:</p>
+<div>
+  <div><pre>var foo = somethingSomething;</pre></div>
+</div>
+
+<p>But, this is a discipline, because <em>every</em> time you forget the <code>var</code> you create a global object, even if you five layers deep in an object.</p>
+<h2>Keep Your Functions Small</h2>
+<p>Open your JavaScript files, what’s the longest function in there? Clocking in somewhere around 100+ lines? Yeah, that’s probably too long.</p>
+<p>It’s been said <a href="http://www.amazon.com/gp/product/0735619670/ref=as_li_ss_tl?ie=UTF8&amp;tag=thepetzoo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0735619670">over and over again</a>: smaller routines breed fewer bugs. It seems to endemic to JavaScript to create prolific walls of code, going 10 levels of nesting deep. Break that stuff down into shorter functions, and your life will be a little easier.</p>
+<p>Ok, like I said, these are just the basics. Once you start doing them, your code will get a little bit better. Not a whole lot better, but it’s a start. Now that we can walk a little bit (maybe with a limp) we can start to jog later.</p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/12/17/your-javascript-sucks/" itemprop="url">Your JavaScript Sucks</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-17T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 17<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>JavaScript has been getting a lot of press lately. You can write <a href="http://nodejs.org/">servers</a> with it, talk to <a href="http://www.couchbase.com/">databases</a>, and of course, it’s the most <a href="http://javascript.crockford.com/popular.html">common language</a> in the world. Yet, in its most popular form, client-side scripting on the Internet, it’s just a giant mess.</p>
+<p>You know what I’m talking about, that mass of thousands of lines of code that does something-but-oh-God-I-hope-it-doesn’t-break. I’ve written that kind of JavaScript. You have too. It’s a big problem that needs to be addressed.</p>
+<h2>Why?</h2>
+<p>First, let’s identify the problems. Here’s a function that I just made up, but it’s not too far from the truth.</p>
+<p> Fig 1 - A Common Site</p>
+<p>How many differentthings are going on here? I can see four right off the bat. <em>Individually,</em> each is not a Bad Thing, but when they’re all within the same function, it’s a problem.</p>
+<p></p>
+<p>Fig 2 - Event Binding. We’re looking for something in the DOM, and then attaching an event handler to it.  </p>
+<p></p>
+<p>Fig 3 - AJAX. Specifically, communication with our persistance layer.</p>
+<p></p>
+<p>Fig 4 - Business Logic. This a simplification, but we’re analyzing the data and making a logical decision based on it.</p>
+<p></p>
+<p>Fig 5 - DOM/UI Manipulation. We’re not just reading the DOM here, but changing it.</p>
+<p> </p>
+<p>And this little ditty is only 11 lines long. This is the equivalent of inlining your security checks right next to SQL statements, all within a UI template. God help you if you want to actually uncovered a bug in this rat nest down the road.</p>
+<p>And let’s not even get into testing. How would you even start writing a unit test for this function? (Hint: it sucks)</p>
+<h2>Enter MVC</h2>
+<p>Fortunately, messy code is not a new problem. There is an embarrassment of riches out there to help you get your crap together.</p>
+<p>The MVC pattern has been around since the neolithic era of programming. Rails, Django, ASP.NET MVC, CakePHP, etc. have been making developers’ lives much easier on the server side for years. And now, some of that has trickled down to JavaScript.</p>
+<p></p>
+<p>A common reaction.</p>
+<p>What makes MVC so popular amongst developers is that it forces you to break your code down into manageable chunks. Mixing AJAX calls and DOM Manipulation in the same functions just doesn’t fly there.</p>
+<p>And, you have a bunch to choose from. In future posts, I’ll be giving a brief description of some of the popular ones. Spoiler: I myself have been using <a href="http://documentcloud.github.com/backbone/#">Backbone</a> and will be going into deeper detail on that one.</p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/10/28/my-reaction-to-the-rumor-that-nikon-is-lookin/" itemprop="url">My Reaction to the Rumor That Nikon Is Looking to Buy WebOS</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Oct 28<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<div>In the span of about 30 seconds.</div>
+<p></p>
+<div>&#8220;What? <b>WHY</b>?&#8221;</div>
+<p></p>
+<div><i>Thinks for a minute about a sweet WebOS powered camera.</i></div>
+<p></p>
+<div>&#8220;Well, it could work&#8221;</div>
+<p></p>
+<div><i>Thinks about every other piece of software Nikon has made.</i></div>
+<p></p>
+<div>&#8220;They&#8217;ll screw it up.&#8221;</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/09/13/my-new-email-signature/" itemprop="url">My New Email Signature</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-13T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 13<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Spurred on by some of the more recent mails I've received.  I did blur my phone number and address because there are bad people out there. Rest assured that the address used comic sans." src="/images/assets/1315937181000.jpg">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<div>Spurred on by some of the more recent mails I&#8217;ve received. </div>
+<p></p>
+<br> I did blur my phone number and address because there are bad people out there. Rest assured that the address used comic sans.</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/08/23/how-i-setup-a-photobooth/" itemprop="url">How I Setup a PhotoBooth</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-23T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 23<span>rd</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p class="p1"><span>First, a Demo Video<sup>1</sup></span></p>
+<p class="p1"></p>
+<p class="p8">I was slated to take some pictures for my <a href="http://hsministry.com/"><span>church’s high school group’s</span></a> kick off for the new school year. They gave me the opportunity to either walk around and take “action” shots and candids, or to set up a “booth” and do more posed portraits (with goofy props and such). The booth is typically just a backdrop and a flash or two for lighting.</p>
+<p class="p8">I wasn’t terribly keen on the booth idea: it get’s a little boring after a while. But, the kids typically love that kind of stuff, so I didn’t want to just abandon it. Sure I could have switched hats and jumped back and forth between the two, but after thinking for a bit, I realized that I could do <em>both</em> using the magic of computers!</p>
+<p class="p8">My idea was pretty basic: just set up a camera on a tripod and have some sort of remote trigger that the kids could just hit. The trick is to make it easy enough for anyone to use. Here’s the equipment I went with:</p>
+<ul class="ul1">
+<li class="li9">A camera that supports tethered shooting. I used my Nikon D300.</li>
+<li class="li9">A tripod to put the camera on. I have a Manfrotto something or another.</li>
+<li class="li9">Lighting &amp; Backdrop. I just used a single flash and a 45” shoot through umbrella. Backdrop was just a 9’ wide white seemless.</li>
+<li class="li9">Computer. Had a 24” iMac available.</li>
+<li class="li9">“Trigger” I ended up using an Apple Magic Trackpad.</li>
+<li class="li9">Software. I’ll get into this in a bit.</li>
+</ul>
+<p class="p8">I used the iMac because it could handle all the triggering stuff, and also display the results so that the subjects could immediately see themselves.</p>
+<p class="p8">The user interaction needed to be as simple as possible: The subject pushes the trackpad button. The computer counts down 5 seconds, takes the picture, displays it for a few seconds, then goes back to the countdown screen for the next shot.</p>
+<p class="p8">For the trigger, my original thought was to get something like the <a href="http://en.wikipedia.org/wiki/Easy_button#Advertising"><span>Staples “Easy” button</span></a>. The only similar things I saw online were buttons that could only open a browser and go to a specific URL. And you had to buy a hundred at a time… So that wasn’t going to work. I’m not much of a hardware guy so the thought of hacking something didn’t appeal to me.</p>
+<p class="p8">After some pondering, I realized that the <a href="http://www.apple.com/magictrackpad/"><span>Magic Trackpad</span></a> was really just one big button. The trick was going to be how to get a click from that to trigger the camera. I first looked into using <a href="http://www.adobe.com/products/photoshoplightroom/"><span>Adobe Lightroom</span></a>. It supports tethered shooting right out of the box, and it works pretty well (I use it for 99% of my photo management and editing). The problem is that I don’t want to expose the whole of Lightroom to a kid who just wants to take their picture. Putting a sign up that said “Move the mouse to the gray circular button next to the esoteric camera settings and click it. And please don’t mess with anything else.” wasn’t really an option.</p>
+<p class="p8">Fortunately Mac OS X has all kinds of scripting support. If you know what you’re doing, you can simulate just about anything. There’s something called <a href="http://developer.apple.com/library/mac/#documentation/AppleScript/Conceptual/AppleScriptX/AppleScriptX.html"><span>AppleScript</span></a> built in to the system that is designed for something just like this<sup>2</sup>. I figured I could use AppleScript to trigger the tether button in Lightroom to take a picture.</p>
+<p class="p8">This is when I hit my first big snag. I can’t say for certain, but it looks like the shutter release button isn’t actually a <strong>button</strong>, or at least it’s not recognized by OS X as a button element. This means that you can’t tell AppleScript to click it. There are ways to ask an app to tell you all of its textfields, labels, buttons, etc, and LightRoom wasn’t giving up the goods for that particular one. My best guess is that the programmers at Adobe couldn’t get the traditional OS X button to look the way they wanted it to, so they drew it their own way, captured the mouse click and then triggered the shutter release based on the mouse coordinates. Long story short, that button is simply <strong>not</strong> accessible via scripting.</p>
+<p class="p8">After some googling around, I found a nifty little app called <a href="http://www.mountainstorm.co.uk/?page_id=100"><span>StudioTether</span></a>. It is a tiny app whose UI is just a single button that triggers the shutter release on the camera. <em>And</em> it was accessible via AppleScript. Here’s the <a href="https://gist.github.com/1154621"><span>script</span></a> I ended up going with.</p>
+<p class="p8">The trick is to get that script to fire every time the Trackpad was clicked. Now, I am a software developer by trade, so this sounded more up my alley. I thought that if an app could stretch to the full screen of the monitor, then no matter where a person clicked, I could capture that event and then call the AppleScript, which would then trigger the camera.</p>
+<p class="p8">Still with me? Good because then it got complicated. I had never actually written software specifically for the Mac, so this was a first for me. I could dedicate several blog posts about my experiences learning <a href="http://developer.apple.com/technologies/tools/whats-new.html"><span>Xcode</span></a>, Objective C, and the <a href="http://developer.apple.com/technologies/mac/cocoa.html"><span>Cocoa framework</span></a>. I was able to stumble through though, taking somewhere between 20-30 hours, and the result is pretty slick.</p>
+<p class="p8">The camera settings weren’t too exotic. I used an aperture of <em>f</em>/5.6. In my normal portraiture I prefer wider, but the margin of error in terms of where the subjects could stand was bigger, I stopped it down a bit. However, this also meant that there was less light coming into the camera. I didn’t want to blast my flash at full power each time, since that would chew up the battery and drastically length the recharge time, so I bumped the camera’s ISO up to 800. This enabled the flash to be at 1/4 power. ISO 800 isn’t ideal, but doesn’t impact image quality too much on a D300.</p>
+<p class="p8">I normally shoot photos in RAW mode as well, but decided to use JPG here, at medium quality. The purpose of the whole thing is to just be plain fun for students; nobody was going to be wanting 20x30” blow-ups of these. This also had the benefit of keeping the filesize down, meaning that the images were transferred to the computer and displayed faster.</p>
+<p class="p8">Nothing is perfect, of course. Because the nature of the TrackPad is to manipulate the cursor, it would sometimes register the user action as a drag, rather than click, and not do anything. If someone just mashed their hand (or fist, sigh) on it, that would sometimes not register as well. The perfect solution to that problem is to get a big “Easy” type button, but as mentioned, I can’t seem to find one that’ll work.</p>
+<p class="p8">Aside from those small things, it was a rousing success. Over 400 pictures were taken in just a couple of hours. Every time I walked by, people were having a fun time and taking multiple pictures.</p>
+<p></p>
+<ol class="ol1">
+<li class="li9">Video done by my friend, <a href="http://blog.everlyfilms.com/">Jay Worsley</a>. If you need a video made, look him up.</li>
+<li class="li9">AppleScript is generally a poorly written programming language, but it does work pretty well for scripting UI elements.</li>
+</ol>
+<p> </p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/08/17/havent-heard-back-yet/" itemprop="url">Haven&#8217;t Heard Back Yet</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-17T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 17<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="I just couldn't help myself." src="/images/assets/1313599162000.jpg">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<div>I just couldn&#8217;t help myself.</div>
+<p></p>
+</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/07/26/nice-feature-in-lion/" itemprop="url">Nice Feature in Lion</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-26T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 26<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>Actually, this may have preceded Lion, but I rarely use Safari so I don&#8217;t know. <p></p> My Internet connection died (thanks Cox!). Opened a page in Safari and got the &#8220;Safari can&#8217;t connect to the Internet&#8221; screen. Rebooted router. When connection was re-established, the page I was trying to reach was automatically reloaded and popped up while I was going through my Instapaper queue. Nice job, whoever implemented that.</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+        <a href="/words/page/3/" class="prev">Prev</a>
+    
+    
+        <a href="/words/page/5/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

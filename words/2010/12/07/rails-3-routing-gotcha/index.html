@@ -1,0 +1,227 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Rails 3 Routing Gotcha - Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Rails 3 Routing Gotcha Dec 7th, 2010 Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://swilliams.github.io/words/2010/12/07/rails-3-routing-gotcha/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p><a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Get the app that I made!</a> It's called <a href="http://zartbonk.com">Zartbonk</a>.</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Rails 3 Routing Gotcha</h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 7<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody"><div><div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, 3.0.3). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system. In general this guide does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &quot;RESTful Routes&quot;. I'm rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &quot;Photo&quot;. This will create the following routes (stolen from the aforementioned guide): This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &quot;DoThis&quot;. You can simply modify your Photo route like so:     resources :photos do         member do             get :dothis         end     end And then /photos/1/dothis will map to a dothis method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:     post :dothat I then attempted to submit a form to the dothat action, but got a Routing Error telling me the route wasn't found. I double checked and the URL was definitely correct.     &lt;%= form_for(@photo, :url =&gt; {:controller =&gt; 'photos', :action =&gt; 'dothat'} ) do |f| %&gt; It generated the correct URL: photos/1/dothat, which I confirmed by calling rake routes at the command line.  After searching the Interent and only getting frustrated I finally saw something that jogged my memory. In REST, 'post' is for creating new resources. I was editing my model. Simply changing it to:     put :dothat Fixed everything.  I'll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn't exactly help that Rails doesn't use a &quot;real&quot; PUT in the form's method attribute. It uses POST, but includes a hidden input, &quot;_method&quot; to store the verb it should respond to." src="/images/assets/1291761300000.jpg">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<p>Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, <a href="http://weblog.rubyonrails.org/2010/11/15/rails-3-0-3-faster-active-record-plus-plenty-of-fixes">3.0.3</a>). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system.</p>
+<p></p>
+<div>In general this <a href="http://guides.rubyonrails.org/routing.html">guide</a> does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &#8221;<a href="http://en.wikipedia.org/wiki/REST">RESTful</a> Routes&#8221;. I&#8217;m rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &#8220;Photo&#8221;. This will create the following routes (stolen from the aforementioned guide):</div>
+<p></p>
+<p></p>
+<p></p>
+<div>This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &#8220;DoThis&#8221;. You can simply modify your Photo route like so:</div>
+<p></p>
+<div>
+<div><span>    resources :photos do</span></div>
+<div><span>        member do</span></div>
+<div><span>            get :dothis</span></div>
+<div><span>        end</span></div>
+<div><span>    end</span></div>
+</div>
+<p></p>
+<div>And then <span>/photos/1/dothis</span> will map to a <span>dothis</span> method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:</div>
+<p></p>
+<div>    <span>post :dothat</span>
+</div>
+<p></p>
+<div>I then attempted to submit a form to the <span>dothat</span> action, but got a Routing Error telling me the route wasn&#8217;t found. I double checked and the URL was definitely correct.</div>
+<p></p>
+<div>    <span>&lt;%= form_for(@photo, :url =&gt; {:controller =&gt; &#8216;photos&#8217;, :action =&gt; &#8216;dothat&#8217;} ) do |f| %&gt;</span>
+</div>
+<p></p>
+<div>It generated the correct URL: <span>photos/1/dothat</span>, which I confirmed by calling rake routes at the command line. </div>
+<p></p>
+<div>After searching the Interent and only getting frustrated I finally saw <a href="http://asciicasts.com/episodes/203-routing-in-rails-3">something</a> that jogged my memory.</div>
+<p></p>
+<div>In REST, &#8216;post&#8217; is for <em>creating</em> new resources. I was <em>editing</em> my model. Simply changing it to:</div>
+<p></p>
+<div>    <span>put :dothat</span>
+</div>
+<p></p>
+<div>Fixed everything. </div>
+<p></p>
+<div>I&#8217;ll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn&#8217;t exactly help that Rails doesn&#8217;t use a &#8220;real&#8221; PUT in the form&#8217;s method attribute. It uses POST, but includes a hidden input, &#8221;<span>_method</span>&#8221; to store the verb it should respond to.</div>
+</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div></div></div>
+    <div class="tags">Tags: 
+
+</div>
+
+</article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
