@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: History | Scott Williams]]></title>
-  <link href="http://swilliams.github.io/words/categories/history/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/words/categories/history/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My Computers Through the Ages]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/09/my-computers-through-the-ages/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/09/my-computers-through-the-ages/"/>
     <updated>2014-01-09T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/09/my-computers-through-the-ages</id>
+    <id>http://blog.swilliams.me/words/2014/01/09/my-computers-through-the-ages</id>
     <content type="html"><![CDATA[<p>I just got my latest computer, a 13" MacBook Pro with a Retina screen. Before my memory fades too much, I want to list the computers that I have (or my family has) owned, and talk a little about the memories associated with them. I wish I could dig up more pictures of some of these, but almost all of them were not important to be deigned worthy of being stored in the cobwebs of Internet history.</p>
 
 <h3>Prehistory</h3>
@@ -26,7 +26,7 @@
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="The Compaq Portable" src="http://swilliams.github.io/images/assets/1389282253678.jpg" /&gt;
+<pre><code>&lt;img alt="The Compaq Portable" src="http://blog.swilliams.me/images/assets/1389282253678.jpg" /&gt;
 &lt;figcaption&gt;The Compaq Portable&lt;/figcaption&gt;
 </code></pre>
 
@@ -38,7 +38,7 @@
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="WordPerfect" src="http://swilliams.github.io/images/assets/Wordperfect-5.1-dos.png" /&gt;
+<pre><code>&lt;img alt="WordPerfect" src="http://blog.swilliams.me/images/assets/Wordperfect-5.1-dos.png" /&gt;
 &lt;figcaption&gt;WordPerfect&lt;/figcaption&gt;
 </code></pre>
 

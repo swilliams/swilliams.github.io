@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ideas | Scott Williams]]></title>
-  <link href="http://swilliams.github.io/words/categories/ideas/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/words/categories/ideas/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Please Steal This App Idea]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/06/please-steal-this-app-idea/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/06/please-steal-this-app-idea/"/>
     <updated>2014-01-06T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/06/please-steal-this-app-idea</id>
+    <id>http://blog.swilliams.me/words/2014/01/06/please-steal-this-app-idea</id>
     <content type="html"><![CDATA[<p>Spurred on by a <a href="https://twitter.com/swilliams/status/420395505852506112">Twitter conversation</a>, I figured I&rsquo;d write more about my thoughts here. I&rsquo;ve always wanted a GOOD photo editor on the iPad, ever since I saw the <a href="https://www.youtube.com/watch?v=6Fk1V5NqoD4&amp;list=PLPlyGeI5oeICPGwwp4HTdNZkpyP0flmhC">demo</a> of the very first one. There have been a few contendors, but they&rsquo;ve all fallen short.</p>
 
 <p>iPhoto is supposed to be this solution, but the workflow is aggravating. I&rsquo;d love to take a picture on my iPhone, pull up my iPad and edit that picture on the bigger screen, then send it back to my phone (or elsewhere). But there&rsquo;s a lag while iCloud syncs, and then somehow I end up with 4 duplicates when I&rsquo;m done editing, and another lag while iCloud syncs again, <em>sigh</em>.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ruby | Scott Williams]]></title>
-  <link href="http://swilliams.github.io/words/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/words/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,16 +15,16 @@
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
-    <link href="http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
+    <link href="http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
     <updated>2014-02-21T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
+    <id>http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
     <content type="html"><![CDATA[<p><a href="/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
 
 <p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://swilliams.github.io/images/assets/lego-annotated.png"&gt;
+<pre><code>&lt;img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://blog.swilliams.me/images/assets/lego-annotated.png"&gt;
 &lt;figcaption&gt;&lt;a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5"&gt;Lego Castle&lt;/a&gt; by &lt;a href="http://www.flickr.com/photos/skinnylawyer/"&gt;InSapphoWeTrust&lt;/a&gt; on Flickr.&lt;/figcaption&gt;
 </code></pre>
 
@@ -112,7 +112,7 @@ end
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="This is you with all the gerbil methods." src="http://swilliams.github.io/images/assets/cashew.jpg"&gt;
+<pre><code>&lt;img alt="This is you with all the gerbil methods." src="http://blog.swilliams.me/images/assets/cashew.jpg"&gt;
 &lt;figcaption&gt;This is you with all the gerbil methods.&lt;/figcaption&gt;
 </code></pre>
 
@@ -183,9 +183,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls/"/>
     <updated>2014-01-26T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls</id>
+    <id>http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls</id>
     <content type="html"><![CDATA[<p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&rsquo;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&rsquo;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&rsquo;ve used a DSL. Rails in particular has a couple different ones:</p>
 
 <p>``` ruby

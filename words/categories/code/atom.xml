@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Code | Scott Williams]]></title>
-  <link href="http://swilliams.github.io/words/categories/code/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrating From Squarespace]]></title>
-    <link href="http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace/"/>
+    <link href="http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace/"/>
     <updated>2014-03-05T09:23:18-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace</id>
+    <id>http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace</id>
     <content type="html"><![CDATA[<p>Squarespace is a popular service to host a website or blog. You might have seen their <a href="http://www.youtube.com/watch?v=S0Or1f_RxKQ">Super Bowl commercial</a> or heard about them on one of the hundred podcasts they sponsor. I signed up about a year and a half ago and used it as my main blog. I&rsquo;ve decided to move away and use <a href="http://octopress.org">Octopress</a> to host my blog on <a href="http://octopress.org/">GitHub Pages</a> instead.</p>
 
 <p>Why? Well, for starters, it&rsquo;s slow to use. I think it&rsquo;s a byproduct of the way they organized their <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> architecture. I find myself having to wait for things to open in modal windows, or to load another menu.</p>
@@ -68,7 +68,7 @@
 
 <p><figure></p>
 
-<pre><code>&lt;img src="http://swilliams.github.io/images/assets/octopress.png" alt="Octopress" /&gt;
+<pre><code>&lt;img src="http://blog.swilliams.me/images/assets/octopress.png" alt="Octopress" /&gt;
 </code></pre>
 
 <p></figure></p>
@@ -79,16 +79,16 @@
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
-    <link href="http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
+    <link href="http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
     <updated>2014-02-21T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
+    <id>http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
     <content type="html"><![CDATA[<p><a href="/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
 
 <p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://swilliams.github.io/images/assets/lego-annotated.png"&gt;
+<pre><code>&lt;img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://blog.swilliams.me/images/assets/lego-annotated.png"&gt;
 &lt;figcaption&gt;&lt;a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5"&gt;Lego Castle&lt;/a&gt; by &lt;a href="http://www.flickr.com/photos/skinnylawyer/"&gt;InSapphoWeTrust&lt;/a&gt; on Flickr.&lt;/figcaption&gt;
 </code></pre>
 
@@ -176,7 +176,7 @@ end
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="This is you with all the gerbil methods." src="http://swilliams.github.io/images/assets/cashew.jpg"&gt;
+<pre><code>&lt;img alt="This is you with all the gerbil methods." src="http://blog.swilliams.me/images/assets/cashew.jpg"&gt;
 &lt;figcaption&gt;This is you with all the gerbil methods.&lt;/figcaption&gt;
 </code></pre>
 
@@ -247,9 +247,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls/"/>
     <updated>2014-01-26T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls</id>
+    <id>http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls</id>
     <content type="html"><![CDATA[<p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&rsquo;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&rsquo;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&rsquo;ve used a DSL. Rails in particular has a couple different ones:</p>
 
 <p>``` ruby
@@ -413,9 +413,9 @@ end</p>
   
   <entry>
     <title type="html"><![CDATA[Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7]]></title>
-    <link href="http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
+    <link href="http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
     <updated>2013-09-19T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
+    <id>http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
     <content type="html"><![CDATA[<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
 
 <p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
@@ -483,14 +483,14 @@ _commands = [[NSMutableArray alloc] initWithArray:@[commandF]];
   
   <entry>
     <title type="html"><![CDATA[Customizing the Link Color in a UITextView]]></title>
-    <link href="http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
+    <link href="http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
     <updated>2013-08-07T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
+    <id>http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
     <content type="html"><![CDATA[<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&rsquo;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into this situation:</p>
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="eww" src="http://swilliams.github.io/images/assets/badpopover.png"&gt;
+<pre><code>&lt;img alt="eww" src="http://blog.swilliams.me/images/assets/badpopover.png"&gt;
 &lt;figcaption&gt;Ewwwwww&lt;/figcaption&gt;
 </code></pre>
 
@@ -574,7 +574,7 @@ return YES;
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="Yay!" src="http://swilliams.github.io/images/assets/goodpopover.png"&gt;
+<pre><code>&lt;img alt="Yay!" src="http://blog.swilliams.me/images/assets/goodpopover.png"&gt;
 &lt;figcaption&gt;Yay!&lt;/figcaption&gt;
 </code></pre>
 

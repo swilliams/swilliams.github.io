@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Scott Williams]]></title>
-  <link href="http://swilliams.github.io/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Migrating from Squarespace]]></title>
-    <link href="http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace/"/>
+    <link href="http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace/"/>
     <updated>2014-03-05T09:23:18-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace</id>
+    <id>http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace</id>
     <content type="html"><![CDATA[<p>Squarespace is a popular service to host a website or blog. You might have seen their <a href="http://www.youtube.com/watch?v=S0Or1f_RxKQ">Super Bowl commercial</a> or heard about them on one of the hundred podcasts they sponsor. I signed up about a year and a half ago and used it as my main blog. I&rsquo;ve decided to move away and use <a href="http://octopress.org">Octopress</a> to host my blog on <a href="http://octopress.org/">GitHub Pages</a> instead.</p>
 
 <p>Why? Well, for starters, it&rsquo;s slow to use. I think it&rsquo;s a byproduct of the way they organized their <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> architecture. I find myself having to wait for things to open in modal windows, or to load another menu.</p>
 
-<p>The layout tools are bad. If all you do is write text and link to stuff, this doesn&rsquo;t matter. Sometimes I like to have <a href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls">in depth coding posts</a> that have multiple blocks of code within them. This is incredibly painful to do with the Squarespace layout tools. Here&rsquo;s the process:</p>
+<p>The layout tools are bad. If all you do is write text and link to stuff, this doesn&rsquo;t matter. Sometimes I like to have <a href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls">in depth coding posts</a> that have multiple blocks of code within them. This is incredibly painful to do with the Squarespace layout tools. Here&rsquo;s the process:</p>
 
 <ol>
 <li>Hover over an existing text block.</li>
@@ -67,7 +67,7 @@
 <p>There are still some issues that I&rsquo;ll need to address on a case by case basis, but it&rsquo;s a good 80% solution right now.</p>
 
 <figure>
-    <img src="http://swilliams.github.io/images/assets/octopress.png" alt="Octopress" />
+    <img src="http://blog.swilliams.me/images/assets/octopress.png" alt="Octopress" />
 </figure>
 
 
@@ -77,15 +77,15 @@
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
-    <link href="http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
+    <link href="http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
     <updated>2014-02-21T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
-    <content type="html"><![CDATA[<p><a href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
+    <id>http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
 
 <p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
 
 <figure>
-    <img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://swilliams.github.io/images/assets/lego-annotated.png">
+    <img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://blog.swilliams.me/images/assets/lego-annotated.png">
     <figcaption><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</figcaption>
 </figure>
 
@@ -201,7 +201,7 @@
 <p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p>
 
 <figure>
-    <img alt="This is you with all the gerbil methods." src="http://swilliams.github.io/images/assets/cashew.jpg">
+    <img alt="This is you with all the gerbil methods." src="http://blog.swilliams.me/images/assets/cashew.jpg">
     <figcaption>This is you with all the gerbil methods.</figcaption>
 </figure>
 
@@ -280,9 +280,9 @@
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls/"/>
     <updated>2014-01-26T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls</id>
+    <id>http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls</id>
     <content type="html"><![CDATA[<p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&rsquo;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&rsquo;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&rsquo;ve used a DSL. Rails in particular has a couple different ones:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -501,10 +501,10 @@
   
   <entry>
     <title type="html"><![CDATA[My Computers Through the Ages Part II]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/25/my-computers-through-the-ages-part-ii/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/25/my-computers-through-the-ages-part-ii/"/>
     <updated>2014-01-25T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/25/my-computers-through-the-ages-part-ii</id>
-    <content type="html"><![CDATA[<p>In <a href="http://swilliams.github.io/words/2014/01/09/my-computers-through-the-ages">Part 1</a> I talked about my first few computers. They were an important part of my childhood, and shaped the person I would become and the career I chose. When I went to college I started to build and upgrade my own PCs. Things went well enough at first, but then got a little out of hand.</p>
+    <id>http://blog.swilliams.me/words/2014/01/25/my-computers-through-the-ages-part-ii</id>
+    <content type="html"><![CDATA[<p>In <a href="http://blog.swilliams.me/words/2014/01/09/my-computers-through-the-ages">Part 1</a> I talked about my first few computers. They were an important part of my childhood, and shaped the person I would become and the career I chose. When I went to college I started to build and upgrade my own PCs. Things went well enough at first, but then got a little out of hand.</p>
 
 <h3>Dark Ages</h3>
 
@@ -549,11 +549,11 @@
   
   <entry>
     <title type="html"><![CDATA[Keep Your Developer Saw Sharp]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/20/keep-your-developer-saw-sharp/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp/"/>
     <updated>2014-01-20T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/20/keep-your-developer-saw-sharp</id>
+    <id>http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp</id>
     <content type="html"><![CDATA[<figure>
-    <img alt='"Dremel Moto Jig Saw" from Pete Prodoehl on Flickr' src="http://swilliams.github.io/images/assets/5184600234_a99779ddc1_z.jpg">
+    <img alt='"Dremel Moto Jig Saw" from Pete Prodoehl on Flickr' src="http://blog.swilliams.me/images/assets/5184600234_a99779ddc1_z.jpg">
     <figcaption><a href="http://www.flickr.com/photos/raster/5184600234/">&#8220;Dremel Moto Jig Saw&#8221;</a> from <a href="http://www.flickr.com/photos/raster/">Pete Prodoehl</a> on Flickr</figcaption>
 </figure>
 
@@ -576,9 +576,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Prepare a MacBook Pro For Sale that was Upgraded to Mavericks]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks/"/>
     <updated>2014-01-13T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks</id>
+    <id>http://blog.swilliams.me/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks</id>
     <content type="html"><![CDATA[<p>I recently upgraded to a newer MacBook Pro<sup>1</sup>. Since I didn&rsquo;t need my older one, I sold it to a friend&rsquo;s family. I wanted them to be able to have as close to a new-out-of-the-box experience as possible, so I wiped the drive and prepared to reinstall <a href="http://www.apple.com/osx/">OS X Mavericks</a>.</p>
 
 <p>Back when OSes used to ship on CDs or DVDs you could put the disc into the drive and boot right into what is called &ldquo;Recovery&rdquo; mode to reinstall things. Since Apple switched over to download only updates, this is no longer the case.</p>
@@ -588,7 +588,7 @@
 <p>The catch though is that the new user needs to have an Apple ID <em>that has already &ldquo;purchased&rdquo; Mavericks</em> for the install to continue. This&rsquo;ll be my friend&rsquo;s first Mac, so they never had the opportunity to buy Mavericks. This is also especially weird because Mavericks is <strong>free</strong>. There doesn&rsquo;t appear to be a way to transfer ownership to a separate Apple ID. The solution? <a href="https://discussions.apple.com/message/23573490#23573490">Reinstall the original OS the computer came with</a>. Which means this:</p>
 
 <figure>
-    <img alt="IMG_1843.jpg" src="http://swilliams.github.io/images/assets/IMG_1843.jpg">
+    <img alt="IMG_1843.jpg" src="http://blog.swilliams.me/images/assets/IMG_1843.jpg">
     <figcaption>Oh, hi, Snow Leopard</figcaption>
 </figure>
 
@@ -606,9 +606,9 @@
   
   <entry>
     <title type="html"><![CDATA[My Computers Through the Ages]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/09/my-computers-through-the-ages/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/09/my-computers-through-the-ages/"/>
     <updated>2014-01-09T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/09/my-computers-through-the-ages</id>
+    <id>http://blog.swilliams.me/words/2014/01/09/my-computers-through-the-ages</id>
     <content type="html"><![CDATA[<p>I just got my latest computer, a 13&#8221; MacBook Pro with a Retina screen. Before my memory fades too much, I want to list the computers that I have (or my family has) owned, and talk a little about the memories associated with them. I wish I could dig up more pictures of some of these, but almost all of them were not important to be deigned worthy of being stored in the cobwebs of Internet history.</p>
 
 <h3>Prehistory</h3>
@@ -616,7 +616,7 @@
 <p><strong>Compaq Portable</strong> (some point in the late 80&rsquo;s). My dad used to bring this home every so often from his day job at a large bank. It was called <a href="http://en.wikipedia.org/wiki/Compaq_portable">&ldquo;portable&rdquo;</a> even though it weighed 28 pounds. I learned how to type on this thing and wrote a few papers in 3rd grade before my teacher told me to stop and work on my handwriting. I believe it ran MS-DOS 3.0.</p>
 
 <figure>
-    <img alt="The Compaq Portable" src="http://swilliams.github.io/images/assets/1389282253678.jpg" />
+    <img alt="The Compaq Portable" src="http://blog.swilliams.me/images/assets/1389282253678.jpg" />
     <figcaption>The Compaq Portable</figcaption>
 </figure>
 
@@ -626,7 +626,7 @@
 <p>My earliest memory of this computer was learning that &ldquo;hot&rdquo; was slang for &ldquo;stolen&rdquo; because my dad was convinced that some of the parts weren&rsquo;t legal&hellip; I think he was joking. Probably.</p>
 
 <figure>
-    <img alt="WordPerfect" src="http://swilliams.github.io/images/assets/Wordperfect-5.1-dos.png" />
+    <img alt="WordPerfect" src="http://blog.swilliams.me/images/assets/Wordperfect-5.1-dos.png" />
     <figcaption>WordPerfect</figcaption>
 </figure>
 
@@ -661,9 +661,9 @@
   
   <entry>
     <title type="html"><![CDATA[Please Steal This App Idea]]></title>
-    <link href="http://swilliams.github.io/words/2014/01/06/please-steal-this-app-idea/"/>
+    <link href="http://blog.swilliams.me/words/2014/01/06/please-steal-this-app-idea/"/>
     <updated>2014-01-06T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2014/01/06/please-steal-this-app-idea</id>
+    <id>http://blog.swilliams.me/words/2014/01/06/please-steal-this-app-idea</id>
     <content type="html"><![CDATA[<p>Spurred on by a <a href="https://twitter.com/swilliams/status/420395505852506112">Twitter conversation</a>, I figured I&rsquo;d write more about my thoughts here. I&rsquo;ve always wanted a GOOD photo editor on the iPad, ever since I saw the <a href="https://www.youtube.com/watch?v=6Fk1V5NqoD4&amp;list=PLPlyGeI5oeICPGwwp4HTdNZkpyP0flmhC">demo</a> of the very first one. There have been a few contendors, but they&rsquo;ve all fallen short.</p>
 
 <p>iPhoto is supposed to be this solution, but the workflow is aggravating. I&rsquo;d love to take a picture on my iPhone, pull up my iPad and edit that picture on the bigger screen, then send it back to my phone (or elsewhere). But there&rsquo;s a lag while iCloud syncs, and then somehow I end up with 4 duplicates when I&rsquo;m done editing, and another lag while iCloud syncs again, <em>sigh</em>.</p>
@@ -699,15 +699,15 @@
   
   <entry>
     <title type="html"><![CDATA[Whither Shootsy, or, How I Tried and Failed a Startup]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup/"/>
     <updated>2013-12-26T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup</id>
+    <id>http://blog.swilliams.me/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup</id>
     <content type="html"><![CDATA[<p>Did you know that at one point I had aspirations of being an entrepreneur? For the better part of 2010 and 2011 I spent every free moment I had trying to get a startup on its feet<sup>1</sup>. It was aimed at photographers to help them manage their businesses. We called it Shootsy.</p>
 
 <p>You might have noticed that everything in that paragraph is in the past tense, and that&rsquo;s for good reason. Shootsy is for all intents and purposes, dead. Here&rsquo;s a little bit of the history behind what happened.</p>
 
 <figure>
-    <img alt="shootsy-broke.png" src="http://swilliams.github.io/images/assets/shootsy-broke.png">
+    <img alt="shootsy-broke.png" src="http://blog.swilliams.me/images/assets/shootsy-broke.png">
 </figure>
 
 
@@ -723,43 +723,43 @@
 
 <p>Despite the whole thing, I don&rsquo;t regret trying. I learned some important things about myself in process. I don&rsquo;t know if I&rsquo;m cut out to run an entire business. I&rsquo;m a pretty good second banana, but I can&rsquo;t say with 100% certainty that it&rsquo;s a good idea to have the buck stop with me. That&rsquo;s a hard pill to swallow, and maybe it will change after a few more years, but it&rsquo;s a reality I have to accept.</p>
 
-<p>I don&rsquo;t know if I&rsquo;ll attempt a startup again. <a href="http://swilliams.github.io/words/2013/12/16/i-made-an-app">An app</a> is easier. But an app is not a business. An app can be just for fun, which is kind of what <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a> is.</p>
+<p>I don&rsquo;t know if I&rsquo;ll attempt a startup again. <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app">An app</a> is easier. But an app is not a business. An app can be just for fun, which is kind of what <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a> is.</p>
 
 <p><a href="https://twitter.com/danbenjamin">Dan Benjamin</a> once said that you can&rsquo;t create a business as a side project. At the time, I thought I would be able to prove him wrong. Now though, he&rsquo;s absolutely right. I plan to make more apps in the future, but I don&rsquo;t think any of them will become my day job any time soon.</p>
 
 <h3>Screenshots</h3>
 
 <figure class="small">
-    <a data-title="A Shoot" data-description="" href="http://swilliams.github.io/images/assets/01b-shoots-details.png" class="image-slide-anchor content-fit">
-        <img alt="A Shoot" src="http://swilliams.github.io/images/assets/01b-shoots-details.png"></a>
+    <a data-title="A Shoot" data-description="" href="http://blog.swilliams.me/images/assets/01b-shoots-details.png" class="image-slide-anchor content-fit">
+        <img alt="A Shoot" src="http://blog.swilliams.me/images/assets/01b-shoots-details.png"></a>
     <figcaption>A Shoot</figcaption>
 </figure>
 
 
 <figure class="small">
-    <a data-title="Packages and Payments" data-description="" href="http://swilliams.github.io/images/assets/01e-shoots-money.png" class="image-slide-anchor content-fit">
-        <img alt="Packages and Payments" src="http://swilliams.github.io/images/assets/01e-shoots-money.png"></a>
+    <a data-title="Packages and Payments" data-description="" href="http://blog.swilliams.me/images/assets/01e-shoots-money.png" class="image-slide-anchor content-fit">
+        <img alt="Packages and Payments" src="http://blog.swilliams.me/images/assets/01e-shoots-money.png"></a>
     <figcaption>Packages and Payments</figcaption>
 </figure>
 
 
 <figure class="small">
-    <a data-title="Contacts" data-description="" href="http://swilliams.github.io/images/assets/02c-contacts-search.png" class="image-slide-anchor content-fit">
-        <img alt="Contacts" src="http://swilliams.github.io/images/assets/02c-contacts-search.png"></a>
+    <a data-title="Contacts" data-description="" href="http://blog.swilliams.me/images/assets/02c-contacts-search.png" class="image-slide-anchor content-fit">
+        <img alt="Contacts" src="http://blog.swilliams.me/images/assets/02c-contacts-search.png"></a>
     <figcaption>Contacts</figcaption>
 </figure>
 
 
 <figure class="small">
-    <a data-title="Locations" data-description="" href="http://swilliams.github.io/images/assets/04b-locations-map-view.png" class="image-slide-anchor content-fit">
-        <img alt="Locations" src="http://swilliams.github.io/images/assets/04b-locations-map-view.png"></a>
+    <a data-title="Locations" data-description="" href="http://blog.swilliams.me/images/assets/04b-locations-map-view.png" class="image-slide-anchor content-fit">
+        <img alt="Locations" src="http://blog.swilliams.me/images/assets/04b-locations-map-view.png"></a>
     <figcaption>Locations</figcaption>
 </figure>
 
 
 <figure class="small">
-    <a data-title="A Specific Location" data-description="" href="http://swilliams.github.io/images/assets/04c-locations-view.png" class="image-slide-anchor content-fit">
-        <img alt="A Specific Location" src="http://swilliams.github.io/images/assets/04c-locations-view.png"></a>
+    <a data-title="A Specific Location" data-description="" href="http://blog.swilliams.me/images/assets/04c-locations-view.png" class="image-slide-anchor content-fit">
+        <img alt="A Specific Location" src="http://blog.swilliams.me/images/assets/04c-locations-view.png"></a>
     <figcaption>A Specific Location</figcaption>
 </figure>
 
@@ -777,9 +777,9 @@
   
   <entry>
     <title type="html"><![CDATA[Putting the Minimum in Minimum Viable Product]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/22/putting-the-minimum-in-minimum-viable-product/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/22/putting-the-minimum-in-minimum-viable-product/"/>
     <updated>2013-12-22T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/22/putting-the-minimum-in-minimum-viable-product</id>
+    <id>http://blog.swilliams.me/words/2013/12/22/putting-the-minimum-in-minimum-viable-product</id>
     <content type="html"><![CDATA[<p>There&rsquo;s a common phrase in product development called <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">&ldquo;Minimum Viable Product&rdquo;</a>. It means that the first release of your software product should only do the bare minimum needed to survive. This keeps things simple, and prevents scope creep from sneaking in (I mean you could have your app <em>also</em> <a href="http://www.catb.org/jargon/html/Z/Zawinskis-Law.html">read email</a>, but why?).</p>
 
 <p>For <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a>, this meant that the user had to be able to:</p>
@@ -800,7 +800,7 @@
 <p>I&rsquo;m trying to avoid the junk drawer with Zartbonk. There are a few flourishes here and there to make it fun. Sound clips have their waveforms in the background. The progress bar is accurate as it passes across a clip. When a sound plays in the timeline<sup>1</sup> it&rsquo;s corresponding one in the grid jiggles. You can repeat a sound bite by tapping and holding a play button. I tried to add fades and pretty animations everywhere I could.</p>
 
 <figure>
-    <img alt="Jiggle" src="http://swilliams.github.io/images/assets/jiggle.gif">
+    <img alt="Jiggle" src="http://blog.swilliams.me/images/assets/jiggle.gif">
     <figcaption>Jiggle</figcaption>
 </figure>
 
@@ -825,9 +825,9 @@
   
   <entry>
     <title type="html"><![CDATA[I Made an App!]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/16/i-made-an-app/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/"/>
     <updated>2013-12-16T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/16/i-made-an-app</id>
+    <id>http://blog.swilliams.me/words/2013/12/16/i-made-an-app</id>
     <content type="html"><![CDATA[<div>
 <div><div><div><div>
 <p>One of my goals for this year was to create and release an iOS app. I&#8217;m cutting it close, but I think it&#8217;s finally good enough to actually tell people about it.</p>
@@ -852,7 +852,7 @@
 				<a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8" target="_blank">
 			
 				<div>
-					<img alt="appstore.png" src="http://swilliams.github.io/images/assets/appstore.png">
+					<img alt="appstore.png" src="http://blog.swilliams.me/images/assets/appstore.png">
 </div>
 			
 				</a>
@@ -869,9 +869,9 @@
   
   <entry>
     <title type="html"><![CDATA[Best Feliz Navidad Ever]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/16/best-feliz-navidad-ever/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/16/best-feliz-navidad-ever/"/>
     <updated>2013-12-16T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/16/best-feliz-navidad-ever</id>
+    <id>http://blog.swilliams.me/words/2013/12/16/best-feliz-navidad-ever</id>
     <content type="html"><![CDATA[<div>
 <div><div><div><div>
 <p><a href="http://en.wikipedia.org/wiki/Feliz_Navidad_(song)">Feliz Navidad</a> is a terrible song, and you should play it whenever possible to harass your friends into submission.</p>
@@ -887,9 +887,9 @@
   
   <entry>
     <title type="html"><![CDATA[A New Appreciation for the Climactic Duel in The Empire Strikes Back]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/15/a-new-appreciation-for-the-climactic-duel-in-the-empire-strikes-back/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/15/a-new-appreciation-for-the-climactic-duel-in-the-empire-strikes-back/"/>
     <updated>2013-12-15T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/15/a-new-appreciation-for-the-climactic-duel-in-the-empire-strikes-back</id>
+    <id>http://blog.swilliams.me/words/2013/12/15/a-new-appreciation-for-the-climactic-duel-in-the-empire-strikes-back</id>
     <content type="html"><![CDATA[<div>
 <div><div><div><div>
 <p>I recently watched the original Star Wars trilogy<sup>1</sup> with my 5 year old. She&#8217;s really enjoyed it and caught the bug. I&#8217;ve watched those movies probably 50 times each, but it was a new experience to watch it with my daughter. One of the things that I enjoyed in particular was the level of detail in Empire during Luke&#8217;s duel with Darth Vader.</p>
@@ -902,7 +902,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h34m32s42.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h34m32s42.png">
+					<img alt="vlcsnap-2013-12-12-22h34m32s42.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h34m32s42.png">
 </div>
 			
 
@@ -922,7 +922,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h37m28s234.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h37m28s234.png">
+					<img alt="vlcsnap-2013-12-12-22h37m28s234.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h37m28s234.png">
 </div>
 			
 
@@ -939,7 +939,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h37m56s22.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h37m56s22.png">
+					<img alt="vlcsnap-2013-12-12-22h37m56s22.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h37m56s22.png">
 </div>
 			
 
@@ -960,7 +960,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h39m40s54.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h39m40s54.png">
+					<img alt="vlcsnap-2013-12-12-22h39m40s54.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h39m40s54.png">
 </div>
 			
 
@@ -977,7 +977,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h39m59s235.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h39m59s235.png">
+					<img alt="vlcsnap-2013-12-12-22h39m59s235.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h39m59s235.png">
 </div>
 			
 
@@ -993,7 +993,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h40m48s219.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h40m48s219.png">
+					<img alt="vlcsnap-2013-12-12-22h40m48s219.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h40m48s219.png">
 </div>
 			
 
@@ -1014,7 +1014,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h41m18s7.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h41m18s7.png">
+					<img alt="vlcsnap-2013-12-12-22h41m18s7.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h41m18s7.png">
 </div>
 			
 
@@ -1031,7 +1031,7 @@
 		<div>
 			
 				<div>
-					<img alt="vlcsnap-2013-12-12-22h41m41s244.png" src="http://swilliams.github.io/images/assets/vlcsnap-2013-12-12-22h41m41s244.png">
+					<img alt="vlcsnap-2013-12-12-22h41m41s244.png" src="http://blog.swilliams.me/images/assets/vlcsnap-2013-12-12-22h41m41s244.png">
 </div>
 			
 
@@ -1061,11 +1061,11 @@
   
   <entry>
     <title type="html"><![CDATA[Lack of Commercials]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/14/lack-of-commercials/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/14/lack-of-commercials/"/>
     <updated>2013-12-14T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/14/lack-of-commercials</id>
+    <id>http://blog.swilliams.me/words/2013/12/14/lack-of-commercials</id>
     <content type="html"><![CDATA[<div><div><div><div><div>
-<p><a href="http://swilliams.github.io/words/i-think-the-cable-companies-are-screwed">We cut our cable a couple of years ago</a> and have been using Netflix/Hulu/iTunes as our primary source of television ever since. Our oldest daughter was just 3 at the time, so she has almost no knowledge of commercials. A good bi-product of that is her opinions haven&#8217;t been swayed toy and fast food advertisers. I don&#8217;t think she even knows what a Happy Meal is.</p>
+<p><a href="http://blog.swilliams.me/words/i-think-the-cable-companies-are-screwed">We cut our cable a couple of years ago</a> and have been using Netflix/Hulu/iTunes as our primary source of television ever since. Our oldest daughter was just 3 at the time, so she has almost no knowledge of commercials. A good bi-product of that is her opinions haven&#8217;t been swayed toy and fast food advertisers. I don&#8217;t think she even knows what a Happy Meal is.</p>
 
 <p>An unintended side effect is that she doesn&#8217;t know how excited she should have been when my wife surprised her with an outing to go see <a href="http://www.imdb.com/title/tt2294629/?ref_=nv_sr_1">Frozen</a> this morning. “What&#8217;s that?” she asked, disinterested. Fortunately, once she was told there was a princess in it she was much more excited<sup>1</sup>. </p>
 
@@ -1077,9 +1077,9 @@
   
   <entry>
     <title type="html"><![CDATA[Stop Thinking You're a Special Unicorn]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/09/stop-thinking-youre-a-special-unicorn/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/09/stop-thinking-youre-a-special-unicorn/"/>
     <updated>2013-12-09T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/09/stop-thinking-youre-a-special-unicorn</id>
+    <id>http://blog.swilliams.me/words/2013/12/09/stop-thinking-youre-a-special-unicorn</id>
     <content type="html"><![CDATA[<div>
 <div><div></div></div>
 <div>
@@ -1100,7 +1100,7 @@
 				<a href="http://heeris.id.au/2013/this-is-why-you-shouldnt-interrupt-a-programmer" target="_blank">
 			
 				<div>
-					<img alt="PtMx9GJ.png" src="http://swilliams.github.io/images/assets/PtMx9GJ.png">
+					<img alt="PtMx9GJ.png" src="http://blog.swilliams.me/images/assets/PtMx9GJ.png">
 </div>
 			
 				</a>
@@ -1118,9 +1118,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Frustrations of the Journeyman]]></title>
-    <link href="http://swilliams.github.io/words/2013/12/02/the-frustrations-of-the-journeyman/"/>
+    <link href="http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman/"/>
     <updated>2013-12-02T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/12/02/the-frustrations-of-the-journeyman</id>
+    <id>http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman</id>
     <content type="html"><![CDATA[<div>
 <div>
 <div><div><div><p>I was a .NET programmer from almost the beginning. I did a lot of work in 1.0 and 1.1, and was excited when things like <a href="http://msdn.microsoft.com/en-us/library/ms172192.aspx">generics</a> and <a href="http://msdn.microsoft.com/en-us/library/vstudio/0yw3tz5k.aspx">anonymous methods</a> showed up in 2.0, and <a href="http://en.wikipedia.org/wiki/Language_Integrated_Query">LINQ</a><sup>1</sup> rocked my world (and still does) in 3.5, and more syntactic good stuff in 4. But I often wondered what it would be like for someone new to .NET in 2013. It was easy to learn the new stuff as it came out; it always built on existing technologies and smoothed rough edges. But to jump in without having several years of background? What would that be like?</p></div></div></div>
@@ -1130,7 +1130,7 @@
 		<div>
 			
 				<div>
-					<img alt='"Leaving a Trail" by "las - initially" on flickr.' src="http://swilliams.github.io/images/assets/4263948022_2fdefd3f93.jpg">
+					<img alt='"Leaving a Trail" by "las - initially" on flickr.' src="http://blog.swilliams.me/images/assets/4263948022_2fdefd3f93.jpg">
 </div>
 			
 
@@ -1148,7 +1148,7 @@
 <div><div><div><div>
 <p>Well, now I know. I had grown kind of tired of .NET after doing it for ten years and needed a change. I decided to make the leap over the summer and focused on <a href="http://rubyonrails.org/">Rails</a> and iOS.</p>
 
-<p>The most frustrating part of this changeup has been finding work that I want to do. I tried a bit of a moonshot and <a href="http://swilliams.github.io/words/2013/5/14/fear-of-falling-fear-of-failing-fear-of-rejection">tried to land a job at Github</a>. I did get an interview and it went pretty well, but they decided to go with someone with more experience in Rails. I don&#8217;t blame them for that, they probably got dozens (or more) applications from people who had been working with it for years and could hit the ground running. Still was a bit of a bummer though.</p>
+<p>The most frustrating part of this changeup has been finding work that I want to do. I tried a bit of a moonshot and <a href="http://blog.swilliams.me/words/2013/5/14/fear-of-falling-fear-of-failing-fear-of-rejection">tried to land a job at Github</a>. I did get an interview and it went pretty well, but they decided to go with someone with more experience in Rails. I don&#8217;t blame them for that, they probably got dozens (or more) applications from people who had been working with it for years and could hit the ground running. Still was a bit of a bummer though.</p>
 
 <p>The good news is that I&#8217;m having an easier time sliding back into Rails. Web development is mostly the same if you&#8217;re using curly braces or not. I had done a big project in it a few years ago and all of the paying work I&#8217;ve had since the leap has been with Rails. I&#8217;ve learned how to <a href="https://github.com/swilliams/how-to-ride-a-dragon">write a DSL</a> and shipped some <a href="http://rubygems.org/">gems</a> and other nice things for my clients.</p>
 
@@ -1174,9 +1174,9 @@
   
   <entry>
     <title type="html"><![CDATA[Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7]]></title>
-    <link href="http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
+    <link href="http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
     <updated>2013-09-19T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
+    <id>http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
     <content type="html"><![CDATA[<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
 
 <p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
@@ -1265,17 +1265,17 @@
   
   <entry>
     <title type="html"><![CDATA[Thoughts on the New iPhone]]></title>
-    <link href="http://swilliams.github.io/words/2013/09/11/thoughts-on-the-new-iphone/"/>
+    <link href="http://blog.swilliams.me/words/2013/09/11/thoughts-on-the-new-iphone/"/>
     <updated>2013-09-11T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/09/11/thoughts-on-the-new-iphone</id>
+    <id>http://blog.swilliams.me/words/2013/09/11/thoughts-on-the-new-iphone</id>
     <content type="html"><![CDATA[<div><div><div><div><div><p>Buy it. Or don&#8217;t. I don&#8217;t really care.</p></div></div></div></div></div>]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[You Probably Shouldn't Buy a DSLR]]></title>
-    <link href="http://swilliams.github.io/words/2013/09/04/you-probably-shouldnt-buy-a-dslr/"/>
+    <link href="http://blog.swilliams.me/words/2013/09/04/you-probably-shouldnt-buy-a-dslr/"/>
     <updated>2013-09-04T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/09/04/you-probably-shouldnt-buy-a-dslr</id>
+    <id>http://blog.swilliams.me/words/2013/09/04/you-probably-shouldnt-buy-a-dslr</id>
     <content type="html"><![CDATA[<div>
 <div><div><div><div>
 <p>I have three digital <a href="http://en.wikipedia.org/wiki/Single-lens_reflex_camera">SLR</a> cameras<sup>1</sup>, and a bunch of nice lenses to go with them. I&#8217;ve been an <a href="http://swilliamsphoto.com">amateur photographer</a>, and have taken tens of thousands (if not more) photos of weddings, portraits, and landscapes over the years. I love my photography gear, and even though I don&#8217;t use it quite as much as I used to, I&#8217;m not going to be changing it any time soon.</p>
@@ -1294,7 +1294,7 @@
 		<div>
 			
 				<div>
-					<img alt="The Sony NEX-F3" src="http://swilliams.github.io/images/assets/NEXF3KB.png">
+					<img alt="The Sony NEX-F3" src="http://blog.swilliams.me/images/assets/NEXF3KB.png">
 </div>
 			
 
@@ -1342,9 +1342,9 @@ Footnotes:</small></p>
   
   <entry>
     <title type="html"><![CDATA[50 Years]]></title>
-    <link href="http://swilliams.github.io/words/2013/08/28/50-years/"/>
+    <link href="http://blog.swilliams.me/words/2013/08/28/50-years/"/>
     <updated>2013-08-28T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/08/28/50-years</id>
+    <id>http://blog.swilliams.me/words/2013/08/28/50-years</id>
     <content type="html"><![CDATA[<div>
 <div><div><div><div><p>50 Years ago this happened.</p></div></div></div></div>
 <div><div><div><div><div><div><div><div>

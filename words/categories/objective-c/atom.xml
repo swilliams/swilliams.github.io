@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Objective-c | Scott Williams]]></title>
-  <link href="http://swilliams.github.io/words/categories/objective-c/atom.xml" rel="self"/>
-  <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:42:59-07:00</updated>
-  <id>http://swilliams.github.io/</id>
+  <link href="http://blog.swilliams.me/words/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-03-05T12:14:46-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7]]></title>
-    <link href="http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
+    <link href="http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
     <updated>2013-09-19T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
+    <id>http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
     <content type="html"><![CDATA[<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
 
 <p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
@@ -85,14 +85,14 @@ _commands = [[NSMutableArray alloc] initWithArray:@[commandF]];
   
   <entry>
     <title type="html"><![CDATA[Customizing the Link Color in a UITextView]]></title>
-    <link href="http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
+    <link href="http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
     <updated>2013-08-07T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
+    <id>http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
     <content type="html"><![CDATA[<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&rsquo;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into this situation:</p>
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="eww" src="http://swilliams.github.io/images/assets/badpopover.png"&gt;
+<pre><code>&lt;img alt="eww" src="http://blog.swilliams.me/images/assets/badpopover.png"&gt;
 &lt;figcaption&gt;Ewwwwww&lt;/figcaption&gt;
 </code></pre>
 
@@ -176,7 +176,7 @@ return YES;
 
 <p><figure></p>
 
-<pre><code>&lt;img alt="Yay!" src="http://swilliams.github.io/images/assets/goodpopover.png"&gt;
+<pre><code>&lt;img alt="Yay!" src="http://blog.swilliams.me/images/assets/goodpopover.png"&gt;
 &lt;figcaption&gt;Yay!&lt;/figcaption&gt;
 </code></pre>
 
