@@ -292,11 +292,21 @@ figure {
     margin-top: 10px;
 }
 
+figure.small {
+    width: 380px;
+    display: inline-block;
+}
+
+h3 + figure {
+    margin-top: 30px;
+}
+
 figcaption {
     display: block;
     font-family: $sans;
     font-size: 0.6em;
     text-align: right;
+    line-height: 1.0em;
 }
 
 a {

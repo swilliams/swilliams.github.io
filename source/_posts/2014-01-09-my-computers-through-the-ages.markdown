@@ -48,6 +48,7 @@ Since this was the first computer I could actually call my own, I felt obligated
 
 After this, I built my own PCs for the next few years. I'll cover those some other time.
 
-<hr class="footnotes">
+<div class="footnotes">
  1. Hello, Mom!
  2. Remember buying computers at Best Buy?
+</div>
