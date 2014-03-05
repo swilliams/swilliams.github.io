@@ -134,7 +134,7 @@
 
 <p>And so on. At first glance, the code that allows this can be intimidating, especially when it&rsquo;s been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
 
-<h2>Class Methods</h2>
+<h3>Class Methods</h3>
 
 <p>Did you know that you can execute code right from within a class declaration? Well, you can. Try it!</p>
 
@@ -168,7 +168,7 @@
 
 <p>And you&rsquo;ll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you&rsquo;re doing is calling another method.</p>
 
-<h2>Put it into a Module</h2>
+<h3>Put it into a Module</h3>
 
 <p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There&rsquo;s a catch though before you dive in. Traditionally, you&rsquo;d include a module like this:</p>
 
