@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://swilliams.github.io/words/categories/code/atom.xml" rel="self"/>
   <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T10:26:48-07:00</updated>
+  <updated>2014-03-05T10:42:59-07:00</updated>
   <id>http://swilliams.github.io/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -416,30 +416,169 @@ end</p>
     <link href="http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
     <updated>2013-09-19T00:00:00-07:00</updated>
     <id>http://swilliams.github.io/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
-    <content type="html"><![CDATA[<div><div><div>
-<div><div>
-<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there's now a public API to do this.</p>
+    <content type="html"><![CDATA[<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
 
-<p>First, let's talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you'll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
-</div></div>
-<div><div><pre class="source-code">// STWApplication.h<br>@interface STWApplication : UIApplication {<br>  NSMutableArray *_commands;<br>}<br><br>// STWApplication.m<br>@implementation STWApplication<br>// more coming soon<br>@end</pre></div></div>
-<div><div><p>Since we're subclassing <code>UIApplication</code>, edit <code>main.m</code> to tell it that we're doing so in <code>UIApplicationMain</code>:</p></div></div>
-<div><div><pre class="source-code">int main(int argc, char *argv[]) {<br>  @autoreleasepool {<br>    NSString *appName = @"STWApplication";<br>    return UIApplicationMain(argc, argv, appName, NSStringFromClass([STWAppDelegate class]));<br>  }<br>}</pre></div></div>
-<div><div><p>Ok, now let's tell the app what key combinations are valid. iOS 7 adds a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/instp/UIResponder/keyCommands"><code>keyCommands</code></a> property to UIResponder. All we need to do is override that and returning an array of <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/occ/cl/UIKeyCommand"><code>UIKeyCommands</code></a>. Since we're using a <code>UIApplication</code> subclass, add this in there:</p></div></div>
-<div><div><pre class="source-code">- (NSArray *)keyCommands {<br>  if (!_commands) {<br>    UIKeyCommand *commandF = [UIKeyCommand keyCommandWithInput:@"f"<br>                   modifierFlags:UIKeyModifierCommand<br>                          action:@selector(handleShortcut:)];<br>    _commands = [[NSMutableArray alloc] initWithArray:@[commandF]];<br>  }<br>  return _commands;<br>}<br></pre></div></div>
-<div><div><p>Every time a keyboard event is raised, if it matches <kbd>⌘F</kbd>, the selector <code>handleShortcut</code> will be called on the responder chain. That means you can define that method multiple times and only the most specific will be called. For example, if you defined it in <code>STWApplication</code> and in the View Controller, the <code>STWApplication</code> version will <em>never</em> be called. Speaking of <code>handleShortcut</code>, here it is:</p></div></div>
-<div><div><pre class="source-code">- (void)handleShortcut:(UIKeyCommand *)keyCommand {<br>  NSLog(@"You pressed ⌘F! Good Job!");<br>}</pre></div></div>
-<div><div>
-<p><code>UIKeyCommand</code> is pretty neat. The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/doc/c_ref/UIKeyModifierFlags"><code>modifierFlags</code></a> means that the app can watch for Caps Lock, Shift, Control, Alt/Option, Command, and the Number Pad. Additionally, there are some constants that  can be used for special keys like the arrows and Escape. The <a href="">developer forums</a> also had some people getting access to Tab and Return by looking for <code>\t</code> and <code>\r</code>, but I don't know how well those work.</p>
+<p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
 
-<p>Also, make sure you aren't trying to override system shortcuts. Per the docs: "Key commands that map to known system events (such as cut, copy and paste) are automatically routed to the appropriate responder methods." So don't do that.</p>
+<p>```objc
+// STWApplication.h
+@interface STWApplication : UIApplication {
+  NSMutableArray *_commands;
+}</p>
 
-<p>Now, remember how I said "every time a keyboard event is raised"? These events will only happen when a text input is the first responder. This means that if you want to have some fancy global shortcuts (say ⌘F to jump to a search box) you'll still need to do a trick with <code>UITextField</code> (or similar). That's a little beyond the scope of this article, but the gist is add a UITextField to a view, hide it, and make sure it stays first responder when appropriate in order to keep firing off those events.</p>
+<p>// STWApplication.m
+@implementation STWApplication
+// more coming soon
+@end
+```</p>
 
-<p>I for one am psyched that this is now available. It's definitely more of a power user feature, but those of us who like to use Bluetooth keyboards with our iPads will derive tremendous benefit from it.</p>
-</div></div>
-</div></div></div>
+<p>Since we&rsquo;re subclassing <code>UIApplication</code>, edit <code>main.m</code> to tell it that we&rsquo;re doing so in <code>UIApplicationMain</code>:</p>
 
+<p>```objc
+int main(int argc, char *argv[]) {
+  @autoreleasepool {</p>
+
+<pre><code>NSString *appName = @"STWApplication";
+return UIApplicationMain(argc, argv, appName, NSStringFromClass([STWAppDelegate class]));
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>Ok, now let&rsquo;s tell the app what key combinations are valid. iOS 7 adds a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/instp/UIResponder/keyCommands"><code>keyCommands</code></a> property to UIResponder. All we need to do is override that and returning an array of <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/occ/cl/UIKeyCommand"><code>UIKeyCommands</code></a>. Since we&rsquo;re using a <code>UIApplication</code> subclass, add this in there:</p>
+
+<p>```objc
+&ndash; (NSArray *)keyCommands {
+  if (!_commands) {</p>
+
+<pre><code>UIKeyCommand *commandF = [UIKeyCommand keyCommandWithInput:@"f"
+               modifierFlags:UIKeyModifierCommand
+                      action:@selector(handleShortcut:)];
+_commands = [[NSMutableArray alloc] initWithArray:@[commandF]];
+</code></pre>
+
+<p>  }
+  return _commands;
+}
+```</p>
+
+<p>Every time a keyboard event is raised, if it matches <kbd>⌘F</kbd>, the selector <code>handleShortcut</code> will be called on the responder chain. That means you can define that method multiple times and only the most specific will be called. For example, if you defined it in <code>STWApplication</code> and in the View Controller, the <code>STWApplication</code> version will <em>never</em> be called. Speaking of <code>handleShortcut</code>, here it is:</p>
+
+<p><code>objc
+- (void)handleShortcut:(UIKeyCommand *)keyCommand {
+  NSLog(@"You pressed ⌘F! Good Job!");
+}
+</code></p>
+
+<p><code>UIKeyCommand</code> is pretty neat. The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/doc/c_ref/UIKeyModifierFlags"><code>modifierFlags</code></a> means that the app can watch for Caps Lock, Shift, Control, Alt/Option, Command, and the Number Pad. Additionally, there are some constants that  can be used for special keys like the arrows and Escape. The <a href="">developer forums</a> also had some people getting access to Tab and Return by looking for <code>\t</code> and <code>\r</code>, but I don&rsquo;t know how well those work.</p>
+
+<p>Also, make sure you aren&rsquo;t trying to override system shortcuts. Per the docs: &ldquo;Key commands that map to known system events (such as cut, copy and paste) are automatically routed to the appropriate responder methods.&rdquo; So don&rsquo;t do that.</p>
+
+<p>Now, remember how I said &ldquo;every time a keyboard event is raised&rdquo;? These events will only happen when a text input is the first responder. This means that if you want to have some fancy global shortcuts (say ⌘F to jump to a search box) you&rsquo;ll still need to do a trick with <code>UITextField</code> (or similar). That&rsquo;s a little beyond the scope of this article, but the gist is add a UITextField to a view, hide it, and make sure it stays first responder when appropriate in order to keep firing off those events.</p>
+
+<p>I for one am psyched that this is now available. It&rsquo;s definitely more of a power user feature, but those of us who like to use Bluetooth keyboards with our iPads will derive tremendous benefit from it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Customizing the Link Color in a UITextView]]></title>
+    <link href="http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
+    <updated>2013-08-07T00:00:00-07:00</updated>
+    <id>http://swilliams.github.io/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
+    <content type="html"><![CDATA[<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&rsquo;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into this situation:</p>
+
+<p><figure></p>
+
+<pre><code>&lt;img alt="eww" src="http://swilliams.github.io/images/assets/badpopover.png"&gt;
+&lt;figcaption&gt;Ewwwwww&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>That contrast between the background and foreground colors makes it pretty hard to read. A quick poke through the docs and on <a href="http://stackoverflow.com/questions/1350423/can-i-change-the-color-of-auto-detected-links-on-uitextview">StackOverflow</a> reveals that there isn&rsquo;t any way to change the color of the link, without resorting to <a href="http://stackoverflow.com/a/17294355/736">private API&rsquo;s</a>.</p>
+
+<p>Sooo, the best course of action is to just knuckle down and use a UIWebView to display what you want.</p>
+
+<p>To try to keep things relatively sane, I first added a static <code>html</code> file to my project with this content:</p>
+
+<p>```html
+<html>
+  <head></p>
+
+<pre><code> &lt;title&gt;&lt;/title&gt;
+</code></pre>
+
+<p>  <style></p>
+
+<pre><code> html, body, div {
+     background: #3D3D3D;
+     font-family: HelveticaNeue-Medium, Helvetica;
+     font-size: 12pt;
+     color: #FAFAF1;
+ }
+
+ a {
+     color: #FAFAF1;
+ }
+</code></pre>
+
+<p>  </style>
+  </head>
+  <body></p>
+
+<pre><code>  REPLACEME
+</code></pre>
+
+<p>  </body>
+</html>
+```</p>
+
+<p>The CSS code is inlined in the file. There&rsquo;s probably a way to keep it separate and inject it, but I didn&rsquo;t need anything fancier than this.</p>
+
+<p>Loading it was pretty straightforward:</p>
+
+<p><code>objc
++ (NSString *)htmlTemplate {
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"html-template" ofType:@"html"];
+  return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+}
+</code></p>
+
+<p>Then on my controller I called this method from <code>viewDidLoad</code>:</p>
+
+<p><code>objc
+- (void)setContentText:(NSString *)contentText {
+  NSString *template = [SNDThemeManager attributionTemplate];
+  NSString *htmlText = [template stringByReplacingOccurrencesOfString:@"REPLACEME" withString:contentText];
+  [contentView loadHTMLString:htmlText baseURL:nil];
+}
+</code></p>
+
+<p><code>contentView</code> is the <code>UIWebView</code>. Almost done. If you tap on a link in the webview it&rsquo;ll open that link in itself, which might not be what you want. The way around it is to set your controller to be a <code>UIWebViewDelegate</code> and implement <a href="http://stackoverflow.com/a/2899793/736">this method</a>:</p>
+
+<p>```objc
+&ndash; (BOOL)webView:(UIWebView <em>)webView shouldStartLoadWithRequest:(NSURLRequest </em>)request navigationType:(UIWebViewNavigationType)navigationType {</p>
+
+<pre><code>if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+    [[UIApplication sharedApplication] openURL:[request URL]];
+    return NO;
+}
+return YES;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>That&rsquo;ll open it in Safari. If you want other browsers, well, knock yourself out. This is pretty much a giant mess for something that should be easy, but it&rsquo;s just something that would have to be done if you want total control over the UI. The end result looks well enough:</p>
+
+<p><figure></p>
+
+<pre><code>&lt;img alt="Yay!" src="http://swilliams.github.io/images/assets/goodpopover.png"&gt;
+&lt;figcaption&gt;Yay!&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
 ]]></content>
   </entry>
   
