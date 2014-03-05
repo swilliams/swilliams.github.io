@@ -18,7 +18,7 @@ email_md5: c314e8a5296aeb512e30f0a11e357f7b
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /feed.xml
+subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
