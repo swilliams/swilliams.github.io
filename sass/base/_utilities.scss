@@ -10,8 +10,6 @@
 	user-select: $select;
 }
 @mixin border-shadow($top: $color-gray05, $bottom: $color-gray04){
-	border-top: 1px solid $top;
-	border-bottom: 1px solid $bottom;
 }
 @mixin center($width, $height){
 	position: absolute;

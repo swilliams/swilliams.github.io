@@ -26,7 +26,7 @@ I like [Ruby](https://www.ruby-lang.org/en/). It has a way of appearing clean an
     
 And so on. At first glance, the code that allows this can be intimidating, especially when it's been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.
 
-##Class Methods
+###Class Methods
 Did you know that you can execute code right from within a class declaration? Well, you can. Try it!
 
 ``` ruby
@@ -49,7 +49,7 @@ end
 
 And you'll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you [setup validation](https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140), all you're doing is calling another method.
 
-##Put it into a Module
+###Put it into a Module
 Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses [Modules](http://www.tutorialspoint.com/ruby/ruby_modules.htm) to accomplish this, so you can pull your methods into a separate file to include them at will. There's a catch though before you dive in. Traditionally, you'd include a module like this:
 
 ``` ruby

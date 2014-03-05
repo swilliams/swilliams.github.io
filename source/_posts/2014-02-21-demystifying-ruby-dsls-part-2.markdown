@@ -15,7 +15,7 @@ What helped me ultimately understand how these things work is that you are build
     <figcaption><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</figcaption>
 </figure>
 			
-###Dynamically Adding
+### Dynamically Adding
 What if those Legos could generate even more Legos as you were building with them, and then intelligently join themselves together?
 
 If you're familiar with Rails, you've seen that you can just declare associations within a model — `:has_many`, `:has_one`, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let's implement a rudimentary version.
@@ -24,7 +24,7 @@ Think for a moment about `:has_many`. What would you expect the line `has_many :
 
 One way to do this is with `eval`.
 
-## A Word on Eval
+### A Word on Eval
 
 Ruby has a few versions of `eval`. They all take strings or blocks and turn them in code that is executed.
 

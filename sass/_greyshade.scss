@@ -130,7 +130,8 @@ body {
                     .tags {
                         margin-top: 20px;
                         padding-top: 10px;
-                        border-top: 1px solid #ddd;
+                        font-family: 'Helvetica', arial, sans-serif;
+                        color: #aaa;
                     }
 					.title {
 						margin-left: 0px;
@@ -168,7 +169,6 @@ body {
 						}
 						h2 {
 							font-size: 1.2em;
-							color: #333;
 							margin-top: 30px;
 							margin-bottom: -20px;
 							font-weight: bold;
@@ -177,6 +177,14 @@ body {
 						h2::before {
 							border-bottom: none;
 						}
+                        h3 {
+                            margin-top: 25px;
+                            margin-bottom: -20px;
+                            padding: 0;
+                        }
+                        sup {
+                            font-size: 0.5em;
+                        }
 						blockquote {
 							border-left: 5px solid $greyshade;
 							background: #F7F7F7;
@@ -190,6 +198,14 @@ body {
 								text-align: left;
 							}
 						}
+                        .footnotes {
+                            margin-top: 30px;
+                            border-top: 1px solid #ddd;
+                            padding-top: 20px;
+                            font-size: 0.7em;
+                            font-family: 'Helvetica', arial, sans-serif;
+                            color: #888;
+                        }
 					}
 					.meta {
 						position: relative;
@@ -290,6 +306,7 @@ a {
 a:hover {
 	color: $greyshade;
 }
+
 
 body {
 	@media screen and (max-width: 1040px){
