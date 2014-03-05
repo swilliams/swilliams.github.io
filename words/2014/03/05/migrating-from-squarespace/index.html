@@ -1,0 +1,226 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Migrating from Squarespace - Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Migrating From Squarespace Mar 5th, 2014 Squarespace is a popular service to host a website or blog. You might have seen their Super Bowl commercial &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p><a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Get the app that I made!</a> It's called <a href="http://zartbonk.com">Zartbonk</a>.</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Migrating From Squarespace</h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-05T09:23:18-07:00" data-updated="true" itemprop="datePublished">Mar 5<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>Squarespace is a popular service to host a website or blog. You might have seen their <a href="http://www.youtube.com/watch?v=S0Or1f_RxKQ">Super Bowl commercial</a> or heard about them on one of the hundred podcasts they sponsor. I signed up about a year and a half ago and used it as my main blog. I&rsquo;ve decided to move away and use <a href="http://octopress.org">Octopress</a> to host my blog on <a href="http://octopress.org/">GitHub Pages</a> instead.</p>
+
+<p>Why? Well, for starters, it&rsquo;s slow to use. I think it&rsquo;s a byproduct of the way they organized their <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> architecture. I find myself having to wait for things to open in modal windows, or to load another menu.</p>
+
+<p>The layout tools are bad. If all you do is write text and link to stuff, this doesn&rsquo;t matter. Sometimes I like to have <a href="/words/2014/01/26/demystifying-ruby-dsls">in depth coding posts</a> that have multiple blocks of code within them. This is incredibly painful to do with the Squarespace layout tools. Here&rsquo;s the process:</p>
+
+<ol>
+<li>Hover over an existing text block.</li>
+<li>Click the appropriate &ldquo;+&rdquo; button.</li>
+<li>Scroll down to find the &ldquo;CODE&rdquo; button.</li>
+<li>Paste in the code (after making sure the indentation is correct)</li>
+<li>Go to step 1 and this time, select Markdown.</li>
+<li>Rinse and repeat for <em>every</em> block and image you want.</li>
+</ol>
+
+
+<p>What you see is <em>definitely not</em> what you get. Sizing images to align to the left or right of a paragraph is awful. For some reason, the editing font on the admin page is different than the one on the actual site. This means that even if everything lines up on the admin page, it might not on the live site. Fixing this is tedious. Again, due to the single-pagedness of the admin site, you can&rsquo;t easiliy open the preview in a new tab or window (&lsquo;Open in new page&rsquo; does nothing). You need to open a brand new browser window, navigate to your admin site, then click on the preview button there.</p>
+
+<p>Saving a post in the editor closes the modal that contains it. This means that the workflow for making any kind of adjustment is:</p>
+
+<ol>
+<li>Do the thing above to get a second window open to look at the preview.</li>
+<li>Click the post in the first window to edit.</li>
+<li>Wait a second.</li>
+<li>Find the typo to fix. This is extra fun if you have multiple blocks of text.</li>
+<li>Fix the typo and hit save. (Modal closes)</li>
+<li>Switch over to the preview in the second window and refresh.</li>
+<li>If it&rsquo;s not right, repeat steps 2-6 until it is.</li>
+</ol>
+
+
+<p>All of this for about $100/year (or more).</p>
+
+<p>Octopress is a static site generator that is aimed at developers. If you don&rsquo;t know <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, <a href="http://git-scm.com/">git</a>, as well as HTML + CSS consider something else. However, since I am familiar with all of those, it works for me.</p>
+
+<p>The problem is exporting my content from Squarespace. The only export option available is one for <a href="http://wordpress.org/">Wordpress</a>, which dumps everything into an XML file. Since I&rsquo;m not using Wordpress, this didn&rsquo;t work for me. My blog has been quite the sojourner, created orginally on Wordpress, then to Posterous (lol), and finally Squarespace. It&rsquo;s accumulated a bit of cruft. For some reason, older posts did not export properly; if they contained an image and text, the text was deleted.</p>
+
+<p>After some fiddling, I put together a <a href="https://github.com/swilliams/squarespace-exporter">script</a> that would walk each post on the blog, download everything and then move onto the next. I did run into some gotchas though:</p>
+
+<ul>
+<li>Some of the older images were named &ldquo;#img.jpg&rdquo;. I ended up <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L151">generating</a> a random string for the filename and removing the hashtag.</li>
+<li><code>&lt;img&gt;</code> tags used a <code>data-src</code> attribute instead of a standard <code>src</code> attribute. <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L181">The fix was to rename the attribute</a>.</li>
+<li>There was a veritable boatload of extra markup and attributes on each post, which made things look weird. I ended up parsing the entire HTML of each post and <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L223">stripping</a> out all the unnecessary stuff.</li>
+</ul>
+
+
+<p>There are still some issues that I&rsquo;ll need to address on a case by case basis, but it&rsquo;s a good 80% solution right now.</p>
+
+<figure>
+    <img src="/images/assets/octopress.png" alt="Octopress" />
+</figure>
+
+
+<p>I like Octopress because it is fast, easy for me to manage, and keeps my content in a simple (and portable) format. I just hope that this will last me for a while. It doesn&rsquo;t do nearly as many things as Squarespace, but most of those I don&rsquo;t need.</p>
+</div>
+    <div class="tags">Tags: 
+
+
+	<a class='category' href='/words/categories/code/'>code</a>
+
+
+</div>
+
+</article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://swilliams.github.io/atom.xml" rel="self"/>
   <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T08:27:16-07:00</updated>
+  <updated>2014-03-05T09:56:37-07:00</updated>
   <id>http://swilliams.github.io/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating from Squarespace]]></title>
+    <link href="http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace/"/>
+    <updated>2014-03-05T09:23:18-07:00</updated>
+    <id>http://swilliams.github.io/words/2014/03/05/migrating-from-squarespace</id>
+    <content type="html"><![CDATA[<p>Squarespace is a popular service to host a website or blog. You might have seen their <a href="http://www.youtube.com/watch?v=S0Or1f_RxKQ">Super Bowl commercial</a> or heard about them on one of the hundred podcasts they sponsor. I signed up about a year and a half ago and used it as my main blog. I&rsquo;ve decided to move away and use <a href="http://octopress.org">Octopress</a> to host my blog on <a href="http://octopress.org/">GitHub Pages</a> instead.</p>
+
+<p>Why? Well, for starters, it&rsquo;s slow to use. I think it&rsquo;s a byproduct of the way they organized their <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> architecture. I find myself having to wait for things to open in modal windows, or to load another menu.</p>
+
+<p>The layout tools are bad. If all you do is write text and link to stuff, this doesn&rsquo;t matter. Sometimes I like to have <a href="http://swilliams.github.io/words/2014/01/26/demystifying-ruby-dsls">in depth coding posts</a> that have multiple blocks of code within them. This is incredibly painful to do with the Squarespace layout tools. Here&rsquo;s the process:</p>
+
+<ol>
+<li>Hover over an existing text block.</li>
+<li>Click the appropriate &ldquo;+&rdquo; button.</li>
+<li>Scroll down to find the &ldquo;CODE&rdquo; button.</li>
+<li>Paste in the code (after making sure the indentation is correct)</li>
+<li>Go to step 1 and this time, select Markdown.</li>
+<li>Rinse and repeat for <em>every</em> block and image you want.</li>
+</ol>
+
+
+<p>What you see is <em>definitely not</em> what you get. Sizing images to align to the left or right of a paragraph is awful. For some reason, the editing font on the admin page is different than the one on the actual site. This means that even if everything lines up on the admin page, it might not on the live site. Fixing this is tedious. Again, due to the single-pagedness of the admin site, you can&rsquo;t easiliy open the preview in a new tab or window (&lsquo;Open in new page&rsquo; does nothing). You need to open a brand new browser window, navigate to your admin site, then click on the preview button there.</p>
+
+<p>Saving a post in the editor closes the modal that contains it. This means that the workflow for making any kind of adjustment is:</p>
+
+<ol>
+<li>Do the thing above to get a second window open to look at the preview.</li>
+<li>Click the post in the first window to edit.</li>
+<li>Wait a second.</li>
+<li>Find the typo to fix. This is extra fun if you have multiple blocks of text.</li>
+<li>Fix the typo and hit save. (Modal closes)</li>
+<li>Switch over to the preview in the second window and refresh.</li>
+<li>If it&rsquo;s not right, repeat steps 2-6 until it is.</li>
+</ol>
+
+
+<p>All of this for about $100/year (or more).</p>
+
+<p>Octopress is a static site generator that is aimed at developers. If you don&rsquo;t know <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, <a href="http://git-scm.com/">git</a>, as well as HTML + CSS consider something else. However, since I am familiar with all of those, it works for me.</p>
+
+<p>The problem is exporting my content from Squarespace. The only export option available is one for <a href="http://wordpress.org/">Wordpress</a>, which dumps everything into an XML file. Since I&rsquo;m not using Wordpress, this didn&rsquo;t work for me. My blog has been quite the sojourner, created orginally on Wordpress, then to Posterous (lol), and finally Squarespace. It&rsquo;s accumulated a bit of cruft. For some reason, older posts did not export properly; if they contained an image and text, the text was deleted.</p>
+
+<p>After some fiddling, I put together a <a href="https://github.com/swilliams/squarespace-exporter">script</a> that would walk each post on the blog, download everything and then move onto the next. I did run into some gotchas though:</p>
+
+<ul>
+<li>Some of the older images were named &ldquo;#img.jpg&rdquo;. I ended up <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L151">generating</a> a random string for the filename and removing the hashtag.</li>
+<li><code>&lt;img&gt;</code> tags used a <code>data-src</code> attribute instead of a standard <code>src</code> attribute. <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L181">The fix was to rename the attribute</a>.</li>
+<li>There was a veritable boatload of extra markup and attributes on each post, which made things look weird. I ended up parsing the entire HTML of each post and <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L223">stripping</a> out all the unnecessary stuff.</li>
+</ul>
+
+
+<p>There are still some issues that I&rsquo;ll need to address on a case by case basis, but it&rsquo;s a good 80% solution right now.</p>
+
+<figure>
+    <img src="http://swilliams.github.io/images/assets/octopress.png" alt="Octopress" />
+</figure>
+
+
+<p>I like Octopress because it is fast, easy for me to manage, and keeps my content in a simple (and portable) format. I just hope that this will last me for a while. It doesn&rsquo;t do nearly as many things as Squarespace, but most of those I don&rsquo;t need.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
@@ -1361,26 +1423,6 @@ Footnotes:</small></p>
 </div></div></div></div></div></div></div></div>
 <div><div><div><div><p>Non-violence is one of the things I admire the most about Martin Luther King, Jr. It&#8217;s crazy when you think about it. It goes against human nature. The first thing that pops into my mind when I am wronged is vengeance or &#8220;getting back&#8221;. Now, imagine having hundreds of years of oppression against you and people who look like you. I&#8217;d be seething with anger. And yet, here&#8217;s this man saying &#8220;Let us not seek to satisfy our thirst for freedom by drinking from the cup of bitterness and hatred.&#8221; Just amazing.</p></div></div></div></div>
 </div>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[High Quality Parenting]]></title>
-    <link href="http://swilliams.github.io/words/2013/08/27/high-quality-parenting/"/>
-    <updated>2013-08-27T00:00:00-07:00</updated>
-    <id>http://swilliams.github.io/words/2013/08/27/high-quality-parenting</id>
-    <content type="html"><![CDATA[<div><div><div><div><div>
-<p>My oldest has been naming her stuffed animals and finally came to her stick horse. She&#8217;s been partial to &#8220;Alley&#8221; and named a bunch of other ones that. This time around I think she wanted to change it up a bit. I&#8217;m guessing she heard the name &#8220;Malik&#8221; and combined those into &#8220;Alik&#8221;. At least I think that&#8217;s how it goes. </p>
-
-<p>So, like any good parent I asked her a few questions about the newly christened Alik. </p>
-
-<p>&#8220;Where did you take Alik this morning?&#8221;</p>
-
-<p>&#8220;Did you take Alik somewhere with your friends?&#8221;</p>
-
-<p>&#8220;Where are you going to take Alik tomorrow?&#8221;</p>
-
-<p>And so on. </p>
-</div></div></div></div></div>]]></content>
   </entry>
   
 </feed>
