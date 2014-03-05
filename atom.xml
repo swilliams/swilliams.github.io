@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://swilliams.github.io/atom.xml" rel="self"/>
   <link href="http://swilliams.github.io/"/>
-  <updated>2014-03-05T09:56:37-07:00</updated>
+  <updated>2014-03-05T10:26:48-07:00</updated>
   <id>http://swilliams.github.io/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -651,13 +651,10 @@
 
 <p>After this, I built my own PCs for the next few years. I&rsquo;ll cover those some other time.</p>
 
-<hr class="footnotes">
-
-
-<ol>
-<li>Hello, Mom!</li>
-<li>Remember buying computers at Best Buy?</li>
-</ol>
+<div class="footnotes">
+ 1. Hello, Mom!
+ 2. Remember buying computers at Best Buy?
+</div>
 
 ]]></content>
   </entry>
@@ -705,34 +702,18 @@
     <link href="http://swilliams.github.io/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup/"/>
     <updated>2013-12-26T00:00:00-07:00</updated>
     <id>http://swilliams.github.io/words/2013/12/26/whither-shootsy-or-how-i-tried-and-failed-a-startup</id>
-    <content type="html"><![CDATA[<div>
-<div>
-<div><div><div>
-<p>Did you know that at one point I had aspirations of being an entrepreneur? For the better part of 2010 and 2011 I spent every free moment I had trying to get a startup on its feet<sup>1</sup>. It was aimed at photographers to help them manage their businesses. We called it Shootsy.</p>
+    <content type="html"><![CDATA[<p>Did you know that at one point I had aspirations of being an entrepreneur? For the better part of 2010 and 2011 I spent every free moment I had trying to get a startup on its feet<sup>1</sup>. It was aimed at photographers to help them manage their businesses. We called it Shootsy.</p>
 
-<p>You might have noticed that everything in that paragraph is in the past tense, and that&#8217;s for good reason. Shootsy is for all intents and purposes, dead. Here&#8217;s a little bit of the history behind what happened.</p>
-</div></div></div>
-<div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="shootsy-broke.png" src="http://swilliams.github.io/images/assets/shootsy-broke.png">
-</div>
-			
+<p>You might have noticed that everything in that paragraph is in the past tense, and that&rsquo;s for good reason. Shootsy is for all intents and purposes, dead. Here&rsquo;s a little bit of the history behind what happened.</p>
 
-			
+<figure>
+    <img alt="shootsy-broke.png" src="http://swilliams.github.io/images/assets/shootsy-broke.png">
+</figure>
 
-		</div>
-	
-	</div>
-</div></div></div>
-</div>
-<div><div><div><div>
-<p>It&#8217;s a story that&#8217;s been told over and over: we simply ran out of time. My co-founder <a href="https://twitter.com/carterdea">Carter</a> (who is now a talented, in-demand freelance designer that you should hire) moved 400 miles away to Los Angeles in the pursuit of a woman who would become his wife. As soon as he found work out there, he promptly got overloaded. My day job picked up and I got overloaded with work too. At the time I had a bad feeling about this, but plowed forward anyway.</p>
 
-<p>The math just didn&#8217;t work in our favor. If you have a 40 hour a week job, you can realistically<sup>2</sup> expect to have anywhere between 10-20 extra hours for a side project. If you have a family, expect that to get smaller.</p>
+<p>It&rsquo;s a story that&rsquo;s been told over and over: we simply ran out of time. My co-founder <a href="https://twitter.com/carterdea">Carter</a> (who is now a talented, in-demand freelance designer that you should hire) moved 400 miles away to Los Angeles in the pursuit of a woman who would become his wife. As soon as he found work out there, he promptly got overloaded. My day job picked up and I got overloaded with work too. At the time I had a bad feeling about this, but plowed forward anyway.</p>
+
+<p>The math just didn&rsquo;t work in our favor. If you have a 40 hour a week job, you can realistically<sup>2</sup> expect to have anywhere between 10-20 extra hours for a side project. If you have a family, expect that to get smaller.</p>
 
 <p>Both of our jobs started to demand 50+ hours a week for an extended period of time, and more often than not, I simply had no time, or was just too tired to work on Shootsy. So it sat there. And sat there. And then it sat there some more. Finally after not writing any code for nearly a year, we agreed to make official what we both had known in our heads: it was done.</p>
 
@@ -740,151 +721,58 @@
 
 <p>The part that really stings though? How close we were. We had a few people beta testing it. We had some advisors that were going to connect us with some important people once we had shipped. I felt that the competition was weak enough to carve out a niche for ourselves<sup>3</sup>. Some important photographers were interested in trying it out.</p>
 
-<p>Despite the whole thing, I don&#8217;t regret trying. I learned some important things about myself in process. I don&#8217;t know if I&#8217;m cut out to run an entire business. I&#8217;m a pretty good second banana, but I can&#8217;t say with 100% certainty that it&#8217;s a good idea to have the buck stop with me. That&#8217;s a hard pill to swallow, and maybe it will change after a few more years, but it&#8217;s a reality I have to accept.</p>
+<p>Despite the whole thing, I don&rsquo;t regret trying. I learned some important things about myself in process. I don&rsquo;t know if I&rsquo;m cut out to run an entire business. I&rsquo;m a pretty good second banana, but I can&rsquo;t say with 100% certainty that it&rsquo;s a good idea to have the buck stop with me. That&rsquo;s a hard pill to swallow, and maybe it will change after a few more years, but it&rsquo;s a reality I have to accept.</p>
 
-<p>I don&#8217;t know if I&#8217;ll attempt a startup again. <a href="http://swilliams.github.io/words/2013/12/16/i-made-an-app">An app</a> is easier. But an app is not a business. An app can be just for fun, which is kind of what <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a> is.</p>
+<p>I don&rsquo;t know if I&rsquo;ll attempt a startup again. <a href="http://swilliams.github.io/words/2013/12/16/i-made-an-app">An app</a> is easier. But an app is not a business. An app can be just for fun, which is kind of what <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a> is.</p>
 
-<p><a href="https://twitter.com/danbenjamin">Dan Benjamin</a> once said that you can&#8217;t create a business as a side project. At the time, I thought I would be able to prove him wrong. Now though, he&#8217;s absolutely right. I plan to make more apps in the future, but I don&#8217;t think any of them will become my day job any time soon.</p>
-</div></div></div></div>
-<div><div><div><div>
-<div>
-  <div>
-    
-      
+<p><a href="https://twitter.com/danbenjamin">Dan Benjamin</a> once said that you can&rsquo;t create a business as a side project. At the time, I thought I would be able to prove him wrong. Now though, he&rsquo;s absolutely right. I plan to make more apps in the future, but I don&rsquo;t think any of them will become my day job any time soon.</p>
 
-        
+<h3>Screenshots</h3>
 
-        
+<figure class="small">
+    <a data-title="A Shoot" data-description="" href="http://swilliams.github.io/images/assets/01b-shoots-details.png" class="image-slide-anchor content-fit">
+        <img alt="A Shoot" src="http://swilliams.github.io/images/assets/01b-shoots-details.png"></a>
+    <figcaption>A Shoot</figcaption>
+</figure>
 
-        
-          
-            <div>
-              <div>
-                <a data-title="A Shoot" data-description="" href="http://swilliams.github.io/images/assets/01b-shoots-details.png" class="image-slide-anchor content-fit">
-                  <img alt="A Shoot" src="http://swilliams.github.io/images/assets/01b-shoots-details.png"></a>
-                <div>A Shoot</div>
-              </div>
-            </div>
-          
 
-          
-        
+<figure class="small">
+    <a data-title="Packages and Payments" data-description="" href="http://swilliams.github.io/images/assets/01e-shoots-money.png" class="image-slide-anchor content-fit">
+        <img alt="Packages and Payments" src="http://swilliams.github.io/images/assets/01e-shoots-money.png"></a>
+    <figcaption>Packages and Payments</figcaption>
+</figure>
 
-      
 
-        
+<figure class="small">
+    <a data-title="Contacts" data-description="" href="http://swilliams.github.io/images/assets/02c-contacts-search.png" class="image-slide-anchor content-fit">
+        <img alt="Contacts" src="http://swilliams.github.io/images/assets/02c-contacts-search.png"></a>
+    <figcaption>Contacts</figcaption>
+</figure>
 
-        
 
-        
-          
-            <div>
-              <div>
-                <a data-title="Packages and Payments" data-description="" href="http://swilliams.github.io/images/assets/01e-shoots-money.png" class="image-slide-anchor content-fit">
-                  <img alt="Packages and Payments" src="http://swilliams.github.io/images/assets/01e-shoots-money.png"></a>
-                <div>Packages and Payments</div>
-              </div>
-            </div>
-          
+<figure class="small">
+    <a data-title="Locations" data-description="" href="http://swilliams.github.io/images/assets/04b-locations-map-view.png" class="image-slide-anchor content-fit">
+        <img alt="Locations" src="http://swilliams.github.io/images/assets/04b-locations-map-view.png"></a>
+    <figcaption>Locations</figcaption>
+</figure>
 
-          
-        
 
-      
+<figure class="small">
+    <a data-title="A Specific Location" data-description="" href="http://swilliams.github.io/images/assets/04c-locations-view.png" class="image-slide-anchor content-fit">
+        <img alt="A Specific Location" src="http://swilliams.github.io/images/assets/04c-locations-view.png"></a>
+    <figcaption>A Specific Location</figcaption>
+</figure>
 
-        
 
-        
+<p>These are some comps that Carter made. They aren&rsquo;t actual screenshots, but the actual app was pretty darn close. If I could, I&rsquo;d play some <a href="https://www.youtube.com/watch?v=nSz16ngdsG0">Sarah McLachlan</a> over it.</p>
 
-        
-          
-            <div>
-              <div>
-                <a data-title="Contacts" data-description="" href="http://swilliams.github.io/images/assets/02c-contacts-search.png" class="image-slide-anchor content-fit">
-                  <img alt="Contacts" src="http://swilliams.github.io/images/assets/02c-contacts-search.png"></a>
-                <div>Contacts</div>
-              </div>
-            </div>
-          
-
-          
-        
-
-      
-
-        
-
-        
-
-        
-          
-            <div>
-              <div>
-                <a data-title="Locations" data-description="" href="http://swilliams.github.io/images/assets/04b-locations-map-view.png" class="image-slide-anchor content-fit">
-                  <img alt="Locations" src="http://swilliams.github.io/images/assets/04b-locations-map-view.png"></a>
-                <div>Locations</div>
-              </div>
-            </div>
-          
-
-          
-        
-
-      
-
-        
-
-        
-
-        
-          
-            <div>
-              <div>
-                <a data-title="A Specific Location" data-description="" href="http://swilliams.github.io/images/assets/04c-locations-view.png" class="image-slide-anchor content-fit">
-                  <img alt="A Specific Location" src="http://swilliams.github.io/images/assets/04c-locations-view.png"></a>
-                <div>A Specific Location</div>
-              </div>
-            </div>
-          
-
-          
-        
-
-      
-    
-  </div>
-
-  
-
+<div class="footnotes">
+1. I even took a 5 week leave of absence (some unpaid) from my day job to focus exclusively on it.
+2. &#8220;Realistically&#8221; as in a sustainable pace. You simply can&#8217;t pull 80 hour weeks continuously without something giving.
+3. I still do feel that way. You won&#8217;t ever be acquired for 9 figures, but there&#8217;s enough room to sustain a good business.
 </div>
 
-
-  
-
-
-
-<style type="text/css" id="design-grid-css">
-#block-067079b29ba3bdda823d .sqs-gallery-block-grid { margin-right: -20px; }
-#block-067079b29ba3bdda823d .sqs-gallery-block-grid .sqs-gallery-design-grid-slide .margin-wrapper { margin-right: 20px; margin-bottom: 20px; }
-</style>
-</div></div></div></div>
-<div><div><div><div>
-<p>These are some comps that Carter made. They aren&#8217;t actual screenshots, but the actual app was pretty darn close. If I could, I&#8217;d play some <a href="https://www.youtube.com/watch?v=nSz16ngdsG0">Sarah McLachlan</a> over it.</p>
-
-<hr class="footnotes">
-<p><small>
-1. I even took a 5 week leave of absence (some unpaid) from my day job to focus exclusively on it.
-</small></p>
-
-<p><small>
-2. &#8220;Realistically&#8221; as in a sustainable pace. You simply can&#8217;t pull 80 hour weeks continuously without something giving.
-</small></p>
-
-<p><small>
-3. I still do feel that way. You won&#8217;t ever be acquired for 9 figures, but there&#8217;s enough room to sustain a good business.
-</small></p>
-</div></div></div></div>
-</div>]]></content>
+]]></content>
   </entry>
   
   <entry>
@@ -892,9 +780,7 @@
     <link href="http://swilliams.github.io/words/2013/12/22/putting-the-minimum-in-minimum-viable-product/"/>
     <updated>2013-12-22T00:00:00-07:00</updated>
     <id>http://swilliams.github.io/words/2013/12/22/putting-the-minimum-in-minimum-viable-product</id>
-    <content type="html"><![CDATA[<div>
-<div><div><div><div>
-<p>There&#8217;s a common phrase in product development called <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">&#8220;Minimum Viable Product&#8221;</a>. It means that the first release of your software product should only do the bare minimum needed to survive. This keeps things simple, and prevents scope creep from sneaking in (I mean you could have your app <em>also</em> <a href="http://www.catb.org/jargon/html/Z/Zawinskis-Law.html">read email</a>, but why?). </p>
+    <content type="html"><![CDATA[<p>There&rsquo;s a common phrase in product development called <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">&ldquo;Minimum Viable Product&rdquo;</a>. It means that the first release of your software product should only do the bare minimum needed to survive. This keeps things simple, and prevents scope creep from sneaking in (I mean you could have your app <em>also</em> <a href="http://www.catb.org/jargon/html/Z/Zawinskis-Law.html">read email</a>, but why?).</p>
 
 <p>For <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a>, this meant that the user had to be able to:</p>
 
@@ -903,55 +789,38 @@
 <li>Search sounds</li>
 <li>Add more sounds (through various means)</li>
 </ul>
+
+
 <p>And all of that had to happen quickly, otherwise what was the point?</p>
 
-<p>That&#8217;s a good feature list, but there is absolutely more to an app than just checking off a bunch of boxes. I could implement all of those features using giant rectangles with primary colors and almost no interaction. That would certainly be a Minimum Product, but not necessarily a Viable one. </p>
+<p>That&rsquo;s a good feature list, but there is absolutely more to an app than just checking off a bunch of boxes. I could implement all of those features using giant rectangles with primary colors and almost no interaction. That would certainly be a Minimum Product, but not necessarily a Viable one.</p>
 
-<p>A viable product means that it has enough going for it so that it lives; it doesn&#8217;t just die on the vine. On a mobile device that means it isn&#8217;t just relegated to the dreaded last screen, essentially a junk drawer for unloved apps. Or maybe it&#8217;s just deleted altogether. </p>
+<p>A viable product means that it has enough going for it so that it lives; it doesn&rsquo;t just die on the vine. On a mobile device that means it isn&rsquo;t just relegated to the dreaded last screen, essentially a junk drawer for unloved apps. Or maybe it&rsquo;s just deleted altogether.</p>
 
-<p>I&#8217;m trying to avoid the junk drawer with Zartbonk. There are a few flourishes here and there to make it fun. Sound clips have their waveforms in the background. The progress bar is accurate as it passes across a clip. When a sound plays in the timeline<sup>1</sup> it&#8217;s corresponding one in the grid jiggles. You can repeat a sound bite by tapping and holding a play button. I tried to add fades and pretty animations everywhere I could. </p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="Jiggle" src="http://swilliams.github.io/images/assets/jiggle.gif">
-</div>
-			
+<p>I&rsquo;m trying to avoid the junk drawer with Zartbonk. There are a few flourishes here and there to make it fun. Sound clips have their waveforms in the background. The progress bar is accurate as it passes across a clip. When a sound plays in the timeline<sup>1</sup> it&rsquo;s corresponding one in the grid jiggles. You can repeat a sound bite by tapping and holding a play button. I tried to add fades and pretty animations everywhere I could.</p>
 
-			
-			<div>
-				<div><p>Jiggle</p></div>
-			</div>
-			
+<figure>
+    <img alt="Jiggle" src="http://swilliams.github.io/images/assets/jiggle.gif">
+    <figcaption>Jiggle</figcaption>
+</figure>
 
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
+
 <p>All of these things took time. A <em>lot</em> of time. Remember those three bullet points up there? Implementing those was just 20% of the whole time spent on the app. The fine tuning and iterations of design took weeks and weeks.</p>
 
-<p>And even I&#8217;m not immune to the allure of adding more features in there. The whole purpose of the PRO option is to add more than what might be necessary, and to separate from the competition. Looking back, I might not have actually launched with some of the pro features. The timeline in particular was a very tough nut to crack, and still isn&#8217;t as streamlined as I&#8217;d like it.</p>
+<p>And even I&rsquo;m not immune to the allure of adding more features in there. The whole purpose of the PRO option is to add more than what might be necessary, and to separate from the competition. Looking back, I might not have actually launched with some of the pro features. The timeline in particular was a very tough nut to crack, and still isn&rsquo;t as streamlined as I&rsquo;d like it.</p>
 
-<p>Perhaps the most important thing to remember is when you have a <em>minimum</em>, it&#8217;s time to consider adding to that. Bugs need to be fixed. Interfaces may need to be refactored. The biggest issue with Zartbonk right now is that editing is pretty painful, especially if you want to edit more than a couple of clips. It&#8217;ll probably take a couple of weeks to get something better in, but that&#8217;s what I&#8217;m working on now.</p>
+<p>Perhaps the most important thing to remember is when you have a <em>minimum</em>, it&rsquo;s time to consider adding to that. Bugs need to be fixed. Interfaces may need to be refactored. The biggest issue with Zartbonk right now is that editing is pretty painful, especially if you want to edit more than a couple of clips. It&rsquo;ll probably take a couple of weeks to get something better in, but that&rsquo;s what I&rsquo;m working on now.</p>
 
 <p>I could have delayed even longer on shipping and fixed editing first, but that runs the risk of finding something else that needs to be fixed, which could threaten the entire project.</p>
 
-<p>I&#8217;m happy with how I launched 1.0<sup>2</sup>. It wasn&#8217;t perfect, but I think I was able to strike a decent balance between features and viability.</p>
+<p>I&rsquo;m happy with how I launched 1.0<sup>2</sup>. It wasn&rsquo;t perfect, but I think I was able to strike a decent balance between features and viability.</p>
 
-<hr class="footnotes">
-<p><small>
+<div class="footnotes">
 1. That&#8217;s in Zartbonk PRO. What do you mean you haven&#8217;t upgraded yet?
-</small></p>
-
-<p><small>
 2. Technically I launched on 1.1, which had some critical bug fixes I didn&#8217;t see until after 1.0 launched.
-</small></p>
-</div></div></div></div>
-</div>]]></content>
+</div>
+
+]]></content>
   </entry>
   
   <entry>
