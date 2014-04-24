@@ -206,6 +206,14 @@ body {
                             font-family: 'Helvetica', arial, sans-serif;
                             color: #888;
                         }
+                        .gallery-image {
+                            margin: 20px 20px 0 0;
+                            display: inline-block;
+                        }
+                        .gallery-image-ios-screenshot {
+                            width: 256px;
+                            height: 342px;
+                        }
 					}
 					.meta {
 						position: relative;
