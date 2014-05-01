@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Project-management | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/project-management/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-05-01T12:30:57-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes From Ed Catmull]]></title>
+    <link href="http://blog.swilliams.me/words/2014/05/01/notes-from-ed-catmull/"/>
+    <updated>2014-05-01T12:29:37-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/05/01/notes-from-ed-catmull</id>
+    <content type="html"><![CDATA[<p><a href="http://waltdisneystudios.com/corp/unit/6/bio/53">Ed Catmull</a> knows a thing or two about making Great Things. In 2007 he gave a talk at Stanford about how Pixar does their thing. It&rsquo;s almost an hour long but you should watch it.</p>
+
+<iframe width="420" height="315" src="http://blog.swilliams.me//www.youtube.com/embed/k2h2lvhzMDc" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Some of the things that resonated with me and are just as applicable in other practices:</p>
+
+<p>Present work <em>every day</em>. Even if it is incomplete or sucks. Why? It forces collaboration. If everybody is bumping up against each other, ideas will spread. Problems don&rsquo;t fester either; if someone is struggling on some task for too long it becomes apparent and somebody else can lend a hand if necessary.</p>
+
+<p>Success hides problems. This might be the biggest one. It&rsquo;s easy to dismiss problems during times of feast. Catmull also mentioned that they have an open-door policy for everyone and strive to make it safe for <em>everyone</em> to tell the truth. This is hard to do. Even if the CEO&rsquo;s door is open, rank-and-file employees will simply feel <a href="http://www.inc.com/magazine/20080901/how-hard-could-it-be-how-i-learned-to-love-middle-managers.html?partner=fogcreek">intimidated walking in and stating their mind</a>.</p>
+
+<p>To solve this, Pixar introduced post-morterms; essentially a discussion after the completion of a project to highlight what worked and what didn&rsquo;t. These can be annoying, which means that people will game them, even unintentionally. Pixar found that they had to change up the post-morterms every time in order to get real value from them.</p>
+
+<p>What it boiled down to was that their goal was to create teams of good people that functioned well together. Good people don&rsquo;t tolerate nonsense. If you give a bad idea to a good group, they&rsquo;ll fix it, or throw it away and come up with a better one. A group of mediocre people will take a good idea and screw it up. Therefore, hiring the right people, and then managing them is critical.</p>
+
+<p>Human organziations are inherently unstable and fall over slowly. The fall is slow, but the collapse is quick. The more I experience I get, the more I see people management as a critical role on any project with more than one person. A good project manager constantly takes information from the team and acts on that in order to avoid the fall.</p>
+]]></content>
+  </entry>
+  
+</feed>

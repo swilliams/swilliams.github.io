@@ -9,8 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="WebForms Jul 5th, 2010 From a Hacker News discussion on this topic: 
-ASP.Net controls, postbacks for everything, view state, a general hiding of the &hellip;">
+	<meta name="description" content="The Problem With WebMatrix Jul 6th, 2010 Microsoft released a new [beta] product called WebMatrix. It looks like an interesting idea, but then I &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +88,47 @@ ASP.Net controls, postbacks for everything, view state, a general hiding of the 
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/07/06/the-problem-with-webmatrix/" itemprop="url">The Problem With WebMatrix</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-06T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 6<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<div>
+<p></p>
+<div><div>Microsoft released a new [beta] product called <a href="http://www.microsoft.com/web/webmatrix/">WebMatrix</a>. It looks like an interesting idea, but then I read this <a href="http://www.hanselman.com/blog/MicrosoftWebMatrixInContextAndDeployingYourFirstSite.aspx">tidbit</a>:</div></div>
+<blockquote type="cite">
+<p>Here&#8217;s how you&#8217;d get <a href="http://www.microsoft.com/web/webmatrix/" target="_blank" style="color: rgb(34, 68, 187);">WebMatrix</a>&#8230;</p>
+<p>Go to the WebMatrix site and click <a href="http://www.microsoft.com/web/webmatrix/" target="_blank" style="color: rgb(34, 68, 187);">Download Now</a>. It&#8217;ll install the Web Platform Install (about 2 megs) and then you click Install. The WebMatrix download for me was 8megs, then SQL Compact was 2.5megs, and then some deployment dependencies brought my total download to 29 megs.</p>
+</blockquote>
+</div>
+<div><span>Why can&#8217;t it just be a single install? And why didn&#8217;t they just get a normal url instead of <a href="http://www.microsoft.com/web/webmatrix/?">http://www.microsoft.com/web/webmatrix/?</a> The guy who owns <a href="http://www.webmatrix.com">webmatrix.com</a> hold out for too much money? Based on the current content there, I&#8217;d estimate that he&#8217;d sell for a sandwich. Maybe have to be a foot-long.</span></div>
+<p></p>
+<div><span>Compare to say, <a href="http://panic.com/coda/">Coda</a>.</span></div>
+<p></p>
+<div><span>It&#8217;s a good idea; there aren&#8217;t a whole lot of tools out there that let beginners code in .NET, but I fear that it might be a little too &#8220;Duplo&#8221; for people to want to use. And hopefully Microsoft will do a little more to get it out into the wild than having some devs write about it on Twitter.</span></div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -399,65 +439,6 @@ ASP.Net controls, postbacks for everything, view state, a general hiding of the 
 <p></p>
 <div><blockquote type="cite"><span>&#8220;It is about the ability to sustain, to weather the storms, to shoot poorly and still survive a job, to fight out of inevitable creative slumps, to live with all manner of risk that lots of folks would find uncomfortable, to make uncertainty your friend, and to thrive despite sudden curves and happenstance. I guess what I&#8217;m describing is tenacity. To love doing this so much that you&#8217;ll go through 1000 &#8220;no&#8217;s&#8221; just to hear the one &#8216;yes.&#8217;&#8221;<b> - Joe McNally</b></span></blockquote></div>
 </div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/06/28/quick-tech-tip-rails-and-amazon-ecs-and-missi/" itemprop="url">Quick Tech Tip - Rails and Amazon ECS and &#8216;Missing&#8217; Gems</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt='I was trying to get my rails app to properly search amazon, using the amazon-ecs library, but could never get the local server to start up. Turns out the problem was in my environment.rb file. I had entered: config.gem "amazon-ecs" The error I was getting was a big stack trace that ended with: I was approaching the point of screaming back, "I ALREADY RAN THE INSTALL YOU STUPID MACHINE!" However, it turns out you also need to specify the library too: config.gem "amazon-ecs", :lib =&gt; "amazon/ecs"' src="/images/assets/1277787395000.jpg">
-</div>
-			
-
-			
-			<div>
-				<div>
-<p>I was trying to get my rails app to properly search amazon, using the <a href="http://github.com/jugend/amazon-ecs/">amazon-ecs</a> library, but could never get the local server to start up. Turns out the problem was in my environment.rb file. I had entered:</p>
-<p></p>
-<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div>config.gem &#8220;amazon-ecs&#8221;</div></blockquote>
-<p></p>
-<div>The error I was getting was a big stack trace that ended with:</div>
-<p></p>
-<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div><div></div></div></blockquote>
-<p></p>
-<div>I was approaching the point of screaming back, &#8220;I ALREADY RAN THE INSTALL YOU STUPID MACHINE!&#8221; However, it turns out you also need to specify the library too:</div>
-<p></p>
-<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div><div>config.gem &#8220;amazon-ecs&#8221;, :lib =&gt; &#8220;amazon/ecs&#8221;</div></div></blockquote>
-</div>
-			</div>
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div></div>
-
 		
 		
 	</div>
