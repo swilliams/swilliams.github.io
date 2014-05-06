@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Don&#8217;t Save Full Paths to Resources in Your iOS App Aug 3rd, 2013 Don&#8217;t save full paths to resources in your iOS app1. I&#8217;m working &hellip;">
+	<meta name="description" content="How I Straight-Up Murdered the Cricket in My Bedroom Aug 3rd, 2013 I&#8217;m a bit of a finicky sleeper. I don&#8217;t like tiny lights on when I &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,47 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/08/03/how-i-straight-up-murdered-the-cricket-in-my-bedroom/" itemprop="url">How I Straight-Up Murdered the Cricket in My Bedroom</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-03T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 3<span>rd</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I&#8217;m a bit of a finicky sleeper. I don&#8217;t like tiny lights on when I try to sleep, and I don&#8217;t like sounds either. So, when a cricket managed to work its way into my bedroom, it sounded like a marching band playing <a href="http://youtu.be/a-7XWhyvIpE?t=59s">Sousa</a>.</p>
+
+<p>The first night he started to sing his song at about 11, right when I was falling into a deep sleep. I couldn&#8217;t find him that night, but I think I made enough of a racket to scare him off, or I just fell back asleep quickly enough to be too unconcsious to hear him again. The next night was different.</p>
+
+<p>The problem with crickets is that their sound tends to echo and makes it difficult to determine where they are, especially if you have one ear smothered by a pillow. I couldn&#8217;t tell if he was coming from the bathroom, outside a window, behind the dresser, or somewhere else.</p>
+
+<p>The second night I took the ninja approach. When he started doing his thing, I crept out of bed,  stood up, and listened. Sounded like it was coming from the bathroom. I took two steps towards forward, and he stopped. I stood absolutely still for a few minutes until he started again. <em>Definitely the bathroom</em>, I thought. I took a few more steps and made it to the entry way of the bathroom before he stopped again. My rudimentary echo-location skills told me it was coming from under the sink. I turned on the light and flung open the doors. I ransacked everything under the sink like a DEA agent searching for cocaine. </p>
+
+<p>Nothing. Clever girl.</p>
+
+<p>But, rather than admit defeat, I persevered. I turned the bathroom light off, sat on the ground, and waited. Minutes ticked by with the speed of a handicapped turtle, and I kept waiting. Finally he started to make his sound again. <em>Just to my left!</em> I turned the light on again scanned the ground. <em>There!</em> Right under crack of the door to the commode. </p>
+
+<p>He was tiny, but with a couple of quick smashes of my sandal he was no more and I flushed that bugger right down the toilet he was hiding next to. I slept soundly that night knowing that my victory was complete.</p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -577,82 +618,6 @@ I&#8217;m working on an iPad application, and this just bit me pretty hard.</p>
 <ol>
 <li>I’d made games way back in the day on my TI calculator in High School, but those used the TI Basic and therefore don’t count. I also made a pong clone using XNA one time.</li>
 </ol>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2011/12/30/your-javascript-sucks-rudiments/" itemprop="url">Your JavaScript Sucks - Rudiments</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-30T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 30<span>th</span>, 2011</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<blockquote class="posterous_short_quote">
-<p><em>You have to crawl before you walk. You have to punch before you can Hadoken.</em> – Abraham Lincoln</p>
-</blockquote>
-<p>This post is most likely too simplistic for anyone who has done any kind of JavaScript development for a long time, but it’s always best to start at step 1.</p>
-<h2>Do NOT Inline JavaScript Calls in Tags</h2>
-<p>See this?</p>
-<div>
-  <div><pre>&lt;a href="#" onclick="DoSomething()" class="monkeys"&gt;</pre></div>
-</div>
-
-<p>Don’t ever do that.</p>
-<p>Why? For starters, it violates the separation of concerns. Your markup is your <em>Presentation</em>, JavaScript is not. Your JavaScript will manipulate the markup, but it is not markup itself.</p>
-<p>There’s always a workaround for this too. Here’s the equivalent that is unobtrusive using jQuery (you <em>are</em> using jQuery right?):</p>
-<div>
-  <div><pre>$('a.monkeys').click(DoSomething);</pre></div>
-</div>
-
-<p>And you’d put that code with all the other JavaScript in a <code>.js</code> file.</p>
-<h2>Keep It ALL Separate Anyways</h2>
-<p>Keep all of your JavaScript in separate <code>.js</code> files. This means not having any <code>&lt;script&gt;</code> tags that do not have <code>src</code> attributes. No sneaking in functions at the bottom of pages, or inlined in views.</p>
-<p>Again, why? JavaScript hidden amongst HTML is hard to maintain. If you have a bug in a function, how do you find it? If your JavaScript is spread willy-nilly throughout everything, have fun tracking it down. This code is also hard to test; you’d have to pull in all of your markup into your test suite, which is precisely what you should not be doing for <strong>unit</strong> testing.</p>
-<p>Additionally, you can’t minify inlined JavaScript, meaning you are literally slowing your app down by keeping it all spread out.</p>
-<h4>The Exception</h4>
-<p>The biggest exception I can think of for this rule is when you are pre-loading a bunch of data (preferably JSON). If your app is immediately making an AJAX request to retrieve data when the page loads, consider doing this to save the roundtrip:</p>
-<div>
-  <div><pre>&lt;script&gt;
-    myApp.someCollection = @ViewBag.SomeData
-&lt;/script&gt;</pre></div>
-</div>
-
-<h2>Watch Out for Globals</h2>
-<p>By default all JavaScript variables are in the global namespace. This is a Bad Thing. It means that this code right here:</p>
-<div>
-  <div><pre>foo = function() {
-    // blah blah blah
-}</pre></div>
-</div>
-
-<p>Will clobber any other globally named variable named <code>foo</code>. You can limit this with the <code>var</code> keyword:</p>
-<div>
-  <div><pre>var foo = somethingSomething;</pre></div>
-</div>
-
-<p>But, this is a discipline, because <em>every</em> time you forget the <code>var</code> you create a global object, even if you five layers deep in an object.</p>
-<h2>Keep Your Functions Small</h2>
-<p>Open your JavaScript files, what’s the longest function in there? Clocking in somewhere around 100+ lines? Yeah, that’s probably too long.</p>
-<p>It’s been said <a href="http://www.amazon.com/gp/product/0735619670/ref=as_li_ss_tl?ie=UTF8&amp;tag=thepetzoo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0735619670">over and over again</a>: smaller routines breed fewer bugs. It seems to endemic to JavaScript to create prolific walls of code, going 10 levels of nesting deep. Break that stuff down into shorter functions, and your life will be a little easier.</p>
-<p>Ok, like I said, these are just the basics. Once you start doing them, your code will get a little bit better. Not a whole lot better, but it’s a start. Now that we can walk a little bit (maybe with a limp) we can start to jog later.</p>
 </div></div></div></div></div>
 		
 		
