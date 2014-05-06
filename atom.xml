@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-05-06T15:02:25-07:00</updated>
+  <updated>2014-05-06T15:04:38-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.swilliams.me/words/2014/05/06/what-is-app-dot-net/"/>
     <updated>2014-05-06T14:49:05-07:00</updated>
     <id>http://blog.swilliams.me/words/2014/05/06/what-is-app-dot-net</id>
-    <content type="html"><![CDATA[<p>Most people who have even heard of <a href="http://app.net">it</a> would say that it&rsquo;s a Twitter clone, created out of <a href="http://daltoncaldwell.com/what-twitter-could-have-been">frustrations over the direction it was heading</a>. Currently, the home page makes it look like an identity and/or messaging service. Over the last couple years, it&rsquo;s bounced around and offered different services. According to the founders, the <a href="http://daltoncaldwell.com/an-audacious-proposal">genesis</a> of it was to create a backend-as-a-service to enable developers to make the next generation of online applications.</p>
+    <content type="html"><![CDATA[<p>Most people who have even heard of it would say that it&rsquo;s a Twitter clone, created out of <a href="http://daltoncaldwell.com/what-twitter-could-have-been">frustrations over the direction it was heading</a>. Currently, the <a href="http://app.net">home page</a> makes it look like an identity and/or messaging service. Over the last couple years, it&rsquo;s bounced around and offered different services. According to the founders, the <a href="http://daltoncaldwell.com/an-audacious-proposal">genesis</a> of it was to create a backend-as-a-service to enable developers to make the next generation of online applications.</p>
 
 <p>The problem was that I don&rsquo;t think App.net ever moved beyond the shadow of &ldquo;It&rsquo;s a Twitter clone.&rdquo; App.net&rsquo;s API does offer the capabilities to make some really <a href="http://riposteapp.net/">slick</a> <a href="http://favd.net/">apps</a>, but there hasn&rsquo;t been any one thing that captured everyone&rsquo;s attention to make them say &ldquo;Wow!&rdquo; There is the <a href="https://alpha.app.net/">microblogging service</a>, the <a href="https://omega.app.net/">messaging service</a>, the <a href="https://broadcast.app.net">broadcast service</a>, the <a href="https://backer.app.net/">crowdfunding service</a> and <a href="http://blog.app.net/2013/01/28/announcing-the-app-net-file-api/">the cloud storage service</a>. If you&rsquo;re being unkind, you could call them the Twitter clone, the iMessage clone, the Push Notification clone, the Kickstarter clone, and the Dropbox clone. Each of those services are good, but none of them have differentiated themselves from their biggest competitors. If all of those went dark tomorrow, everybody would be able to move back to what they were using before without too much trouble.</p>
 
