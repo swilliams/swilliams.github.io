@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-05-01T12:30:57-07:00</updated>
+  <updated>2014-05-06T11:10:45-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Oh Cool You Want to Be a Web Developer?]]></title>
+    <link href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/"/>
+    <updated>2014-05-06T11:07:29-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer</id>
+    <content type="html"><![CDATA[<p>Just go and learn any or all of these:</p>
+
+<ul>
+<li>HTML 5</li>
+<li>CSS 3</li>
+<li>JavaScript</li>
+<li><a href="http://coffeescript.org">CoffeeScript</a></li>
+<li><a href="http://sass-lang.com/">SASS</a></li>
+<li><a href="http://lesscss.org/">Less</a></li>
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="https://angularjs.org/">Angular</a></li>
+<li><a href="http://emberjs.com/">Ember</a></li>
+<li><a href="http://gruntjs.com/">Grunt</a></li>
+<li><a href="http://gulpjs.com/">Gulp</a></li>
+<li><a href="http://bower.io/">Bower</a></li>
+<li><a href="http://yeoman.io/">Yeoman</a></li>
+<li><a href="http://nodejs.org/">node.js</a></li>
+<li><a href="http://bourbon.io/">Bourbon</a></li>
+<li><a href="http://bitters.bourbon.io/">Bitters</a></li>
+<li><a href="http://compass-style.org/">Compass</a></li>
+<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+<li><a href="http://foundation.zurb.com/">Foundation</a></li>
+<li><a href="http://handlebarsjs.com/">Handlebars</a></li>
+<li><a href="http://mustache.github.io/">Mustache</a></li>
+</ul>
+
+
+<p>This list is not exhaustive. Some of those are optional. By the time you are done reading this, another framework or library will have been created.</p>
+
+<p>This is a <a href="http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman/">frustration</a> that I feel with web development these days. I spent about 2 years learning <a href="http://documentcloud.github.io/backbone/">one</a> client-side framework inside and out, but it&rsquo;s already losing relevance. Angular seems to be a good choice for employment these days, but if I go deep in it, will history repeat itself?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Migrating From Squarespace]]></title>
@@ -478,107 +516,6 @@ _commands = [[NSMutableArray alloc] initWithArray:@[commandF]];
 <p>Now, remember how I said &ldquo;every time a keyboard event is raised&rdquo;? These events will only happen when a text input is the first responder. This means that if you want to have some fancy global shortcuts (say ⌘F to jump to a search box) you&rsquo;ll still need to do a trick with <code>UITextField</code> (or similar). That&rsquo;s a little beyond the scope of this article, but the gist is add a UITextField to a view, hide it, and make sure it stays first responder when appropriate in order to keep firing off those events.</p>
 
 <p>I for one am psyched that this is now available. It&rsquo;s definitely more of a power user feature, but those of us who like to use Bluetooth keyboards with our iPads will derive tremendous benefit from it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Customizing the Link Color in a UITextView]]></title>
-    <link href="http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview/"/>
-    <updated>2013-08-07T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2013/08/07/customizing-the-link-color-in-a-uitextview</id>
-    <content type="html"><![CDATA[<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&rsquo;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into this situation:</p>
-
-<p><figure></p>
-
-<pre><code>&lt;img alt="eww" src="http://blog.swilliams.me/images/assets/badpopover.png"&gt;
-&lt;figcaption&gt;Ewwwwww&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
-
-<p>That contrast between the background and foreground colors makes it pretty hard to read. A quick poke through the docs and on <a href="http://stackoverflow.com/questions/1350423/can-i-change-the-color-of-auto-detected-links-on-uitextview">StackOverflow</a> reveals that there isn&rsquo;t any way to change the color of the link, without resorting to <a href="http://stackoverflow.com/a/17294355/736">private API&rsquo;s</a>.</p>
-
-<p>Sooo, the best course of action is to just knuckle down and use a UIWebView to display what you want.</p>
-
-<p>To try to keep things relatively sane, I first added a static <code>html</code> file to my project with this content:</p>
-
-<p>```html
-<html>
-  <head></p>
-
-<pre><code> &lt;title&gt;&lt;/title&gt;
-</code></pre>
-
-<p>  <style></p>
-
-<pre><code> html, body, div {
-     background: #3D3D3D;
-     font-family: HelveticaNeue-Medium, Helvetica;
-     font-size: 12pt;
-     color: #FAFAF1;
- }
-
- a {
-     color: #FAFAF1;
- }
-</code></pre>
-
-<p>  </style>
-  </head>
-  <body></p>
-
-<pre><code>  REPLACEME
-</code></pre>
-
-<p>  </body>
-</html>
-```</p>
-
-<p>The CSS code is inlined in the file. There&rsquo;s probably a way to keep it separate and inject it, but I didn&rsquo;t need anything fancier than this.</p>
-
-<p>Loading it was pretty straightforward:</p>
-
-<p><code>objc
-+ (NSString *)htmlTemplate {
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"html-template" ofType:@"html"];
-  return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-}
-</code></p>
-
-<p>Then on my controller I called this method from <code>viewDidLoad</code>:</p>
-
-<p><code>objc
-- (void)setContentText:(NSString *)contentText {
-  NSString *template = [SNDThemeManager attributionTemplate];
-  NSString *htmlText = [template stringByReplacingOccurrencesOfString:@"REPLACEME" withString:contentText];
-  [contentView loadHTMLString:htmlText baseURL:nil];
-}
-</code></p>
-
-<p><code>contentView</code> is the <code>UIWebView</code>. Almost done. If you tap on a link in the webview it&rsquo;ll open that link in itself, which might not be what you want. The way around it is to set your controller to be a <code>UIWebViewDelegate</code> and implement <a href="http://stackoverflow.com/a/2899793/736">this method</a>:</p>
-
-<p>```objc
-&ndash; (BOOL)webView:(UIWebView <em>)webView shouldStartLoadWithRequest:(NSURLRequest </em>)request navigationType:(UIWebViewNavigationType)navigationType {</p>
-
-<pre><code>if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-    [[UIApplication sharedApplication] openURL:[request URL]];
-    return NO;
-}
-return YES;
-</code></pre>
-
-<p>}
-```</p>
-
-<p>That&rsquo;ll open it in Safari. If you want other browsers, well, knock yourself out. This is pretty much a giant mess for something that should be easy, but it&rsquo;s just something that would have to be done if you want total control over the UI. The end result looks well enough:</p>
-
-<p><figure></p>
-
-<pre><code>&lt;img alt="Yay!" src="http://blog.swilliams.me/images/assets/goodpopover.png"&gt;
-&lt;figcaption&gt;Yay!&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
 ]]></content>
   </entry>
   

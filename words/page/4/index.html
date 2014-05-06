@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Two Movies, One Core Jul 22nd, 2013 In the last week, I saw two movies, and they were both great even though they were totally different. Pacific &hellip;">
+	<meta name="description" content="Don&#8217;t Save Full Paths to Resources in Your iOS App Aug 3rd, 2013 Don&#8217;t save full paths to resources in your iOS app1. I&#8217;m working &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,47 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/08/03/dont-save-full-paths-to-resources-in-your-ios-app/" itemprop="url">Don&#8217;t Save Full Paths to Resources in Your iOS App</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-03T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 3<span>rd</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>Don&#8217;t save full paths to resources in your iOS app<sup>1</sup>. 
+I&#8217;m working on an iPad application, and this just bit me pretty hard.</p>
+
+<p>Your application lives in a directory kind of like this: <code>/blah/blah/blah/Applications/EE8E3EBF-A7A9-4680-81D0-BB5E7DFE859E/Thing.app/</code> That big old string of capital letters and numbers is a <a href="http://en.wikipedia.org/wiki/Guid">GUID</a>, which means that your app is guarenteed to have its own unique folder in the file system. What I <strong>didn&#8217;t</strong> know was that this will change every time you update the app. This behavior doesn&#8217;t happend during development/debugging.</p>
+
+<p>I was storing the whole path to audio files in a database<sup>2</sup>, so when I released a second beta to my testers, all their clips from the first beta stopped working and caused crashes because the app was looking for files in paths that no longer existed.</p>
+
+<p>The fix was to only store the filename of the audio because the whole path could just be generated at runtime, and then migrating everyone&#8217;s data to the new way (which also was bug prone).</p>
+
+<ol>
+<li>Don&#8217;t ever accuse me of burying the lede.</li>
+<li>This would&#8217;ve happened if those values were stored in a plist, xml file, or anywhere.</li>
+</ol>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -612,58 +653,6 @@
 <p>Open your JavaScript files, what’s the longest function in there? Clocking in somewhere around 100+ lines? Yeah, that’s probably too long.</p>
 <p>It’s been said <a href="http://www.amazon.com/gp/product/0735619670/ref=as_li_ss_tl?ie=UTF8&amp;tag=thepetzoo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0735619670">over and over again</a>: smaller routines breed fewer bugs. It seems to endemic to JavaScript to create prolific walls of code, going 10 levels of nesting deep. Break that stuff down into shorter functions, and your life will be a little easier.</p>
 <p>Ok, like I said, these are just the basics. Once you start doing them, your code will get a little bit better. Not a whole lot better, but it’s a start. Now that we can walk a little bit (maybe with a limp) we can start to jog later.</p>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2011/12/17/your-javascript-sucks/" itemprop="url">Your JavaScript Sucks</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-17T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 17<span>th</span>, 2011</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>JavaScript has been getting a lot of press lately. You can write <a href="http://nodejs.org/">servers</a> with it, talk to <a href="http://www.couchbase.com/">databases</a>, and of course, it’s the most <a href="http://javascript.crockford.com/popular.html">common language</a> in the world. Yet, in its most popular form, client-side scripting on the Internet, it’s just a giant mess.</p>
-<p>You know what I’m talking about, that mass of thousands of lines of code that does something-but-oh-God-I-hope-it-doesn’t-break. I’ve written that kind of JavaScript. You have too. It’s a big problem that needs to be addressed.</p>
-<h2>Why?</h2>
-<p>First, let’s identify the problems. Here’s a function that I just made up, but it’s not too far from the truth.</p>
-<p> Fig 1 - A Common Site</p>
-<p>How many differentthings are going on here? I can see four right off the bat. <em>Individually,</em> each is not a Bad Thing, but when they’re all within the same function, it’s a problem.</p>
-<p></p>
-<p>Fig 2 - Event Binding. We’re looking for something in the DOM, and then attaching an event handler to it.  </p>
-<p></p>
-<p>Fig 3 - AJAX. Specifically, communication with our persistance layer.</p>
-<p></p>
-<p>Fig 4 - Business Logic. This a simplification, but we’re analyzing the data and making a logical decision based on it.</p>
-<p></p>
-<p>Fig 5 - DOM/UI Manipulation. We’re not just reading the DOM here, but changing it.</p>
-<p> </p>
-<p>And this little ditty is only 11 lines long. This is the equivalent of inlining your security checks right next to SQL statements, all within a UI template. God help you if you want to actually uncovered a bug in this rat nest down the road.</p>
-<p>And let’s not even get into testing. How would you even start writing a unit test for this function? (Hint: it sucks)</p>
-<h2>Enter MVC</h2>
-<p>Fortunately, messy code is not a new problem. There is an embarrassment of riches out there to help you get your crap together.</p>
-<p>The MVC pattern has been around since the neolithic era of programming. Rails, Django, ASP.NET MVC, CakePHP, etc. have been making developers’ lives much easier on the server side for years. And now, some of that has trickled down to JavaScript.</p>
-<p></p>
-<p>A common reaction.</p>
-<p>What makes MVC so popular amongst developers is that it forces you to break your code down into manageable chunks. Mixing AJAX calls and DOM Manipulation in the same functions just doesn’t fly there.</p>
-<p>And, you have a bunch to choose from. In future posts, I’ll be giving a brief description of some of the popular ones. Spoiler: I myself have been using <a href="http://documentcloud.github.com/backbone/#">Backbone</a> and will be going into deeper detail on that one.</p>
 </div></div></div></div></div>
 		
 		

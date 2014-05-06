@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="The Ideal Home Server Sep 8th, 2008 I&#8217;ve written about having a server at home before, but I&#8217;d like to re-evaluate my thoughts on it. I &hellip;">
+	<meta name="description" content="Photoblog 0.4 Released Sep 11th, 2008 I&#8217;ve deployed the latest version of my Photoblog, 0.4.0. There are a few behind the scenes stuff that &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,38 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2008/09/11/photoblog-04-released/" itemprop="url">Photoblog 0.4 Released</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-11T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 11<span>th</span>, 2008</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I&#8217;ve deployed the latest version of my <a href="http://photo.krazyyak.com">Photoblog</a>, 0.4.0. There are a few behind the scenes stuff that make it easier for me to upload photos, so I should hopefully be updating it more regularly. My backlog is still in spring &#8216;07 *cough*. Relevant changes:</p> <ul>
+<li>Date uploaded is now displayed. My wife showed some confusion over the ordering of the photos. This should clear things up.</li> <li>EXIF info is now available for those of you that are interested in that sort of thing. Click on the &#8220;info&#8221; button to display it.</li> <li>Administration functions improved. A file upload control is available rather than manually FTPing the photo.</li>
+</ul>
+<p>Development is progressing slowly, but surely. It&#8217;s not really an ambitious project, but I&#8217;ve gotten to know Python and the <a href="http://pylonshq.com">Pylons</a> framework pretty well over the course. Next update will fix a few minor bugs and add more admin functions.</p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -405,63 +437,6 @@ Recently, they put together a version of FogBugz that is 100% hosted by Fog Cree
 To take part, first <a href="https://shop.fogcreek.com/default.asp?sCategory=HOSTEDFB&amp;sStep=stepEnterEmailAddress">sign up</a> for a normal On Demand account. You do have to provide credit card info, but nothing is billed for 45 days, and you&#8217;ll be switching immediately. Once everything is initialized, you can change your account to the free version in Settings &gt; Your FogBugz On Demand Account.
 </p>
 <p>I&#8217;ve only given it a cursory glance, but I like what I see. It looks very intuitive and powerful. Big thanks to the Fog Creek guys for removing the cost barrier for people like me! I&#8217;ll definitely be recommending it to others.</p>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2007/09/13/big-msbuild-gotcha/" itemprop="url">Big Msbuild Gotcha</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-13T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 13<span>th</span>, 2007</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p><a href="http://msdn2.microsoft.com/en-us/library/0k6kkbsd.aspx" title="Msbuild reference on MSDN">Msbuild</a> is not necessarily a &#8220;real&#8221; component of <a href="http://www.krazyyak.com/category/tfs/">TFS</a>, but it is heavily integrated throughout its build system (as well as Visual Studio 2005), so I&#8217;ll be recording my thoughts on it as well. It seems to be better than <a href="http://nant.sourceforge.net/">NAnt</a>, a similar open source product, in most regards, but I have spent the better part of a day getting to the bottom of one of its maddening quirks.</p> <p>You can define an <a href="http://msdn2.microsoft.com/en-us/library/646dk05y.aspx" title="ItemGroup element reference on MSDN">&lt;ItemGroup&gt;</a> consisting of files that you can copy, zip up, or do whatever you want with, but the collection it will only be evaluated at the initialization of the script!</p> <p>For example, say you need to deploy all the files compiled by a solution, and then do something else with the binaries. Your build script may look something like this:</p>
-<div>
-  <div><pre>&lt;ItemGroup&gt;
-        &lt;WebDeploy Exclude="@(ExcludedTypes)" Include="**\**"&gt;
-        &lt;BinDeploy Include="$(DeployDir)\bin\*.dll"&gt;
-&lt;/ItemGroup&gt;
-
-&lt;Target DependsOn="Compile" Name="Deploy"&gt;
-        &lt;Copy DestinationFolder="$(DeployDir)\%(RecursiveDir)" SourceFiles="@(WebDeploy)"&gt;
-        &lt;Copy DestinationFolder="$(BinDeployFolder)" SourceFiles="@(BinDeploy)"&gt;
-&lt;/Target&gt;</pre></div>
-</div>
-
-<p>The @(BinDeploy) group will evaluate <em>at the start of the script</em>. This means that if you have a &#8220;clean&#8221; folder setup, the group will be empty, even after the Copy task has been executed. Additionally, if you run the script a second time without deleting the contents of the $(DeployDir), the script will happily copy over the prior build&#8217;s binaries (even if a Delete task has &#8220;deleted&#8221; them, and they&#8217;ve been &#8220;replaced&#8221; by a fresh compile).</p>
-<p>To fix this problem, you need to use the <a href="http://msdn2.microsoft.com/en-us/library/s2y3e43x.aspx" title="CreateItem task reference on MSDN">CreateItem</a> task:</p>
-<div>
-  <div><pre>&lt;ItemGroup&gt;
-        &lt;WebDeploy Exclude="@(ExcludedTypes)" Include="**\**"&gt;
-
-&lt;Target DependsOn="Compile" Name="Deploy"&gt;
-        &lt;Copy DestinationFolder="$(DeployDir)\%(RecursiveDir)" SourceFiles="@(WebDeploy)"&gt;
-        &lt;CreateItem Include="$(PathToCompiledBinaries)\*.dll"&gt;
-                &lt;Output ItemName="BinDeploy" TaskParameter="Include" /&gt;
-        &lt;/CreateItem&gt;
-        &lt;Copy DestinationFolder="$(BinDeployFolder)" SourceFiles="@(BinDeploy)"&gt;
-&lt;/Target&gt;</pre></div>
-</div>
-
-<p>This will guarantee that @(BinDeploy) isn&#8217;t created until there are files for it. Do note that this &#8220;feature&#8221; happens for everything that uses ItemGroups this way; it&#8217;s not just limited to the Copy task. </p>
 </div></div></div></div></div>
 		
 		
