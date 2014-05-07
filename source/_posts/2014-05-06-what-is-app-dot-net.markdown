@@ -19,4 +19,6 @@ I don't like armchair quarterbacking. Saying what [should have been done](http:/
 
 <div class="footnotes">
 1. It looks like <a href="https://alpha.app.net/peterrojas">Peter Rojas</a> and <a href="https://alpha.app.net/andrewchen">Andrew Chen</a> have feeds that syndicate to App.net. Nobody else on that list had any kind of post within the last month.
+
+<p>And as pointed out by <a href="https://alpha.app.net/chriskrycho/post/29913830">Chris Krycho</a>, it looks like Garry's posts are just cross-posted from Twitter using <a href="https://zapier.com/">Zapier</a>.</p>
 </div>
