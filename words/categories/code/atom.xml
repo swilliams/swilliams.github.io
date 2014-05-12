@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-05-06T15:16:45-07:00</updated>
+  <updated>2014-05-12T13:42:15-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I Started to Understand Model Binding Magic in Ember]]></title>
+    <link href="http://blog.swilliams.me/words/2014/05/12/how-i-started-to-understand-model-binding-magic-in-ember/"/>
+    <updated>2014-05-12T13:16:18-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/05/12/how-i-started-to-understand-model-binding-magic-in-ember</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m learning <a href="http://emberjs.com/">Ember.js</a> in efforts to stay <a href="http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp/">reasonably up to date</a> with client side web technologies. <a href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/">This hasn&rsquo;t been the easiest going.</a></p>
+
+<p>Ember&rsquo;s best feature is that it easily binds values in HTML to their corresponding properties on objects. I&rsquo;ve found the implementations of this a little confusing sometimes. Going through the Getting Started guide has been helpful, though <a href="http://emberjs.com/guides/getting-started/displaying-the-number-of-incomplete-todos/">this part tripped</a> me up for a good hour, specifically this snippet:</p>
+
+<p><code>js Within todos_controller.js
+remaining: function() {
+  return this.filterBy('isCompleted', false).get('length');
+}.property('@each.isCompleted'),
+</code></p>
+
+<p>That last line turns the associatied method into a <a href="http://emberjs.com/guides/object-model/computed-properties/">computed property</a>.  My understanding of computed properties was as a means to provide a simple call to complex data (eg. a <code>fullName</code> property that joins <code>firstName</code> and <code>lastName</code> properties). This particular method is on a <em>controller</em>, has a previously foreign syntax (<code>@each</code>), and the template that refers to it still uses it&rsquo;s canonical name (<code>remaining</code>).</p>
+
+<p><figure></p>
+
+<pre><code>&lt;img src="http://blog.swilliams.me/images/assets/ember/zoidberg.gif" alt="Wha?" /&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>In order to understand just what was happening, I pumped the brakes and dug into the sample application. My first question was why they were using a computed property altogether. I whipped up another method and added it to my controller:</p>
+
+<p>```js todos_controller.js
+remaining: function() {
+  return this.filterBy(&lsquo;isCompleted&rsquo;, false).get(&lsquo;length&rsquo;);
+}.property(&lsquo;@each.isCompleted&rsquo;),</p>
+
+<p>derp: function() {
+  return &lsquo;derp!&rsquo;;
+}
+```</p>
+
+<p>{% raw %}
+```html index.html</p>
+
+<h1>todos {{derp}}</h1>
+
+
+<p>```
+{% endraw %}</p>
+
+<p>This resulted in the method body being substituted in the template, which reminded me that {% raw %}<code>{{derp}}</code>{% endraw %} was just printing out whatever <code>derp</code> evaluated to, in this case a function.<sup>1</sup> So I made <code>derp</code> a computed property:</p>
+
+<p><code>js todos_controller.js
+derp: function() {
+  return 'derp!';
+}.property('what')
+</code></p>
+
+<p>This worked. My <code>&lt;h1&gt;</code> was now &lsquo;todos derp!&rsquo;. In fact, you could simplify it even more by doing this: <code>property()</code> and leaving off a name altogether. It also demonstrated that the first argument to <code>property</code> didn&rsquo;t have a bearing on what goes in the Template. Next step was to substitute my static text with something useful.</p>
+
+<p><code>js todos_controller.js
+derp: function() {
+  return this.filterBy('isCompleted', false).get('length');
+}.property()
+</code></p>
+
+<p>And sure enough, the title was now &lsquo;todos 2&rsquo;. I suspected this would work because my controller extended <code>Ember.ArrayController</code>, giving it access to <code>filterBy</code>. This lead me back to one of my original questions: what is the purpose of <code>'@each.isCompleted'</code>?</p>
+
+<p>I played around with the todo app a little more and noticed that my {% raw %}<code>{{derp}}</code>{% endraw %} was not automatically updating when todos where checked off while the original {% raw %}<code>{{remaining}}</code>{% endraw %} was. Then it hit me: <code>'@each'</code> must be a special directive for an <code>ArrayController</code> that bound that function to the <code>isCompleted</code> property of <a href="http://emberjs.com/api/classes/Ember.ArrayController.html#property__each"><em>each</em></a> object in its array. Putting a <code>console.log('called');</code> confirmed this suspicion — it&rsquo;s called every time <code>isCompleted</code> is accessed.</p>
+
+<p>After this bit of forensics, things make a little more sense now. I do wish this association was a little more spelled out in the documentation though for us thick-headed developers.</p>
+
+<div class="footnotes">
+1. This is what JavaScript does. Open the dev tools and log a function without executing it — the body of that function prints out.
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Oh Cool You Want to Be a Web Developer?]]></title>
@@ -446,76 +520,6 @@ end</p>
 <p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
 
 <p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&rsquo;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7]]></title>
-    <link href="http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/"/>
-    <updated>2013-09-19T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7</id>
-    <content type="html"><![CDATA[<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
-
-<p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
-
-<p>```objc
-// STWApplication.h
-@interface STWApplication : UIApplication {
-  NSMutableArray *_commands;
-}</p>
-
-<p>// STWApplication.m
-@implementation STWApplication
-// more coming soon
-@end
-```</p>
-
-<p>Since we&rsquo;re subclassing <code>UIApplication</code>, edit <code>main.m</code> to tell it that we&rsquo;re doing so in <code>UIApplicationMain</code>:</p>
-
-<p>```objc
-int main(int argc, char *argv[]) {
-  @autoreleasepool {</p>
-
-<pre><code>NSString *appName = @"STWApplication";
-return UIApplicationMain(argc, argv, appName, NSStringFromClass([STWAppDelegate class]));
-</code></pre>
-
-<p>  }
-}
-```</p>
-
-<p>Ok, now let&rsquo;s tell the app what key combinations are valid. iOS 7 adds a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/instp/UIResponder/keyCommands"><code>keyCommands</code></a> property to UIResponder. All we need to do is override that and returning an array of <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/occ/cl/UIKeyCommand"><code>UIKeyCommands</code></a>. Since we&rsquo;re using a <code>UIApplication</code> subclass, add this in there:</p>
-
-<p>```objc
-&ndash; (NSArray *)keyCommands {
-  if (!_commands) {</p>
-
-<pre><code>UIKeyCommand *commandF = [UIKeyCommand keyCommandWithInput:@"f"
-               modifierFlags:UIKeyModifierCommand
-                      action:@selector(handleShortcut:)];
-_commands = [[NSMutableArray alloc] initWithArray:@[commandF]];
-</code></pre>
-
-<p>  }
-  return _commands;
-}
-```</p>
-
-<p>Every time a keyboard event is raised, if it matches <kbd>⌘F</kbd>, the selector <code>handleShortcut</code> will be called on the responder chain. That means you can define that method multiple times and only the most specific will be called. For example, if you defined it in <code>STWApplication</code> and in the View Controller, the <code>STWApplication</code> version will <em>never</em> be called. Speaking of <code>handleShortcut</code>, here it is:</p>
-
-<p><code>objc
-- (void)handleShortcut:(UIKeyCommand *)keyCommand {
-  NSLog(@"You pressed ⌘F! Good Job!");
-}
-</code></p>
-
-<p><code>UIKeyCommand</code> is pretty neat. The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/doc/c_ref/UIKeyModifierFlags"><code>modifierFlags</code></a> means that the app can watch for Caps Lock, Shift, Control, Alt/Option, Command, and the Number Pad. Additionally, there are some constants that  can be used for special keys like the arrows and Escape. The <a href="">developer forums</a> also had some people getting access to Tab and Return by looking for <code>\t</code> and <code>\r</code>, but I don&rsquo;t know how well those work.</p>
-
-<p>Also, make sure you aren&rsquo;t trying to override system shortcuts. Per the docs: &ldquo;Key commands that map to known system events (such as cut, copy and paste) are automatically routed to the appropriate responder methods.&rdquo; So don&rsquo;t do that.</p>
-
-<p>Now, remember how I said &ldquo;every time a keyboard event is raised&rdquo;? These events will only happen when a text input is the first responder. This means that if you want to have some fancy global shortcuts (say ⌘F to jump to a search box) you&rsquo;ll still need to do a trick with <code>UITextField</code> (or similar). That&rsquo;s a little beyond the scope of this article, but the gist is add a UITextField to a view, hide it, and make sure it stays first responder when appropriate in order to keep firing off those events.</p>
-
-<p>I for one am psyched that this is now available. It&rsquo;s definitely more of a power user feature, but those of us who like to use Bluetooth keyboards with our iPads will derive tremendous benefit from it.</p>
 ]]></content>
   </entry>
   

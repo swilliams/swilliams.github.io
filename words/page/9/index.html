@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Nice Writing: Big Numbers Jul 22nd, 2010 On people underestimating the power of exponential growth: &#8220;If a uranium nucleus emits two neutrons, &hellip;">
+	<meta name="description" content="GMail & JavaScript Jul 25th, 2010 At the USENIX annual conference last month, Gmail engineer Adam de Boor surprised the audience by noting that the &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,38 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/07/25/gmail-javascript/" itemprop="url">GMail & JavaScript</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-25T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 25<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <span>At the USENIX annual conference last month, Gmail engineer Adam de Boor surprised the audience by <a href="http://www.computerworld.com/s/article/9178558/Google_to_use_HTML5_in_Gmail" target="_blank" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-color: initial; font-size: 12px; vertical-align: baseline; background-color: transparent; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; color: rgb(0, 128, 192); text-decoration: none;">noting</a> that the company&#8217;s Gmail service was written entirely in JavaScript, and that all of its code, around 443,000 lines worth, was written by hand.</span>
+</blockquote> <p></p>
+<div>Via <a href="http://www.pcworld.idg.com.au/article/354210/google_executive_frustrated_by_java_c_complexity/">PC World</a> and <a href="http://news.ycombinator.com/item?id=1546933">Hacker News</a> (of course).</div> <p></p>
+<div>I&#8217;m a little skeptical of that line count on JavaScript though. I really thought that <a href="http://code.google.com/webtoolkit/">GWT</a> was created specifically for GMail. Regardless, that&#8217;s a pretty astounding size for JavaScript. I truly want to know what tools they use to write and manage that much, since in my experience, once you hit several thousand lines, it starts to become a pain to manage/debug/maintain.</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -441,103 +473,6 @@
 <div><iframe src="http://www.youtube.com/embed/Pdk2cJpSXLg?wmode=transparent" allowfullscreen frameborder="0" height="417" width="500"></iframe></div>
 <p></p>
 <div>Just watching that get&#8217;s my blood pressure rising.</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/07/15/a-fancy-calendar-icon-with-just-css-html/" itemprop="url">A Fancy Calendar Icon With Just CSS & HTML</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-15T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 15<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>I&#8217;m finally starting to realize just some of the <a href="http://graphicpeel.com/cssiosicons">really neat stuff</a> you can accomplish with just HTML and CSS. Recently, I needed to make a simple calendar widget to display what day something occurs. I ended up with this, which I think looks pretty snazzy:Again, no images were used at all. So how does that work? Let&#8217;s first walk through the HTML:</p>
-<div>
-  <div><pre>&lt;div class="calendar"&gt; 
-    &lt;span class="month"&gt;Jul&lt;/span&gt;
-    &lt;span class="day"&gt;31&lt;/span&gt;
-&lt;/div&gt;</pre></div>
-</div>
-
-<p>Obviously, this doesn&#8217;t get us much, but it does set the stage for customizing things with CSS. Here&#8217;s a quick rundown to get the right layout:</p>
-<div>
-  <div><pre>html { font-family: Helvetica, Arial; }
-        .calendar { width: 54px; height: 60px; font-size: 0.8em; background: #eee; border: 1px solid; }
-        .calendar &gt; span { display: block; }
-        .calendar &gt; .month { text-align: right; padding: 2px 5px 2px 0; }
-        .calendar &gt; .day { text-align: center; font-weight: bold; font-size: 2.3em; }</pre></div>
-</div>
-
-<p>I got the 54 pixel width by playing around until I found something I liked. The background and border are temporary placeholders, just so that we can get a feel for how everything will look. That yields us this:</p>
-<p>That&#8217;s fairly serviceable, but rather boring. It would make for a decent element on the periodic table, but we&#8217;re aiming for that high-falutin Web 2.0 stuff. Let&#8217;s add a little more color to drive home the point.</p>
-<div>
-  <div><pre>.calendar &gt; .month { background: #6086a6; color: #fff; font-weight: bold; }
-    .calendar &gt; .day {  background: #fff; }</pre></div>
-</div>
-
-<p></p>
-<p>This gives us a little more in the aesthetics department, and a couple of years ago, we&#8217;d either have to stop here, or start slicing things up and using images for backgrounds. But now with CSS3, we can add rounded corners, gradients, and a bunch of other great effects. Further, the nice thing about this approach is that it degrades gracefully in older browsers. They don&#8217;t get the pretty effects, but like I said, that widget is good enough, and it provides them a <em>gentle</em> push to upgrade.</p>
-<p>First, let&#8217;s round off those sharp corners.</p>
-<div>
-  <div><pre>.calendar { 
-        -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; 
-    }
-    .calendar &gt; .month { 
-        -webkit-border-top-left-radius: 5px; -moz-border-radius-topleft: 5px;
-        -webkit-border-top-right-radius: 5px; -moz-border-radius-topright: 5px;
-        border-top-left-radius: 5px; border-top-right-radius: 5px;
-        }
-    .calendar &gt; .day {
-        -webkit-border-bottom-left-radius:  5px; -moz-border-radius-bottomleft:      5px;
-        -webkit-border-bottom-right-radius: 5px; -moz-border-radius-bottomright:     5px;
-        }</pre></div>
-</div>
-
-<p>Now, if you aren&#8217;t familiar with CSS3, you might not know what the &#8220;-webkit&#8221; and &#8220;-moz&#8221; prefixes are. CSS3 still hasn&#8217;t been completely nailed down, but the browser makers wanted to start implementing features without waiting for the standards committees to finalize everything. So, they added their own implementations. Safari, Chrome, and other webkit based browsers use &#8220;-webkit&#8221;. Mozilla based browsers (Firefox) use &#8220;-moz&#8221;. Opera uses &#8220;-o&#8221; (and it&#8217;s omitted here for length, and also because nobody uses Opera). Internet Explorer&#8230; <span>sucks</span> doesn&#8217;t really do CSS3 at this juncture. Technically it uses it&#8217;s own special filter syntax, and with a little bit of googling, you can find it too.</p>
-<p>Anyways, back to our widget. We have to add the top and bottom radii to the .month and .day elements because their backgrounds will bleed over the calendar rounded corners and look ugly. Additionally, the border doesn&#8217;t work so great with the rounded corners, so get rid of it. We can do something better than it anyways, the box-shadow.</p>
-<div>
-  <div><pre>.calendar {
-        box-shadow: 0 0 5px #05587e; -moz-box-shadow: 0 0 5px #05587e; 
-        -webkit-box-shadow: 0 0 5px #05587e;
-        }</pre></div>
-</div>
-
-<p>That gives us a nice glowy look all the way around the widget.</p>
-<p>Looking better! But there is still a little more we can do. Let&#8217;s change the background to a gradient.</p>
-<div>
-  <div><pre>.calendar &gt; .month { text-shadow: 0 1px #000;
-        background: -webkit-gradient(linear, left top, left bottom, from(#acc0d1), to(#6086a6));
-        background: -moz-linear-gradient(top, #acc0d1, #6086a6);
-        }
-                                         
-    .calendar &gt; .day { text-shadow: 0 1px #fff;
-        background: -webkit-gradient(linear, left top, left bottom, from(#405b72), to(#e6e6e6), color-stop(.08,#f9f9f9));
-        background: -moz-linear-gradient(top, #f9f9f9, #e6e6e6);
-        }</pre></div>
-</div>
-
-<p>This gives us the nicer looking backgrounds. Additionally, the text-shadows make the text feel slightly more &#8216;etched&#8217;. It probably isn&#8217;t something you&#8217;d want to use all over the place, but here it looks good.</p>
-<p></p>
-<p>There you have it! With a bit of CSS3, you can really turn up the heat on your HTML, and even ditch the tedium of sizing and uploading gradients.</p>
-<p>I uploaded the whole source to <a href="http://github.com/swilliams/CSS3-Calendar-Widget">github</a>, which might be a little overkill for something this small, but I&#8217;m trying to start doing more thing in the public square.</p>
 </div></div></div></div></div>
 		
 		

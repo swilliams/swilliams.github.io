@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="How I Straight-Up Murdered the Cricket in My Bedroom Aug 3rd, 2013 I&#8217;m a bit of a finicky sleeper. I don&#8217;t like tiny lights on when I &hellip;">
+	<meta name="description" content="Customizing the Link Color in a UITextView Aug 7th, 2013 UITextView&rsquo;s can automatically detect URLs and treat them accordingly. This is a nice &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,148 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/08/07/customizing-the-link-color-in-a-uitextview/" itemprop="url">Customizing the Link Color in a UITextView</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 7<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/uitextview_class/Reference/UITextView.html">UITextView&rsquo;s</a> can automatically detect URLs and treat them accordingly. This is a <em>nice</em> feature, but when you start to customize your UI, you might run into this situation:</p>
+
+<figure>
+    <img alt="eww" src="/images/assets/badpopover.png">
+    <figcaption>Ewwwwww</figcaption>
+</figure>
+
+
+<p>That contrast between the background and foreground colors makes it pretty hard to read. A quick poke through the docs and on <a href="http://stackoverflow.com/questions/1350423/can-i-change-the-color-of-auto-detected-links-on-uitextview">StackOverflow</a> reveals that there isn&rsquo;t any way to change the color of the link, without resorting to <a href="http://stackoverflow.com/a/17294355/736">private API&rsquo;s</a>.</p>
+
+<p>Sooo, the best course of action is to just knuckle down and use a UIWebView to display what you want.</p>
+
+<p>To try to keep things relatively sane, I first added a static <code>html</code> file to my project with this content:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;style&gt;</span>
+</span><span class='line'>     <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span><span class="o">,</span> <span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>         <span class="k">background</span><span class="o">:</span> <span class="m">#3D3D3D</span><span class="p">;</span>
+</span><span class='line'>         <span class="k">font-family</span><span class="o">:</span> <span class="n">HelveticaNeue</span><span class="o">-</span><span class="n">Medium</span><span class="o">,</span> <span class="n">Helvetica</span><span class="p">;</span>
+</span><span class='line'>         <span class="k">font-size</span><span class="o">:</span> <span class="m">12pt</span><span class="p">;</span>
+</span><span class='line'>         <span class="k">color</span><span class="o">:</span> <span class="m">#FAFAF1</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="nt">a</span> <span class="p">{</span>
+</span><span class='line'>         <span class="k">color</span><span class="o">:</span> <span class="m">#FAFAF1</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>  <span class="nt">&lt;/style&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>      REPLACEME
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The CSS code is inlined in the file. There&rsquo;s probably a way to keep it separate and inject it, but I didn&rsquo;t need anything fancier than this.</p>
+
+<p>Loading it was pretty straightforward:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">htmlTemplate</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="nl">pathForResource:</span><span class="s">@&quot;html-template&quot;</span> <span class="nl">ofType:</span><span class="s">@&quot;html&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithContentsOfFile:</span><span class="n">path</span> <span class="nl">encoding:</span><span class="n">NSUTF8StringEncoding</span> <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then on my controller I called this method from <code>viewDidLoad</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setContentText:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">contentText</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">template</span> <span class="o">=</span> <span class="p">[</span><span class="n">SNDThemeManager</span> <span class="n">attributionTemplate</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">htmlText</span> <span class="o">=</span> <span class="p">[</span><span class="n">template</span> <span class="nl">stringByReplacingOccurrencesOfString:</span><span class="s">@&quot;REPLACEME&quot;</span> <span class="nl">withString:</span><span class="n">contentText</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">contentView</span> <span class="nl">loadHTMLString:</span><span class="n">htmlText</span> <span class="nl">baseURL:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>contentView</code> is the <code>UIWebView</code>. Almost done. If you tap on a link in the webview it&rsquo;ll open that link in itself, which might not be what you want. The way around it is to set your controller to be a <code>UIWebViewDelegate</code> and implement <a href="http://stackoverflow.com/a/2899793/736">this method</a>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">webView:</span><span class="p">(</span><span class="n">UIWebView</span> <span class="o">*</span><span class="p">)</span><span class="nv">webView</span> <span class="nf">shouldStartLoadWithRequest:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span> <span class="nf">navigationType:</span><span class="p">(</span><span class="n">UIWebViewNavigationType</span><span class="p">)</span><span class="nv">navigationType</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">navigationType</span> <span class="o">==</span> <span class="n">UIWebViewNavigationTypeLinkClicked</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="p">[[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="nl">openURL:</span><span class="p">[</span><span class="n">request</span> <span class="n">URL</span><span class="p">]];</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;ll open it in Safari. If you want other browsers, well, knock yourself out. This is pretty much a giant mess for something that should be easy, but it&rsquo;s just something that would have to be done if you want total control over the UI. The end result looks well enough:</p>
+
+<figure>
+    <img alt="Yay!" src="/images/assets/goodpopover.png">
+    <figcaption>Yay!</figcaption>
+</figure>
+
+
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -560,65 +702,6 @@ I&#8217;m working on an iPad application, and this just bit me pretty hard.</p>
 	</div>
 </div></div></div></div>
 </div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2013/03/21/things-i-learned-while-making-a-simple-game-for-my-daughters/" itemprop="url">Things I Learned While Making a Simple Game for My Daughters</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-21T00:00:00-07:00" data-updated="true" itemprop="datePublished">Mar 21<span>st</span>, 2013</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p><img src="/images/assets/game.png?format=750w" alt="Game Image"></p>
-
-<p>Recently I put together a basic iPad game for my girls (aged 5 and 2). It’s the first real<sup>1</sup> game I’d ever created and I found the process to be interesting enough to warrant some writing. I thought it might be fun for them to have a game that stars both of them exploring the house and finding treasure.</p>
-
-<p><strong>Thing 1.</strong> It was much easier than I thought it would be. I wanted it to have an 8 or 16 bit Zelda mechanic - top down view, dpad to move around. Turns out this is a road that has been well-trodden. I found some great tutorials and tools to make the process go fast. Of course, this didn’t prevent a couple of head-desk-smashing newbie mistakes, but overall wasn’t too bad.</p>
-
-<p>Tools I found useful:</p>
-
-<p><a href="http://www.cocos2d-iphone.org/">Cocos2d</a> The engine that runs the game. I found their API to be pretty easy to understand.</p>
-
-<p><a href="http://www.mapeditor.org/">Tiled Map Editor</a> What I used to make the map. Kind of like how Photoshop works with layers.</p>
-
-<p><a href="http://www.codeandweb.com/texturepacker">Texture Packer</a> Used to make sprite sheets.</p>
-
-<p>Lastly, I found the tutorials on <a href="http://www.raywenderlich.com/tutorials">raywenderlich.com</a> to be invaluable (though some of the sample code had typoes).</p>
-
-<p><strong>Thing 2.</strong> Making graphics is <strong>not</strong> my forté. I found a lot of decent sprites and tilesets to use, but modifying them was tedious. If I ever decide to make something to release commercially, I’ll definitely have to outsource the art.</p>
-
-<p>After some poking around I ended up using a bunch of sprites from these two sources: <a href="http://yms.main.jp/page2/tilesets.html">Pixelated world</a> and <a href="http://untamed.wild-refuge.net/rmxpresources.php?characters">Sithjester</a></p>
-
-<p><strong>Thing 3.</strong> My girls struggled with the virtual dpad. They are quite adept and using the iPad and other kids games (especially the Toca Boca ones), but couldn’t get the knack for the dpad. It is in the lower left corner, and my older daughter kept trying to tap it with her right hand, obscuring the screen. She also kept trying to control movement by swiping, which makes sense given her background with other apps. The character on screen was probably moving too quickly for her to track easily as well.</p>
-
-<p><strong>Thing 4.</strong> Despite Thing 3, both of them loved it. I made character sprites that resembled both of them, and recorded their voices and used them as sound effects. And the map kind of resembles our house too. We spent about a half hour taking turns while Mommy was making dinner.</p>
-
-<p>What I discovered is that the programming and art for making a good, relatively simple game isn’t a big barrier; it’s using both of those within the boundaries of time to make a fun and compelling experience that is the challenge.</p>
-
-<p>Ultimately, I had a lot of fun making it. Now that I have a good idea of what’s involved, I might try my hand at a real product to sell.</p>
-
-<ol>
-<li>I’d made games way back in the day on my TI calculator in High School, but those used the TI Basic and therefore don’t count. I also made a pong clone using XNA one time.</li>
-</ol>
-</div></div></div></div></div>
 		
 		
 	</div>
