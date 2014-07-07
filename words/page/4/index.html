@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Tesla Aug 7th, 2013 I tend to yo-yo on my feelings with Tesla motors. This video (and article) of the Tesla plant hits all the right spots in my &hellip;">
+	<meta name="description" content="The Average CEO Aug 24th, 2013 I usually don&#8217;t like to commentate on tech news; there are more than enough people doing that already. Let&# &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,57 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/08/24/the-average-ceo/" itemprop="url">The Average CEO</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-24T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 24<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I usually don&#8217;t like to commentate on tech news; there are more than enough people doing that already. Let&#8217;s just let this be a freebie and be done with it, K?</p>
+
+<p><a href="http://www.theverge.com/2013/8/23/4651536/who-will-be-the-next-microsoft-ceo">Steve Ballmer is retiring from Microsoft within the next year.</a> People are quick to call him out as a &#8220;terrible&#8221; CEO. I think terrible is a little harsh. I wouldn&#8217;t call him &#8220;great&#8221; or maybe even &#8220;good&#8221;. Probably just &#8220;average&#8221; instead.</p>
+
+<p>Under his watch, profits and revenues went up significantly<sup>1</sup>, <a href="http://venturebeat.com/2013/05/20/with-19b-in-revenue-microsofts-server-and-tools-chief-says-hes-just-getting-started-interview/">their enterprise market grew into a success</a>, and the Xbox became a household name.</p>
+
+<p>But I think he&#8217;ll be remembered most of all for all the things that Microsoft squandered or was caught flat-footed for.</p>
+
+<ul>
+<li>Music. Microsoft introduced <a href="http://en.wikipedia.org/wiki/Plays_for_sure">PlaysForSure</a> and then replaced it with the <a href="http://en.wikipedia.org/wiki/Zune">Zune</a> as Apple was gearing up to launch the iPhone.</li>
+<li>Mobile. After having a headstart and early lead, the iPhone and Android just whalloped them.</li>
+<li>Mobile, again. Tablets are a huge market. Microsoft just took a <a href="http://blogs.wsj.com/digits/2013/07/18/microsoft-takes-900-million-writeoff-on-struggling-surface-tablet/">$900M write-off on theirs</a>, and <a href="http://www.informationweek.com/windows/microsoft-news/microsoft-surface-rt-price-slashed-150/240158217">reduced prices to try to induce demand</a>. This after having a &#8220;tablet&#8221; on the market in 2005. </li>
+<li>Search. Social.</li>
+<li>Online docs. They could still pull this one out though. </li>
+</ul>
+<p>Microsoft&#8217;s MO has always been to let others establish a market, then enter it and dominate. Under Gates that worked well for them, but under Ballmer things moved too quickly for that strategy. With few exceptions, that never changed.</p>
+
+<p>Ballmer ultimately did better than some other tech CEOs of his time (Jonathan Schwartz, Carly Fiorina, Léo Apotheker, most Yahoo CEOs), but the unrealized potential and missed opportunities will be his legacy. He did an Ok job all things considered, but Microsoft needs a CEO better than Ok. </p>
+
+<ol>
+<li>
+<a href="http://www.bbc.co.uk/news/business-23815563">The company has more than tripled revenues and doubled profits under Mr Ballmer&#8217;s leadership.</a> </li>
+</ol>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -621,75 +672,6 @@ I&#8217;m working on an iPad application, and this just bit me pretty hard.</p>
 
 <p><a href="http://hiremegithub.com">Hire me GitHub</a>.</p>
 </div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2013/05/06/how-i-finally-understood-functional-programming-with-javascript/" itemprop="url">How I Finally Understood Functional Programming With JavaScript</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-06T00:00:00-07:00" data-updated="true" itemprop="datePublished">May 6<span>th</span>, 2013</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div>
-<div><div><div><div>
-<p>Functional programming has always been a bit of a mindbender for me. I’ve read plenty of tutorials on the subject, but it wasn’t until recently that it finally started to click for me.</p>
-
-<p>The basics of partial function application involves something like this.</p>
-</div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>slice</span> = <span>Array</span>.<span>prototype</span>.<span>slice</span>; <span>// just to simplify things</span><br><span>var</span> <span>partial</span> = <span>function</span>(<span>fn</span>) {<br><span>var</span> <span>args</span> = <span>slice</span>.<span>call</span>(<span>arguments</span>, <span>1</span>);<br><span>return</span> <span>function</span>() {<br><span>return</span> <span>fn</span>.<span>apply</span>(<span>this</span>, <span>args</span>.<span>concat</span>(<span>slice</span>.<span>call</span>(<span>arguments</span>)));<br>  };<br>};</pre></div></div></div></div>
-<div><div><div><div>
-<p class="p1">Bwah?</p>
-<p class="p1">What this does is take a function as a parameter. It then takes all the other parameters and hangs on to them. It returns another function, that when called, executes that first one, with the original arguments <em>and</em> any new ones you pass in.</p>
-<p class="p1">Bwah?</p>
-<p>Let’s use a primitive example to try to unwind this thing.</p>
-<p></p>
-</div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>add</span> = <span>function</span>(<span>a</span>, <span>b</span>) {<br><span>return</span> <span>a</span> + <span>b</span>;<br>};<br><br><span>var</span> <span>add5to</span> = <span>partial</span>(<span>add</span>, <span>5</span>);</pre></div></div></div></div>
-<div><div><div><div>
-<p>Now when you call <code>add5to(3)</code> you’ll get 8. Yes, this will always add 5 to whatever you supply to it. Yes, it is absolutely useless.</p>
-
-<p>This is where a lot of tutorials stop, leaving you to think “OMG WHO CARES?!” and then get back to doing important things, like stamp collecting.</p>
-
-<p>And that’s where I stopped for the longest time too. But then when I watched <a href="http://vimeo.com/43382919">this video</a> a light came on to realize that this could be <em>useful</em>. You can use it to build a pretty nice DSL that creates nested DOM elements.</p>
-
-<p>Let’s say you have a function called <code>el</code> that takes  <code>tagName</code>, <code>attributes</code>, and <code>content</code> as parameters.</p>
-</div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>el</span> = <span>function</span>(<span>tagName</span>, <span>attributes</span>, <span>content</span>) {<br><span>// snip</span><br>};<br><span>var</span> <span>element</span> = <span>el</span>(<span>“div</span><span>”</span>, {<span>className</span>: <span>‘foo</span><span>’</span>, <span>id</span>: <span>‘bar</span><span>’</span>}, <span>“Hi</span> <span>I</span><span>’m</span> <span>a</span> <span>div</span>!<span>”</span>);<br><span>// results in:</span><br><span>// &lt;div id=“bar” class=“foo”&gt;Hi I’m a div!&lt;/div&gt;</span></pre></div></div></div></div>
-<div><div><div><div><p>Let’s also say that if you leave out <code>attributes</code>, it treats the second parameter as <code>content</code>.</p></div></div></div></div>
-<div><div><div><div><pre class="source-code">    <span>el</span>(<span>“p</span><span>”</span>, <span>“Call</span> <span>me</span> <span>Ishmael</span>.<span>”</span>);<br><span>// &lt;p&gt;Call me Ishamel.&lt;/p&gt;</span></pre></div></div></div></div>
-<div><div><div><div><p>That in itself is a little useful, but here’s where partial function application comes in. Cram <code>el</code> into <code>partial</code> and stuff starts to get real.</p></div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>div</span> = <span>partial</span>(<span>el</span>, <span>“div</span><span>”</span>);<br><span>var</span> <span>element</span> = <span>div</span>({<span>className</span>: <span>‘foo</span><span>’</span>, <span>id</span>: <span>‘bar</span><span>’</span>}, <span>“Hi</span> <span>I</span><span>’m</span> <span>a</span> <span>div</span>!<span>”</span>)</pre></div></div></div></div>
-<div><div><div><div><p>In fact, we can quickly make functions for many HTML tags.</p></div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>DOM</span> = {};<br>[<span>“div</span><span>”</span>, <span>“p</span><span>”</span>, <span>“ul</span><span>”</span>, <span>“ol</span><span>”</span>, <span>“li</span><span>”</span>].<span>forEach</span>(<span>function</span>(<span>t</span>) {<br><span>DOM</span>[<span>t</span>] = <span>partial</span>(<span>el</span>, <span>t</span>);<br>});</pre></div></div></div></div>
-<div><div><div><div><p>Now you can string a bunch of stuff together.</p></div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>list</span> = <span>DOM</span>.<span>ul</span>(<br>            [<span>DOM</span>.<span>li</span>(<span>“one</span><span>”</span>), <br><span>DOM</span>.<span>li</span>(<span>“two</span><span>”</span>), <br><span>DOM</span>.<span>li</span>(<span>“three</span><span>”</span>)]);</pre></div></div></div></div>
-<div><div><div><div><p>Theeeeen, take into account something like <code>map</code> and you can really start to make some magic.</p></div></div></div></div>
-<div><div><div><div><pre class="source-code"><span>var</span> <span>people</span> = [{<span>name</span>: <span>“Scott</span><span>”</span>}, {<span>name</span>: <span>“Bob</span><span>”</span>}, {<span>name</span>: <span>“Barry</span><span>”</span>}];<br><span>var</span> <span>names</span> = <span>people</span>.<span>map</span>(<span>function</span>(<span>p</span>) {<span>return</span> <span>DOM</span>.<span>li</span>(<span>p</span>.<span>name</span>); });<br><span>var</span> <span>list</span> = <span>DOM</span>.<span>ul</span>(<span>names</span>);</pre></div></div></div></div>
-<div><div><div><div>
-<p>All of a sudden you have a quick list of DOM elements with names of people in them. You can refactor that out some more, but I wanted to just focus on just the <code>partial</code> bit of this.</p>
-
-<p>When would be a good time to use this? When you have a bunch of functions that act similarly but vary slightly on parameters. </p>
-
-<p>The power of this lies in that you can take an incredibly simple function, and then use it to build complex mechanisms out of it. I’m still nowhere near an expert on this, but I think this time the wrinkles in my brain may just sink in.</p>
-</div></div></div></div>
-</div>
 		
 		
 	</div>
