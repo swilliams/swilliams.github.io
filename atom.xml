@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-07-07T15:31:29-07:00</updated>
+  <updated>2014-07-10T13:30:27-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Naming Your Stuff]]></title>
+    <link href="http://blog.swilliams.me/words/2014/07/10/naming-your-stuff/"/>
+    <updated>2014-07-10T13:17:05-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/07/10/naming-your-stuff</id>
+    <content type="html"><![CDATA[<p>Names are hard, especially for a framework or library. A good name is memorable, and can be a shot in the arm in terms of discoverability. Finding a good name is nebulous, and too often falls into the I&rsquo;ll-know-it-when-I-see-it category. But a <em>bad</em> name is easier to define. The biggest sin of bad names is that they are impossible to find answers when you run into questions.</p>
+
+<p>I don&rsquo;t like to throw rocks at somebody else&rsquo;s hard work, but I think it&rsquo;s been enough time that I can gently criticize the name of the <a href="http://prototypejs.org/">Prototype JavaScript library</a><sup>1</sup>. Why was this a bad name? Well, what do you do when you run into a problem that isn&rsquo;t quickly found in the official documentation? Search for it on Google. Now, the term <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">&ldquo;prototype&rdquo; is a core part of the JavaScript language</a>, which meant that every single search result for &ldquo;prototype X&rdquo;, &ldquo;JavaScript prototype X&rdquo;, &ldquo;prototype js X&rdquo; or any other combination only referred to dealing with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">prototypal inheritance in JavaScript</a>.</p>
+
+<p>You may be the biggest fan of both The Simpsons and Ruby. Don&rsquo;t name your library &ldquo;Homer&rdquo;. Again, what happens if someone runs into a problem when using Homer? They&rsquo;re going to try to search for &ldquo;homer fix json serialization&rdquo; and get a bunch of funnier Simpsons quotes. Your JSON parsing library is never going to be more popular than <a href="https://www.youtube.com/watch?v=khSIYmTzt6U">Mr. Simpson</a>, so please, pick something else.</p>
+
+<p>Common words aren&rsquo;t necessarily bad. <a href="http://backbonejs.org/">Backbone</a>, <a href="http://underscorejs.org/">Underscore</a>, <a href="http://rubyonrails.org/">Rails</a>, <a href="http://nodejs.org/">node</a>, and <a href="http://expressjs.com/">express</a> are all fairly common English words, but none of them are common enough to pollute search results. Spend a few minutes searching around before putting together your splash page.</p>
+
+<p><div class="footnotes">
+<p><small>
+1. In the war between Prototype and jQuery, I was in the former&rsquo;s camp for a long time. Prototype seemed like magic back in 2006 when I was coding AJAX manually. Searching for jQuery issues was never a problem though.
+</small></p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Friction and Teams]]></title>
@@ -1196,50 +1216,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 </div>
 
 ]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I Made an App!]]></title>
-    <link href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/"/>
-    <updated>2013-12-16T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2013/12/16/i-made-an-app</id>
-    <content type="html"><![CDATA[<div>
-<div><div><div><div>
-<p>One of my goals for this year was to create and release an iOS app. I&#8217;m cutting it close, but I think it&#8217;s finally good enough to actually tell people about it.</p>
-
-<p>I was interested in the idea of making a soundboard for the iPad. A soundboard is something that has lots of sound effects that you can find and play quickly. Radio shows and podcasts use them, especially the &#8220;morning zoo&#8221; ones, and now you can run your own.</p>
-
-<p>It&#8217;s called <a href="http://zartbonk.com">Zartbonk</a>, and <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">I hope you like it</a>. </p>
-
-<p>In order to remove as much friction as possible from getting it into your hands, I&#8217;m going with a &#8220;freemium&#8221; model. The app is <strong>absolutely free</strong>, but has some limitations. You can unlock everything with a single in-app-purchase.</p>
-
-<p>Out of the box it comes with a couple dozen sound effects, including my favorite, the timeless <a href="http://www.youtube.com/watch?v=cdbYsoEasio">Wilhelm Scream</a>, but you can add your own too. You can add sounds from <a href="https://db.tt/7Rr3UKJ">Dropbox</a>, the built-in microphone, or search from thousands of sounds in <a href="http://freesound.org/">freesound&#8217;s library</a>.</p>
-
-<p>I learned <strong>TONS</strong> of things in the process of making this, and I&#8217;ll certainly blog more about my journey from there to here.</p>
-
-<p>I want to hear back from you to. <a href="http://zartbonk.com/contact">Feel free to reach out and contact me if you run into any problems or have questionsp</a>.</p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8" target="_blank">
-			
-				<div>
-					<img alt="appstore.png" src="http://blog.swilliams.me/images/assets/appstore.png">
-</div>
-			
-				</a>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-</div>]]></content>
   </entry>
   
 </feed>
