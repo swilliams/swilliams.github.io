@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-07-10T13:30:27-07:00</updated>
+  <updated>2014-07-27T19:45:36-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Podcasts I Listen to (July 2014)]]></title>
+    <link href="http://blog.swilliams.me/words/2014/07/27/podcasts-i-listen-to-july-2014/"/>
+    <updated>2014-07-27T19:42:12-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/07/27/podcasts-i-listen-to-july-2014</id>
+    <content type="html"><![CDATA[<ul>
+<li><a href="http://5by5.tv/specials">5by5 Specials</a></li>
+<li><a href="http://5by5.tv/movies">5by5 at the Movies</a></li>
+<li><a href="http://atp.fm/">Accidental Tech Podcast</a></li>
+<li><a href="http://5by5.tv/afterdark">5by5 After Dark</a></li>
+<li><a href="http://5by5.tv/b2w">Back to Work</a></li>
+<li><a href="http://5by5.tv/cmdspace">CMD+Space</a></li>
+<li><a href="http://carpeaqua.com/cocoaradio/">CocoaRadio</a></li>
+<li><a href="http://www.imore.com/debug">Debug</a></li>
+<li><a href="http://developingperspective.com/">Developing Perspective</a></li>
+<li><a href="http://www.esn.fm/electricshadow/">Electric Shadow</a></li>
+<li><a href="http://sports.espn.go.com/espnradio/podcast/archive?id=2864045">ESPN: The BS Report</a></li>
+<li><a href="http://www.esn.fm/giantsize/">Giant Size</a></li>
+<li><a href="http://techdistortion.com/podcasts/pragmatic">Pragmatic</a></li>
+<li><a href="http://www.flophousepodcast.com/">The Flop House</a></li>
+<li><a href="http://5by5.tv/frequency">The Frequency</a></li>
+<li><a href="http://www.theincomparable.com/theincomparable/">The Incomparable</a></li>
+<li><a href="http://therecord.co/">The Record</a></li>
+<li><a href="http://www.imore.com/reviewcast">Review</a></li>
+<li><a href="https://daringfireball.net/thetalkshow/">The Talk Show</a></li>
+<li><a href="http://www.theincomparable.com/tpk/">Total Party Kill</a></li>
+<li><a href="http://www.imore.com/vector">Vector</a></li>
+</ul>
+
+
+<p>Currently, I use <a href="https://itunes.apple.com/us/app/overcast-podcast-player/id888422857?mt=8&amp;uo=4&amp;at=11lxUn">Overcast</a> as my listening device.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Naming Your Stuff]]></title>
@@ -1165,54 +1199,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 1. I even took a 5 week leave of absence (some unpaid) from my day job to focus exclusively on it.
 2. &#8220;Realistically&#8221; as in a sustainable pace. You simply can&#8217;t pull 80 hour weeks continuously without something giving.
 3. I still do feel that way. You won&#8217;t ever be acquired for 9 figures, but there&#8217;s enough room to sustain a good business.
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Putting the Minimum in Minimum Viable Product]]></title>
-    <link href="http://blog.swilliams.me/words/2013/12/22/putting-the-minimum-in-minimum-viable-product/"/>
-    <updated>2013-12-22T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2013/12/22/putting-the-minimum-in-minimum-viable-product</id>
-    <content type="html"><![CDATA[<p>There&rsquo;s a common phrase in product development called <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">&ldquo;Minimum Viable Product&rdquo;</a>. It means that the first release of your software product should only do the bare minimum needed to survive. This keeps things simple, and prevents scope creep from sneaking in (I mean you could have your app <em>also</em> <a href="http://www.catb.org/jargon/html/Z/Zawinskis-Law.html">read email</a>, but why?).</p>
-
-<p>For <a href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8">Zartbonk</a>, this meant that the user had to be able to:</p>
-
-<ul>
-<li>Play sounds</li>
-<li>Search sounds</li>
-<li>Add more sounds (through various means)</li>
-</ul>
-
-
-<p>And all of that had to happen quickly, otherwise what was the point?</p>
-
-<p>That&rsquo;s a good feature list, but there is absolutely more to an app than just checking off a bunch of boxes. I could implement all of those features using giant rectangles with primary colors and almost no interaction. That would certainly be a Minimum Product, but not necessarily a Viable one.</p>
-
-<p>A viable product means that it has enough going for it so that it lives; it doesn&rsquo;t just die on the vine. On a mobile device that means it isn&rsquo;t just relegated to the dreaded last screen, essentially a junk drawer for unloved apps. Or maybe it&rsquo;s just deleted altogether.</p>
-
-<p>I&rsquo;m trying to avoid the junk drawer with Zartbonk. There are a few flourishes here and there to make it fun. Sound clips have their waveforms in the background. The progress bar is accurate as it passes across a clip. When a sound plays in the timeline<sup>1</sup> it&rsquo;s corresponding one in the grid jiggles. You can repeat a sound bite by tapping and holding a play button. I tried to add fades and pretty animations everywhere I could.</p>
-
-<figure>
-    <img alt="Jiggle" src="http://blog.swilliams.me/images/assets/jiggle.gif">
-    <figcaption>Jiggle</figcaption>
-</figure>
-
-
-<p>All of these things took time. A <em>lot</em> of time. Remember those three bullet points up there? Implementing those was just 20% of the whole time spent on the app. The fine tuning and iterations of design took weeks and weeks.</p>
-
-<p>And even I&rsquo;m not immune to the allure of adding more features in there. The whole purpose of the PRO option is to add more than what might be necessary, and to separate from the competition. Looking back, I might not have actually launched with some of the pro features. The timeline in particular was a very tough nut to crack, and still isn&rsquo;t as streamlined as I&rsquo;d like it.</p>
-
-<p>Perhaps the most important thing to remember is when you have a <em>minimum</em>, it&rsquo;s time to consider adding to that. Bugs need to be fixed. Interfaces may need to be refactored. The biggest issue with Zartbonk right now is that editing is pretty painful, especially if you want to edit more than a couple of clips. It&rsquo;ll probably take a couple of weeks to get something better in, but that&rsquo;s what I&rsquo;m working on now.</p>
-
-<p>I could have delayed even longer on shipping and fixed editing first, but that runs the risk of finding something else that needs to be fixed, which could threaten the entire project.</p>
-
-<p>I&rsquo;m happy with how I launched 1.0<sup>2</sup>. It wasn&rsquo;t perfect, but I think I was able to strike a decent balance between features and viability.</p>
-
-<div class="footnotes">
-1. That&#8217;s in Zartbonk PRO. What do you mean you haven&#8217;t upgraded yet?
-2. Technically I launched on 1.1, which had some critical bug fixes I didn&#8217;t see until after 1.0 launched.
 </div>
 
 ]]></content>
