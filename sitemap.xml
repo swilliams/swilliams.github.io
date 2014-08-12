@@ -993,8 +993,12 @@
         <lastmod>2014-07-27T19:43:51-07:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.swilliams.me/words/2014/08/12/porting-db5-to-swift/</loc>
+        <lastmod>2014-08-12T16:42:31-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2014-07-27T19:43:51-07:00</lastmod>
+        <lastmod>2014-08-12T16:42:31-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1002,7 +1006,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2014-07-27T19:43:51-07:00</lastmod>
+        <lastmod>2014-08-12T16:42:31-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-07-27T19:45:36-07:00</updated>
+  <updated>2014-08-12T16:42:58-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Porting DB5 to Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2014/08/12/porting-db5-to-swift/"/>
+    <updated>2014-08-12T16:41:51-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/08/12/porting-db5-to-swift</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m a big fan of using the <a href="https://github.com/quartermaster/DB5">DB5 library</a> for customizing an iOS app via a <a href="http://en.wikipedia.org/wiki/Plist">plist configuration file</a>, and I&rsquo;ve used it in several projects so far. I&rsquo;ve also  been digging more into Swift and iOS 8 and thought it would be a good exercise to familiarize myself more with Swift to port DB5 from its original Objective C codebase to Swift.</p>
+
+<p>The result is over on Github: <a href="https://github.com/swilliams/DB5-Swift">DB5-Swift</a>.</p>
+
+<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have and equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
+
+<p>Two of Swift&rsquo;s headlining features are <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_468">type inference</a> and <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_478">optional values</a>. I&rsquo;ve used both of these features before in C# for several years and have appreciated what they bring to the table. Swift is a little bit different though because it comes with the history of Objective C and Cocoa. NSDictionary was built to take advantage of Objective C&rsquo;s type system, and using it with Swift involved more casting and ? and ! operators than I expected. It didn&rsquo;t help that Xcode would often be wrong in its helper tooltips, suggesting addtional !&rsquo;s which wouldn&rsquo;t fix the problem.</p>
+
+<p>I&rsquo;m not entirely sure if DB5-Swift is 100% up to snuff right now. I think some of the methods should have better handling for nil values. I still have plenty of learning left before I&rsquo;d consider myself adept at Swift. Overall, it was  a good exercise, and I will use it in future apps.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Naming Your Stuff]]></title>
@@ -206,174 +223,6 @@ derp: function() {
 <p></figure></p>
 
 <p>I like Octopress because it is fast, easy for me to manage, and keeps my content in a simple (and portable) format. I just hope that this will last me for a while. It doesn&rsquo;t do nearly as many things as Squarespace, but most of those I don&rsquo;t need.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
-    <link href="http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
-    <updated>2014-02-21T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
-    <content type="html"><![CDATA[<p><a href="/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
-
-<p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
-
-<p><figure></p>
-
-<pre><code>&lt;img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://blog.swilliams.me/images/assets/lego-annotated.png"&gt;
-&lt;figcaption&gt;&lt;a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5"&gt;Lego Castle&lt;/a&gt; by &lt;a href="http://www.flickr.com/photos/skinnylawyer/"&gt;InSapphoWeTrust&lt;/a&gt; on Flickr.&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
-
-<h3>Dynamically Adding</h3>
-
-<p>What if those Legos could generate even more Legos as you were building with them, and then intelligently join themselves together?</p>
-
-<p>If you&rsquo;re familiar with Rails, you&rsquo;ve seen that you can just declare associations within a model — <code>:has_many</code>, <code>:has_one</code>, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let&rsquo;s implement a rudimentary version.</p>
-
-<p>Think for a moment about <code>:has_many</code>. What would you expect the line <code>has_many :gerbils</code> methods to do?  You would have to have a <code>gerbils</code> method to retrieve the little fellas, and another one, <code>gerbils=(new_value)</code> to set them (and others to add them and so on, but <a href="http://en.wikipedia.org/wiki/Keep_it_simple_stupid">KISS</a>). You implement that with a generic <code>get_child_models(child_name)</code> method, but that feels like the Java (™ Oracle Corporation) way&hellip; and I have too much self respect to go down that path. Instead we can take advantage of Ruby&rsquo;s metaprogramming capabilities and generate them dynamically.</p>
-
-<p>One way to do this is with <code>eval</code>.</p>
-
-<h3>A Word on Eval</h3>
-
-<p>Ruby has a few versions of <code>eval</code>. They all take strings or blocks and turn them in code that is executed.</p>
-
-<ul>
-<li>There&rsquo;s the <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">standard one</a> that executes arbitrary code.</li>
-<li><a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-class_eval">class_eval</a> — similar to vanilla <code>eval</code>, but executes the code in the context of the Class itself. There&rsquo;s also <code>module_eval</code> which does the same thing (more or less). Example:</li>
-</ul>
-
-
-<p>``` ruby
-class Monkey
-end</p>
-
-<p>m = Monkey.new
-Monkey.class_eval %q(def screech() &lsquo;Eek Eek&rsquo; end)
-m.screech # Eek Eek
-```</p>
-
-<ul>
-<li><a href="">instance_eval</a> — modifies a class, but from an instance point of view, <em>and only for that particular instance</em> (this is called a <a href="http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/39-ruby-s-object-model/lessons/131-singleton-methods-and-metaclasses">Singleton method</a>).</li>
-</ul>
-
-
-<p>``` ruby
-class Monkey
-end</p>
-
-<p>m = Monkey.new
-m2 = Monkey.new
-m.instance_eval %q(def screech() &lsquo;Eek Eek&rsquo; end)
-m.screech # Eek Eek
-m2.screech # NoMethodError: undefined method `screech' for #&lt;Monkey:0x007fa6f768bac8>
-```</p>
-
-<p>Using these techniques you can generate the set of methods for our <code>:has_many</code> implementation.</p>
-
-<p>``` ruby
-module Associations
-  class &lt;&lt; self</p>
-
-<pre><code>def included(base)
-  base.extend Associations::ClassMethods
-end
-</code></pre>
-
-<p>  end</p>
-
-<p>  module ClassMethods</p>
-
-<pre><code>def has_many(thingies)
-  code = %(
-    def #{thingies}
-        # retrieve stuff from here
-    end
-
-    def #{thingies}=(new_value)
-        # set new_value here
-    end
-  )
-  class_eval code
-end
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p>
-
-<p><figure></p>
-
-<pre><code>&lt;img alt="This is you with all the gerbil methods." src="http://blog.swilliams.me/images/assets/cashew.jpg"&gt;
-&lt;figcaption&gt;This is you with all the gerbil methods.&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
-
-<h3>Caution</h3>
-
-<p>I&rsquo;m not a big fan of <code>eval</code>, at least when using it with strings. The biggest reason is that it makes bugs harder to find. The Ruby interpreter will point out syntax errors when the file loads, but a typo in an evalled string won&rsquo;t get caught until runtime. The longer the string, the more likely something bad will creep in there. And some of these dynamically created methods will be long. I&rsquo;m talking <a href="http://www.amazon.com/gp/product/B0026L7H20/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026L7H20&amp;linkCode=as2&amp;tag=thepetzoo-20">Lord of the Rings Extended Edition</a> long.</p>
-
-<p>Fortunately there is a better way. The eval methods also take blocks, which work pretty well in most cases. For the purposes of dynamically generating methods, I prefer using <code>define_method</code> <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-define_method">source</a>. It&rsquo;s available on <code>Module</code> (and therefore classes too) and, just like it says on the tin, is designed to create methods on the fly and add them to a class.</p>
-
-<p>``` ruby
-def has_many(thingies)
-  define_method thingies.to_s do</p>
-
-<pre><code># retrieve stuff from here
-</code></pre>
-
-<p>  end</p>
-
-<p>  define_method &ldquo;#{thingies}=&rdquo; do</p>
-
-<pre><code># set new_value here
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>It&rsquo;s kinda similar to the eval code, in fact, <code>define_method</code> passes itself along to <code>instance_eval</code>, so when all is said and done, it&rsquo;s merely for our convenience. But is easier to test, and will complain loudly if there&rsquo;s a syntax error.</p>
-
-<p>Working with actual code rather than a string makes refactoring easier too. Let&rsquo;s say you want to enable your users to define their own implementations of the generated rodent methods. Pulling that out into its own method is simple:</p>
-
-<p>``` ruby
-def add_method_without_clobbering (method_name, &amp;method_definition)
-  unless method_defined? method_name</p>
-
-<pre><code>define_method method_name, method_definition
-</code></pre>
-
-<p>  end
-end</p>
-
-<p>def has_many(thingies)
-  add_method_without_clobbering thingies.to_s do</p>
-
-<pre><code># retrieve stuff from here
-</code></pre>
-
-<p>  end</p>
-
-<p>  add_method_without_clobbering &ldquo;#{thingies}=&rdquo; do</p>
-
-<pre><code># set new_value here
-</code></pre>
-
-<p>  end
-end
-```</p>
-
-<p>That&rsquo;s still possible with string evals, but is easier to read in my eyes.</p>
-
-<p>That&rsquo;ll wrap up this entry on DSLs. There&rsquo;s only one other big piece of the pie I&rsquo;d like to cover — blocks, but you can do a whole lot without them.</p>
-
-<p>One thing to keep in mind when writing DSLs is that it can be hard to follow along. Document everything, especially the esoteric parts. It might even be a good idea to diagram the path of all the <code>include</code> chain. DSLs can make client code easier to write, but usually at the expense of crazy complexity within the DSL itself.</p>
 ]]></content>
   </entry>
   

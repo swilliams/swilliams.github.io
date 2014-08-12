@@ -9,12 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Podcasts I Listen to (July 2014) Jul 27th, 2014 5by5 Specials
-5by5 at the Movies
-Accidental Tech Podcast
-5by5 After Dark
-Back to Work
-CMD+Space &hellip;">
+	<meta name="description" content="Porting DB5 to Swift Aug 12th, 2014 I&rsquo;m a big fan of using the DB5 library for customizing an iOS app via a plist configuration file, and I& &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +88,42 @@ CMD+Space &hellip;">
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/08/12/porting-db5-to-swift/" itemprop="url">Porting DB5 to Swift</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-12T16:41:51-07:00" data-updated="true" itemprop="datePublished">Aug 12<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I&rsquo;m a big fan of using the <a href="https://github.com/quartermaster/DB5">DB5 library</a> for customizing an iOS app via a <a href="http://en.wikipedia.org/wiki/Plist">plist configuration file</a>, and I&rsquo;ve used it in several projects so far. I&rsquo;ve also  been digging more into Swift and iOS 8 and thought it would be a good exercise to familiarize myself more with Swift to port DB5 from its original Objective C codebase to Swift.</p>
+
+<p>The result is over on Github: <a href="https://github.com/swilliams/DB5-Swift">DB5-Swift</a>.</p>
+
+<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have and equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
+
+<p>Two of Swift&rsquo;s headlining features are <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_468">type inference</a> and <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_478">optional values</a>. I&rsquo;ve used both of these features before in C# for several years and have appreciated what they bring to the table. Swift is a little bit different though because it comes with the history of Objective C and Cocoa. NSDictionary was built to take advantage of Objective C&rsquo;s type system, and using it with Swift involved more casting and ? and ! operators than I expected. It didn&rsquo;t help that Xcode would often be wrong in its helper tooltips, suggesting addtional !&rsquo;s which wouldn&rsquo;t fix the problem.</p>
+
+<p>I&rsquo;m not entirely sure if DB5-Swift is 100% up to snuff right now. I think some of the methods should have better handling for nil values. I still have plenty of learning left before I&rsquo;d consider myself adept at Swift. Overall, it was  a good exercise, and I will use it in future apps.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -609,73 +640,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 
 
 <p>For my money, it doesn&rsquo;t get much better than the last one.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/04/11/changing-your-password/" itemprop="url">Changing Your Password</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-11T08:23:03-07:00" data-updated="true" itemprop="datePublished">Apr 11<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>With news of the <a href="http://heartbleed.com/">heartbleed vulnerability</a> I&rsquo;ve taken the <strike>paranoid</strike> precautionary measure of changing all my passwords. I have over 200 logins in my <a href="https://agilebits.com/onepassword">1Password</a><sup>1</sup> library, so I&rsquo;ve seen just about every kind of password change process imaginable over the last day or two. My conclusion is that there are a lot of <strong>terrible</strong> implementations of this process.</p>
-
-<p>Security conflicts with convenience, and changing passwords is never convenient. But there are ways to at least make it quick. Here&rsquo;s what I expect when I got to a site to change my password:</p>
-
-<ol>
-<li>Sign in.</li>
-<li>Click something like &lsquo;Settings&rsquo;, &lsquo;Account&rsquo;, or &lsquo;Profile&rsquo;. Ideally, there should only be one of those on the page to avoid guessing.</li>
-<li>Have the word &lsquo;password&rsquo; on that Settings page. Be it a button, link, or inline form, just make it easy to find.</li>
-<li>If I need to enter my old password first, make it the first field.</li>
-<li>Display some kind of notification that my change was successful.</li>
-<li>Optionally, send me an email telling me it changed, just in case a bad guy did it.</li>
-</ol>
-
-
-<p>That&rsquo;s not so bad right? This has been the standard way of doing things ever since <a href="http://en.wikipedia.org/wiki/Cgi-bin">cgi-bin</a> was a thing. But so many websites get it wrong.</p>
-
-<ul>
-<li>First of all, <em>have</em> a Change Password form. More than a couple sites I went to don&rsquo;t have one and rely on you to do the Reset My Password dance. This means I have to sign out, go back to the sign in page, click the reset link, enter my email, wait for the email, open the email, click the link in the email, then finally enter a new password. Shame on you if you make me do this. Shame.</li>
-<li>Don&rsquo;t restrict password length. 1Password let&rsquo;s me create a 50 character password, yet I&rsquo;d say at least 40% of the sites I went to couldn&rsquo;t handle a password that long.</li>
-<li>If you have to restrict length for some reason, tell me exactly what that maximum is.</li>
-</ul>
-
-
-<figure>
-    <img alt="Password WTF" src="/images/assets/password-wtf.png" />
-</figure>
-
-
-<ul>
-<li>Don&rsquo;t restrict what characters I can use. There is no technical reason I shouldn&rsquo;t be able to use spaces or symbols in a password.</li>
-<li>Don&rsquo;t restrict copy/paste in the password field. Paypal was the only one I saw that did this, and it boggles my mind. A random, complex password is going to be more secure than one I can easily type in (which can be <a href="http://en.wikipedia.org/wiki/Rainbow_tables">cracked quickly</a>). Don&rsquo;t actively prevent me from trying to make my financial data secure!</li>
-</ul>
-
-
-<p>Security already has its own set of barriers, and a certain subset of people will never take it seriously. As a web developer, it is entirely up to you to keep that subset from growing in size.</p>
-
-<div class="footnotes">
-1. You really, really, really, really, really, really, should use it too, or a similar product.
-</div>
-
 
 		
 		
