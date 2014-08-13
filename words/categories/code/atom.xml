@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-08-12T16:42:58-07:00</updated>
+  <updated>2014-08-13T06:34:03-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -22,11 +22,16 @@
 
 <p>The result is over on Github: <a href="https://github.com/swilliams/DB5-Swift">DB5-Swift</a>.</p>
 
-<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have and equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
+<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have an equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a><sup>1</sup>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
 
 <p>Two of Swift&rsquo;s headlining features are <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_468">type inference</a> and <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_478">optional values</a>. I&rsquo;ve used both of these features before in C# for several years and have appreciated what they bring to the table. Swift is a little bit different though because it comes with the history of Objective C and Cocoa. NSDictionary was built to take advantage of Objective C&rsquo;s type system, and using it with Swift involved more casting and ? and ! operators than I expected. It didn&rsquo;t help that Xcode would often be wrong in its helper tooltips, suggesting addtional !&rsquo;s which wouldn&rsquo;t fix the problem.</p>
 
 <p>I&rsquo;m not entirely sure if DB5-Swift is 100% up to snuff right now. I think some of the methods should have better handling for nil values. I still have plenty of learning left before I&rsquo;d consider myself adept at Swift. Overall, it was  a good exercise, and I will use it in future apps.</p>
+
+<p><div class="footnotes">
+<p><small>
+1. Not necessarily true according to <a href="https://twitter.com/_lanceparker/status/499368493209239552">@_lanceparker</a> on Twitter.
+</small></p></p>
 ]]></content>
   </entry>
   
