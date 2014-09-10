@@ -305,6 +305,10 @@ figure.small {
     display: inline-block;
 }
 
+figure.center {
+    text-align: center;
+}
+
 h3 + figure {
     margin-top: 30px;
 }
