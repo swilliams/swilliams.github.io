@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-09-07T14:35:51-07:00</updated>
+  <updated>2014-09-10T08:25:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thoughts on Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/"/>
+    <updated>2014-09-10T08:24:30-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift</id>
+    <content type="html"><![CDATA[<figure class="center">
+    <img src="http://blog.swilliams.me/images/assets/swift-logo.png" alt="Swift Logo" />
+    <figcaption></figcaption>
+</figure>
+
+
+<p>Swift is a new language developed by Apple. I&rsquo;ve been using for a few side projects.</p>
+
+<p>On my first glance, I thought Swift would be a great language for beginners. I&rsquo;m not 100% sure if that&rsquo;s still the case. A beginner language should push you into a positive feedback loop: do something, see it work, do some more, and so on. Swift and Xcode 6 do some of this with aplomb, especially with playgrounds, but I found some features of the language can be frustrating until you have a deeper understanding of what&rsquo;s going on.</p>
+
+<p>Optionals are the biggest part of that. They&rsquo;re kind of crazy at first. Lot&rsquo;s of ?&rsquo;s and !&rsquo;s running around. When I was starting with Swift, Xcode would constantly complain that I was missing one. Sometimes it would tell me which one was missing, but sometimes it didn&rsquo;t. After reading the documentation a little more and thinking about it, things started to click. Handling nil values is important in any language, and handling them poorly can lead to some truly marvelous bugs or security issues. Swift makes you face them much earlier in the process. I think this is a good thing, though it can make for a frustrating start. It&rsquo;s also made me think if I&rsquo;m handling nils properly in other languages I use.</p>
+
+<p>I&rsquo;m still working on my own personal style, but I think I should be using more computed properties. A rule I&rsquo;m toying with is to keep on making methods for &ldquo;verbs&rdquo; like <code>moveFileToThing</code>, but use properties for &ldquo;nouns&rdquo; like <code>allSampleAssets</code>, even if that property makes several other calls within its implementation. This might require renaming certain methods in order to better comply with that style; if <code>allSampleAssets</code> took a <code>sort</code> parameter it couldn&rsquo;t be a property, so I&rsquo;d rename it to <code>queryAllSampleAssets(sort: NSSortDescriptor)</code>.</p>
+
+<p>Even though it&rsquo;s a brand new thing, there is still a good amount of Objective C and Cocoa baggage. The standard collections use <code>AnyObject</code> where <code>id</code> used to be, which means you&rsquo;ll need to do some explicit casting to the type you need. I found it easier when dealing with an <code>NSDictionary</code> or <code>NSArray</code> to not try to cram all the casting and then manipulating into a single line of code.</p>
+
+<p>Enums have reams of power that could be used for evil. I like the way <a href="http://nsscreencast.com/episodes/130-swift-json-redux-part-1">NSScreencasts uses enums with JSON parsing</a>, but it&rsquo;s hard to comprehend. If you have more of a functional programming background, I suspect this would be easier.</p>
+
+<p>Swift is going to be huge. I think Apple does have a language on its hands that&rsquo;ll last for its next 20 years. There are still some rough edges and potential pitfalls, but It has become the language I prefer when creating iOS apps.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Trip to Joshua Tree and Back]]></title>
@@ -1222,36 +1249,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 <p>You&rsquo;ll become a better programmer seeing if the grass is greener elsewhere. If all you know is .NET, then you only know the .NET way of doing things. I&rsquo;ve taken to <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app">iOS development recently</a>, and at a recent client I used a pattern I learned from working with <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITableView_Class/Reference/Reference.html">UITableViews</a> to do something awesome in JavaScript. Had I never attempted learning Objective C, that wouldn&rsquo;t have happened.</p>
 
 <p>Are you a .NET web developer? Try learning something like <a href="http://guides.rubyonrails.org/getting_started.html">Rails</a>, or <a href="http://nodejs.org/about/">Node</a>, or <a href="https://docs.djangoproject.com/en/1.6/intro/overview/">Python</a>. Rails developer? Try Node, or maybe <a href="https://developer.apple.com/devcenter/ios/index.action">iOS</a> or <a href="http://developer.android.com/sdk/index.html">Android</a>. Mobile developer? Try web development, or a competing platform. Maybe even go with a neckbearded technology like <a href="http://clojure.org/">Clojure</a>. The things you learn from moving outside your environment will only benefit you in your day job.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Prepare a MacBook Pro For Sale that was Upgraded to Mavericks]]></title>
-    <link href="http://blog.swilliams.me/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks/"/>
-    <updated>2014-01-13T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/01/13/how-to-prepare-a-macbook-pro-for-sale-that-was-upgraded-to-mavericks</id>
-    <content type="html"><![CDATA[<p>I recently upgraded to a newer MacBook Pro<sup>1</sup>. Since I didn&rsquo;t need my older one, I sold it to a friend&rsquo;s family. I wanted them to be able to have as close to a new-out-of-the-box experience as possible, so I wiped the drive and prepared to reinstall <a href="http://www.apple.com/osx/">OS X Mavericks</a>.</p>
-
-<p>Back when OSes used to ship on CDs or DVDs you could put the disc into the drive and boot right into what is called &ldquo;Recovery&rdquo; mode to reinstall things. Since Apple switched over to download only updates, this is no longer the case.</p>
-
-<p>In order to get back into Recovery mode, restart the computer and hold ⌘R while it boots up. From there you can format the drive and reinstall Mavericks, provided you have an Internet connection. If you created a <a href="http://www.techrepublic.com/blog/apple-in-the-enterprise/how-to-create-a-bootable-usb-to-install-os-x-mavericks/">bootable USB drive</a>, that&rsquo;d work too, without needing to be online.</p>
-
-<p>The catch though is that the new user needs to have an Apple ID <em>that has already &ldquo;purchased&rdquo; Mavericks</em> for the install to continue. This&rsquo;ll be my friend&rsquo;s first Mac, so they never had the opportunity to buy Mavericks. This is also especially weird because Mavericks is <strong>free</strong>. There doesn&rsquo;t appear to be a way to transfer ownership to a separate Apple ID. The solution? <a href="https://discussions.apple.com/message/23573490#23573490">Reinstall the original OS the computer came with</a>. Which means this:</p>
-
-<figure>
-    <img alt="IMG_1843.jpg" src="http://blog.swilliams.me/images/assets/IMG_1843.jpg">
-    <figcaption>Oh, hi, Snow Leopard</figcaption>
-</figure>
-
-
-<p>Yeah, <a href="http://en.wikipedia.org/wiki/Mac_OS_X_Snow_Leopard">OS X 10.6 Snow Leopard</a>. The funny thing about this is that I cleaned out my closet last week and threw away my original Snow Leopard installation DVD thinking I wouldn&rsquo;t need it again. So I <em>found</em> a copy somewhere else. Once that finished installing I handed it off and let them go about updating it to Mavericks.</p>
-
-<p> I don&rsquo;t know how it&rsquo;ll work in a few years when I decide to sell my newest laptop that came with Mavericks already on it. Moral of the story: it&rsquo;s just all too rare when semi-complex software &ldquo;just works&rdquo;.</p>
-
-<div class="footnotes">
-1. <a href="http://support.apple.com/kb/SP691">The 13&#8221; retina Pro</a> for those of you keeping score. Holy wow is it fast. And I didn&#8217;t think the retina screen would be that big of a deal, but it is.
-</div>
-
 ]]></content>
   </entry>
   
