@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-09-10T08:25:34-07:00</updated>
+  <updated>2014-10-17T08:20:19-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Best Customer Service]]></title>
+    <link href="http://blog.swilliams.me/words/2014/10/15/the-best-customer-service/"/>
+    <updated>2014-10-15T11:09:22-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/10/15/the-best-customer-service</id>
+    <content type="html"><![CDATA[<p>A few years ago I was at a steakhouse for a company dinner. I had ordered the King of Steaks, a Rib-Eye medium rare and was looking forward to eating it. When I cut into my steak I saw that it was basically well-done (there was the tiniest sliver of pink left amidst a sea of gray). I flagged the server and said &ldquo;Um, I ordered this medium-rare&hellip;&rdquo;<sup>1</sup></p>
+
+<p>Without a moment&rsquo;s hesitation she apologized, grabbed the plate and went directly back to the kitchen with it. Barely five minutes later she brought back out a piping hot steak that was cooked <em>perfectly</em>. She checked back again a few minutes later to make sure everything was ok (it was).</p>
+
+<p>Why was this so good? She knew exactly what had happened and knew how to fix it to my satisfaction. There weren&rsquo;t any games played, just immediate and decisive action.</p>
+
+<p>I was at a hotel recently and the last day something bad happened that left a sour taste in my mouth. The manager on duty very nice and apologetic. But she asked &ldquo;What would you like me to do to &lsquo;make it right&rsquo;?&rdquo;. I hate that question because I don&rsquo;t know how to respond. Asking to comp the whole trip would be overboard and unfair. But putting the onus of the decision on me when I&rsquo;m already under duress only compounds the problem.</p>
+
+<p>If you&rsquo;re in the service industry, you need to understand what that means and not make the customer come up with their own solutions.</p>
+
+<p><div class="footnotes">
+<p><small>
+1. There could&rsquo;ve been a dozen reasons why my steak was overcooked, and it probably wasn&rsquo;t the server&rsquo;s fault, so there&rsquo;s no use in getting angry with her about it. The best part is that I didn&rsquo;t even have time to get angry.
+</small></p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thoughts on Swift]]></title>
@@ -1222,33 +1244,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 1. It looked like a suppository, ok?
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Keep Your Developer Saw Sharp]]></title>
-    <link href="http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp/"/>
-    <updated>2014-01-20T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp</id>
-    <content type="html"><![CDATA[<figure>
-    <img alt='"Dremel Moto Jig Saw" from Pete Prodoehl on Flickr' src="http://blog.swilliams.me/images/assets/5184600234_a99779ddc1_z.jpg">
-    <figcaption><a href="http://www.flickr.com/photos/raster/5184600234/">&#8220;Dremel Moto Jig Saw&#8221;</a> from <a href="http://www.flickr.com/photos/raster/">Pete Prodoehl</a> on Flickr</figcaption>
-</figure>
-
-
-<p>If you&rsquo;re a software developer, you need to make sure your skills are up to date. If you don&rsquo;t, you&rsquo;re doing yourself a disservice.</p>
-
-<p>This is important for several reasons. First, it keeps you marketable. There&rsquo;s no such thing as true job security. You might be a vitally important cog in an esoteric process at a corporation, but could still be laid off if certain numbers in an executive&rsquo;s spreadsheet don&rsquo;t come out in your favor. Even though it&rsquo;s a buyers&#8217; market for software developers right now, you might suddenly find yourself looking down the pointy end of an interview table needing to answer a question about something that you always meant to study up on, but never did.</p>
-
-<p>Things change, and practices that were once standard aren&rsquo;t any more. In fact, they can be dangerous. For example, I was on a project with a client&rsquo;s DBA who hadn&rsquo;t really kept up with the times. He would&rsquo;ve been a really good SQL Server DBA if it were still 1998. His design for the project included making just under 400 tables, with no fewer than 20 joins for any query. Since the application was very heavily data driven, things bogged down under even light loads. The performance caused many long nights and weekends and &ldquo;aggressive conversations&rdquo; with managers at the client.</p>
-
-<p>It can be <strong>expensive</strong>. The problems in the above anecdote could&rsquo;ve been avoided by adopting a <a href="http://stackoverflow.com/a/460296/736">less normalized</a> approach in the database. Yes, data would&rsquo;ve been duplicated, but hardware has gotten <em>so</em> much cheaper it&rsquo;s financially irresponsible not consider just buying faster stuff. You could save $10,000 on a new server, but if you&rsquo;re paying a team of consultants billing $1,000/hour for <em>weeks</em> of work, <a href="http://www.youtube.com/watch?v=-DGFuHC75aY">you chose poorly</a>.  If StackOverflow got away with just <a href="http://highscalability.com/blog/2011/3/3/stack-overflow-architecture-update-now-at-95-million-page-vi.html">2 database servers in 2011</a>, you can probably do just fine with one.</p>
-
-<p>It makes team dynamics better. I&rsquo;ve been a consultant of some form or fashion for nearly seven years now. I&rsquo;ve seen good projects, and I&rsquo;ve seen bad ones. Bad communication and skill mismatches are traits of projects that go south. When developers are on the same page it makes for much easier conversations. For example, if you are a web developer, I shouldn&rsquo;t have to repeatedly explain what <a href="http://en.wikipedia.org/wiki/REST">REST</a> is in 2014, no matter what platform you&rsquo;re using.</p>
-
-<p>You&rsquo;ll become a better programmer seeing if the grass is greener elsewhere. If all you know is .NET, then you only know the .NET way of doing things. I&rsquo;ve taken to <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app">iOS development recently</a>, and at a recent client I used a pattern I learned from working with <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITableView_Class/Reference/Reference.html">UITableViews</a> to do something awesome in JavaScript. Had I never attempted learning Objective C, that wouldn&rsquo;t have happened.</p>
-
-<p>Are you a .NET web developer? Try learning something like <a href="http://guides.rubyonrails.org/getting_started.html">Rails</a>, or <a href="http://nodejs.org/about/">Node</a>, or <a href="https://docs.djangoproject.com/en/1.6/intro/overview/">Python</a>. Rails developer? Try Node, or maybe <a href="https://developer.apple.com/devcenter/ios/index.action">iOS</a> or <a href="http://developer.android.com/sdk/index.html">Android</a>. Mobile developer? Try web development, or a competing platform. Maybe even go with a neckbearded technology like <a href="http://clojure.org/">Clojure</a>. The things you learn from moving outside your environment will only benefit you in your day job.</p>
 ]]></content>
   </entry>
   
