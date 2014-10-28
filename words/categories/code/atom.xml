@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-10-17T08:20:45-07:00</updated>
+  <updated>2014-10-28T10:58:56-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -120,16 +120,16 @@ remaining: function() {
 }
 ```</p>
 
-<p>{% raw %}
+<p>
 ```html index.html</p>
 
 <h1>todos {{derp}}</h1>
 
 
 <p>```
-{% endraw %}</p>
+</p>
 
-<p>This resulted in the method body being substituted in the template, which reminded me that {% raw %}<code>{{derp}}</code>{% endraw %} was just printing out whatever <code>derp</code> evaluated to, in this case a function.<sup>1</sup> So I made <code>derp</code> a computed property:</p>
+<p>This resulted in the method body being substituted in the template, which reminded me that <code>{{derp}}</code> was just printing out whatever <code>derp</code> evaluated to, in this case a function.<sup>1</sup> So I made <code>derp</code> a computed property:</p>
 
 <p><code>js todos_controller.js
 derp: function() {
@@ -147,7 +147,7 @@ derp: function() {
 
 <p>And sure enough, the title was now &lsquo;todos 2&rsquo;. I suspected this would work because my controller extended <code>Ember.ArrayController</code>, giving it access to <code>filterBy</code>. This lead me back to one of my original questions: what is the purpose of <code>'@each.isCompleted'</code>?</p>
 
-<p>I played around with the todo app a little more and noticed that my {% raw %}<code>{{derp}}</code>{% endraw %} was not automatically updating when todos where checked off while the original {% raw %}<code>{{remaining}}</code>{% endraw %} was. Then it hit me: <code>'@each'</code> must be a special directive for an <code>ArrayController</code> that bound that function to the <code>isCompleted</code> property of <a href="http://emberjs.com/api/classes/Ember.ArrayController.html#property__each"><em>each</em></a> object in its array. Putting a <code>console.log('called');</code> confirmed this suspicion — it&rsquo;s called every time <code>isCompleted</code> is accessed.</p>
+<p>I played around with the todo app a little more and noticed that my <code>{{derp}}</code> was not automatically updating when todos where checked off while the original <code>{{remaining}}</code> was. Then it hit me: <code>'@each'</code> must be a special directive for an <code>ArrayController</code> that bound that function to the <code>isCompleted</code> property of <a href="http://emberjs.com/api/classes/Ember.ArrayController.html#property__each"><em>each</em></a> object in its array. Putting a <code>console.log('called');</code> confirmed this suspicion — it&rsquo;s called every time <code>isCompleted</code> is accessed.</p>
 
 <p>After this bit of forensics, things make a little more sense now. I do wish this association was a little more spelled out in the documentation though for us thick-headed developers.</p>
 
