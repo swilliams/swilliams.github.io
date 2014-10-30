@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-10-28T10:58:56-07:00</updated>
+  <updated>2014-10-30T11:09:43-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dealing With Xcode and Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/"/>
+    <updated>2014-10-30T10:46:09-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/">I like Swift</a>. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite).</p>
+
+<p>My biggest woe is that code completion up and vanishes in projects. This is especially problematic when dealing with Cocoa libraries because method names tend to be verbose and descriptive. I find myself thinking &ldquo;I know it&rsquo;s called <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/popToRootViewControllerAnimated:">popToRoot-something-somthing</a> and was it on UIViewController or the navigationController?&rdquo;. What would&rsquo;ve taken two seconds of poking through code-completion to figure that out turned into a solid minute of searching documentation. Multiply this every time you can&rsquo;t explicitly remember every part of a method call (and spell it correctly) and tasks that normally take an hour are now a significant part of a day.</p>
+
+<p>The tools that Apple provides are now hindering development. I&rsquo;m not alone in that sentiment. On Apple&rsquo;s developer forums (account needed to view) there are a few threads with names like <a href="https://devforums.apple.com/message/1067119#1067119">&ldquo;Can SourceKit possibly crash more often on a Swift project?&rdquo;</a> and <a href="https://devforums.apple.com/thread/248397?start=0&amp;tstart=0">&ldquo;Xcode 6.1b3 Swift editing is becoming very difficult&rdquo;</a>.</p>
+
+<p>One of those threads recommends deleting two folders: <code>~/Library/Developer/Xcode/DerivedData</code> and <code>~/Library/Caches/com.apple.dt.Xcode</code>. This does the job for me. It happens often enough that I created a hot key for it with <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a>.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Keyboard Maestro Screenshot" src="http://blog.swilliams.me/images/assets/xcode-swift-maestro.png"&gt;
+&lt;figcaption&gt;This will yell at you if those folders don't exist, but I can live with that.&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
+
+<p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thoughts on Swift]]></title>
@@ -155,44 +182,6 @@ derp: function() {
 1. This is what JavaScript does. Open the dev tools and log a function without executing it — the body of that function prints out.
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Oh Cool You Want to Be a Web Developer?]]></title>
-    <link href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/"/>
-    <updated>2014-05-06T11:07:29-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer</id>
-    <content type="html"><![CDATA[<p>Just go and learn any or all of these:</p>
-
-<ul>
-<li>HTML 5</li>
-<li>CSS 3</li>
-<li>JavaScript</li>
-<li><a href="http://coffeescript.org">CoffeeScript</a></li>
-<li><a href="http://sass-lang.com/">SASS</a></li>
-<li><a href="http://lesscss.org/">Less</a></li>
-<li><a href="http://jquery.com/">jQuery</a></li>
-<li><a href="https://angularjs.org/">Angular</a></li>
-<li><a href="http://emberjs.com/">Ember</a></li>
-<li><a href="http://gruntjs.com/">Grunt</a></li>
-<li><a href="http://gulpjs.com/">Gulp</a></li>
-<li><a href="http://bower.io/">Bower</a></li>
-<li><a href="http://yeoman.io/">Yeoman</a></li>
-<li><a href="http://nodejs.org/">node.js</a></li>
-<li><a href="http://bourbon.io/">Bourbon</a></li>
-<li><a href="http://bitters.bourbon.io/">Bitters</a></li>
-<li><a href="http://compass-style.org/">Compass</a></li>
-<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
-<li><a href="http://foundation.zurb.com/">Foundation</a></li>
-<li><a href="http://handlebarsjs.com/">Handlebars</a></li>
-<li><a href="http://mustache.github.io/">Mustache</a></li>
-</ul>
-
-
-<p>This list is not exhaustive. Some of those are optional. By the time you are done reading this, another framework or library will have been created.</p>
-
-<p>This is a <a href="http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman/">frustration</a> that I feel with web development these days. I spent about 2 years learning <a href="http://documentcloud.github.io/backbone/">one</a> client-side framework inside and out, but it&rsquo;s already losing relevance. Angular seems to be a good choice for employment these days, but if I go deep in it, will history repeat itself?</p>
 ]]></content>
   </entry>
   

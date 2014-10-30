@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Xcode | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/xcode/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-10-30T11:09:43-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dealing With Xcode and Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/"/>
+    <updated>2014-10-30T10:46:09-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/">I like Swift</a>. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite).</p>
+
+<p>My biggest woe is that code completion up and vanishes in projects. This is especially problematic when dealing with Cocoa libraries because method names tend to be verbose and descriptive. I find myself thinking &ldquo;I know it&rsquo;s called <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/popToRootViewControllerAnimated:">popToRoot-something-somthing</a> and was it on UIViewController or the navigationController?&rdquo;. What would&rsquo;ve taken two seconds of poking through code-completion to figure that out turned into a solid minute of searching documentation. Multiply this every time you can&rsquo;t explicitly remember every part of a method call (and spell it correctly) and tasks that normally take an hour are now a significant part of a day.</p>
+
+<p>The tools that Apple provides are now hindering development. I&rsquo;m not alone in that sentiment. On Apple&rsquo;s developer forums (account needed to view) there are a few threads with names like <a href="https://devforums.apple.com/message/1067119#1067119">&ldquo;Can SourceKit possibly crash more often on a Swift project?&rdquo;</a> and <a href="https://devforums.apple.com/thread/248397?start=0&amp;tstart=0">&ldquo;Xcode 6.1b3 Swift editing is becoming very difficult&rdquo;</a>.</p>
+
+<p>One of those threads recommends deleting two folders: <code>~/Library/Developer/Xcode/DerivedData</code> and <code>~/Library/Caches/com.apple.dt.Xcode</code>. This does the job for me. It happens often enough that I created a hot key for it with <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a>.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Keyboard Maestro Screenshot" src="http://blog.swilliams.me/images/assets/xcode-swift-maestro.png"&gt;
+&lt;figcaption&gt;This will yell at you if those folders don't exist, but I can live with that.&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
+
+<p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="My Computers Through the Ages Part II Jan 25th, 2014 In Part 1 I talked about my first few computers. They were an important part of my childhood, &hellip;">
+	<meta name="description" content="Demystifying Ruby DSLs Jan 26th, 2014 I like Ruby. It has a way of appearing clean and simple, while still being expressive. Due to its typing &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,246 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/26/demystifying-ruby-dsls/" itemprop="url">Demystifying Ruby DSLs</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-26T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 26<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I like <a href="https://www.ruby-lang.org/en/">Ruby</a>. It has a way of appearing clean and simple, while still being expressive. Due to its <a href="http://en.wikipedia.org/wiki/Dynamic_typing#Dynamic_type-checking_and_runtime_type_information">typing system</a> you can bend it in a variety of ways to do certain things that would be very complicated in other languages, or make you write an entire compiler. I&rsquo;m talking, of course, about Domain Specific Languages, or <a href="http://en.m.wikipedia.org/wiki/Domain_specific_language">DSLs</a>. If you&rsquo;ve ever used a popular Ruby library (like Rails, or RSpec, or anything else) then you&rsquo;ve used a DSL. Rails in particular has a couple different ones:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="c1"># Routes</span>
+</span><span class='line'> <span class="c1"># config/routes.rb</span>
+</span><span class='line'> <span class="ss">DerptyDerp</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>   <span class="n">resources</span> <span class="ss">:users</span>
+</span><span class='line'>   <span class="n">resources</span> <span class="ss">:dinguses</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1"># ActiveRecord</span>
+</span><span class='line'> <span class="c1"># app/models/user.rb</span>
+</span><span class='line'> <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>   <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'>   <span class="n">has_one</span> <span class="ss">:dingus</span><span class="p">,</span> <span class="ss">dependent</span><span class="p">:</span> <span class="ss">:destroy</span>
+</span><span class='line'> <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And so on. At first glance, the code that allows this can be intimidating, especially when it&rsquo;s been broken up and refactored across 20 different classes and modules. Fortunately, there are probably only about 10 things that you really need to know to read along, and to make them yourself.</p>
+
+<h3>Class Methods</h3>
+
+<p>Did you know that you can execute code right from within a class declaration? Well, you can. Try it!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Derp</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;I LOVE CATS&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When that class is read by the interpreter, it&rsquo;ll execute the <code>can_eat_sandwiches</code> method and print the non-sequitur to the console. This&rsquo;ll even work through inheritance.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Herp</span> <span class="o">&lt;</span> <span class="no">Derp</span>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you&rsquo;ll have a wonderful message printed out twice. This technique can be used to do more than just clutter up a log file too! For example, in Rails when you <a href="https://github.com/rails/rails/blob/9c025ab6e9731dde56186b41ba5d4f216a48c831/activemodel/lib/active_model/validations.rb#L140">setup validation</a>, all you&rsquo;re doing is calling another method.</p>
+
+<h3>Put it into a Module</h3>
+
+<p>Sometimes you want to add functionality to a class without locking it into a long inheritance chain. Ruby uses <a href="http://www.tutorialspoint.com/ruby/ruby_modules.htm">Modules</a> to accomplish this, so you can pull your methods into a separate file to include them at will. There&rsquo;s a catch though before you dive in. Traditionally, you&rsquo;d include a module like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">TheHerppening</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">TheHerppening</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you know how modules work, you might&rsquo;ve noticed that will only add <code>can_eat_sandwiches</code> to <em>instances</em> of <code>Sandwichable</code>, not to <code>Sandwichable</code> itself. Which means that calling <code>can_eat_sandwiches</code> directly in the class won&rsquo;t work. But fear not! Ruby can be molded in many dark and fearsome ways. Rather than using <code>include</code>, you can use <code>extend</code> to add methods to a class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">TheHerppening</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Aaaaand we&rsquo;re back in business. But, say you wanted to have some methods that needed to be on instances, and some for the class? Can you mix both? Sure. Just wrap them in different modules and add them with the appropriate calls. There&rsquo;s even a pattern to follow for naming the modules: <code>ClassMethods</code> and <code>InstanceMethods</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">TheHerppening</span>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">ClassMethods</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">can_eat_sandwiches</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;DING&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">module</span> <span class="nn">InstanceMethods</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">eat_the_sandwich</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;I wish I could marry a sandwich.&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>They can even be in the same file. As a side note, this is also how you can do namespacing in Ruby. Including these can be a little tedious if you have to add this to lots of classes.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sandwichable</span>
+</span><span class='line'>    <span class="kp">extend</span> <span class="ss">TheHerppening</span><span class="p">:</span><span class="ss">:ClassMethods</span>
+</span><span class='line'>    <span class="kp">include</span> <span class="ss">TheHerppening</span><span class="p">:</span><span class="ss">:InstanceMethods</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">can_eat_sandwiches</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not to mention ugly. And if there&rsquo;s one thing a good Ruby coder can&rsquo;t stand, it&rsquo;s ugly code. Let&rsquo;s fix that.</p>
+
+<p><a href="http://ruby-doc.org/core-2.1.0/Module.html">Modules</a> (and classes) have all kinds of meta-programming capabilities built in. I encourage you to go and peruse them at your leisure. What we&rsquo;ll focus on here is the <code>[included](http://ruby-doc.org/core-2.1.0/Module.html#method-i-included)</code> method.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Dingus</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">send</span> <span class="ss">:include</span><span class="p">,</span> <span class="ss">Dingus</span><span class="p">:</span><span class="ss">:InstanceMethods</span>
+</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">extend</span> <span class="ss">Dingus</span><span class="p">:</span><span class="ss">:ClassMethods</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All of a sudden, your class now has all of the extra stuff from the <code>Dingus</code> module inside it.</p>
+
+<p>That might be jumping ahead a few steps, what with the <code>class &lt;&lt; self</code> and all. Don&rsquo;t forget that in Ruby, <em>everything</em> is a class, even modules. Conceptually it might be easier to understand if you look at <code>Module</code>&rsquo;s ancestors:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;</span> <span class="no">Module</span><span class="o">.</span><span class="n">ancestors</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="no">Module</span><span class="p">,</span> <span class="no">Object</span><span class="p">,</span> <span class="ss">PP</span><span class="p">:</span><span class="ss">:ObjectMixin</span><span class="p">,</span> <span class="no">Kernel</span><span class="p">,</span> <span class="no">BasicObject</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, a <code>Module</code> is just a subclass of <code>Object</code> and can be treated as such. <a href="http://www.youtube.com/watch?v=WFNEgdwjEhs">Whoa</a>. Specifically, the <code>class &lt;&lt; self</code> allows you to put class level methods on the module (you can also do this to a class as an alternative to <code>def self.whatevers</code>).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Dingus</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">say_hi</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;HI&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Dingus</span><span class="o">.</span><span class="n">say_hi</span> <span class="c1"># HI</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
+
+<p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&rsquo;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -639,199 +879,6 @@
 </div></div></div></div>
 <div><div></div></div>
 <div><div><div><div><div></div></div></div></div></div>
-</div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2013/12/15/a-new-appreciation-for-the-climactic-duel-in-the-empire-strikes-back/" itemprop="url">A New Appreciation for the Climactic Duel in the Empire Strikes Back</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-15T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 15<span>th</span>, 2013</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div>
-<div><div><div><div>
-<p>I recently watched the original Star Wars trilogy<sup>1</sup> with my 5 year old. She&#8217;s really enjoyed it and caught the bug. I&#8217;ve watched those movies probably 50 times each, but it was a new experience to watch it with my daughter. One of the things that I enjoyed in particular was the level of detail in Empire during Luke&#8217;s duel with Darth Vader.</p>
-
-<p>The lighting and framing sets the mood appropriately. This is the darkest movie, and not very many good things happen to our heroes. Vader&#8217;s purpose here is twofold, first to capture Luke and take him to the Emperor, but also to see how strong he was. </p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h34m32s42.png" src="/images/assets/vlcsnap-2013-12-12-22h34m32s42.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
-<p>What I didn&#8217;t quite notice before is that he starts the duel *one-handed*. In Episode IV he used a standard two hand grip, but here with the kid fresh out of Yoda-school he felt confident enough to just use the one. It worked pretty well for him and he disarmed Luke in short order. </p>
-<p>Luke eventually manages to surprise Vader and knock him off a ledge, leading to the second encounter.</p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h37m28s234.png" src="/images/assets/vlcsnap-2013-12-12-22h37m28s234.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div><p>I love the camera angle here. Vader looms hugely in the foreground and slowly approaches Luke. </p></div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h37m56s22.png" src="/images/assets/vlcsnap-2013-12-12-22h37m56s22.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
-<p>He very noticeably switches to a two-handed grip and proceeds to again show Luke exactly who is in control. At this point Luke realizes just how out-classed he is by swinging blindly around and by only luck survives and escapes.</p>
-
-<p>For some reason, Luke decides to be stupid and looks for Vader again.</p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h39m40s54.png" src="/images/assets/vlcsnap-2013-12-12-22h39m40s54.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div><p>At this point, Vader is through messing around. He attacks viciously over and over<sup>2</sup>. Again, I <em>love</em> the camera work here. It&#8217;s a little bit lower to make Vader seem even bigger than he normally is. At this point you can understand how it was this guy that killed off most of the Jedi.</p></div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h39m59s235.png" src="/images/assets/vlcsnap-2013-12-12-22h39m59s235.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h40m48s219.png" src="/images/assets/vlcsnap-2013-12-12-22h40m48s219.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
-<p>Yikes.</p>
-
-<p>Luke doesn&#8217;t stand a chance. He&#8217;s knocked down again, showing possibly my favorite part of this scene. Mark Hammill wasn&#8217;t ever in danger of winning any Academy Awards, but the he nails the fear here.</p>
-</div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h41m18s7.png" src="/images/assets/vlcsnap-2013-12-12-22h41m18s7.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div><p>Luke somehow manages to get back up and resume the fight, even scoring a graze on Vader&#8217;s shoulder. Vader&#8217;s had enough and with a couple quick motions cuts off Luke&#8217;s hand and proceeds to the classic &#8220;I am your father&#8221; scene. Once again the camera work is great: it&#8217;s from Luke&#8217;s point of view staring up to a triumphant Vader.</p></div></div></div></div>
-<div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="vlcsnap-2013-12-12-22h41m41s244.png" src="/images/assets/vlcsnap-2013-12-12-22h41m41s244.png">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div>
-<div><div><div><div>
-<p>Compare his costume to Luke&#8217;s, which is now tattered. The scene ends shortly thereafter with Luke escaping.</p>
-
-<p>My daughter is a bit talkative and will generally ask the types of questions a five year will ask during a movie. &#8220;Where is Princess Leia?&#8221; (just outside the frame, don&#8217;t worry about it) &#8220;Why are they doing that?&#8221; (a good movie will show you why, keep watching) &#8220;What&#8217;s his name again?&#8221; (Lando). But during the last bit of the fight and the reveal she just sat there and stared enrapt at the television.</p>
-
-<p>That&#8217;s quality film-making.</p>
-
-<hr class="footnotes">
-<p><small>
-1. I managed to get <a href="http://www.amazon.com/gp/product/B001EN71DG/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B001EN71DG&amp;linkCode=as2&amp;tag=thepetzoo-20">The Theatrical Edition on DVD</a> when it was on sale at normal prices. And also the <a href="http://originaltrilogy.com/forum/topic.cfm/Harmys-STAR-WARS-Despecialized-Edition-HD-V25-MKV-IS-OUT-NOW/topic/12713/">&#8220;despecialized&#8221; version in HD too</a>, so no painfully obvious CG dinosaurs in the background for us.
-</small></p>
-
-<p><small>
-2. One of the things I liked about the end of Return of the Jedi (even though it is not nearly as good) is that the fighting style was reversed when Luke nearly kills Vader. He jumps out of the shadows and overpowers his opponent with brute force quickly and decisviely before dismembering him. The camera even follows suit with Luke ultimately standing over his fallen foe. This was much more subtle and well-executed than the ham-fisted &#8220;rhyming&#8221; that the prequels did.</small></p>
-</div></div></div></div>
 </div>
 		
 		

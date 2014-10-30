@@ -1017,8 +1017,12 @@
         <lastmod>2014-10-28T10:58:56-07:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/</loc>
+        <lastmod>2014-10-30T11:08:59-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2014-10-28T10:58:56-07:00</lastmod>
+        <lastmod>2014-10-30T11:08:59-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1026,7 +1030,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2014-10-28T10:58:56-07:00</lastmod>
+        <lastmod>2014-10-30T11:08:59-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
