@@ -39,8 +39,29 @@ body {
 	}
 
     #marketing {
-        font-size: 18px;
+      font-size: 18px;
 
+      .apps {
+        font-family: "helvetica neue", helvetica, sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.0rem;
+        margin-top: 20px;
+      }
+      
+      ul.apps {
+        list-style-type: none;
+
+        li {
+          clear: both;
+          margin-top: 20px;
+        }
+      }
+
+      .app-icon {
+        display: inline-block;
+        float: right;
+        margin-left: 10px;
+      }
     }
 
 	h1 {
