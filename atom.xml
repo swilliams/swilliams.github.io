@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-10-30T11:09:43-07:00</updated>
+  <updated>2014-11-06T15:53:43-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[App #2 - Emergency Contacts]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/"/>
+    <updated>2014-11-06T14:16:17-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts</id>
+    <content type="html"><![CDATA[<p>I made <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/">another</a> App(!)</p>
+
+<figure class="pull-right">
+    <img alt="Emergency Contacts screenshot" src="http://blog.swilliams.me/images/assets/ec-screenshot.png">
+</figure>
+
+
+<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to get display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
+
+<p><a href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&amp;mt=8">Get it now for just $0.99</a>. Read on if you want to hear the origin story.</p>
+
+<p>The idea originated from my mother-in-law. She is new to the iPhone and asked me if there was a way to display an emergency contact, since she had something like that in her old feature-phone. Other than adding text to your wallpaper (which is pretty cheesy) I didn&rsquo;t have an answer. About an hour later it hit, <em>hey, I bet it would be real simple to put that stuff on the Today screen.</em></p>
+
+<p>It took about 3 days of programming time, most of which was sunk by fighting with <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">Xcode+Swift issues</a>, and iOS 8 bugs<sup>1</sup>. Probably another day or so to put together a simple website and icon. Then about 4 excruciating hours of getting all the screenshots necessary for the App Store.<sup>2</sup></p>
+
+<p>I don&rsquo;t expect this to make me rich, but felt it would be worth at least a few days of my time. I hope you like it.</p>
+
+<div class="footnotes">
+<p><small>
+1. Ever wanted to hide one of the navigation buttons on a `ABPeoplePickerNavigationController`? <a href="http://openradar.appspot.com/radar?id=5234709428699136">You used to be able to in iOS 7, not so much in 8</a>.
+</small></p>
+<p><small>
+2. You have a 3.5&#8221; device, a 4&#8221; device, a 4.7&#8221; device, and a 5.5&#8221; device. And nowadays you can&#8217;t have anything in the status bar for a screenshot. You can&#8217;t just crop it out though. So, once you&#8217;ve gone to the effort of setting up the same state on 4 devices, you have to crack open Photoshop and properly airbrush out the status bar. This is extra fun when doing a Today View screenshot, because everything is nice and blurry underneath the status bar, and a giant black rectangle would be every noticeable. Even with just 2 screenshots per device, I wanted to die so bad.
+</small></p>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dealing with Xcode and Swift]]></title>
@@ -829,209 +863,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 
 
 <p>I like Octopress because it is fast, easy for me to manage, and keeps my content in a simple (and portable) format. I just hope that this will last me for a while. It doesn&rsquo;t do nearly as many things as Squarespace, but most of those I don&rsquo;t need.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Demystifying Ruby DSLs — Part 2]]></title>
-    <link href="http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2/"/>
-    <updated>2014-02-21T00:00:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/02/21/demystifying-ruby-dsls-part-2</id>
-    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls">Last time we learned about how to use modules to dynamically add functionality to a class</a>. This time let&rsquo;s take a look at doing that, but customizing our extensions at runtime.</p>
-
-<p>What helped me ultimately understand how these things work is that you are building up classes on the fly. It&rsquo;s kind of like when you <code>include</code> a module, it&rsquo;s editing that class to add more methods to it. Think of a bunch of Legos. Each Lego is a module with various methods on it. At runtime they assemble together to build a castle.</p>
-
-<figure>
-    <img alt="Lego Castle by InSapphoWeTrust on Flickr." src="http://blog.swilliams.me/images/assets/lego-annotated.png">
-    <figcaption><a href="http://www.flickr.com/photos/56619626@N05/7406185206/in/photolist-chsCQo-chsDcG-chsCVb-chsD97-chsBY3-chsCeN-chsDid-bgETZB-8FZGC9-9nsJ9P-8oTk1n-dCdMj4-f8b3QR-7J1LqD-7BnYDa-7BnZmZ-7BrJZw-7BrLsb-7BnVLP-9XN1mi-cnFar5-chsCy7-gC3qkX-chsCKW-chsCs1-chsCoN-aCZJqe-aCZJe4-chsCcf-chsC41-aCcgjW-aC9BwX-aCcgf3-aC9BE6-aC9BKr-aCcgUf-aCcgRw-aC9C9v-aCcgXo-chsC7J-chsBZw-a5YVbT-em9rGR-em9ru8-emfdMW-em9tEg-emfewq-emfeEm-emfdxf-emfeh9-emfdi5">Lego Castle</a> by <a href="http://www.flickr.com/photos/skinnylawyer/">InSapphoWeTrust</a> on Flickr.</figcaption>
-</figure>
-
-
-<h3>Dynamically Adding</h3>
-
-<p>What if those Legos could generate even more Legos as you were building with them, and then intelligently join themselves together?</p>
-
-<p>If you&rsquo;re familiar with Rails, you&rsquo;ve seen that you can just declare associations within a model — <code>:has_many</code>, <code>:has_one</code>, and so on. Once you add those directives to your class, suddenly you have access to brand spanking new methods. Have you ever wondered how that worked? Let&rsquo;s implement a rudimentary version.</p>
-
-<p>Think for a moment about <code>:has_many</code>. What would you expect the line <code>has_many :gerbils</code> methods to do?  You would have to have a <code>gerbils</code> method to retrieve the little fellas, and another one, <code>gerbils=(new_value)</code> to set them (and others to add them and so on, but <a href="http://en.wikipedia.org/wiki/Keep_it_simple_stupid">KISS</a>). You implement that with a generic <code>get_child_models(child_name)</code> method, but that feels like the Java (™ Oracle Corporation) way&hellip; and I have too much self respect to go down that path. Instead we can take advantage of Ruby&rsquo;s metaprogramming capabilities and generate them dynamically.</p>
-
-<p>One way to do this is with <code>eval</code>.</p>
-
-<h3>A Word on Eval</h3>
-
-<p>Ruby has a few versions of <code>eval</code>. They all take strings or blocks and turn them in code that is executed.</p>
-
-<ul>
-<li>There&rsquo;s the <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">standard one</a> that executes arbitrary code.</li>
-<li><a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-class_eval">class_eval</a> — similar to vanilla <code>eval</code>, but executes the code in the context of the Class itself. There&rsquo;s also <code>module_eval</code> which does the same thing (more or less). Example:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Monkey</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="no">Monkey</span><span class="o">.</span><span class="n">class_eval</span> <span class="sx">%q(def screech() &#39;Eek Eek&#39; end)</span>
-</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># Eek Eek</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><a href="">instance_eval</a> — modifies a class, but from an instance point of view, <em>and only for that particular instance</em> (this is called a <a href="http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/39-ruby-s-object-model/lessons/131-singleton-methods-and-metaclasses">Singleton method</a>).</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Monkey</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="n">m2</span> <span class="o">=</span> <span class="no">Monkey</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">instance_eval</span> <span class="sx">%q(def screech() &#39;Eek Eek&#39; end)</span>
-</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># Eek Eek</span>
-</span><span class='line'><span class="n">m2</span><span class="o">.</span><span class="n">screech</span> <span class="c1"># NoMethodError: undefined method `screech&#39; for #&lt;Monkey:0x007fa6f768bac8&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Using these techniques you can generate the set of methods for our <code>:has_many</code> implementation.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Associations</span>
-</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">base</span><span class="o">.</span><span class="n">extend</span> <span class="ss">Associations</span><span class="p">:</span><span class="ss">:ClassMethods</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">module</span> <span class="nn">ClassMethods</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">code</span> <span class="o">=</span> <span class="sx">%(</span>
-</span><span class='line'><span class="sx">        def </span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="sx"></span>
-</span><span class='line'><span class="sx">            # retrieve stuff from here</span>
-</span><span class='line'><span class="sx">        end</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">        def </span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="sx">=(new_value)</span>
-</span><span class='line'><span class="sx">            # set new_value here</span>
-</span><span class='line'><span class="sx">        end</span>
-</span><span class='line'><span class="sx">      )</span>
-</span><span class='line'>      <span class="nb">class_eval</span> <span class="n">code</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now, if you <code>include Associations</code> in your class, you can call <code>has_many :hamsters</code> or <code>has_many :gerbils</code> or <code>has_many :guinea_pigs</code> and have all of your getters and setters created.</p>
-
-<figure>
-    <img alt="This is you with all the gerbil methods." src="http://blog.swilliams.me/images/assets/cashew.jpg">
-    <figcaption>This is you with all the gerbil methods.</figcaption>
-</figure>
-
-
-<h3>Caution</h3>
-
-<p>I&rsquo;m not a big fan of <code>eval</code>, at least when using it with strings. The biggest reason is that it makes bugs harder to find. The Ruby interpreter will point out syntax errors when the file loads, but a typo in an evalled string won&rsquo;t get caught until runtime. The longer the string, the more likely something bad will creep in there. And some of these dynamically created methods will be long. I&rsquo;m talking <a href="http://www.amazon.com/gp/product/B0026L7H20/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026L7H20&amp;linkCode=as2&amp;tag=thepetzoo-20">Lord of the Rings Extended Edition</a> long.</p>
-
-<p>Fortunately there is a better way. The eval methods also take blocks, which work pretty well in most cases. For the purposes of dynamically generating methods, I prefer using <code>define_method</code> <a href="http://ruby-doc.org/core-2.1.0/Module.html#method-i-define_method">source</a>. It&rsquo;s available on <code>Module</code> (and therefore classes too) and, just like it says on the tin, is designed to create methods on the fly and add them to a class.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">define_method</span> <span class="n">thingies</span><span class="o">.</span><span class="n">to_s</span> <span class="k">do</span>
-</span><span class='line'>    <span class="c1"># retrieve stuff from here</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">define_method</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="s2">=&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="c1"># set new_value here</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It&rsquo;s kinda similar to the eval code, in fact, <code>define_method</code> passes itself along to <code>instance_eval</code>, so when all is said and done, it&rsquo;s merely for our convenience. But is easier to test, and will complain loudly if there&rsquo;s a syntax error.</p>
-
-<p>Working with actual code rather than a string makes refactoring easier too. Let&rsquo;s say you want to enable your users to define their own implementations of the generated rodent methods. Pulling that out into its own method is simple:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">add_method_without_clobbering</span> <span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">method_definition</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">unless</span> <span class="nb">method_defined?</span> <span class="n">method_name</span>
-</span><span class='line'>    <span class="n">define_method</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">method_definition</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">has_many</span><span class="p">(</span><span class="n">thingies</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">add_method_without_clobbering</span> <span class="n">thingies</span><span class="o">.</span><span class="n">to_s</span> <span class="k">do</span>
-</span><span class='line'>    <span class="c1"># retrieve stuff from here</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">add_method_without_clobbering</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">thingies</span><span class="si">}</span><span class="s2">=&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="c1"># set new_value here</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&rsquo;s still possible with string evals, but is easier to read in my eyes.</p>
-
-<p>That&rsquo;ll wrap up this entry on DSLs. There&rsquo;s only one other big piece of the pie I&rsquo;d like to cover — blocks, but you can do a whole lot without them.</p>
-
-<p>One thing to keep in mind when writing DSLs is that it can be hard to follow along. Document everything, especially the esoteric parts. It might even be a good idea to diagram the path of all the <code>include</code> chain. DSLs can make client code easier to write, but usually at the expense of crazy complexity within the DSL itself.</p>
 ]]></content>
   </entry>
   
