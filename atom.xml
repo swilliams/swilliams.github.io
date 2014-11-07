@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-11-06T15:53:43-07:00</updated>
+  <updated>2014-11-07T15:31:53-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pricing for Emergency Contacts]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts/"/>
+    <updated>2014-11-07T15:15:57-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts</id>
+    <content type="html"><![CDATA[<p>Pricing is tricky for mobile apps these days. When I was <a href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/">developing Emergency Contacts</a>, I knew I had a few options to choose from:</p>
+
+<ul>
+<li><strong>Free</strong> — The app didn&rsquo;t take too long to make, but I wasn&rsquo;t sure that I wanted to just give it away for free. I thought that it had provided a modest amount of utility, so I figured that just straight up free wouldn&rsquo;t work.</li>
+<li><strong>Free with an In-App Purchase</strong> — I did this with <a href="http://zartbonk.com">Zartbonk</a>. But since the feature set on Emergency Contacts is pretty small, I couldn&rsquo;t think of what to lock in an extra purchase.</li>
+<li><strong>Free with ads</strong> — I just don&rsquo;t like ads in apps. I didn&rsquo;t even look to see how to get this set up.</li>
+<li><strong>Paid</strong> — The choice was really between free and $0.99. Since I had ruled out free, that left me here.</li>
+</ul>
+
+
+<p>Figuring out pricing is hard. I think I made the right choice here, though with a more complex app, I&rsquo;m not sure if I&rsquo;d do the same thing.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[App #2 - Emergency Contacts]]></title>
@@ -25,7 +44,7 @@
 </figure>
 
 
-<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to get display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
+<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
 
 <p><a href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&amp;mt=8">Get it now for just $0.99</a>. Read on if you want to hear the origin story.</p>
 
@@ -801,68 +820,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 1. Rails by itself runs fine on Windows. It&#8217;s when you start adding gems into the mix that things start going hinky. And then there&#8217;s the whole cygwin thing. Ugh.
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Migrating from Squarespace]]></title>
-    <link href="http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace/"/>
-    <updated>2014-03-05T09:23:18-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/03/05/migrating-from-squarespace</id>
-    <content type="html"><![CDATA[<p>Squarespace is a popular service to host a website or blog. You might have seen their <a href="http://www.youtube.com/watch?v=S0Or1f_RxKQ">Super Bowl commercial</a> or heard about them on one of the hundred podcasts they sponsor. I signed up about a year and a half ago and used it as my main blog. I&rsquo;ve decided to move away and use <a href="http://octopress.org">Octopress</a> to host my blog on <a href="http://octopress.org/">GitHub Pages</a> instead.</p>
-
-<p>Why? Well, for starters, it&rsquo;s slow to use. I think it&rsquo;s a byproduct of the way they organized their <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> architecture. I find myself having to wait for things to open in modal windows, or to load another menu.</p>
-
-<p>The layout tools are bad. If all you do is write text and link to stuff, this doesn&rsquo;t matter. Sometimes I like to have <a href="http://blog.swilliams.me/words/2014/01/26/demystifying-ruby-dsls">in depth coding posts</a> that have multiple blocks of code within them. This is incredibly painful to do with the Squarespace layout tools. Here&rsquo;s the process:</p>
-
-<ol>
-<li>Hover over an existing text block.</li>
-<li>Click the appropriate &ldquo;+&rdquo; button.</li>
-<li>Scroll down to find the &ldquo;CODE&rdquo; button.</li>
-<li>Paste in the code (after making sure the indentation is correct)</li>
-<li>Go to step 1 and this time, select Markdown.</li>
-<li>Rinse and repeat for <em>every</em> block and image you want.</li>
-</ol>
-
-
-<p>What you see is <em>definitely not</em> what you get. Sizing images to align to the left or right of a paragraph is awful. For some reason, the editing font on the admin page is different than the one on the actual site. This means that even if everything lines up on the admin page, it might not on the live site. Fixing this is tedious. Again, due to the single-pagedness of the admin site, you can&rsquo;t easiliy open the preview in a new tab or window (&lsquo;Open in new page&rsquo; does nothing). You need to open a brand new browser window, navigate to your admin site, then click on the preview button there.</p>
-
-<p>Saving a post in the editor closes the modal that contains it. This means that the workflow for making any kind of adjustment is:</p>
-
-<ol>
-<li>Do the thing above to get a second window open to look at the preview.</li>
-<li>Click the post in the first window to edit.</li>
-<li>Wait a second.</li>
-<li>Find the typo to fix. This is extra fun if you have multiple blocks of text.</li>
-<li>Fix the typo and hit save. (Modal closes)</li>
-<li>Switch over to the preview in the second window and refresh.</li>
-<li>If it&rsquo;s not right, repeat steps 2-6 until it is.</li>
-</ol>
-
-
-<p>All of this for about $100/year (or more).</p>
-
-<p>Octopress is a static site generator that is aimed at developers. If you don&rsquo;t know <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, <a href="http://git-scm.com/">git</a>, as well as HTML + CSS consider something else. However, since I am familiar with all of those, it works for me.</p>
-
-<p>The problem is exporting my content from Squarespace. The only export option available is one for <a href="http://wordpress.org/">Wordpress</a>, which dumps everything into an XML file. Since I&rsquo;m not using Wordpress, this didn&rsquo;t work for me. My blog has been quite the sojourner, created orginally on Wordpress, then to Posterous (lol), and finally Squarespace. It&rsquo;s accumulated a bit of cruft. For some reason, older posts did not export properly; if they contained an image and text, the text was deleted.</p>
-
-<p>After some fiddling, I put together a <a href="https://github.com/swilliams/squarespace-exporter">script</a> that would walk each post on the blog, download everything and then move onto the next. I did run into some gotchas though:</p>
-
-<ul>
-<li>Some of the older images were named &ldquo;#img.jpg&rdquo;. I ended up <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L151">generating</a> a random string for the filename and removing the hashtag.</li>
-<li><code>&lt;img&gt;</code> tags used a <code>data-src</code> attribute instead of a standard <code>src</code> attribute. <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L181">The fix was to rename the attribute</a>.</li>
-<li>There was a veritable boatload of extra markup and attributes on each post, which made things look weird. I ended up parsing the entire HTML of each post and <a href="https://github.com/swilliams/squarespace-exporter/blob/master/script.rb#L223">stripping</a> out all the unnecessary stuff.</li>
-</ul>
-
-
-<p>There are still some issues that I&rsquo;ll need to address on a case by case basis, but it&rsquo;s a good 80% solution right now.</p>
-
-<figure>
-    <img src="http://blog.swilliams.me/images/assets/octopress.png" alt="Octopress" />
-</figure>
-
-
-<p>I like Octopress because it is fast, easy for me to manage, and keeps my content in a simple (and portable) format. I just hope that this will last me for a while. It doesn&rsquo;t do nearly as many things as Squarespace, but most of those I don&rsquo;t need.</p>
 ]]></content>
   </entry>
   
