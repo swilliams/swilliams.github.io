@@ -11,7 +11,7 @@ I made [another](http://blog.swilliams.me/words/2013/12/16/i-made-an-app/) App(!
     <img alt="Emergency Contacts screenshot" src="/images/assets/ec-screenshot.png">
 </figure>
 
-It's called [Emergency Contacts](http://emergencycontacts.org/) and is available for your iOS 8 device. It's a real fast way to get display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you'd like in three rows of text. It displays as a widget on the [Today View](http://www.imore.com/how-use-today-view-widgets-ios-8).
+It's called [Emergency Contacts](http://emergencycontacts.org/) and is available for your iOS 8 device. It's a real fast way to display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you'd like in three rows of text. It displays as a widget on the [Today View](http://www.imore.com/how-use-today-view-widgets-ios-8).
 
 [Get it now for just $0.99](https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&mt=8). Read on if you want to hear the origin story.
 
