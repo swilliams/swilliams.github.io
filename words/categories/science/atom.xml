@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Science | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/science/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-11-14T20:05:34-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[I Once Caught a Comet That Was THIS Big]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big/"/>
+    <updated>2014-11-14T19:56:14-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big</id>
+    <content type="html"><![CDATA[<p><a href="http://www.theguardian.com/science/gallery/2014/nov/12/rosetta-mission-lands-philae-probe-on-67p-comet-in-pictures">We landed a spacecraft on a comet</a>. This in itself is pretty cool, but apparently not many people are familiar with the size of the comet in question. These images might just help.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Star Destroyer" src="http://blog.swilliams.me/images/assets/philae-star-destroyer.jpg" style="width:350px"&gt;
+&lt;figcaption&gt;Via the Washington Post&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Star Trek" src="http://blog.swilliams.me/images/assets/philae-startrek.jpg"&gt;
+&lt;figcaption&gt;Star Wars not your thing? We got you covered.&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Rome" src="http://blog.swilliams.me/images/assets/philae-rome.jpg"&gt;
+&lt;figcaption&gt;Keep it on Earth? Ok.&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="LA" src="http://blog.swilliams.me/images/assets/comet_v_la.png"&gt;
+&lt;figcaption&gt;How 'bout some AMERICA?&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+]]></content>
+  </entry>
+  
+</feed>

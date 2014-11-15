@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-11-11T20:01:22-07:00</updated>
+  <updated>2014-11-14T20:05:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[I Once Caught a Comet that was THIS Big]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big/"/>
+    <updated>2014-11-14T19:56:14-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big</id>
+    <content type="html"><![CDATA[<p><a href="http://www.theguardian.com/science/gallery/2014/nov/12/rosetta-mission-lands-philae-probe-on-67p-comet-in-pictures">We landed a spacecraft on a comet</a>. This in itself is pretty cool, but apparently not many people are familiar with the size of the comet in question. These images might just help.</p>
+
+<figure class="center">
+    <img alt="Star Destroyer" src="http://blog.swilliams.me/images/assets/philae-star-destroyer.jpg" style="width:350px">
+    <figcaption>Via the Washington Post</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="Star Trek" src="http://blog.swilliams.me/images/assets/philae-startrek.jpg">
+    <figcaption>Star Wars not your thing? We got you covered.</figcaption>
+</figure>
+
+
+
+
+<figure class="center"> 
+    <img alt="Rome" src="http://blog.swilliams.me/images/assets/philae-rome.jpg">
+    <figcaption>Keep it on Earth? Ok.</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="LA" src="http://blog.swilliams.me/images/assets/comet_v_la.png">
+    <figcaption>How &#8216;bout some AMERICA?</figcaption>
+</figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thoughts on App Store Beta Review]]></title>
@@ -780,54 +819,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 
 
 <p>For my money, it doesn&rsquo;t get much better than the last one.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Changing Your Password]]></title>
-    <link href="http://blog.swilliams.me/words/2014/04/11/changing-your-password/"/>
-    <updated>2014-04-11T08:23:03-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/04/11/changing-your-password</id>
-    <content type="html"><![CDATA[<p>With news of the <a href="http://heartbleed.com/">heartbleed vulnerability</a> I&rsquo;ve taken the <strike>paranoid</strike> precautionary measure of changing all my passwords. I have over 200 logins in my <a href="https://agilebits.com/onepassword">1Password</a><sup>1</sup> library, so I&rsquo;ve seen just about every kind of password change process imaginable over the last day or two. My conclusion is that there are a lot of <strong>terrible</strong> implementations of this process.</p>
-
-<p>Security conflicts with convenience, and changing passwords is never convenient. But there are ways to at least make it quick. Here&rsquo;s what I expect when I got to a site to change my password:</p>
-
-<ol>
-<li>Sign in.</li>
-<li>Click something like &lsquo;Settings&rsquo;, &lsquo;Account&rsquo;, or &lsquo;Profile&rsquo;. Ideally, there should only be one of those on the page to avoid guessing.</li>
-<li>Have the word &lsquo;password&rsquo; on that Settings page. Be it a button, link, or inline form, just make it easy to find.</li>
-<li>If I need to enter my old password first, make it the first field.</li>
-<li>Display some kind of notification that my change was successful.</li>
-<li>Optionally, send me an email telling me it changed, just in case a bad guy did it.</li>
-</ol>
-
-
-<p>That&rsquo;s not so bad right? This has been the standard way of doing things ever since <a href="http://en.wikipedia.org/wiki/Cgi-bin">cgi-bin</a> was a thing. But so many websites get it wrong.</p>
-
-<ul>
-<li>First of all, <em>have</em> a Change Password form. More than a couple sites I went to don&rsquo;t have one and rely on you to do the Reset My Password dance. This means I have to sign out, go back to the sign in page, click the reset link, enter my email, wait for the email, open the email, click the link in the email, then finally enter a new password. Shame on you if you make me do this. Shame.</li>
-<li>Don&rsquo;t restrict password length. 1Password let&rsquo;s me create a 50 character password, yet I&rsquo;d say at least 40% of the sites I went to couldn&rsquo;t handle a password that long.</li>
-<li>If you have to restrict length for some reason, tell me exactly what that maximum is.</li>
-</ul>
-
-
-<figure>
-    <img alt="Password WTF" src="http://blog.swilliams.me/images/assets/password-wtf.png" />
-</figure>
-
-
-<ul>
-<li>Don&rsquo;t restrict what characters I can use. There is no technical reason I shouldn&rsquo;t be able to use spaces or symbols in a password.</li>
-<li>Don&rsquo;t restrict copy/paste in the password field. Paypal was the only one I saw that did this, and it boggles my mind. A random, complex password is going to be more secure than one I can easily type in (which can be <a href="http://en.wikipedia.org/wiki/Rainbow_tables">cracked quickly</a>). Don&rsquo;t actively prevent me from trying to make my financial data secure!</li>
-</ul>
-
-
-<p>Security already has its own set of barriers, and a certain subset of people will never take it seriously. As a web developer, it is entirely up to you to keep that subset from growing in size.</p>
-
-<div class="footnotes">
-1. You really, really, really, really, really, really, should use it too, or a similar product.
-</div>
-
 ]]></content>
   </entry>
   
