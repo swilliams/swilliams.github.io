@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="On Dreamweaver (and Other &#8216;Magic&#8217; HTML Editors) Nov 3rd, 2009 Quoth the Rands: My tools only do what I&#8217;ve told them to do. Back &hellip;">
+	<meta name="description" content="Magic Numbers Nov 4th, 2009 In programming, it is generally a good idea to avoid &#8220;magic numbers&#8221; meaning a number that could change with &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +100,46 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2009/11/04/magic-numbers-1/" itemprop="url">Magic Numbers</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-04T00:00:00-07:00" data-updated="true" itemprop="datePublished">Nov 4<span>th</span>, 2009</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>In programming, it is generally a good idea to avoid &#8220;magic numbers&#8221; meaning a number that could change with requirements:<p></p>
+<div>if (foo &lt; 3) { do something }</div> <p></p>
+<div>That 3 could change, or it&#8217;s meaning could be lost. A good practice is to define a variable for that magic number with an intelligent name (and possibly store the number in some configuration).</div> <p></p>
+<div>const int maxWidgets = 3;</div>
+<div>if (foo &lt; maxWidgets) { do something }<p></p> </div>
+<div>I did recently see a bit of code that got the concept, but failed in the execution:</div>
+<p></p>
+<div>const int THREE = 3;</div> <div>if (foo &lt; THREE) { do something }</div>
+<p></p>
+<div>It is possible that the maximum number of widgets might change to 10. Then you&#8217;re stuck with this brilliant bit of code:</div> <p></p>
+<div>const int THREE = 10;</div>
+<p></p>
+<div>Uh oh. </div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -420,39 +460,6 @@
 	<div class="entry-content" itemprop="articleBody">
 		<div><div><div><div><div>I&#8217;ve posted a couple of quotes recently that on the surface seem to be a little depressing. However, it&#8217;s quotes like these that motivate me. I <i>want</i> to be the best that I can at photography. Thus, I&#8217;ll read and soak up as much information as I can regarding it. Unfortunately, I don&#8217;t have a steady stream of people willing to be photographed, so when I do get the itch, I&#8217;ll end up doing a semi-dorky self-portrait.<p></p>
 <div>Most importantly, when I am doing a picture of someone else, I want to take the absolute best picture in my whole life, and feel disappointment if at the end of the day I haven&#8217;t produced that. </div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2009/09/28/nothing-is-more-common-than-unsuccessful-peop/" itemprop="url">Nothing Is More Common Than Unsuccessful People With Talent</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 28<span>th</span>, 2009</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>In the same vein of applying <a href="http://swilliams.posterous.com/your-photos-are-boring">harsh self criticism</a>:<div>
-<br><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful people with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent.– <i>Calvin Coolidge</i>
-</blockquote>
-<p></p>
-<div> via <a href="http://www.aphotoeditor.com/2009/09/28/nothing-is-more-common-than-unsuccessful-people-with-talent/">A Photo Editor</a>
-</div> </div>
 </div></div></div></div></div>
 		
 		

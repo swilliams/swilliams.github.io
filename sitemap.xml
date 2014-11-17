@@ -1039,8 +1039,14 @@
         <lastmod>2014-11-14T20:05:33-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.swilliams.me/words/2014/11/17/holiday-meals-ranked-in-order-of-meal-glory/
+        </loc>
+        <lastmod>2014-11-17T09:42:19-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2014-11-14T20:05:33-07:00</lastmod>
+        <lastmod>2014-11-17T09:42:19-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1048,7 +1054,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2014-11-14T20:05:33-07:00</lastmod>
+        <lastmod>2014-11-17T09:42:19-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
