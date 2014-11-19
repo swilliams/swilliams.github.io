@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="MacBook Pro Likes & Dislikes Aug 27th, 2010 About a month ago I picked up the basic 13&#8221; MacBook Pro. My primary intent was that I needed a non &hellip;">
+	<meta name="description" content="How to Use Twilio to Send an SMS Sep 3rd, 2010 I wrote about liking Twilio&#8217;s UI not too long ago. Unfortunately the actual usability of their &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +100,72 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/09/03/how-to-use-twilio-to-send-an-sms/" itemprop="url">How to Use Twilio to Send an SMS</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-03T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 3<span>rd</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I wrote about <a href="/images/assets/1279646643000.jpg">liking Twilio&#8217;s UI</a> not too long ago. Unfortunately the actual usability of their API isn&#8217;t quite as sharp.</p>
+<div>Signing up was straightforward enough, but beyond that things got incredibly murky. All I want is to be able to send an SMS from my app; I don&#8217;t really care about anything else. </div>
+<p></p>
+<div>The examples provided for ruby don&#8217;t detail this, but fortunately I stumbled around long enough to figure it out.</div>
+<p></p>
+<div>First, you need to <a href="https://www.twilio.com/user/account/phone-numbers/">register the phone number</a> you will be sending the SMSes to (this limitation is only for the developer trial period, I believe). Under &#8220;My Outgoing CallerID Numbers&#8221; section click the &#8220;Add Caller ID&#8221; button. This will prompt you for a phone number. Enter yours, and it will present you with a PIN and call the number entered. Pick up the call when it rings and enter the PIN when prompted.</div>
+<p></p>
+<div>Next grab the helper library <a href="http://www.twilio.com/docs/libraries/">over here</a>. I did this in Ruby, so just extract the zip and get &#8216;twiliolib.rb&#8217; from the &#8216;lib&#8217; folder. For a simple test I wrote the following script:</div>
+<div>
+  <div><pre>require 'twiliolib.rb'
+
+# your Twilio authentication credentials
+ACCOUNT_SID = 'xxx' # these are on your account page
+ACCOUNT_TOKEN = 'xxx'
+ 
+# version of the Twilio REST API to use
+API_VERSION = '2010-04-01'
+
+account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
+
+d = {
+    'From' =&gt; '415-599-2671',
+    'To' =&gt; '480-555-1234', # this is the number you registered
+    'Body' =&gt; 'This is an SMS Test',
+}
+
+resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
+    'POST', d)
+    
+resp.error! unless resp.kind_of? Net::HTTPSuccess
+puts "code: %s\nbody: %s" % [resp.code, resp.body]</pre></div>
+</div>
+
+<div>The key here is that the &#8216;From&#8217; number is the Sandbox Phone Number listed on your account dashboard, and the &#8216;To&#8217; number is the one you registered up above. <strong>Any other numbers will not work</strong>. Don&#8217;t forget to put in your ACCOUNT_SID and ACCOUNT_TOKEN too, those are also on the dashboard.</div>
+<p></p>
+<div>Fire up your console and run the script. If you see a bunch of XML and a &#8216;code: 201&#8217; returned, you should be receiving and SMS shortly. If you see a &#8216;400 &#8220;Bad Request&#8221; (Net::HTTPServerException)&#8217; error, then double check that the From and To numbers are right.</div>
+<p></p>
+<div>This information is buried and I was very close to just throwing my hands up and looking elsewhere. If you are writing an application, these details are critical.</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -464,55 +530,6 @@
 <p></p>
 <p></p>
 <div><span>1. And really, some of their practices today are just ridiculous. If someone else could build the same quality of hardware as them, and keep 3rd parties from messing it up, they might just be in trouble&#8230;</span></div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/08/02/great-ui-copy/" itemprop="url">Great UI & Copy</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 2<span>nd</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="Wufoo has some pretty slick design in general. The forms you can create with their service are pretty, and quite functional. They just released a new API for their service, and have a contest to go with it. The page for the contest is just great, see for yourself." src="/images/assets/1280789529000.jpg">
-</div>
-			
-
-			
-			<div>
-				<div>
-<p></p>
-<p><a href="http://wufoo.com">Wufoo</a> has some pretty slick design in general. The forms you can create with their service are pretty, and quite functional. They just released a new API for their service, and <a href="http://wufoo.com/apicontest/">have a contest to go with it</a>. The page for the contest is just great, see for yourself.</p>
-</div>
-			</div>
-			
-
-		</div>
-	
-	</div>
 </div></div></div></div></div>
 		
 		

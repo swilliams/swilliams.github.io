@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-11-17T09:42:23-07:00</updated>
+  <updated>2014-11-19T13:34:05-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Copying the Current Page From Safari]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/19/copying-the-current-page-from-safari/"/>
+    <updated>2014-11-19T13:22:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/19/copying-the-current-page-from-safari</id>
+    <content type="html"><![CDATA[<p>If I&rsquo;m preparing a bunch of links for a blog post or something, it&rsquo;d speed things up if I could hit a button and have the computer do everything for me. Here&rsquo;s an <a href="https://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html">AppleScript</a> to do just that.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
+</span><span class='line'>  <span class="k">set</span> <span class="nv">theURL</span> <span class="k">to</span> <span class="nv">URL</span> <span class="k">of</span> <span class="nv">current</span> <span class="no">tab</span> <span class="k">of</span> <span class="na">window</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">set</span> <span class="nv">theTitle</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nv">current</span> <span class="no">tab</span> <span class="k">of</span> <span class="na">window</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="nb">set the clipboard to</span> <span class="s2">&quot;[&quot;</span> <span class="o">&amp;</span> <span class="nv">theTitle</span> <span class="o">&amp;</span> <span class="s2">&quot;](&quot;</span> <span class="o">&amp;</span> <span class="nv">theURL</span> <span class="o">&amp;</span> <span class="s2">&quot;)&quot;</span>
+</span><span class='line'><span class="k">end</span> <span class="k">tell</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;ll copy the URL and title of the current tab in Safari as a nicely formatted <a href="http://daringfireball.net/projects/markdown/">Markdown</a> link. I tied that into a <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a> shortcut, so that I can quickly make the link with ⌘⌥⌃C, then paste it into whichever document I&rsquo;m working in.</p>
+
+<p>This&rsquo;ll probably work with Chrome too, but I don&rsquo;t know how much it supports AppleScript.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Holiday Meals Ranked in Order of Meal Glory]]></title>
@@ -784,30 +810,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 <p>This list is not exhaustive. Some of those are optional. By the time you are done reading this, another framework or library will have been created.</p>
 
 <p>This is a <a href="http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman/">frustration</a> that I feel with web development these days. I spent about 2 years learning <a href="http://documentcloud.github.io/backbone/">one</a> client-side framework inside and out, but it&rsquo;s already losing relevance. Angular seems to be a good choice for employment these days, but if I go deep in it, will history repeat itself?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Notes From Ed Catmull]]></title>
-    <link href="http://blog.swilliams.me/words/2014/05/01/notes-from-ed-catmull/"/>
-    <updated>2014-05-01T12:29:37-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/05/01/notes-from-ed-catmull</id>
-    <content type="html"><![CDATA[<p><a href="http://waltdisneystudios.com/corp/unit/6/bio/53">Ed Catmull</a> knows a thing or two about making Great Things. In 2007 he gave a talk at Stanford about how Pixar does their thing. It&rsquo;s almost an hour long but you should watch it.</p>
-
-<iframe width="420" height="315" src="http://blog.swilliams.me//www.youtube.com/embed/k2h2lvhzMDc" frameborder="0" allowfullscreen></iframe>
-
-
-<p>Some of the things that resonated with me and are just as applicable in other practices:</p>
-
-<p>Present work <em>every day</em>. Even if it is incomplete or sucks. Why? It forces collaboration. If everybody is bumping up against each other, ideas will spread. Problems don&rsquo;t fester either; if someone is struggling on some task for too long it becomes apparent and somebody else can lend a hand if necessary.</p>
-
-<p>Success hides problems. This might be the biggest one. It&rsquo;s easy to dismiss problems during times of feast. Catmull also mentioned that they have an open-door policy for everyone and strive to make it safe for <em>everyone</em> to tell the truth. This is hard to do. Even if the CEO&rsquo;s door is open, rank-and-file employees will simply feel <a href="http://www.inc.com/magazine/20080901/how-hard-could-it-be-how-i-learned-to-love-middle-managers.html?partner=fogcreek">intimidated walking in and stating their mind</a>.</p>
-
-<p>To solve this, Pixar introduced post-morterms; essentially a discussion after the completion of a project to highlight what worked and what didn&rsquo;t. These can be annoying, which means that people will game them, even unintentionally. Pixar found that they had to change up the post-morterms every time in order to get real value from them.</p>
-
-<p>What it boiled down to was that their goal was to create teams of good people that functioned well together. Good people don&rsquo;t tolerate nonsense. If you give a bad idea to a good group, they&rsquo;ll fix it, or throw it away and come up with a better one. A group of mediocre people will take a good idea and screw it up. Therefore, hiring the right people, and then managing them is critical.</p>
-
-<p>Human organziations are inherently unstable and fall over slowly. The fall is slow, but the collapse is quick. The more I experience I get, the more I see people management as a critical role on any project with more than one person. A good project manager constantly takes information from the team and acts on that in order to avoid the fall.</p>
 ]]></content>
   </entry>
   

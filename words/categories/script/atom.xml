@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Script | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/script/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2014-11-19T13:34:05-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Copying the Current Page From Safari]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/19/copying-the-current-page-from-safari/"/>
+    <updated>2014-11-19T13:22:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/19/copying-the-current-page-from-safari</id>
+    <content type="html"><![CDATA[<p>If I&rsquo;m preparing a bunch of links for a blog post or something, it&rsquo;d speed things up if I could hit a button and have the computer do everything for me. Here&rsquo;s an <a href="https://developer.apple.com/library/mac/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html">AppleScript</a> to do just that.</p>
+
+<p><code>applescript
+tell application "Safari"   set theURL to URL of current tab of window 1    set theTitle to name of current tab of window 1 set the clipboard to "[" &amp; theTitle &amp; "](" &amp; theURL &amp; ")"end tell
+</code></p>
+
+<p>That&rsquo;ll copy the URL and title of the current tab in Safari as a nicely formatted <a href="http://daringfireball.net/projects/markdown/">Markdown</a> link. I tied that into a <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a> shortcut, so that I can quickly make the link with ⌘⌥⌃C, then paste it into whichever document I&rsquo;m working in.</p>
+
+<p>This&rsquo;ll probably work with Chrome too, but I don&rsquo;t know how much it supports AppleScript.</p>
+]]></content>
+  </entry>
+  
+</feed>
