@@ -13,7 +13,7 @@ It's a show about fathers raising their daughters. Our discussions range from th
   <a href="http://fronttoback.co"><img alt="Front to Back art" src="/images/assets/f2b-art.png" /></a>
 </figure>
 
-I'm co-hosting it along with my Internet friends [Jeff](http://jeffmueller.net) and [Sam](http://samdavies.me). Right now we are aiming for every other week to record. The first episode is a shade over half an hour, which seems like a pretty good duration to me.
+I'm co-hosting it along with my Internet friends [Jeff](http://jeffmueller.net) and [Sam](http://samdavies.me). Right now we are aiming to record every other week. The first episode is a shade over half an hour, which seems like a pretty good duration to me.
 
 It's gonna be a learning experience too. Going into this, none of us had ever recorded a podcast. I've already learned more than I expected about production and audio editing. Watch this space because I'm going to write about it too. We're going to make a bunch of mistakes, but I think we have something here. 
 
