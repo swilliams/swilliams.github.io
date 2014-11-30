@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-11-19T13:34:05-07:00</updated>
+  <updated>2014-11-30T14:30:20-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Star Wars Episode VII Soundtrack Titles]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/30/star-wars-episode-vii-soundtrack-titles/"/>
+    <updated>2014-11-30T14:25:47-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/30/star-wars-episode-vii-soundtrack-titles</id>
+    <content type="html"><![CDATA[<p>I found the names of the songs on the Force Awakens Soundtrack. Don&rsquo;t worry, no spoilers. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<ol>
+<li>20th Century Fox Theme</li>
+<li>Star Wars Main Theme</li>
+<li>Luke&rsquo;s Noble End</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Han&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral (reprise)</li>
+<li>Luke&rsquo;s Funeral Again</li>
+<li>A Cube Death Star?</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Falcon&rsquo;s Funeral</li>
+<li>Constructing a New Lightsaber</li>
+<li>Return of a Jedi Master</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Darth Fangy Rises</li>
+<li>Darth Fangy&rsquo;s Funeral</li>
+<li>Chewbacca Sandwich</li>
+<li>Victory Fanfare</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>End Credits</li>
+</ol>
+
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For those of you who don&#8217;t get the joke, <a href="http://www.cracked.com/blog/the-5-most-ridiculous-ways-studios-spoiled-their-own-movies/">read this</a>.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Copying the Current Page From Safari]]></title>
@@ -772,44 +815,6 @@ that it continues along as is, but with little to no growth. I did renew my paid
 <p>And as pointed out by <a href="https://alpha.app.net/chriskrycho/post/29913830">Chris Krycho</a>, it looks like Garry&#8217;s posts are just cross-posted from Twitter using <a href="https://zapier.com/">Zapier</a>.</p>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Oh Cool You Want to be a Web Developer?]]></title>
-    <link href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/"/>
-    <updated>2014-05-06T11:07:29-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer</id>
-    <content type="html"><![CDATA[<p>Just go and learn any or all of these:</p>
-
-<ul>
-<li>HTML 5</li>
-<li>CSS 3</li>
-<li>JavaScript</li>
-<li><a href="http://coffeescript.org">CoffeeScript</a></li>
-<li><a href="http://sass-lang.com/">SASS</a></li>
-<li><a href="http://lesscss.org/">Less</a></li>
-<li><a href="http://jquery.com/">jQuery</a></li>
-<li><a href="https://angularjs.org/">Angular</a></li>
-<li><a href="http://emberjs.com/">Ember</a></li>
-<li><a href="http://gruntjs.com/">Grunt</a></li>
-<li><a href="http://gulpjs.com/">Gulp</a></li>
-<li><a href="http://bower.io/">Bower</a></li>
-<li><a href="http://yeoman.io/">Yeoman</a></li>
-<li><a href="http://nodejs.org/">node.js</a></li>
-<li><a href="http://bourbon.io/">Bourbon</a></li>
-<li><a href="http://bitters.bourbon.io/">Bitters</a></li>
-<li><a href="http://compass-style.org/">Compass</a></li>
-<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
-<li><a href="http://foundation.zurb.com/">Foundation</a></li>
-<li><a href="http://handlebarsjs.com/">Handlebars</a></li>
-<li><a href="http://mustache.github.io/">Mustache</a></li>
-</ul>
-
-
-<p>This list is not exhaustive. Some of those are optional. By the time you are done reading this, another framework or library will have been created.</p>
-
-<p>This is a <a href="http://blog.swilliams.me/words/2013/12/02/the-frustrations-of-the-journeyman/">frustration</a> that I feel with web development these days. I spent about 2 years learning <a href="http://documentcloud.github.io/backbone/">one</a> client-side framework inside and out, but it&rsquo;s already losing relevance. Angular seems to be a good choice for employment these days, but if I go deep in it, will history repeat itself?</p>
 ]]></content>
   </entry>
   

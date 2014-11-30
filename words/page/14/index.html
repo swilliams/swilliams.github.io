@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Quick Tech Tip - Rails and Amazon ECS and &#8216;Missing&#8217; Gems Jun 28th, 2010 I was trying to get my rails app to properly search amazon, &hellip;">
+	<meta name="description" content="Top 11 Things [Anyone] Should Learn Jun 28th, 2010 Found this via Strobist&#8217;s twitter feed, it was meant for photographers, but I think it &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,11 +23,17 @@
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bigfoot-default.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="/javascripts/bigfoot.min.js"></script>
 <script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript">
+    $.bigfoot();
+    console.log("oh hi");
+</script>
 
   
 
@@ -100,6 +106,39 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/06/28/top-11-things-anyone-should-learn/" itemprop="url">Top 11 Things [Anyone] Should Learn</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>Found this via <a href="http://twitter.com/strobist/status/17300967582">Strobist&#8217;s twitter feed</a>, it was meant for photographers, but I think it applies to just about every profession that requires some semblance of creativity.<p></p>
+<div><a href="http://blog.photoshelter.com/2010/06/the-top-11-things-photographers-wish-they-learned.html">The Top 11 Things Photographers Wish they Learned in School</a></div>
+<p></p>
+<div>Perhaps my favorite bit from it:</div>
+<p></p>
+<div><blockquote type="cite"><span>&#8220;It is about the ability to sustain, to weather the storms, to shoot poorly and still survive a job, to fight out of inevitable creative slumps, to live with all manner of risk that lots of folks would find uncomfortable, to make uncertainty your friend, and to thrive despite sudden curves and happenstance. I guess what I&#8217;m describing is tenacity. To love doing this so much that you&#8217;ll go through 1000 &#8220;no&#8217;s&#8221; just to hear the one &#8216;yes.&#8217;&#8221;<b> - Joe McNally</b></span></blockquote></div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -462,49 +501,6 @@
 		</div>
 	
 	</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/06/23/quick-tech-tip-rails-authlogic/" itemprop="url">Quick Tech Tip - Rails & Authlogic</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-23T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jun 23<span>rd</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>I was following along with the <a href="http://github.com/binarylogic/authlogic_example">example project</a> for getting AuthLogic setup on a Rails app, and almost immediately got this error when running <span>UserSession.find</span>: </p>
-<p></p>
-<div>
-<blockquote class="posterous_short_quote">Couldn&#8217;t find User Session without an ID</blockquote>
-</div>
-<div>After poking around a little bit, I realized that I accidentally set the UserSession model to inherit from the default <span>ActiveRecord::Base</span> rather than <span><span>Authlogic::Session::Base</span></span><span>.</span>
-</div>
-<p></p>
-<div><span><span>Changing it to use the proper base class fixed the problem.</span></span></div>
-<div>
-<span>
-</span><div>
-<span><span><em><span><span><br></span></span></em></span></span><span> </span>
-</div>
-</div>
 </div></div></div></div></div>
 		
 		
