@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-11-30T14:30:20-07:00</updated>
+  <updated>2014-12-01T11:49:59-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My New Podcast]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/01/my-new-podcast/"/>
+    <updated>2014-12-01T14:37:23-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/01/my-new-podcast</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been a fan of podcasts for ages. I listened to <a href="http://grantland.com/podcasts/bs-report/">Bill Simmons&rsquo;s show</a> since it was called &ldquo;Eye of the Sports Guy&rdquo;. I listened to <a href="http://5by5.tv">Dan Benjamin&rsquo;s</a> shows before he made 5by5. About half of my t-shirts are ads for podcasts. So, when some friends asked if I wanted to make a podcast, I jumped at the chance.</p>
+
+<p>It&rsquo;s a show about fathers raising their daughters. Our discussions range from the goofy stuff our girls do, to the idea that we need to maintain our masculinity being the sole male in the family, to heavier topics. We&rsquo;re calling it <a href="http://fronttoback.co">Front to Back</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. You can get it on <a href="https://itunes.apple.com/us/podcast/front-to-back/id945174610?mt=2">iTunes here</a>.</p>
+
+<figure class="pull-right">
+  <a href="http://fronttoback.co"><img alt="Front to Back art" src="http://blog.swilliams.me/images/assets/f2b-art.png" /></a>
+</figure>
+
+
+<p>I&rsquo;m co-hosting it along with my Internet friends <a href="http://jeffmueller.net">Jeff</a> and <a href="http://samdavies.me">Sam</a>. Right now we are aiming to record every other week. The first episode is a shade over half an hour, which seems like a pretty good duration to me.</p>
+
+<p>It&rsquo;s gonna be a learning experience too. Going into this, none of us had ever recorded a podcast. I&rsquo;ve already learned more than I expected about production and audio editing. Watch this space because I&rsquo;m going to write about that process too. We&rsquo;re going to make a bunch of mistakes, but I think we have something here.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Yeah, it references *that*.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Star Wars Episode VII Soundtrack Titles]]></title>
@@ -788,31 +817,6 @@
 
 <div class="footnotes">
 1. This is what JavaScript does. Open the dev tools and log a function without executing it — the body of that function prints out.
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What is App.net?]]></title>
-    <link href="http://blog.swilliams.me/words/2014/05/06/what-is-app-dot-net/"/>
-    <updated>2014-05-06T14:49:05-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/05/06/what-is-app-dot-net</id>
-    <content type="html"><![CDATA[<p>Most people who have even heard of it would say that it&rsquo;s a Twitter clone, created out of <a href="http://daltoncaldwell.com/what-twitter-could-have-been">frustrations over the direction it was heading</a>. Currently, the <a href="http://app.net">home page</a> makes it look like an identity and/or messaging service. Over the last couple years, it&rsquo;s bounced around and offered different services. According to the founders, the <a href="http://daltoncaldwell.com/an-audacious-proposal">genesis</a> of it was to create a backend-as-a-service to enable developers to make the next generation of online applications.</p>
-
-<p>The problem was that I don&rsquo;t think App.net ever moved beyond the shadow of &ldquo;It&rsquo;s a Twitter clone.&rdquo; App.net&rsquo;s API does offer the capabilities to make some really <a href="http://riposteapp.net/">slick</a> <a href="http://favd.net/">apps</a>, but there hasn&rsquo;t been any one thing that captured everyone&rsquo;s attention to make them say &ldquo;Wow!&rdquo; There is the <a href="https://alpha.app.net/">microblogging service</a>, the <a href="https://omega.app.net/">messaging service</a>, the <a href="https://broadcast.app.net">broadcast service</a>, the <a href="https://backer.app.net/">crowdfunding service</a> and <a href="http://blog.app.net/2013/01/28/announcing-the-app-net-file-api/">the cloud storage service</a>. If you&rsquo;re being unkind, you could call them the Twitter clone, the iMessage clone, the Push Notification clone, the Kickstarter clone, and the Dropbox clone. Each of those services are good, but none of them have differentiated themselves from their biggest competitors. If all of those went dark tomorrow, everybody would be able to move back to what they were using before without too much trouble.</p>
-
-<p>There was a great initial fervor when App.net launched. Some big names supported it both vocally and financially. Unfortunately, their engagement petered out over time. The most damning evidence of this? Out of all the people on <a href="https://web.archive.org/web/20120801133202/https://join.app.net/">this page</a> the only person who still interacts on App.net regularly is <a href="https://alpha.app.net/garrytan">Garry Tan</a><sup>1</sup>.</p>
-
-<p>I was very bullish on App.net, which makes the <a href="http://blog.app.net/2014/05/06/app-net-state-of-the-union/">latest news</a> saddening. It isn&rsquo;t the end yet, but when you have literally no employees working on a service and suspend the biggest <a href="http://blog.app.net/2012/09/27/announcing-the-app-net-developer-incentive-program/">incentive to develop on your platform</a>, it isn&rsquo;t too far away. Right now the best case I see for App.net is
-that it continues along as is, but with little to no growth. I did renew my paid account this year, but I don&rsquo;t know if the service will be around for another renewal next time.</p>
-
-<p>I don&rsquo;t like armchair quarterbacking. Saying what <a href="http://www.theonion.com/articles/woman-a-leading-authority-on-what-shouldnt-be-in-p,35922/">should have been done</a> is too easy and requires no effort on my part. I do think that a lesson to take away from this is that identity is important and needs to be clear to customers.</p>
-
-<div class="footnotes">
-1. It looks like <a href="https://alpha.app.net/peterrojas">Peter Rojas</a> and <a href="https://alpha.app.net/andrewchen">Andrew Chen</a> have feeds that syndicate to App.net. Nobody else on that list had any kind of post within the last month.
-
-<p>And as pointed out by <a href="https://alpha.app.net/chriskrycho/post/29913830">Chris Krycho</a>, it looks like Garry&#8217;s posts are just cross-posted from Twitter using <a href="https://zapier.com/">Zapier</a>.</p>
 </div>
 
 ]]></content>
