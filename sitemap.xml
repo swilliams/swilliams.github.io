@@ -1059,8 +1059,14 @@
         <lastmod>2014-12-01T08:20:09-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10/
+        </loc>
+        <lastmod>2014-12-02T09:43:10-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2014-12-01T08:20:09-07:00</lastmod>
+        <lastmod>2014-12-02T09:43:10-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1068,7 +1074,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2014-12-01T08:20:09-07:00</lastmod>
+        <lastmod>2014-12-02T09:43:10-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
