@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Podcast | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/podcast/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-12-02T09:43:10-07:00</updated>
+  <updated>2014-12-02T15:57:54-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10</id>
     <content type="html"><![CDATA[<p>GarageBand is a decent amateur audio editor and is also free. I use it to edit <a href="http://fronttoback.co">my podcast</a>, which has worked out ok.</p>
 
-<p>Dealing with audio buzzing or humming can be a problem. Sometimes this can be <a href="http://en.wikipedia.org/wiki/Spill_%28audio%29">headphone bleed</a>, or ambient noise, or anything. A <a href="http://en.wikipedia.org/wiki/Noise_gate">noise gate</a> can fix that up pretty well if it isn&rsquo;t too loud<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. What noise gate does is analyze your audio and mutes any sound that is below a certain volume. GarageBand has this built-in but it is a little hard to find. It&rsquo;s interface has changed over different versions, so googling around for it often yields out of date information. Here is where it is in version <strong>10</strong>.</p>
+<p>Dealing with audio buzzing or humming can be a problem. Sometimes this can be <a href="http://en.wikipedia.org/wiki/Spill_%28audio%29">headphone bleed</a>, or ambient noise, or anything. A <a href="http://en.wikipedia.org/wiki/Noise_gate">noise gate</a> can fix that up pretty well if it isn&rsquo;t too loud<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. What a noise gate does is analyze your audio and mutes any sound that is below a certain volume. GarageBand has this built-in but it is a little hard to find. It&rsquo;s interface has changed over different versions, so googling around for it often yields out of date information. Here is where it is in version <strong>10</strong>.</p>
 
 <p>First click this knobby button.</p>
 

@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="X-Wing Nostalgia Oct 28th, 2014 X-Wing was one of my favorite games when I was a kid. I played it on my family&rsquo;s rather old 386. It didn&rsquo &hellip;">
+	<meta name="description" content="Dealing With Xcode and Swift Oct 30th, 2014 I like Swift. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite). My biggest woe is &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,6 +115,50 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/10/30/dealing-with-xcode-and-swift/" itemprop="url">Dealing With Xcode and Swift</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-30T10:46:09-07:00" data-updated="true" itemprop="datePublished">Oct 30<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/">I like Swift</a>. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite).</p>
+
+<p>My biggest woe is that code completion up and vanishes in projects. This is especially problematic when dealing with Cocoa libraries because method names tend to be verbose and descriptive. I find myself thinking &ldquo;I know it&rsquo;s called <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/popToRootViewControllerAnimated:">popToRoot-something-somthing</a> and was it on UIViewController or the navigationController?&rdquo;. What would&rsquo;ve taken two seconds of poking through code-completion to figure that out turned into a solid minute of searching documentation. Multiply this every time you can&rsquo;t explicitly remember every part of a method call (and spell it correctly) and tasks that normally take an hour are now a significant part of a day.</p>
+
+<p>The tools that Apple provides are now hindering development. I&rsquo;m not alone in that sentiment. On Apple&rsquo;s developer forums (account needed to view) there are a few threads with names like <a href="https://devforums.apple.com/message/1067119#1067119">&ldquo;Can SourceKit possibly crash more often on a Swift project?&rdquo;</a> and <a href="https://devforums.apple.com/thread/248397?start=0&amp;tstart=0">&ldquo;Xcode 6.1b3 Swift editing is becoming very difficult&rdquo;</a>.</p>
+
+<p>One of those threads recommends deleting two folders: <code>~/Library/Developer/Xcode/DerivedData</code> and <code>~/Library/Caches/com.apple.dt.Xcode</code>. This does the job for me. It happens often enough that I created a hot key for it with <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a>.</p>
+
+<figure class="center">
+    <img alt="Keyboard Maestro Screenshot" src="/images/assets/xcode-swift-maestro.png">
+    <figcaption>This will yell at you if those folders don&#8217;t exist, but I can live with that.</figcaption>
+</figure>
+
+
+<p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
+
+<p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -667,68 +711,6 @@
 </small></p>
 </div>
 
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/06/28/fujifilm-x100s/" itemprop="url">Fujifilm X100s</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-28T15:42:35-07:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<figure>
-    <a href="http://www.amazon.com/gp/product/B00ATM1MVA/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00ATM1MVA&linkCode=as2&tag=thepetzoo-20&linkId=2PJ4FLG2K25KQBDP"><img alt="The Fujifilm X100s" src="http://ecx.images-amazon.com/images/I/91euWxZBK6L._SL1500_.jpg"></a>
-    <figcaption>The Fujifilm X100s</figcaption>
-</figure>
-
-
-<p>I bought a new camera a little while ago, and finally had the opportunity to put it through its paces. <a href="http://www.amazon.com/gp/product/B00ATM1MVA/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00ATM1MVA&amp;linkCode=as2&amp;tag=thepetzoo-20&amp;linkId=2PJ4FLG2K25KQBDP">The Fujifilm X100s</a> isn&rsquo;t particularly cheap, so I saved a while to be able to afford it, but so far I&rsquo;m really liking it.</p>
-
-<p>I have three Nikon DSLRs and an assortment of nice lenses to go with them, so why would I want a smaller, almost Point and Shoot camera? For starters, it&rsquo;s much smaller. I love my Nikons, but carrying around a backpack has never been <a href="http://blog.swilliams.me/words/2013/09/04/you-probably-shouldnt-buy-a-dslr/">convenient</a>, especially when you need to take a shot fast. It can fit in a large pocket, and I have a belt-style pouch for it too. Its lens is fixed at about the equivalent of 35mm on an SLR. You&rsquo;d think being stuck at a single focal length would be an issue, but it&rsquo;s a good size for when its use cases (informal portraits, walking around, &ldquo;street&rdquo; photography). Oh yeah, and the pictures that come out of it are gorgeous.</p>
-
-<figure>
-    <img alt="" src="/images/assets/fujifilm/DSCF0026.jpg">
-    <figcaption>The Desert</figcaption>
-</figure>
-
-
-
-
-<figure>
-    <img alt="" src="/images/assets/fujifilm/DSCF0035.jpg">
-    <figcaption>Prep for a birthday Party</figcaption>
-</figure>
-
-
-
-
-<figure>
-    <img alt="" src="/images/assets/fujifilm/DSCF0036.jpg">
-    <figcaption>Prep for a birthday Party</figcaption>
-</figure>
-
-
-<p>Where doesn&rsquo;t it stand up very well? When you need to get closer. When you need the absolute <em>best</em> image quality. When you need a high frame-rate of shots (sports). I wouldn&rsquo;t shoot a wedding with just the X100s, but it would be very useful for wandering around during the reception.</p>
-
-<p>Despite those issues, this is probably my go to camera for 80% of my needs right now. If it had been available 10 years ago when I was considering a DSLR purchase, I might&rsquo;ve gone with this instead.</p>
 
 		
 		
