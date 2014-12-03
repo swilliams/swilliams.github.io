@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-12-02T15:57:54-07:00</updated>
+  <updated>2014-12-03T12:21:04-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Things I Learned When Making a Podcast]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/03/things-i-learned-when-making-a-podcast/"/>
+    <updated>2014-12-03T07:42:25-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/03/things-i-learned-when-making-a-podcast</id>
+    <content type="html"><![CDATA[<p>We just published episode 2 of <a href="https://scott-williams-bc50.squarespace.com/podcast/2014/12/3/2-the-proliferation-of-duplo">the podcast</a>. I&rsquo;m still very new at this, but I&rsquo;ve already learned more than I anticipated. Most of these are forehead slappers that now you can avoid when you make your podcast.</p>
+
+<p>If you want to do a <a href="http://thepodcastersstudio.com/tps-ep-47-recording-a-double-ender-podcast/">double-ender</a>, don&rsquo;t use Quicktime&rsquo;s built-in audio recording &ndash; it smushes all the audio into a single track. <a href="http://www.ecamm.com/mac/callrecorder/">Ecamm Call Recorder</a> or <a href="https://rogueamoeba.com/piezo/">Piezo</a> will keep them separate.</p>
+
+<p>Have each person say something like &ldquo;Recording&rdquo; when they start recording their end of the call. This makes it orders of magnitude easier to line up the separate audio tracks during post production. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>Plug your headphones directly into your microphone. Doing something else will likely lead to some nasty <a href="http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10/">headphone bleed</a>.</p>
+
+<p>If you&rsquo;re using a <a href="http://www.amazon.com/Blue-Microphones-Yeti-USB-Microphone/dp/B002VA464S/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=blue%2Byeti&amp;tag=thepetzoo-20&amp;qid=1417634348">Blue Yeti</a>, switch to Cardioid mode. It&rsquo;s the &ldquo;heart&rdquo; or &ldquo;pacman&rdquo; symbol. Turn the gain down on it too.</p>
+
+<p>You need to <a href="https://www.apple.com/itunes/podcasts/specs.html">submit your podcast feed to Apple</a> if you want your podcast to be in iTunes (and you really want that). According to their <a href="https://www.apple.com/itunes/podcasts/creatorfaq.html">FAQ</a> it can take 24 hours for that feed to be approved. But if you submit your feed on a common US holiday week, like say the Monday before Thanksgiving, it might take significantly longer.</p>
+
+<p>If you have something pre-made you want to say on air, write it down first because your brain will simply refuse to cooperate if you try to just remember it.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Got this via <a href="http://www.theincomparable.com/theincomparable/">The Incomparable</a>, one of my absolute favorites.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Let's Talk Photo Licensing]]></title>
@@ -35,7 +65,7 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 
 <p>It means that Coca-Cola could take your photo, make it part of a national campaign, put in on every billboard in the US, and not pay you a nickel. It means that Better Homes And Gardens with its <a href="http://en.wikipedia.org/wiki/List_of_magazines_by_circulation#United_States">7.5 million subscribers</a> could put your photo on the cover, and not pay you anything. It means that I could scrape Flickr and sell your photos myself, and keep all the revenues. As long as you are &ldquo;attributed&rdquo; in some way, it&rsquo;s all legal.</p>
 
-<p>Flickr requires you to set some kind of license when you upload a photo. By <em>default</em> uses the most restrictive: &ldquo;All rights reserved&rdquo; (which precludes anyone but you from selling them), making Creative Commons option <strong>opt-in</strong>. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> You also have the opportunity to set a license on every photo when you upload it.</p>
+<p>Flickr requires you to set some kind of license when you upload a photo. By <em>default</em> uses the most restrictive: &ldquo;All rights reserved&rdquo; (which precludes anyone but you from selling them), making the Creative Commons option <strong>opt-in</strong>. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> You also have the opportunity to set a license on every photo when you upload it.</p>
 
 <p>What about other websites? Here&rsquo;s <a href="https://www.facebook.com/legal/terms">Facebook&rsquo;s terms</a>:</p>
 
@@ -55,7 +85,7 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 
 <p>We may modify or adapt your Content in order to transmit, display or distribute it over computer networks and in various media and/or make changes to your Content as are necessary to conform and adapt that Content to any requirements or limitations of any networks, devices, services or media.</p></blockquote>
 
-<p>You don&rsquo;t get any options when you share a photo on Facebook, Instagram, or Twitter. This is far worse. If they want to sell it, they can, and keep all the proceeds.</p>
+<p>You don&rsquo;t get any options when you share a photo on Facebook, Instagram, or Twitter. This is far worse. The language is loose enough that it grants them to do just about anything. If they want to sell it, they can, and keep all the proceeds.</p>
 
 <p>In my opinion, all of these websites should make it clear what they are allowed to do with your photos, when you upload them. Right now, it&rsquo;s too obscured, and users probably aren&rsquo;t even aware of this.</p>
 
@@ -767,36 +797,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 <p><small>
 1. In the war between Prototype and jQuery, I was in the former&rsquo;s camp for a long time. Prototype seemed like magic back in 2006 when I was coding AJAX manually. Searching for jQuery issues was never a problem though.
 </small></p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Friction and Teams]]></title>
-    <link href="http://blog.swilliams.me/words/2014/07/07/friction-and-teams/"/>
-    <updated>2014-07-07T15:23:47-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/07/07/friction-and-teams</id>
-    <content type="html"><![CDATA[<p>Developers tend to plow through the path of least resistance. Any amount of friction they encounter tends to be routed over or around. For example, I&rsquo;ve worked at a place where Sharepoint was the mandated document storage for the company. The problem is that Sharepoint is awful and unless it was setup by experts, difficult to find what you&rsquo;re looking for.<sup>1</sup> Since it was so convoluted, developers ignored it.</p>
-
-<p>This lead to bigger problems. A sort of <a href="http://en.wikipedia.org/wiki/Oral_tradition">oral tradition</a> was inadvertently created and persisted. Since developers were ignoring documentation, requirements were missed and features were implemented incorrectly. Fingers were pointed and words were exchanged.</p>
-
-<p>Now, imagine for a moment you were the manager in charge of this lot and suddenly found out that your document system was completely ignored by everyone on your team. Bad managers try to correct this with the heavy-handed approach and enforce the IT policy. I&rsquo;ve seen this happen and it isn&rsquo;t pretty. It usually results in the <a href="http://www.britannica.com/EBchecked/topic/166626/divine-right-of-kings">Divine Right of Management</a> being invoked, and then rapidly returns to status quo when said manager is not looking.</p>
-
-<p>What should you do instead? Keeping that convoluted game of telephone doesn&rsquo;t work, and erects huge barriers for any new person. <a href="http://designingsocialinterfaces.com/patterns/Pave_the_Cowpaths">Paving the cowpaths</a> may not necessarily be the best approach either because it could cement bad practices<sup>2</sup>. Anarchy is not a reliable cowpath.</p>
-
-<p>Being a good manager is about removing the friction from your team to enable them to do good work. What&rsquo;s the friction in the above scenario? Dealing with a crummy document management system. How do you remove that? One team I&rsquo;ve worked with used a Github based workflow for source code and started using the <a href="https://help.github.com/articles/about-github-wikis">wikis</a> on Github. Another place used Trello, which required more management, but it was still easy to look stuff up. Heck, you could even have an expert come over and wrestle Sharepoint into being manageable.</p>
-
-<p>Like everything else, there isn&rsquo;t a silver bullet here. In fact, so-called silver bullets tend to create these scenarios (all of the bullet points on the box sure looked good to somebody in a position of authority). A good manager will know their team and understand where these points of friction occur. It might be impossible to smooth them over entirely, but every single bit you can scrape away will only make your team more productive.</p>
-
-<div class="footnotes">
-<p><small>
-1. This shouldn&#8217;t be a Sharepoint gripe fest, but here&#8217;s the process you had to go through to find a document if you didn&#8217;t have a good bookmark. 1) Go to the home page. 2) Click on the &#8220;IT Projects&#8221; &#8220;portal&#8221;. 3) Find the right project in a list on the sidebar. 4) Navigate that project&#8217;s folder hierarchy. Each project&#8217;s hierarchy is completely arbitrary and built by its own madman. 5) Find the document eventually. It&#8217;s a Word doc so, 6) Download the doc. 7) Open it. 8) Edit it. 9) Re-upload it.
-</small></p>
-
-<p><small>
-2. &#8220;Oh just go talk to Henry, he&#8217;s the one who knows about the Widget structure.&#8221; &#8220;Actually Janet was the one who integrated the Widgets with the Core System.&#8221; &#8220;Yeah, I think I have an email in here somewhere describing that. I&#8217;ll get back to you in an hour.&#8221;
-</small></p>
-</div>
-
 ]]></content>
   </entry>
   

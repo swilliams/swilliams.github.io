@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Dealing With Xcode and Swift Oct 30th, 2014 I like Swift. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite). My biggest woe is &hellip;">
+	<meta name="description" content="App #2 - Emergency Contacts Nov 6th, 2014 I made another App(!) It&rsquo;s called Emergency Contacts and is available for your iOS 8 device. It& &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,6 +115,59 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/11/06/app-number-2-emergency-contacts/" itemprop="url">App #2 - Emergency Contacts</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-06T14:16:17-07:00" data-updated="true" itemprop="datePublished">Nov 6<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I made <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/">another</a> App(!)</p>
+
+<figure class="pull-right">
+    <img alt="Emergency Contacts screenshot" src="/images/assets/ec-screenshot.png">
+</figure>
+
+
+<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
+
+<p><a href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&amp;mt=8">Get it now for just $0.99</a>. Read on if you want to hear the origin story.</p>
+
+<p>The idea originated from my mother-in-law. She is new to the iPhone and asked me if there was a way to display an emergency contact, since she had something like that in her old feature-phone. Other than adding text to your wallpaper (which is pretty cheesy) I didn&rsquo;t have an answer. About an hour later it hit, <em>hey, I bet it would be real simple to put that stuff on the Today screen.</em></p>
+
+<p>It took about 3 days of programming time, most of which was sunk by fighting with <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">Xcode+Swift issues</a>, and iOS 8 bugs<sup>1</sup>. Probably another day or so to put together a simple website and icon. Then about 4 excruciating hours of getting all the screenshots necessary for the App Store.<sup>2</sup></p>
+
+<p>I don&rsquo;t expect this to make me rich, but felt it would be worth at least a few days of my time. I hope you like it.</p>
+
+<div class="footnotes">
+<p><small>
+1. Ever wanted to hide one of the navigation buttons on a `ABPeoplePickerNavigationController`? <a href="http://openradar.appspot.com/radar?id=5234709428699136">You used to be able to in iOS 7, not so much in 8</a>.
+</small></p>
+<p><small>
+2. You have a 3.5&#8221; device, a 4&#8221; device, a 4.7&#8221; device, and a 5.5&#8221; device. And nowadays you can&#8217;t have anything in the status bar for a screenshot. You can&#8217;t just crop it out though. So, once you&#8217;ve gone to the effort of setting up the same state on 4 devices, you have to crack open Photoshop and properly airbrush out the status bar. This is extra fun when doing a Today View screenshot, because everything is nice and blurry underneath the status bar, and a giant black rectangle would be every noticeable. Even with just 2 screenshots per device, I wanted to die so bad.
+</small></p>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -662,55 +715,6 @@
 <p><small>
 1. In the war between Prototype and jQuery, I was in the former&rsquo;s camp for a long time. Prototype seemed like magic back in 2006 when I was coding AJAX manually. Searching for jQuery issues was never a problem though.
 </small></p></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/07/07/friction-and-teams/" itemprop="url">Friction and Teams</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-07T15:23:47-07:00" data-updated="true" itemprop="datePublished">Jul 7<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Developers tend to plow through the path of least resistance. Any amount of friction they encounter tends to be routed over or around. For example, I&rsquo;ve worked at a place where Sharepoint was the mandated document storage for the company. The problem is that Sharepoint is awful and unless it was setup by experts, difficult to find what you&rsquo;re looking for.<sup>1</sup> Since it was so convoluted, developers ignored it.</p>
-
-<p>This lead to bigger problems. A sort of <a href="http://en.wikipedia.org/wiki/Oral_tradition">oral tradition</a> was inadvertently created and persisted. Since developers were ignoring documentation, requirements were missed and features were implemented incorrectly. Fingers were pointed and words were exchanged.</p>
-
-<p>Now, imagine for a moment you were the manager in charge of this lot and suddenly found out that your document system was completely ignored by everyone on your team. Bad managers try to correct this with the heavy-handed approach and enforce the IT policy. I&rsquo;ve seen this happen and it isn&rsquo;t pretty. It usually results in the <a href="http://www.britannica.com/EBchecked/topic/166626/divine-right-of-kings">Divine Right of Management</a> being invoked, and then rapidly returns to status quo when said manager is not looking.</p>
-
-<p>What should you do instead? Keeping that convoluted game of telephone doesn&rsquo;t work, and erects huge barriers for any new person. <a href="http://designingsocialinterfaces.com/patterns/Pave_the_Cowpaths">Paving the cowpaths</a> may not necessarily be the best approach either because it could cement bad practices<sup>2</sup>. Anarchy is not a reliable cowpath.</p>
-
-<p>Being a good manager is about removing the friction from your team to enable them to do good work. What&rsquo;s the friction in the above scenario? Dealing with a crummy document management system. How do you remove that? One team I&rsquo;ve worked with used a Github based workflow for source code and started using the <a href="https://help.github.com/articles/about-github-wikis">wikis</a> on Github. Another place used Trello, which required more management, but it was still easy to look stuff up. Heck, you could even have an expert come over and wrestle Sharepoint into being manageable.</p>
-
-<p>Like everything else, there isn&rsquo;t a silver bullet here. In fact, so-called silver bullets tend to create these scenarios (all of the bullet points on the box sure looked good to somebody in a position of authority). A good manager will know their team and understand where these points of friction occur. It might be impossible to smooth them over entirely, but every single bit you can scrape away will only make your team more productive.</p>
-
-<div class="footnotes">
-<p><small>
-1. This shouldn&#8217;t be a Sharepoint gripe fest, but here&#8217;s the process you had to go through to find a document if you didn&#8217;t have a good bookmark. 1) Go to the home page. 2) Click on the &#8220;IT Projects&#8221; &#8220;portal&#8221;. 3) Find the right project in a list on the sidebar. 4) Navigate that project&#8217;s folder hierarchy. Each project&#8217;s hierarchy is completely arbitrary and built by its own madman. 5) Find the document eventually. It&#8217;s a Word doc so, 6) Download the doc. 7) Open it. 8) Edit it. 9) Re-upload it.
-</small></p>
-
-<p><small>
-2. &#8220;Oh just go talk to Henry, he&#8217;s the one who knows about the Widget structure.&#8221; &#8220;Actually Janet was the one who integrated the Widgets with the Core System.&#8221; &#8220;Yeah, I think I have an email in here somewhere describing that. I&#8217;ll get back to you in an hour.&#8221;
-</small></p>
-</div>
-
 
 		
 		
