@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-12-03T19:56:04-07:00</updated>
+  <updated>2014-12-08T14:12:11-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The iOS Development Year]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
+    <updated>2014-12-08T14:04:40-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
+    <content type="html"><![CDATA[<p><strong>January</strong>: &ldquo;We just had our biggest sales quarter ever!&rdquo; &ndash; Apple, adding another $20B to their bank account.</p>
+
+<p><strong>April</strong>: Speculation of what&rsquo;s gonna be in the next version of iOS.</p>
+
+<p><strong>June</strong>: WWDC. New things! Wow! Ideas abound! Flurries of productivity. &ldquo;Guys, I think Apple&rsquo;s playing nicer with developers now!&rdquo; &ndash; some people.</p>
+
+<p><strong>July</strong>: Wow, this beta is really beta.</p>
+
+<p><strong>September</strong>: iOS Next ships! New iPhone! Ship your app! Bugs!</p>
+
+<p><strong>October</strong>: Weird rejections that don&rsquo;t make any sense.</p>
+
+<p><strong>December</strong>: Blog posts and tweets about how Apple is screwing themselves with the byzantine app review process.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Some rejections are overturned.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p><a href="http://www.panic.com/blog/transmit-ios-1-1-1/">You are here.</a></p>
+</li>
+  </ol>
+</div>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dealing With Xcode and Swift]]></title>
@@ -108,80 +140,6 @@
 <p><small>
 1. In the war between Prototype and jQuery, I was in the former&rsquo;s camp for a long time. Prototype seemed like magic back in 2006 when I was coding AJAX manually. Searching for jQuery issues was never a problem though.
 </small></p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How I Started to Understand Model Binding Magic in Ember]]></title>
-    <link href="http://blog.swilliams.me/words/2014/05/12/how-i-started-to-understand-model-binding-magic-in-ember/"/>
-    <updated>2014-05-12T13:16:18-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/05/12/how-i-started-to-understand-model-binding-magic-in-ember</id>
-    <content type="html"><![CDATA[<p>I&rsquo;m learning <a href="http://emberjs.com/">Ember.js</a> in efforts to stay <a href="http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp/">reasonably up to date</a> with client side web technologies. <a href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/">This hasn&rsquo;t been the easiest going.</a></p>
-
-<p>Ember&rsquo;s best feature is that it easily binds values in HTML to their corresponding properties on objects. I&rsquo;ve found the implementations of this a little confusing sometimes. Going through the Getting Started guide has been helpful, though <a href="http://emberjs.com/guides/getting-started/displaying-the-number-of-incomplete-todos/">this part tripped</a> me up for a good hour, specifically this snippet:</p>
-
-<p><code>js Within todos_controller.js
-remaining: function() {
-  return this.filterBy('isCompleted', false).get('length');
-}.property('@each.isCompleted'),
-</code></p>
-
-<p>That last line turns the associatied method into a <a href="http://emberjs.com/guides/object-model/computed-properties/">computed property</a>.  My understanding of computed properties was as a means to provide a simple call to complex data (eg. a <code>fullName</code> property that joins <code>firstName</code> and <code>lastName</code> properties). This particular method is on a <em>controller</em>, has a previously foreign syntax (<code>@each</code>), and the template that refers to it still uses it&rsquo;s canonical name (<code>remaining</code>).</p>
-
-<p><figure></p>
-
-<pre><code>&lt;img src="http://blog.swilliams.me/images/assets/ember/zoidberg.gif" alt="Wha?" /&gt;
-</code></pre>
-
-<p></figure></p>
-
-<p>In order to understand just what was happening, I pumped the brakes and dug into the sample application. My first question was why they were using a computed property altogether. I whipped up another method and added it to my controller:</p>
-
-<p>```js todos_controller.js
-remaining: function() {
-  return this.filterBy(&lsquo;isCompleted&rsquo;, false).get(&lsquo;length&rsquo;);
-}.property(&lsquo;@each.isCompleted&rsquo;),</p>
-
-<p>derp: function() {
-  return &lsquo;derp!&rsquo;;
-}
-```</p>
-
-<p>
-```html index.html</p>
-
-<h1>todos {{derp}}</h1>
-
-
-<p>```
-</p>
-
-<p>This resulted in the method body being substituted in the template, which reminded me that <code>{{derp}}</code> was just printing out whatever <code>derp</code> evaluated to, in this case a function.<sup>1</sup> So I made <code>derp</code> a computed property:</p>
-
-<p><code>js todos_controller.js
-derp: function() {
-  return 'derp!';
-}.property('what')
-</code></p>
-
-<p>This worked. My <code>&lt;h1&gt;</code> was now &lsquo;todos derp!&rsquo;. In fact, you could simplify it even more by doing this: <code>property()</code> and leaving off a name altogether. It also demonstrated that the first argument to <code>property</code> didn&rsquo;t have a bearing on what goes in the Template. Next step was to substitute my static text with something useful.</p>
-
-<p><code>js todos_controller.js
-derp: function() {
-  return this.filterBy('isCompleted', false).get('length');
-}.property()
-</code></p>
-
-<p>And sure enough, the title was now &lsquo;todos 2&rsquo;. I suspected this would work because my controller extended <code>Ember.ArrayController</code>, giving it access to <code>filterBy</code>. This lead me back to one of my original questions: what is the purpose of <code>'@each.isCompleted'</code>?</p>
-
-<p>I played around with the todo app a little more and noticed that my <code>{{derp}}</code> was not automatically updating when todos where checked off while the original <code>{{remaining}}</code> was. Then it hit me: <code>'@each'</code> must be a special directive for an <code>ArrayController</code> that bound that function to the <code>isCompleted</code> property of <a href="http://emberjs.com/api/classes/Ember.ArrayController.html#property__each"><em>each</em></a> object in its array. Putting a <code>console.log('called');</code> confirmed this suspicion — it&rsquo;s called every time <code>isCompleted</code> is accessed.</p>
-
-<p>After this bit of forensics, things make a little more sense now. I do wish this association was a little more spelled out in the documentation though for us thick-headed developers.</p>
-
-<div class="footnotes">
-1. This is what JavaScript does. Open the dev tools and log a function without executing it — the body of that function prints out.
-</div>
-
 ]]></content>
   </entry>
   
