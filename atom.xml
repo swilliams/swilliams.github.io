@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2014-12-08T14:13:06-07:00</updated>
+  <updated>2014-12-29T15:59:47-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,7 +14,54 @@
 
   
   <entry>
-    <title type="html"><![CDATA[The iOS Development Calendar]]></title>
+    <title type="html"><![CDATA[O Christmas Roast]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/29/o-christmas-roast/"/>
+    <updated>2014-12-29T15:55:42-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/29/o-christmas-roast</id>
+    <content type="html"><![CDATA[<p><em>I posted this on Twitter. Here it is for posterity.</em></p>
+
+<p>O Christmas Roast, O Christmas Roast!<br />
+Thy rawness shall be ending<br />
+O Christmas Roast, O Christmas Roast!<br />
+Thy rawness shall be ending<br /></p>
+
+<p>Inside the oven you shall go<br />
+So that the juice within you flows<br />
+O Christmas Roast, O Christmas Roast!<br />
+Thy rawness shall be ending<br /></p>
+
+<p>O Christmas Roast, O Christmas Roast!<br />
+Such gravy will you make me!<br />
+O Christmas Roast, O Christmas Roast!<br />
+Such gravy will you make me!<br /></p>
+
+<p>The thermometer will pierce your side<br />
+Until your temp reads 125<br />
+O Christmas Roast, O Christmas Roast!<br />
+Such gravy will you make me!<br /></p>
+
+<p>O Christmas Roast, O Christmas Roast!<br />
+We&rsquo;ll set our teeth upon thee!<br />
+O Christmas Roast, O Christmas Roast!<br />
+We&rsquo;ll set our teeth upon thee!<br /></p>
+
+<p>Two yards of plastic will we turn<br />
+To avoid a chilling freezer burn<br />
+O Christmas Roast, O Christmas Roast!<br />
+We&rsquo;ll save you for another meal<br /></p>
+
+<p>Each tasty bite<br />
+Each dab of meat<br />
+No other bite will fill my cheeks<br /></p>
+
+<p>O Christmas Roast, O Christmas Roast!<br />
+Within our guts digesting<br />
+Within our guts digesting<br /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
     <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
     <updated>2014-12-08T14:04:40-07:00</updated>
     <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
@@ -775,40 +822,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 <p><small>
 1. Not necessarily true according to <a href="https://twitter.com/_lanceparker/status/499368493209239552">@_lanceparker</a> on Twitter.
 </small></p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Podcasts I Listen to (July 2014)]]></title>
-    <link href="http://blog.swilliams.me/words/2014/07/27/podcasts-i-listen-to-july-2014/"/>
-    <updated>2014-07-27T19:42:12-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/07/27/podcasts-i-listen-to-july-2014</id>
-    <content type="html"><![CDATA[<ul>
-<li><a href="http://5by5.tv/specials">5by5 Specials</a></li>
-<li><a href="http://5by5.tv/movies">5by5 at the Movies</a></li>
-<li><a href="http://atp.fm/">Accidental Tech Podcast</a></li>
-<li><a href="http://5by5.tv/afterdark">5by5 After Dark</a></li>
-<li><a href="http://5by5.tv/b2w">Back to Work</a></li>
-<li><a href="http://5by5.tv/cmdspace">CMD+Space</a></li>
-<li><a href="http://carpeaqua.com/cocoaradio/">CocoaRadio</a></li>
-<li><a href="http://www.imore.com/debug">Debug</a></li>
-<li><a href="http://developingperspective.com/">Developing Perspective</a></li>
-<li><a href="http://www.esn.fm/electricshadow/">Electric Shadow</a></li>
-<li><a href="http://sports.espn.go.com/espnradio/podcast/archive?id=2864045">ESPN: The BS Report</a></li>
-<li><a href="http://www.esn.fm/giantsize/">Giant Size</a></li>
-<li><a href="http://techdistortion.com/podcasts/pragmatic">Pragmatic</a></li>
-<li><a href="http://www.flophousepodcast.com/">The Flop House</a></li>
-<li><a href="http://5by5.tv/frequency">The Frequency</a></li>
-<li><a href="http://www.theincomparable.com/theincomparable/">The Incomparable</a></li>
-<li><a href="http://therecord.co/">The Record</a></li>
-<li><a href="http://www.imore.com/reviewcast">Review</a></li>
-<li><a href="https://daringfireball.net/thetalkshow/">The Talk Show</a></li>
-<li><a href="http://www.theincomparable.com/tpk/">Total Party Kill</a></li>
-<li><a href="http://www.imore.com/vector">Vector</a></li>
-</ul>
-
-
-<p>Currently, I use <a href="https://itunes.apple.com/us/app/overcast-podcast-player/id888422857?mt=8&amp;uo=4&amp;at=11lxUn">Overcast</a> as my listening device.</p>
 ]]></content>
   </entry>
   
