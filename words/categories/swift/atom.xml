@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Swift | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/swift/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2015-01-21T20:39:49-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Madness of Errors in Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift/"/>
+    <updated>2015-01-21T20:18:43-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift</id>
+    <content type="html"><![CDATA[<p>Let&rsquo;s take a common scenario. You are making an HTTP request and are checking the response for an error. If there is one, you&rsquo;d like to post a notification and let some error handler deal with it.</p>
+
+<p>```</p>
+
+<pre><code>    Alamofire.request(.GET, someURL).response { (request, response, data, error) in
+        if error != nil {
+            let userInfo = ["error": error]
+            let nc = NSNotificationCenter.defaultCenter()
+            nc.postNotificationName("HTTPERROR", object: nil, userInfo: userInfo)
+        }
+    }
+</code></pre>
+
+<p><code>``
+Uh oh, there's a compiler error on the</code>userInfo<code>argument with the message "Extra argument 'userInfo' in call". Huh? [</code>postNotificationName<code>definitely allows for a</code>userInfo<code>parameter](https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNotificationCenter_Class/index.html#//apple_ref/occ/instm/NSNotificationCenter/postNotificationName:object:userInfo:). Maybe it's a hidden typing error? According to the docs</code>userInfo<code>is supposed to be an optional dictionary like of type:</code>[NSObject : AnyObject]<code>. My key is a String which is bridged from</code>NSString<code>, which is an</code>NSObject<code>and</code>NSError<code>is also an</code>AnyObject`, so what gives?</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Lying" src="http://blog.swilliams.me/images/assets/xcode-lying-cat.jpg"&gt;
+&lt;figcaption&gt;&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>After banging my head on the wall for a while I remembered that the <code>error</code> variable from <a href="https://github.com/Alamofire/Alamofire">AlamoFire</a> is an optional. Therefore, the correct declaration for <code>userInfo</code> is to unwrap the error:</p>
+
+<p><code>
+let userInfo = ["error": error!]
+</code></p>
+
+<p>And voilà, no more compilation errors.</p>
+
+<p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
+
+<p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
+]]></content>
+  </entry>
+  
+</feed>

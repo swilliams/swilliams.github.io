@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Thoughts on App Store Beta Review Nov 11th, 2014 A little while ago Apple acquired the parent company of TestFlight and began integrating its beta &hellip;">
+	<meta name="description" content="I Once Caught a Comet That Was THIS Big Nov 14th, 2014 We landed a spacecraft on a comet. This in itself is pretty cool, but apparently not many &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,64 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/11/14/i-once-caught-a-comet-that-was-this-big/" itemprop="url">I Once Caught a Comet That Was THIS Big</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-14T19:56:14-07:00" data-updated="true" itemprop="datePublished">Nov 14<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="http://www.theguardian.com/science/gallery/2014/nov/12/rosetta-mission-lands-philae-probe-on-67p-comet-in-pictures">We landed a spacecraft on a comet</a>. This in itself is pretty cool, but apparently not many people are familiar with the size of the comet in question. These images might just help.</p>
+
+<figure class="center">
+    <img alt="Star Destroyer" src="/images/assets/philae-star-destroyer.jpg" style="width:350px">
+    <figcaption>Via the Washington Post</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="Star Trek" src="/images/assets/philae-startrek.jpg">
+    <figcaption>Star Wars not your thing? We got you covered.</figcaption>
+</figure>
+
+
+
+
+<figure class="center"> 
+    <img alt="Rome" src="/images/assets/philae-rome.jpg">
+    <figcaption>Keep it on Earth? Ok.</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="LA" src="/images/assets/comet_v_la.png">
+    <figcaption>How &#8216;bout some AMERICA?</figcaption>
+</figure>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -695,47 +753,6 @@
 
 </article>
 
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/08/12/porting-db5-to-swift/" itemprop="url">Porting DB5 to Swift</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-12T16:41:51-07:00" data-updated="true" itemprop="datePublished">Aug 12<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>I&rsquo;m a big fan of using the <a href="https://github.com/quartermaster/DB5">DB5 library</a> for customizing an iOS app via a <a href="http://en.wikipedia.org/wiki/Plist">plist configuration file</a>, and I&rsquo;ve used it in several projects so far. I&rsquo;ve also  been digging more into Swift and iOS 8 and thought it would be a good exercise to familiarize myself more with Swift to port DB5 from its original Objective C codebase to Swift.</p>
-
-<p>The result is over on Github: <a href="https://github.com/swilliams/DB5-Swift">DB5-Swift</a>.</p>
-
-<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have an equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a><sup>1</sup>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
-
-<p>Two of Swift&rsquo;s headlining features are <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_468">type inference</a> and <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_478">optional values</a>. I&rsquo;ve used both of these features before in C# for several years and have appreciated what they bring to the table. Swift is a little bit different though because it comes with the history of Objective C and Cocoa. NSDictionary was built to take advantage of Objective C&rsquo;s type system, and using it with Swift involved more casting and ? and ! operators than I expected. It didn&rsquo;t help that Xcode would often be wrong in its helper tooltips, suggesting addtional !&rsquo;s which wouldn&rsquo;t fix the problem.</p>
-
-<p>I&rsquo;m not entirely sure if DB5-Swift is 100% up to snuff right now. I think some of the methods should have better handling for nil values. I still have plenty of learning left before I&rsquo;d consider myself adept at Swift. Overall, it was  a good exercise, and I will use it in future apps.</p>
-
-<p><div class="footnotes">
-<p><small>
-1. Not necessarily true according to <a href="https://twitter.com/_lanceparker/status/499368493209239552">@_lanceparker</a> on Twitter.
-</small></p></p>
-
-		
-		
-	</div>
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
@@ -748,11 +765,11 @@
 </nav></div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Scott Williams -
+  Copyright &copy; 2015 - Scott Williams -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
-Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+</footer>
 			
 
 
