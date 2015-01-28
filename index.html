@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="The Madness of Errors in Swift Jan 21st, 2015 Let&rsquo;s take a common scenario. You are making an HTTP request and are checking the response for &hellip;">
+	<meta name="description" content="Surface Marketing Jan 27th, 2015 The Surface was never the barnburner that Microsoft hoped it would be. People have been predicting its demise for &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -132,6 +132,57 @@
 	<div class="meta">
 		
 	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/01/27/surface-marketing/" itemprop="url">Surface Marketing</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-27T19:26:01-07:00" data-updated="true" itemprop="datePublished">Jan 27<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>The <a href="http://www.microsoft.com/surface/en-us">Surface</a> was never the barnburner that Microsoft hoped it would be. People have been <a href="http://www.deccanchronicle.com/140629/technology-mobiles-and-tabs/article/microsoft-discontinue-surface-tablet">predicting</a> <a href="http://arstechnica.com/gadgets/2014/08/surface-2-prices-slashed-hinting-at-discontinuation-or-replacement/">its demise</a> for the <a href="http://bgr.com/2014/10/09/microsoft-surface-pro-3/">last year</a>. It&rsquo;s suffered from <a href="https://www.youtube.com/watch?v=iqyTxiTKxgI">goofy advertising</a> and lately seems to be begging the masses to please think of it instead of an iPad, <a href="https://www.youtube.com/watch?v=1jP4O7rEHQ8">anything but an iPad, oh please</a>! <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>I&rsquo;m certainly no Don Draper, but that&rsquo;s not gonna prevent my <del>ego</del> imagination to think of how I&rsquo;d do it instead. The idea is that the Surface apparently has a nice stylus/pen that can be used by artists. Penny Arcarde&rsquo;s <a href="http://www.penny-arcade.com/news/post/2013/10/28/surface-pro-2">Mike Krahulik has been a fan</a> and used them to draw their popular web comic. That&rsquo;s your angle right there. Now, not many people are artists that would benefit from a refined drawing interface, but plenty of people <em>fancy</em> themselves as such. Nike convinced you that sneakers with compressed air in them would make you Michael Jordan, why isn&rsquo;t Microsoft showing you that Surface would make you <a href="http://en.wikipedia.org/wiki/Jim_Lee">Jim Lee</a>?</p>
+
+<p>Here&rsquo;s your commercial: Camera fades in to reveal someone intently working on a Surface. They&rsquo;re sitting in a comfy chair, or on a couch, or some kind of hipster furniture. We don&rsquo;t see what&rsquo;s on the screen yet but we can see them concentrating and cranking away at <em>something</em> with the pen. Cut to the over-the-shoulder shot. We now see a painting/sketch/comic coming to life.</p>
+
+<p>Cut to closeups of the pen drawing right on the glass. There&rsquo;s no lag. The pen is able to draw with a fine point. There&rsquo;s obvious pressure sensitivity. (Things you pretty much can&rsquo;t do on an iPad, but without calling it by name.) They put the pen down and &ldquo;smudge&rdquo; things with their finger.</p>
+
+<p>Finally the art is done. The artist switches to their website and immediately publishes the work.</p>
+
+<p>Cut to a desk with the notorious Surface keyboard and a wireless mouse right next to it. The Surface clicks in to the keyboard, sits up on the kickstand and a modern 3D PC game (say, Far Cry 4) starts up (oh yeah, it&rsquo;s got an i5 and a GPU). Display the tagline: &ldquo;Make. Publish. Play.&rdquo;</p>
+
+<p>Wouldn&rsquo;t that be more interesting than breakdancing? Wouldn&rsquo;t that get you pumped up just a little bit? These days I&rsquo;m a Microsoft cynic, and that would at least get me to raise an eyebrow and <em>wish</em> my iPad could do something like that.</p>
+
+<p>If Apple is in fact <a href="http://9to5mac.com/2015/01/18/kgi-apple-likely-to-sell-stylus-accessory-alongside-12-inch-ipad-pro/">working on a stylus</a>, I don&rsquo;t think their angle would be all that different.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>The funny thing is that out of all Apple&#8217;s products, the iPad is the one that has plateaued the most. Why are you aiming at that one?</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
 	<h1 class="title" itemprop="name"><a href="/words/2015/01/21/the-madness-of-errors-in-swift/" itemprop="url">The Madness of Errors in Swift</a></h1>
     <div class="date">
 
@@ -179,7 +230,9 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>let userInfo = ["error": error!]</span></code></pre></td></tr></table></div></figure>
 
 
-<p>And voilà, no more compilation errors. &ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
+<p>And voilà, no more compilation errors.</p>
+
+<p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
 
 <p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
 
@@ -648,65 +701,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 <p>That&rsquo;ll copy the URL and title of the current tab in Safari as a nicely formatted <a href="http://daringfireball.net/projects/markdown/">Markdown</a> link. I tied that into a <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a> shortcut, so that I can quickly make the link with ⌘⌥⌃C, then paste it into whichever document I&rsquo;m working in.</p>
 
 <p>This&rsquo;ll probably work with Chrome too, but I don&rsquo;t know how much it supports AppleScript.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/11/17/holiday-meals-ranked-in-order-of-meal-glory/" itemprop="url">Holiday Meals Ranked in Order of Meal Glory</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-11-17T09:07:33-07:00" data-updated="true" itemprop="datePublished">Nov 17<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Family is cool and all, but really, the reason we have holidays in AMERICA is to eat too much. Here&rsquo;s how they rank. This is not opinion, it is fact.</p>
-
-<ol>
-<li><strong>Thanksgiving</strong>. Turkey. We do it two ways, the traditional bake, and also a smoked one. Dressing/Stuffing. Potatoes. Pies (never have just one). Everything else. Part of the romanticism for Thanksgiving is also everything that goes with it: family (I happen to like mine), friends, football, cool weather, cooking, showing my kids how to cook. Leftovers are critical: More turkey, turkey soup, turkey sandwiches, more potatoes and stuffing. Here&#8217;s how much we love Thanksgiving in the Williams house: we make a second Thanksgiving meal before Christmas. Speaking of:</li>
-</ol>
-
-
-<ol start="2">
-<li><strong>Christmas</strong>. Roast beef (garlic + rosemary). More potatoes. More Pie. Pudding.</li>
-</ol>
-
-
-
-
-<ol start="3">
-<li><strong>Memorial Day/Independence Day/Labor Day</strong>. From a meal perspective, these are pretty much the same. Grill and/or barbecue. Beer. Diversity amongst the meat is good.</li>
-</ol>
-
-
-
-
-<ol start="6">
-<li><strong>Octoberfest</strong>. Bratwurst on crusty rolls with sauerkraut and super grainy mustard. Beer. No it&#8217;s not a &#8220;real&#8221; holiday, congratulations on pointing that one out. You&#8217;re a regular Columbo, you are.</li>
-</ol>
-
-
-<ol start="50">
-<li><strong>Easter</strong>. Ham. I like various pig derived food products, but baked ham just isn&#8217;t as good. Eggs are fine and I eat them all the time, but it&#8217;s hard to make them extra &#8220;special&#8221;. How often do you cook a turkey for 8 hours during the year? Compare that to eggs.</li>
-</ol>
-
-
-<p>Once again, the logic here is flawless. No conjecture. For realsies.</p>
 
 		
 		
