@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Thoughts on the New iPhone Sep 11th, 2013 Buy it. Or don&#8217;t. I don&#8217;t really care. You Probably Shouldn&#8217;t Buy a DSLR Sep 4th, 2013 I &hellip;">
+	<meta name="description" content="Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7 Sep 19th, 2013 Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,116 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2013/09/19/handling-keyboard-events-with-modifier-keys-in-ios-7/" itemprop="url">Handling Bluetooth Keyboard Events With Modifier Keys in iOS 7</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-19T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 19<span>th</span>, 2013</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Before iOS 7, if you had a Bluetooth keyboard attached to your iPad, you could only access modifier keys (Command, Control, etc) through <a href="http://stackoverflow.com/questions/14791056/ios-how-to-detect-the-escape-control-keys-on-a-hardware-bluetooth-keyboard">private APIs</a>. You could sneak it in through <a href="http://stackoverflow.com/a/14940898/736">selector trickery</a> and allegedly Apple would turn a blind eye. Fortunately with iOS 7, there&rsquo;s now a public API to do this.</p>
+
+<p>First, let&rsquo;s talk a bit about the <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/event_delivery_responder_chain/event_delivery_responder_chain.html">Responder Chain</a>. This is how events are managed in iOS. Most of the <code>UIKit</code> classes you use inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/cl/UIResponder"><code>UIResponder</code></a> which means that you&rsquo;ll have access to the appropriate methods. This means that you can set the scope for your keyboard shortcuts at any level in the app. I wanted to use have them registered for the entire app, so I subclassed <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html"><code>UIApplication</code></a>, though you could use a similar approach in a view or the view controller too:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">// STWApplication.h</span>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">STWApplication</span> : <span class="nc">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">_commands</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// STWApplication.m</span>
+</span><span class='line'><span class="k">@implementation</span> <span class="nc">STWApplication</span>
+</span><span class='line'><span class="c1">// more coming soon</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Since we&rsquo;re subclassing <code>UIApplication</code>, edit <code>main.m</code> to tell it that we&rsquo;re doing so in <code>UIApplicationMain</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</span><span class='line'>  <span class="err">@</span><span class="n">autoreleasepool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">NSString</span> <span class="o">*</span><span class="n">appName</span> <span class="o">=</span> <span class="s">@&quot;STWApplication&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">UIApplicationMain</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">appName</span><span class="p">,</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">STWAppDelegate</span> <span class="n">class</span><span class="p">]));</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ok, now let&rsquo;s tell the app what key combinations are valid. iOS 7 adds a <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/Reference/Reference.html#//apple_ref/occ/instp/UIResponder/keyCommands"><code>keyCommands</code></a> property to UIResponder. All we need to do is override that and returning an array of <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/occ/cl/UIKeyCommand"><code>UIKeyCommands</code></a>. Since we&rsquo;re using a <code>UIApplication</code> subclass, add this in there:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nf">keyCommands</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_commands</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">UIKeyCommand</span> <span class="o">*</span><span class="n">commandF</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIKeyCommand</span> <span class="nl">keyCommandWithInput:</span><span class="s">@&quot;f&quot;</span>
+</span><span class='line'>                   <span class="nl">modifierFlags:</span><span class="n">UIKeyModifierCommand</span>
+</span><span class='line'>                          <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">handleShortcut:</span><span class="p">)];</span>
+</span><span class='line'>    <span class="n">_commands</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableArray</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithArray:</span><span class="err">@</span><span class="p">[</span><span class="n">commandF</span><span class="p">]];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">_commands</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Every time a keyboard event is raised, if it matches <kbd>⌘F</kbd>, the selector <code>handleShortcut</code> will be called on the responder chain. That means you can define that method multiple times and only the most specific will be called. For example, if you defined it in <code>STWApplication</code> and in the View Controller, the <code>STWApplication</code> version will <em>never</em> be called. Speaking of <code>handleShortcut</code>, here it is:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">handleShortcut:</span><span class="p">(</span><span class="n">UIKeyCommand</span> <span class="o">*</span><span class="p">)</span><span class="nv">keyCommand</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;You pressed ⌘F! Good Job!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>UIKeyCommand</code> is pretty neat. The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UIKeyCommand_class/Reference/Reference.html#//apple_ref/doc/c_ref/UIKeyModifierFlags"><code>modifierFlags</code></a> means that the app can watch for Caps Lock, Shift, Control, Alt/Option, Command, and the Number Pad. Additionally, there are some constants that  can be used for special keys like the arrows and Escape. The <a href="">developer forums</a> also had some people getting access to Tab and Return by looking for <code>\t</code> and <code>\r</code>, but I don&rsquo;t know how well those work.</p>
+
+<p>Also, make sure you aren&rsquo;t trying to override system shortcuts. Per the docs: &ldquo;Key commands that map to known system events (such as cut, copy and paste) are automatically routed to the appropriate responder methods.&rdquo; So don&rsquo;t do that.</p>
+
+<p>Now, remember how I said &ldquo;every time a keyboard event is raised&rdquo;? These events will only happen when a text input is the first responder. This means that if you want to have some fancy global shortcuts (say ⌘F to jump to a search box) you&rsquo;ll still need to do a trick with <code>UITextField</code> (or similar). That&rsquo;s a little beyond the scope of this article, but the gist is add a UITextField to a view, hide it, and make sure it stays first responder when appropriate in order to keep firing off those events.</p>
+
+<p>I for one am psyched that this is now available. It&rsquo;s definitely more of a power user feature, but those of us who like to use Bluetooth keyboards with our iPads will derive tremendous benefit from it.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -625,94 +735,6 @@ I&#8217;m working on an iPad application, and this just bit me pretty hard.</p>
 <li>This would&#8217;ve happened if those values were stored in a plist, xml file, or anywhere.</li>
 </ol>
 </div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2013/07/22/two-movies-one-core/" itemprop="url">Two Movies, One Core</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-22T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 22<span>nd</span>, 2013</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div>
-<div><div><div><div><p>In the last week, I saw two movies, and they were both great even though they were totally different.</p></div></div></div></div>
-<div><div>
-<div><div>
-	<div>
-	
-		<div>
-			
-				<a href="http://www.imdb.com/title/tt1663662/">
-			
-				<div>
-					<img alt="Pacific Rim" src="/images/assets/Pacific-Rim.jpg">
-</div>
-			
-				</a>
-			
-
-			
-			<div>
-				<div><p>Pacific Rim</p></div>
-			</div>
-			
-
-		</div>
-	
-	</div>
-</div></div>
-<div><div><p>First up was <a href="http://www.imdb.com/title/tt1663662/">Pacific Rim</a>. This is the personification of &#8220;summer movie&#8221;. It&#8217;s loud, more than a little ridiculous, and about as subtle as the giant robots that are featured in it. I generally dislike most movies that fit in that genre (e.g. Michael Bay), but this managed to do the things those movies do while having a heart about it. Yes, it requires a bit of disbelief suspension, but it knows that, and uses it to roll you in its tidal wave. I left the theater blown away by what I had just seen and feeling a little bit battered in the process. </p></div></div>
-</div></div>
-<div>
-<div><div><div>
-<p>The other was the polar opposite: <a href="http://www.imdb.com/media/rm3431967744/tt2084989">Upstream Color</a>. No explosions, robots, or any special effects. However, I was also entranced by it. It was made by Shane Carruth, who also made the time-travel-mind-messer-upper Primer. It has gorgeous cinematography and incredible characters. Even if things are a little hard to follow, you can get the gist just by the emotions that the characters exude.</p>
-
-<p>Both movies are spectacles, but in completely different ways. In Pacific Rim, each encounter ratchets the tension up a bit, then let&#8217;s off a little steam. In Upstream Color, you are sucked more and more into the main characters&#8217; lives and see how they cope with their experiences. And at the end of both there is just a great emotional release that hits home. </p>
-</div></div></div>
-<div><div><div>
-	<div>
-	
-		<div>
-			
-				<a href="http://www.imdb.com/media/rm3431967744/tt2084989">
-			
-				<div>
-					<img alt="Upstream Color" src="/images/assets/Upstream-Color.jpg">
-</div>
-			
-				</a>
-			
-
-			
-			<div>
-				<div><p>Upstream Color</p></div>
-			</div>
-			
-
-		</div>
-	
-	</div>
-</div></div></div>
-</div>
-<div><div><div><div><p>Great movies do just that. Sometimes they can do it with giant robots smashing into sea monsters, and sometimes they do it with tender moments between two people.</p></div></div></div></div>
-</div>
 		
 		
 	</div>
