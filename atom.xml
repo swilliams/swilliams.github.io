@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-01-28T14:49:22-07:00</updated>
+  <updated>2015-02-02T19:23:44-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sympathy for the Carroll]]></title>
+    <link href="http://blog.swilliams.me/words/2015/02/02/sympathy-for-the-carroll/"/>
+    <updated>2015-02-02T19:04:14-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/02/02/sympathy-for-the-carroll</id>
+    <content type="html"><![CDATA[<p>When listening to a podcast, the host will often forget a word or well known fact. Maybe they&rsquo;ll say something silly like <a href="http://on.cc.com/1rU1N7O">&ldquo;Jedi mind meld&rdquo;</a>. Everyone in the audience knows exactly what they meant, and everyone will likely make that fact known (I&rsquo;ve sure been there, and will likely continue to be).</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/wNq8-4DtvaM" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Now that I&rsquo;ve released a few episodes of <a href="http://www.fronttoback.co/">my own podcast</a> I&rsquo;ve seen the other side of the microphone. Talking and thinking at the same time is surprisingly difficult after say, 8 words in. I&rsquo;ll find myself stumbling over witty quips and forgetting familiar things that had been otherwise seared into my memory.</p>
+
+<p>So, I have a teensy bit more empathy for Pete Carroll the day after <a href="http://grantland.com/the-triangle/super-bowl-new-england-patriots-seattle-seahawks/">an impressive Super Bowl Loss</a>. Yeah, he probably should&rsquo;ve run Marshawn Lynch on that one play, but I don&rsquo;t know if I would&rsquo;ve had the brain power to make a different decision with under 30 seconds left, in the 4th quarter, of the Super Bowl.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Podcast Appearances]]></title>
@@ -673,33 +689,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 <p><small>
 1. There could&rsquo;ve been a dozen reasons why my steak was overcooked, and it probably wasn&rsquo;t the server&rsquo;s fault, so there&rsquo;s no use in getting angry with her about it. The best part is that I didn&rsquo;t even have time to get angry.
 </small></p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Thoughts on Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/"/>
-    <updated>2014-09-10T08:24:30-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift</id>
-    <content type="html"><![CDATA[<figure class="center">
-    <img src="http://blog.swilliams.me/images/assets/swift-logo.png" alt="Swift Logo" />
-    <figcaption></figcaption>
-</figure>
-
-
-<p>Swift is a new language developed by Apple. I&rsquo;ve been using for a few side projects.</p>
-
-<p>On my first glance, I thought Swift would be a great language for beginners. I&rsquo;m not 100% sure if that&rsquo;s still the case. A beginner language should push you into a positive feedback loop: do something, see it work, do some more, and so on. Swift and Xcode 6 do some of this with aplomb, especially with playgrounds, but I found some features of the language can be frustrating until you have a deeper understanding of what&rsquo;s going on.</p>
-
-<p>Optionals are the biggest part of that. They&rsquo;re kind of crazy at first. Lot&rsquo;s of ?&rsquo;s and !&rsquo;s running around. When I was starting with Swift, Xcode would constantly complain that I was missing one. Sometimes it would tell me which one was missing, but sometimes it didn&rsquo;t. After reading the documentation a little more and thinking about it, things started to click. Handling nil values is important in any language, and handling them poorly can lead to some truly marvelous bugs or security issues. Swift makes you face them much earlier in the process. I think this is a good thing, though it can make for a frustrating start. It&rsquo;s also made me think if I&rsquo;m handling nils properly in other languages I use.</p>
-
-<p>I&rsquo;m still working on my own personal style, but I think I should be using more computed properties. A rule I&rsquo;m toying with is to keep on making methods for &ldquo;verbs&rdquo; like <code>moveFileToThing</code>, but use properties for &ldquo;nouns&rdquo; like <code>allSampleAssets</code>, even if that property makes several other calls within its implementation. This might require renaming certain methods in order to better comply with that style; if <code>allSampleAssets</code> took a <code>sort</code> parameter it couldn&rsquo;t be a property, so I&rsquo;d rename it to <code>queryAllSampleAssets(sort: NSSortDescriptor)</code>.</p>
-
-<p>Even though it&rsquo;s a brand new thing, there is still a good amount of Objective C and Cocoa baggage. The standard collections use <code>AnyObject</code> where <code>id</code> used to be, which means you&rsquo;ll need to do some explicit casting to the type you need. I found it easier when dealing with an <code>NSDictionary</code> or <code>NSArray</code> to not try to cram all the casting and then manipulating into a single line of code.</p>
-
-<p>Enums have reams of power that could be used for evil. I like the way <a href="http://nsscreencast.com/episodes/130-swift-json-redux-part-1">NSScreencasts uses enums with JSON parsing</a>, but it&rsquo;s hard to comprehend. If you have more of a functional programming background, I suspect this would be easier.</p>
-
-<p>Swift is going to be huge. I think Apple does have a language on its hands that&rsquo;ll last for its next 20 years. There are still some rough edges and potential pitfalls, but It has become the language I prefer when creating iOS apps.</p>
 ]]></content>
   </entry>
   

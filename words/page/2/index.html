@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Copying the Current Page From Safari Nov 19th, 2014 If I&rsquo;m preparing a bunch of links for a blog post or something, it&rsquo;d speed things up &hellip;">
+	<meta name="description" content="Star Wars Episode VII Soundtrack Titles Nov 30th, 2014 I found the names of the songs on the Force Awakens Soundtrack. Don&rsquo;t worry, no &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,68 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/11/30/star-wars-episode-vii-soundtrack-titles/" itemprop="url">Star Wars Episode VII Soundtrack Titles</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-30T14:25:47-07:00" data-updated="true" itemprop="datePublished">Nov 30<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I found the names of the songs on the Force Awakens Soundtrack. Don&rsquo;t worry, no spoilers. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<ol>
+<li>20th Century Fox Theme</li>
+<li>Star Wars Main Theme</li>
+<li>Luke&rsquo;s Noble End</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Han&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral (reprise)</li>
+<li>Luke&rsquo;s Funeral Again</li>
+<li>A Cube Death Star?</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Falcon&rsquo;s Funeral</li>
+<li>Constructing a New Lightsaber</li>
+<li>Return of a Jedi Master</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Darth Fangy Rises</li>
+<li>Darth Fangy&rsquo;s Funeral</li>
+<li>Chewbacca Sandwich</li>
+<li>Victory Fanfare</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>Luke&rsquo;s Funeral</li>
+<li>End Credits</li>
+</ol>
+
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For those of you who don&#8217;t get the joke, <a href="http://www.cracked.com/blog/the-5-most-ridiculous-ways-studios-spoiled-their-own-movies/">read this</a>.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -566,52 +628,6 @@
 <p><small>
 1. There could&rsquo;ve been a dozen reasons why my steak was overcooked, and it probably wasn&rsquo;t the server&rsquo;s fault, so there&rsquo;s no use in getting angry with her about it. The best part is that I didn&rsquo;t even have time to get angry.
 </small></p></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/09/10/thoughts-on-swift/" itemprop="url">Thoughts on Swift</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-10T08:24:30-07:00" data-updated="true" itemprop="datePublished">Sep 10<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<figure class="center">
-    <img src="/images/assets/swift-logo.png" alt="Swift Logo" />
-    <figcaption></figcaption>
-</figure>
-
-
-<p>Swift is a new language developed by Apple. I&rsquo;ve been using for a few side projects.</p>
-
-<p>On my first glance, I thought Swift would be a great language for beginners. I&rsquo;m not 100% sure if that&rsquo;s still the case. A beginner language should push you into a positive feedback loop: do something, see it work, do some more, and so on. Swift and Xcode 6 do some of this with aplomb, especially with playgrounds, but I found some features of the language can be frustrating until you have a deeper understanding of what&rsquo;s going on.</p>
-
-<p>Optionals are the biggest part of that. They&rsquo;re kind of crazy at first. Lot&rsquo;s of ?&rsquo;s and !&rsquo;s running around. When I was starting with Swift, Xcode would constantly complain that I was missing one. Sometimes it would tell me which one was missing, but sometimes it didn&rsquo;t. After reading the documentation a little more and thinking about it, things started to click. Handling nil values is important in any language, and handling them poorly can lead to some truly marvelous bugs or security issues. Swift makes you face them much earlier in the process. I think this is a good thing, though it can make for a frustrating start. It&rsquo;s also made me think if I&rsquo;m handling nils properly in other languages I use.</p>
-
-<p>I&rsquo;m still working on my own personal style, but I think I should be using more computed properties. A rule I&rsquo;m toying with is to keep on making methods for &ldquo;verbs&rdquo; like <code>moveFileToThing</code>, but use properties for &ldquo;nouns&rdquo; like <code>allSampleAssets</code>, even if that property makes several other calls within its implementation. This might require renaming certain methods in order to better comply with that style; if <code>allSampleAssets</code> took a <code>sort</code> parameter it couldn&rsquo;t be a property, so I&rsquo;d rename it to <code>queryAllSampleAssets(sort: NSSortDescriptor)</code>.</p>
-
-<p>Even though it&rsquo;s a brand new thing, there is still a good amount of Objective C and Cocoa baggage. The standard collections use <code>AnyObject</code> where <code>id</code> used to be, which means you&rsquo;ll need to do some explicit casting to the type you need. I found it easier when dealing with an <code>NSDictionary</code> or <code>NSArray</code> to not try to cram all the casting and then manipulating into a single line of code.</p>
-
-<p>Enums have reams of power that could be used for evil. I like the way <a href="http://nsscreencast.com/episodes/130-swift-json-redux-part-1">NSScreencasts uses enums with JSON parsing</a>, but it&rsquo;s hard to comprehend. If you have more of a functional programming background, I suspect this would be easier.</p>
-
-<p>Swift is going to be huge. I think Apple does have a language on its hands that&rsquo;ll last for its next 20 years. There are still some rough edges and potential pitfalls, but It has become the language I prefer when creating iOS apps.</p>
 
 		
 		
