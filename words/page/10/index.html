@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Yeah This Is What I Wanted to See at espn.com Sep 3rd, 2010 How to Use Twilio to Send an SMS Sep 3rd, 2010 I wrote about liking Twilio&#8217;s UI  &hellip;">
+	<meta name="description" content="RVM Tip When Working on Rails With Multiple Consoles Sep 9th, 2010 I&#8217;ve been meaning to test out Rails 3 ever since it was finally released. &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,60 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/09/09/rvm-tip-when-working-on-rails-with-multiple-c/" itemprop="url">RVM Tip When Working on Rails With Multiple Consoles</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-09T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 9<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I&#8217;ve been meaning to test out Rails 3 ever since <a href="http://weblog.rubyonrails.org/2010/8/29/rails-3-0-it-s-done">it was finally released</a>. But I didn&#8217;t want to deal with the issues of having concurrent versions of Rails 2.3.x and 3 running side by side. The word on the street is that <a href="http://rvm.beginrescueend.com/">RVM handles them both well</a>.</p>
+<div>
+<a href="http://rvm.beginrescueend.com/rvm/install/">RVM itself is relative easy to set up</a>. Although, I should note that trying to run the source-head version (from github) on my laptop caused errors&#8230; Running the latest rvm tarball did the trick though. (#2 on that list linked)</div>
+<p></p>
+<div>I installed both Ruby 1.8.7 and 1.9.2 in RVM, and installed the Rails 3 gem on the 1.9.2 install. Everything went smoothly here.</div>
+<p></p>
+<div>Now to sidestep for just a second: I like to have multiple terminal tabs running when developing in Rails. One just runs the local dev server, one will run <a href="http://rspec.info/">autospec</a> (or the Rails console), and another [one or two] is the utility one for running various shell commands.</div>
+<p></p>
+<div>So I was in a second terminal tab and wanted to just create a new scaffold with:</div>
+<div>
+<div>
+  <div><pre>&gt; rails generate scaffold User name:string email:string</pre></div>
+</div>
+
+</div>
+<div>This generated a brand new rails app in a new folder called &#8216;generate&#8217;. What gives? I double and triple checked my syntax to make sure it was correct. It was. I stopped the web server in the other tab and ran the same command there. Bingo, worked like a charm. Argh!</div>
+<p></p>
+<div>Finally the light turned on. <em>You need to run RVM in each tab/window. </em>Since RVM is a virtual environment, that state doesn&#8217;t persist in different sessions.</div>
+<div>
+<div>
+  <div><pre>&gt; rvm use 1.9.2
+&gt; rails generate scaffold User name:string email:string</pre></div>
+</div>
+
+</div>
+<div>Makes sense once you realize what&#8217;s going on, but was rather frustrating before that point was reached.</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -529,41 +583,6 @@ puts "code: %s\nbody: %s" % [resp.code, resp.body]</pre></div>
 		</div>
 	
 	</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/08/05/all-that-work/" itemprop="url">All That Work</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-05T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 5<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>I&#8217;m using the awesome <a href="http://github.com/thoughtbot/paperclip">Paperclip</a> plugin in my <a href="swilliams">rails app</a>. One of the great selling points for it is that it will automatically resize images and create thumbnails for them. To do this, it needs the <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a> library installed.<p></p>
-<div>No worries, I headed over to their site and saw that the &#8220;best&#8221; way to install it is via <a href="http://www.macports.org/">mac ports</a>, a package manager similar to <a href="http://wiki.debian.org/Apt">Debian&#8217;s apt</a>, but for OS X. </div>
-<p></p>
-<div>So I headed over there, and downloaded the 100k installer for that. Only to see that it needed XCode as a dependency, roughly a 1 GB install.</div>
-<p></p>
-<div><i>sigh</i></div>
-<p></p>
-<div>So, I broke out the system DVD and installed XCode. And then mac ports. And then ImageMagick. Just so that I could resize an image programatically. </div>
 </div></div></div></div></div>
 		
 		

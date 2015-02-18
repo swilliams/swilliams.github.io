@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-02-02T19:23:44-07:00</updated>
+  <updated>2015-02-18T08:57:01-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Podcast Technology]]></title>
+    <link href="http://blog.swilliams.me/words/2015/02/18/podcast-technology/"/>
+    <updated>2015-02-18T08:32:31-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/02/18/podcast-technology</id>
+    <content type="html"><![CDATA[<p>You should listen to <a href="http://www.relay.fm/">Relay.fm&rsquo;s</a> new series on Inquisitive, <a href="http://www.relay.fm/inquisitive/27">&ldquo;Behind the App&rdquo;</a>. Myke opens the show with how the iPhone (and smartphones in general) helped bring podcasts to a larger audience. He&rsquo;s absolutely right.</p>
+
+<p>Before smartphones, you had to sync everything to an iPod with your computer before you could listen to it. For me, this usually happened at home, and if I forgot to plug in my iPod and sync it, I&rsquo;d go without new episodes for the day; a fate worse than death. Syncing an iPod at the office was usually out of the question. IT policy at the time disallowed connecting personal hardware to company PCs <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> and blacklisted many of the sites hosting the audio files anyway.</p>
+
+<p>I could live with the first issue, but I would go to great lengths to work around the latter one. Even though the experience wasn&rsquo;t as nice, downloading and listening to a podcast on my work PC was still something. Here&rsquo;s how:</p>
+
+<ul>
+<li>SSH into my Linux based web server</li>
+<li><a href="http://www.gnu.org/software/wget/manual/wget.html#Overview"><code>wget</code></a> the RSS feed</li>
+<li>Find the link to the newest mp3 file</li>
+<li><code>wget</code> the mp3</li>
+<li>Copy it into a folder publicly accessible on my server (this wasn&rsquo;t blocked by IT)</li>
+<li>Download it locally with my web browser (this was Windows and installing something like wget was also strictly verboten from IT)</li>
+<li>Listen</li>
+</ul>
+
+
+<p>Easy peesy lemon squeezey, right?<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup> Now, if I want to listen to a podcast, I open up <a href="https://overcast.fm/">Overcast</a> and see if there&rsquo;s anything new. The only thing I have to think about now if I want to download over my cellular connection or not.</p>
+
+<p>The future is good.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For <em>very</em> good reason. God only knows what kind of malware you brought along with your external drive&#8230;</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>&#8220;OK&#8230; First I&#8217;ll access the secret military spy satellite that&#8217;s in a geosynchronous orbit over the Midwest. Then, I&#8217;ll ID the limo by the vanity plate &#8216;MR. BIGGG&#8217; and get his approximate position. Then, I&#8217;ll reposition the transmitter dish on the remote truck to 17.32 degrees east, hit WESTAR 4 over the Atlantic, bounce the signal down into the Azores, up to COMSAT 6, beam it back to SATCOM 2 transmitter number 137, and down on the dish on the back of Mr. Big&#8217;s limo&#8230; It&#8217;s almost too easy.&#8221; — <a href="http://www.imdb.com/title/tt0105793/">Garth Algar</a></p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sympathy for the Carroll]]></title>
@@ -667,28 +707,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 </small></p>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Best Customer Service]]></title>
-    <link href="http://blog.swilliams.me/words/2014/10/15/the-best-customer-service/"/>
-    <updated>2014-10-15T11:09:22-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/10/15/the-best-customer-service</id>
-    <content type="html"><![CDATA[<p>A few years ago I was at a steakhouse for a company dinner. I had ordered the King of Steaks, a Rib-Eye medium rare and was looking forward to eating it. When I cut into my steak I saw that it was basically well-done (there was the tiniest sliver of pink left amidst a sea of gray). I flagged the server and said &ldquo;Um, I ordered this medium-rare&hellip;&rdquo;<sup>1</sup></p>
-
-<p>Without a moment&rsquo;s hesitation she apologized, grabbed the plate and went directly back to the kitchen with it. Barely five minutes later she brought back out a piping hot steak that was cooked <em>perfectly</em>. She checked back again a few minutes later to make sure everything was ok (it was).</p>
-
-<p>Why was this so good? She knew exactly what had happened and knew how to fix it to my satisfaction. There weren&rsquo;t any games played, just immediate and decisive action.</p>
-
-<p>I was at a hotel recently and the last day something bad happened that left a sour taste in my mouth. The manager on duty very nice and apologetic. But she asked &ldquo;What would you like me to do to &lsquo;make it right&rsquo;?&rdquo;. I hate that question because I don&rsquo;t know how to respond. Asking to comp the whole trip would be overboard and unfair. But putting the onus of the decision on me when I&rsquo;m already under duress only compounds the problem.</p>
-
-<p>If you&rsquo;re in the service industry, you need to understand what that means and not make the customer come up with their own solutions.</p>
-
-<p><div class="footnotes">
-<p><small>
-1. There could&rsquo;ve been a dozen reasons why my steak was overcooked, and it probably wasn&rsquo;t the server&rsquo;s fault, so there&rsquo;s no use in getting angry with her about it. The best part is that I didn&rsquo;t even have time to get angry.
-</small></p></p>
 ]]></content>
   </entry>
   
