@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-02-24T09:08:46-07:00</updated>
+  <updated>2015-02-25T11:25:18-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Front to Back #8 — My First Diablo]]></title>
+    <link href="http://blog.swilliams.me/words/2015/02/25/front-to-back-number-8-my-first-diablo/"/>
+    <updated>2015-02-25T08:54:52-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/02/25/front-to-back-number-8-my-first-diablo</id>
+    <content type="html"><![CDATA[<p><a href="http://fronttoback.co/podcast/8">My First Diablo</a> is the newest episode of my <a href="http://fronttoback.co">podcast</a>. It&rsquo;s also the first episode where we have a guest: <a href="http://twitter.com/wickedgood">Steve Lubitz</a> of <a href="http://5by5.tv/isometric">Isometric</a> fame. We talk video games and how that works when you have a bunch of kids in the house. I&rsquo;d wanted to discuss this topic because my kids are now old enough to play console games without getting too frustrated over the experience, and I&rsquo;d been out of the loop for quite some time.</p>
+
+<p>Steve had some solid recommendations and now my wife and I are discussing when would be a good time to re-introduce consoles into the house. That might happen this summer when the kids are done with school, and there will be more time available to figure out limits and such. I&rsquo;m thinking a Wii U would be the right way to go since there&rsquo;s a better selection of kid-friendly games there. What I&rsquo;m not looking forward to is all the controllers/accessories that Nintendo seems to think are required for their games. Most <a href="http://www.amazon.com/Nintendo-Wii-Deluxe-Set-Bundle-3ds/dp/B00MVUKM0A/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=wii%2Bu&amp;tag=thepetzoo-20&amp;qid=1424881179">bundles for the Wii U</a> come with the controller with a screen on it. I can&rsquo;t tell if you can buy more of those or not<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. But you can get <a href="http://www.amazon.com/Nintendo-Wii-Remote-Plus-Black/dp/B00N4OAELY/ref=sr_1_1?ie=UTF8&amp;sr=1-1&amp;s=videogames&amp;keywords=wii%2Bmote&amp;tag=thepetzoo-20&amp;qid=1424881298">Wii-motes</a>, <a href="http://www.amazon.com/Nintendo-Nunchuk-Controller-Black-Wii/dp/B0094X1ZXU/ref=pd_bxgy_vg_img_y?tag=thepetzoo-20">nunchucks</a>, <a href="http://www.amazon.com/Nintendo-Pro-Controller-Black-Wii-u/dp/B00MUY0OFU/ref=pd_sim_vg_3?refRID=0SQ5Z19AHMG8VE30V0TD&amp;tag=thepetzoo-20&amp;ie=UTF8">pro controllers</a>, and various third party gizmos. I&rsquo;m not exactly looking forward to sifting through exactly what kind of those we&rsquo;ll need, nor storing them. I&rsquo;m not even going to touch handheld systems.<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
+
+<p>Video games were a big part of my childhood (some might say obsessive&hellip; I had a subscription to Nintendo Power without owning a Nintendo system). My hope is that rather than just consuming all the video game minutiae like I did, my kids will just have fun playing them with their family and friends.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Amazon and other retailers seem to be sold out of official ones.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>Scientifically speaking, there are 327 different versions of the Nintendo DS to choose from.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Law Doesn't Defend Us; We Defend the Law]]></title>
@@ -687,31 +712,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 </small></p>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dealing with Xcode and Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/"/>
-    <updated>2014-10-30T10:46:09-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift</id>
-    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/">I like Swift</a>. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite).</p>
-
-<p>My biggest woe is that code completion up and vanishes in projects. This is especially problematic when dealing with Cocoa libraries because method names tend to be verbose and descriptive. I find myself thinking &ldquo;I know it&rsquo;s called <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/popToRootViewControllerAnimated:">popToRoot-something-somthing</a> and was it on UIViewController or the navigationController?&rdquo;. What would&rsquo;ve taken two seconds of poking through code-completion to figure that out turned into a solid minute of searching documentation. Multiply this every time you can&rsquo;t explicitly remember every part of a method call (and spell it correctly) and tasks that normally take an hour are now a significant part of a day.</p>
-
-<p>The tools that Apple provides are now hindering development. I&rsquo;m not alone in that sentiment. On Apple&rsquo;s developer forums (account needed to view) there are a few threads with names like <a href="https://devforums.apple.com/message/1067119#1067119">&ldquo;Can SourceKit possibly crash more often on a Swift project?&rdquo;</a> and <a href="https://devforums.apple.com/thread/248397?start=0&amp;tstart=0">&ldquo;Xcode 6.1b3 Swift editing is becoming very difficult&rdquo;</a>.</p>
-
-<p>One of those threads recommends deleting two folders: <code>~/Library/Developer/Xcode/DerivedData</code> and <code>~/Library/Caches/com.apple.dt.Xcode</code>. This does the job for me. It happens often enough that I created a hot key for it with <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a>.</p>
-
-<figure class="center">
-    <img alt="Keyboard Maestro Screenshot" src="http://blog.swilliams.me/images/assets/xcode-swift-maestro.png">
-    <figcaption>This will yell at you if those folders don&#8217;t exist, but I can live with that.</figcaption>
-</figure>
-
-
-<p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
-
-<p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
 ]]></content>
   </entry>
   
