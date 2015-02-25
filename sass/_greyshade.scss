@@ -210,8 +210,11 @@ body {
 							border-left: 5px solid $greyshade;
 							background: #F7F7F7;
 							p {
-								margin-top: 0px; 
+								margin-top: 15px; 
 							}
+              p:first-child {
+                margin-top: 0px;
+              }
 						}
 						table {
 							line-height: 1.2em;
