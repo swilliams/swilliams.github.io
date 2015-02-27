@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-02-25T11:25:18-07:00</updated>
+  <updated>2015-02-27T07:39:18-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Scott's Guide to Twitter Happiness]]></title>
+    <link href="http://blog.swilliams.me/words/2015/02/27/scotts-guide-to-twitter-happiness/"/>
+    <updated>2015-02-27T07:36:32-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/02/27/scotts-guide-to-twitter-happiness</id>
+    <content type="html"><![CDATA[<ol>
+<li>You don&rsquo;t <em>have</em> to be on Twitter every 2 minutes. If there&rsquo;s a meme you don&rsquo;t like, a perfectly valid option is to put your phone away.</li>
+<li>Silliness is good. Everything doesn&rsquo;t have to be all doom and gloom serious all the time.</li>
+<li>Change takes time, and is often the result of a succession of small steps with a few medium ones here and there. Be happy when the small steps happen.</li>
+<li>Find some joy.</li>
+</ol>
+
+
+<p>Is that a little reductive? Sure. But if you find yourself feeling angrier and angrier over what happens on Twitter, it might be time to reconsider how you&rsquo;re using it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Front to Back #8 — My First Diablo]]></title>
@@ -678,40 +695,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 
 
 <p>Figuring out pricing is hard. I think I made the right choice here, though with a more complex app, I&rsquo;m not sure if I&rsquo;d do the same thing.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[App #2 - Emergency Contacts]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/"/>
-    <updated>2014-11-06T14:16:17-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts</id>
-    <content type="html"><![CDATA[<p>I made <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/">another</a> App(!)</p>
-
-<figure class="pull-right">
-    <img alt="Emergency Contacts screenshot" src="http://blog.swilliams.me/images/assets/ec-screenshot.png">
-</figure>
-
-
-<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
-
-<p><a href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&amp;mt=8">Get it now for just $0.99</a>. Read on if you want to hear the origin story.</p>
-
-<p>The idea originated from my mother-in-law. She is new to the iPhone and asked me if there was a way to display an emergency contact, since she had something like that in her old feature-phone. Other than adding text to your wallpaper (which is pretty cheesy) I didn&rsquo;t have an answer. About an hour later it hit, <em>hey, I bet it would be real simple to put that stuff on the Today screen.</em></p>
-
-<p>It took about 3 days of programming time, most of which was sunk by fighting with <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">Xcode+Swift issues</a>, and iOS 8 bugs<sup>1</sup>. Probably another day or so to put together a simple website and icon. Then about 4 excruciating hours of getting all the screenshots necessary for the App Store.<sup>2</sup></p>
-
-<p>I don&rsquo;t expect this to make me rich, but felt it would be worth at least a few days of my time. I hope you like it.</p>
-
-<div class="footnotes">
-<p><small>
-1. Ever wanted to hide one of the navigation buttons on a `ABPeoplePickerNavigationController`? <a href="http://openradar.appspot.com/radar?id=5234709428699136">You used to be able to in iOS 7, not so much in 8</a>.
-</small></p>
-<p><small>
-2. You have a 3.5&#8221; device, a 4&#8221; device, a 4.7&#8221; device, and a 5.5&#8221; device. And nowadays you can&#8217;t have anything in the status bar for a screenshot. You can&#8217;t just crop it out though. So, once you&#8217;ve gone to the effort of setting up the same state on 4 devices, you have to crack open Photoshop and properly airbrush out the status bar. This is extra fun when doing a Today View screenshot, because everything is nice and blurry underneath the status bar, and a giant black rectangle would be every noticeable. Even with just 2 screenshots per device, I wanted to die so bad.
-</small></p>
-</div>
-
 ]]></content>
   </entry>
   
