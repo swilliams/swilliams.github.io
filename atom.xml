@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-02-27T07:39:18-07:00</updated>
+  <updated>2015-03-22T14:16:01-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Woe of Newspapers]]></title>
+    <link href="http://blog.swilliams.me/words/2015/03/22/the-woe-of-newspapers/"/>
+    <updated>2015-03-22T13:59:53-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/03/22/the-woe-of-newspapers</id>
+    <content type="html"><![CDATA[<p>The other day a couple of salespeople for the Arizona Republic came knocking on my door. Here was their pitch:</p>
+
+<p>&ldquo;We&rsquo;re going to start delivering you a paper every Wednesday and Sunday. Would you like it in your driveway or on the roof?&rdquo; and then a pause for laughter. I was more confused; her delivery was pretty bad, and there was a distinct waft of desperation.</p>
+
+<p>I started to explain that I didn&rsquo;t want a newspaper even if it was free.</p>
+
+<p>&ldquo;But it&rsquo;s only $.95 per week! You&rsquo;ll make that up with all the coupons you&rsquo;ll be getting!&rdquo; She was pushing the coupons pretty hard. I guess this is why people get newspapers, in order to buy cereal for $.20 off?</p>
+
+<p>I said I didn&rsquo;t really care about coupons and politely told them to have a good afternoon. After extricating myself from the conversation I realized something: not once during their pitch did they mention the actual <em>content</em> of the paper. That&rsquo;s got to be depressing if you&rsquo;re a journalist — according to your sales staff your work is nothing more than a coupon delivery system with some words in between.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Scott's Guide to Twitter Happiness]]></title>
@@ -676,25 +693,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 <p>After mulling over it for a little while I think I&rsquo;ll start to switch over to Apple&rsquo;s TestFlight. In my <a href="http://swilliams.me">consulting work</a>, walking clients through the UDID process was painful and fraught with peril. I&rsquo;ll have to educate them that their builds will take a while even though I&rsquo;m &ldquo;done,&rdquo; but that&rsquo;s still less of a headache than the old way.</p>
 
 <p><a href="http://appreviewtimes.com">App review time</a> tends to get longer at certain intervals (new iPhones and Christmas), but picks back up as the staff works through the deluge of apps. I remain hopeful that beta review will follow suit.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pricing for Emergency Contacts]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts/"/>
-    <updated>2014-11-07T15:15:57-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts</id>
-    <content type="html"><![CDATA[<p>Pricing is tricky for mobile apps these days. When I was <a href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/">developing Emergency Contacts</a>, I knew I had a few options to choose from:</p>
-
-<ul>
-<li><strong>Free</strong> — The app didn&rsquo;t take too long to make, but I wasn&rsquo;t sure that I wanted to just give it away for free. I thought that it had provided a modest amount of utility, so I figured that just straight up free wouldn&rsquo;t work.</li>
-<li><strong>Free with an In-App Purchase</strong> — I did this with <a href="http://zartbonk.com">Zartbonk</a>. But since the feature set on Emergency Contacts is pretty small, I couldn&rsquo;t think of what to lock in an extra purchase.</li>
-<li><strong>Free with ads</strong> — I just don&rsquo;t like ads in apps. I didn&rsquo;t even look to see how to get this set up.</li>
-<li><strong>Paid</strong> — The choice was really between free and $0.99. Since I had ruled out free, that left me here.</li>
-</ul>
-
-
-<p>Figuring out pricing is hard. I think I made the right choice here, though with a more complex app, I&rsquo;m not sure if I&rsquo;d do the same thing.</p>
 ]]></content>
   </entry>
   
