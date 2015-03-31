@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Swift, | Scott Williams]]></title>
-  <link href="http://blog.swilliams.me/words/categories/swift/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Programming | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/programming/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
   <updated>2015-03-31T14:34:59-07:00</updated>
   <id>http://blog.swilliams.me/</id>
