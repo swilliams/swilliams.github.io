@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Tracking Down an EXC_BAD_ACCESS in Swift - Scott Williams</title>
+	<title>Two Factor Authentication for GitHub - Scott Williams</title>
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Tracking Down an EXC_BAD_ACCESS in Swift Mar 31st, 2015 Managing memory has become easier. Things like ARC take away much of what was once a painful &hellip;">
+	<meta name="description" content="Two Factor Authentication for GitHub Apr 1st, 2015 In the interest of security I&rsquo;ve started to turn on Two Factor Authentication (aka 2FA) for &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://blog.swilliams.me/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift/">
+	<link rel="canonical" href="http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -125,7 +125,7 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">Tracking Down an EXC_BAD_ACCESS in Swift</h1>
+	<h1 class="title" itemprop="name">Two Factor Authentication for GitHub</h1>
     <div class="date">
 
 
@@ -138,63 +138,78 @@
   
 
 
-<time datetime="2015-03-31T11:05:51-07:00" data-updated="true" itemprop="datePublished">Mar 31<span>st</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody"><p>Managing memory has become easier. Things like <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">ARC</a> take away much of  what was once a painful and bug-ridden task. Things are not always panacea of course; it is still far too possible to do the wrong thing and access memory you are not supposed to and receive the dreaded <code>EXC_BAD_ACCESS</code> error.</p>
+<time datetime="2015-04-01T10:48:48-07:00" data-updated="true" itemprop="datePublished">Apr 1<span>st</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure it all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
 
-<p>Today I was working on a project in Swift. And despite my <a href="">appreciation</a> of the language, the tooling still remains&hellip; <em>suspect</em>. I have covered that topic a <a href="http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift/">couple</a> of <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">times</a> before.</p>
-
-<p>Sometimes it&rsquo;s obvious where the problem is based on the call-stack. This time it was not so obvious. The problem occurred at the end of a series of steps in a wizard when all the prior screens were finally being released from memory. From what I could tell the error was when one of the view controllers that represented one of the steps in the wizard was being deinitialized, but otherwise I couldn&rsquo;t immediately see where the problem was.</p>
-
-<p>In Objective C you can turn on what&rsquo;s called <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/MemoryManagementforYourApp/MemoryManagementforYourApp.html">&ldquo;NS Zombies&rdquo; mode</a>, which keeps objects allocated (as a special &ldquo;Zombie&rdquo; object) and then raises warnings you try to access one of those Zombie objects. In my experience this has not worked quite was well with Swift. With Zombies mode enabled the app ran fine without crashing, but also didn&rsquo;t raise any warnings about accessing bad memory. It was a <a href="http://en.wikipedia.org/wiki/Heisenbug">Heisenbug</a>!</p>
-
-<figure class="center">
-    <img alt="Heisenberg" src="/images/assets/heisenberg.jpg">
-    <figcaption>Eh, close enough</figcaption>
-</figure>
-
-
-<p>Next I started to play around with the code thinking that I was improperly handling the lifecycle of some of the properties of several classes. I changed around some lazy properties and made certain other things optional, but this was just wheel spinning.</p>
-
-<p>I backed up and reviewed the callstack again. The last frame before explosion was now at <code>swift_unknownWeakRelease</code> in a helper class referenced by the offending ViewController. This helper had this property:</p>
+<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
-</span><span class='line'>private unowned let searchBar: UISearchBar</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
+</span><span class='line'>remote: Invalid username or password.
+</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
 
 
-<p>I then re-checked the <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">documentation for <code>unowned</code></a>.</p>
+<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
 
-<blockquote><p>If you try to access an unowned reference after the instance that it references is deallocated, you will trigger a runtime error. Use unowned references only when you are sure that the reference will always refer to an instance.</p>
-
-<p>Note also that Swift guarantees your app will crash if you try to access an unowned reference after the instance it references is deallocated. You will never encounter unexpected behavior in this situation. Your app will always crash reliably, although you should, of course, prevent it from doing so.</p></blockquote>
-
-<p>That <code>searchBar</code> was originally defined as an <code>IBOutlet</code> on the ViewController:</p>
+<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// ViewController.swift
-</span><span class='line'>@IBOutlet weak var searchBar: UISearchBar!</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
+</span><span class='line'>Username for 'https://github.com': swilliams
+</span><span class='line'>Password for 'https://swilliams@github.com':
+</span><span class='line'>remote: Invalid username or password.
+</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
 
 
-<p>The lights turned on. <em>Of course</em> it was crashing. An outlet that&rsquo;s a weak property can and will be deallocated when the controller referencing it is no longer visible. I forgot about that when I created the other class to manage certain characteristics about that search bar. So, the <code>searchBar</code> was released at some point, and when the helper was next called (in deallocation) part of its representation in memory was an <code>unowned</code> property that was nil, a state it cannot be in. Thus, <code>EXC_BAD_ACCESS</code>.</p>
+<p>No dice.</p>
 
-<p>The solution was simple, I still didn&rsquo;t want <code>SearchBarHelper</code> to have ownership of the <code>searchBar</code>, so I changed it to a weak optional.</p>
+<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
-</span><span class='line'>private weak var searchBar: UISearchBar?</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>± git push origin master
+</span><span class='line'>Username for 'https://github.com': swilliams
+</span><span class='line'>Password for 'https://swilliams@github.com':
+</span><span class='line'>Counting objects: 80, done.
+</span><span class='line'>Delta compression using up to 4 threads.
+</span><span class='line'>Compressing objects: 100% (78/78), done.
+</span><span class='line'>Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
+</span><span class='line'>Total 80 (delta 58), reused 0 (delta 0)
+</span><span class='line'>To https://github.com/swilliams/my-repo.git
+</span><span class='line'>   01efb2c..445a0b6  master -&gt; master</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Success!</p>
+<p>Yay!</p>
 
-<p>Takeaway lesson: read and understand the documentation. Memory and how it is handled is still something that absolutely must be understood if you want to manage it well.</p>
+<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For standard git operations, I don&#8217;t think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
+</li>
+  </ol>
+</div>
+
 </div>
     <div class="tags">Tags: 
 
 
-	<a class='category' href='/words/categories/programming/'>programming</a>, <a class='category' href='/words/categories/swift/'>swift,</a>
+	<a class='category' href='/words/categories/github/'>github</a>, <a class='category' href='/words/categories/security/'>security</a>
 
 
 </div>

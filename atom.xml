@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-03-31T14:34:59-07:00</updated>
+  <updated>2015-04-01T11:14:51-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,7 +14,81 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Tracking Down an EXC_BAD_ACCESS with Swift]]></title>
+    <title type="html"><![CDATA[Two Factor Authentication for GitHub]]></title>
+    <link href="http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github/"/>
+    <updated>2015-04-01T10:48:48-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github</id>
+    <content type="html"><![CDATA[<p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure it all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
+
+<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
+</span><span class='line'>remote: Invalid username or password.
+</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
+
+<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
+</span><span class='line'>Username for 'https://github.com': swilliams
+</span><span class='line'>Password for 'https://swilliams@github.com':
+</span><span class='line'>remote: Invalid username or password.
+</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No dice.</p>
+
+<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>± git push origin master
+</span><span class='line'>Username for 'https://github.com': swilliams
+</span><span class='line'>Password for 'https://swilliams@github.com':
+</span><span class='line'>Counting objects: 80, done.
+</span><span class='line'>Delta compression using up to 4 threads.
+</span><span class='line'>Compressing objects: 100% (78/78), done.
+</span><span class='line'>Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
+</span><span class='line'>Total 80 (delta 58), reused 0 (delta 0)
+</span><span class='line'>To https://github.com/swilliams/my-repo.git
+</span><span class='line'>   01efb2c..445a0b6  master -&gt; master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yay!</p>
+
+<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For standard git operations, I don&#8217;t think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tracking Down an EXC_BAD_ACCESS in Swift]]></title>
     <link href="http://blog.swilliams.me/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift/"/>
     <updated>2015-03-31T11:05:51-07:00</updated>
     <id>http://blog.swilliams.me/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift</id>
@@ -675,45 +749,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 
 
 <p>Once again, the logic here is flawless. No conjecture. For realsies.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I Once Caught a Comet that was THIS Big]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big/"/>
-    <updated>2014-11-14T19:56:14-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/14/i-once-caught-a-comet-that-was-this-big</id>
-    <content type="html"><![CDATA[<p><a href="http://www.theguardian.com/science/gallery/2014/nov/12/rosetta-mission-lands-philae-probe-on-67p-comet-in-pictures">We landed a spacecraft on a comet</a>. This in itself is pretty cool, but apparently not many people are familiar with the size of the comet in question. These images might just help.</p>
-
-<figure class="center">
-    <img alt="Star Destroyer" src="http://blog.swilliams.me/images/assets/philae-star-destroyer.jpg" style="width:350px">
-    <figcaption>Via the Washington Post</figcaption>
-</figure>
-
-
-
-
-<figure class="center">
-    <img alt="Star Trek" src="http://blog.swilliams.me/images/assets/philae-startrek.jpg">
-    <figcaption>Star Wars not your thing? We got you covered.</figcaption>
-</figure>
-
-
-
-
-<figure class="center"> 
-    <img alt="Rome" src="http://blog.swilliams.me/images/assets/philae-rome.jpg">
-    <figcaption>Keep it on Earth? Ok.</figcaption>
-</figure>
-
-
-
-
-<figure class="center">
-    <img alt="LA" src="http://blog.swilliams.me/images/assets/comet_v_la.png">
-    <figcaption>How &#8216;bout some AMERICA?</figcaption>
-</figure>
-
 ]]></content>
   </entry>
   

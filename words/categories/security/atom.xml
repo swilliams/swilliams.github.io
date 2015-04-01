@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Security | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/security/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2015-04-01T11:15:21-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Two Factor Authentication for GitHub]]></title>
+    <link href="http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github/"/>
+    <updated>2015-04-01T10:48:48-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github</id>
+    <content type="html"><![CDATA[<p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure them all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
+
+<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
+
+<p>```</p>
+
+<blockquote><p>git push origin master
+remote: Invalid username or password.
+fatal: Authentication failed for &lsquo;<a href="https://github.com/swilliams/my-repo.git/">https://github.com/swilliams/my-repo.git/</a>&rsquo;
+```</p></blockquote>
+
+<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
+
+<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
+
+<p>```</p>
+
+<blockquote><p>git push origin master
+Username for &lsquo;<a href="https://github.com">https://github.com</a>&rsquo;: swilliams
+Password for &lsquo;<a href="https://swilliams@github.com">https://swilliams@github.com</a>&rsquo;:
+remote: Invalid username or password.
+fatal: Authentication failed for &lsquo;<a href="https://github.com/swilliams/my-repo.git/">https://github.com/swilliams/my-repo.git/</a>&rsquo;
+```</p></blockquote>
+
+<p>No dice.</p>
+
+<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
+
+<p><code>
+± git push origin master
+Username for 'https://github.com': swilliams
+Password for 'https://swilliams@github.com':
+Counting objects: 80, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
+Total 80 (delta 58), reused 0 (delta 0)
+To https://github.com/swilliams/my-repo.git
+   01efb2c..445a0b6  master -&gt; master
+</code></p>
+
+<p>Yay!</p>
+
+<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>For standard git operations, I don't think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

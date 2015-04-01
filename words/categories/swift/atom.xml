@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Swift, | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/swift/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-03-31T14:34:59-07:00</updated>
+  <updated>2015-04-01T11:15:21-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Tracking Down an EXC_BAD_ACCESS With Swift]]></title>
+    <title type="html"><![CDATA[Tracking Down an EXC_BAD_ACCESS in Swift]]></title>
     <link href="http://blog.swilliams.me/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift/"/>
     <updated>2015-03-31T11:05:51-07:00</updated>
     <id>http://blog.swilliams.me/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift</id>
