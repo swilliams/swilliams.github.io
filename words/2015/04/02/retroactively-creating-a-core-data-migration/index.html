@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Two Factor Authentication for GitHub - Scott Williams</title>
+	<title>Retroactively Creating a Core Data Migration - Scott Williams</title>
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Two Factor Authentication for GitHub Apr 1st, 2015 In the interest of security I&rsquo;ve started to turn on Two Factor Authentication (aka 2FA) for &hellip;">
+	<meta name="description" content="Retroactively Creating a Core Data Migration Apr 2nd, 2015 Let&rsquo;s take a completely hypothetical situation where you&rsquo;re developing an app &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github/">
+	<link rel="canonical" href="http://blog.swilliams.me/words/2015/04/02/retroactively-creating-a-core-data-migration/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -125,7 +125,7 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">Two Factor Authentication for GitHub</h1>
+	<h1 class="title" itemprop="name">Retroactively Creating a Core Data Migration</h1>
     <div class="date">
 
 
@@ -138,69 +138,68 @@
   
 
 
-<time datetime="2015-04-01T10:48:48-07:00" data-updated="true" itemprop="datePublished">Apr 1<span>st</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody"><p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure them all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
+<time datetime="2015-04-02T10:15:15-07:00" data-updated="true" itemprop="datePublished">Apr 2<span>nd</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>Let&rsquo;s take a <em>completely hypothetical</em> situation where you&rsquo;re developing an app that uses <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> for the local storage and have a bunch of beta testers eagerly awaiting the next version before your product launch. Your previous attitude towards the data model was something along the lines of <em>&ldquo;It&rsquo;s still pre-1.0, I&rsquo;m not bothering with migrations yet, just delete and reinstall, c&#8217;mon.&rdquo;</em> However, you forgot that requiring the beta testers to deal with that isn&rsquo;t exactly a friendly experience for them, and you made at least three changes to the data model since your last Beta release. Now if they run the app it&rsquo;ll crash immediately because the database isn&rsquo;t in sync with the data model.</p>
 
-<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
+<p>Oops.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
+<p>Usually when you make changes to the data model, you do so by creating a new version and telling the <code>NSPersistentStoreCoordinator</code> to perform lightweight migrations, <em>then</em> make your changes. Adding a new version of the data model after changes were made accomplishes nothing. Fortunately, you&rsquo;re not screwed. We&rsquo;re going to jump back in time, grab the old data model then pretend it was there all along.</p>
 
+<p>Your <code>MyProject.xcdatamodeld</code> file is actually a directory. If you browse it in the Finder or Terminal, you&rsquo;ll see more folders inside it, one for each version of your model. Inside those folders is a file simply called <code>contents</code>. This is an XML representation of the editor you see in Xcode.</p>
 
-<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
+<h3>Step 1 — Find the data model from the last beta version you released</h3>
 
-<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
+<p>Look through the history the <code>xcdatamodel</code> file in your source control system <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. Hopefully you&rsquo;ve been tagging all of your releases and can just checkout that specific one.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git checkout 1.0-beta4</span></code></pre></td></tr></table></div></figure>
 
 
-<p>No dice.</p>
-
-<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
+<p>If not, you can mess around with <code>git log</code> to figure out where to go. This snippet can help you see the commits for a single file:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>± git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>Counting objects: 80, done.
-</span><span class='line'>Delta compression using up to 4 threads.
-</span><span class='line'>Compressing objects: 100% (78/78), done.
-</span><span class='line'>Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
-</span><span class='line'>Total 80 (delta 58), reused 0 (delta 0)
-</span><span class='line'>To https://github.com/swilliams/my-repo.git
-</span><span class='line'>   01efb2c..445a0b6  master -&gt; master</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git log --pretty=format:'%h : %s' --graph -n 45 FILENAME</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Yay!</p>
+<p>Then, checkout the particular commit with the right version.</p>
 
-<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
+<h3>Step 2 — Copy the contents file</h3>
+
+<p>Find  the <code>contents</code> file within your <code>.xcdatamodeld</code> file. Copy all that XML somewhere safe.</p>
+
+<p>Go back to your <code>HEAD</code> or wherever you were.</p>
+
+<h3>Step 3 — Create the new version of the data model</h3>
+
+<p>If you didn&rsquo;t know, the process is:</p>
+
+<ul>
+<li>Open the <code>.xcdatamodeld</code> file in Xcode</li>
+<li>In the Editor menu, click &ldquo;Add Model Version&rdquo;. Follow the instructions.</li>
+<li>Open the File Inspector for your <code>.xcdatamodeld</code>. There is a Model Version segment in the inspector, make sure it&rsquo;s on the version you just created.</li>
+</ul>
+
+
+<p>Now you have two data models that are identical. Let&rsquo;s change the history on the original one.</p>
+
+<h3>Step 4 — Change history</h3>
+
+<p>Close Xcode. That&rsquo;s not mandatory but I&rsquo;ve had it crash when mucking about with these files, and it&rsquo;s just not worth the hassle.</p>
+
+<p>Open the <code>contents</code> file for the <strong>original</strong> <code>.xcdatamodeld</code> in a text editor.</p>
+
+<p>Paste in the version you created in Step 2.</p>
+
+<p>Open Xcode. If you haven&rsquo;t set up the <code>NSPersistentStoreCoordinator</code> to run migrations, do so now. <a href="http://www.raywenderlich.com/27657/how-to-perform-a-lightweight-core-data-migration">This tutorial is pretty good</a>.</p>
+
+<p>Now when the app runs, the migrations update the users&#8217; data and keep things from crashing.</p>
+
+<p>Note: This is for <em>lightweight</em> migrations. Custom migrations are more complicated. <a href="http://www.objc.io/issue-4/core-data-migration.html">objc.io</a> has a great article on these. I don&rsquo;t know if you can play fast and loose with the data model file like you can here though.</p>
 
 <div class="footnotes">
   <ol>
     <li class="footnote" id="fn:1">
-  <p>For standard git operations, I don&#8217;t think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
+  <p>You ARE using Source Control, right? Sometimes new developers will ask me why they need Source Control. I usually parrot the usual answers - branching is good, undo mistakes, tool integration, etc - but situations like this are where it really shines. Without source control here, you&#8217;d be hosed. You&#8217;d have to manually fix the XML in the contents file, which would be monumentally hard or altogether impossible depending on what changed and how good your memory is.</p>
 </li>
   </ol>
 </div>
@@ -209,7 +208,7 @@
     <div class="tags">Tags: 
 
 
-	<a class='category' href='/words/categories/github/'>github</a>, <a class='category' href='/words/categories/security/'>security</a>
+	<a class='category' href='/words/categories/cocoa/'>cocoa</a>, <a class='category' href='/words/categories/swift/'>swift</a>
 
 
 </div>
