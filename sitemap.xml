@@ -1136,11 +1136,17 @@
         <loc>
             http://blog.swilliams.me/words/2015/04/02/retroactively-creating-a-core-data-migration/
         </loc>
-        <lastmod>2015-04-02T10:59:11-07:00</lastmod>
+        <lastmod>2015-04-02T10:59:21-07:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://blog.swilliams.me/words/2015/04/04/half-baked-business-idea-augmented-paintball-slash-airsoft-slash-laser-tag/
+        </loc>
+        <lastmod>2015-04-04T14:19:24-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2015-04-02T10:59:11-07:00</lastmod>
+        <lastmod>2015-04-04T14:19:24-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1148,7 +1154,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2015-04-02T10:59:11-07:00</lastmod>
+        <lastmod>2015-04-04T14:19:24-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
