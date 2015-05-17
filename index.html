@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Half-baked Business Idea - Augmented Paintball/Airsoft/Laser Tag Apr 4th, 2015 Sometimes ideas pop into my head, and sometimes I think they&rsquo;re &hellip;">
+	<meta name="description" content="Archiving Old GitHub Repositories May 17th, 2015 What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,38 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/05/17/archiving-old-github-repositories/" itemprop="url">Archiving Old GitHub Repositories</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-17T13:37:51-07:00" data-updated="true" itemprop="datePublished">May 17<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
+
+<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
+
+<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -731,41 +763,6 @@
   </ol>
 </div>
 
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/02/02/sympathy-for-the-carroll/" itemprop="url">Sympathy for the Carroll</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-02T19:04:14-07:00" data-updated="true" itemprop="datePublished">Feb 2<span>nd</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>When listening to a podcast, the host will often forget a word or well known fact. Maybe they&rsquo;ll say something silly like <a href="http://on.cc.com/1rU1N7O">&ldquo;Jedi mind meld&rdquo;</a>. Everyone in the audience knows exactly what they meant, and everyone will likely make that fact known (I&rsquo;ve sure been there, and will likely continue to be).</p>
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/wNq8-4DtvaM" frameborder="0" allowfullscreen></iframe>
-
-
-<p>Now that I&rsquo;ve released a few episodes of <a href="http://www.fronttoback.co/">my own podcast</a> I&rsquo;ve seen the other side of the microphone. Talking and thinking at the same time is surprisingly difficult after say, 8 words in. I&rsquo;ll find myself stumbling over witty quips and forgetting familiar things that had been otherwise seared into my memory.</p>
-
-<p>So, I have a teensy bit more empathy for Pete Carroll the day after <a href="http://grantland.com/the-triangle/super-bowl-new-england-patriots-seattle-seahawks/">an impressive Super Bowl Loss</a>. Yeah, he probably should&rsquo;ve run Marshawn Lynch on that one play, but I don&rsquo;t know if I would&rsquo;ve had the brain power to make a different decision with under 30 seconds left, in the 4th quarter, of the Super Bowl.</p>
 
 		
 		

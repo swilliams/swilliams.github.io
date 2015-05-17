@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-04-04T14:21:13-07:00</updated>
+  <updated>2015-05-17T13:53:53-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
+    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
+    <updated>2015-05-17T13:37:51-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
+    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
+
+<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
+
+<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
@@ -119,26 +132,6 @@
 <p><div class="footnotes">
 <p><small>
 1. Not necessarily true according to <a href="https://twitter.com/_lanceparker/status/499368493209239552">@_lanceparker</a> on Twitter.
-</small></p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Naming Your Stuff]]></title>
-    <link href="http://blog.swilliams.me/words/2014/07/10/naming-your-stuff/"/>
-    <updated>2014-07-10T13:17:05-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/07/10/naming-your-stuff</id>
-    <content type="html"><![CDATA[<p>Names are hard, especially for a framework or library. A good name is memorable, and can be a shot in the arm in terms of discoverability. Finding a good name is nebulous, and too often falls into the I&rsquo;ll-know-it-when-I-see-it category. But a <em>bad</em> name is easier to define. The biggest sin of bad names is that they are impossible to find answers when you run into questions.</p>
-
-<p>I don&rsquo;t like to throw rocks at somebody else&rsquo;s hard work, but I think it&rsquo;s been enough time that I can gently criticize the name of the <a href="http://prototypejs.org/">Prototype JavaScript library</a><sup>1</sup>. Why was this a bad name? Well, what do you do when you run into a problem that isn&rsquo;t quickly found in the official documentation? Search for it on Google. Now, the term <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">&ldquo;prototype&rdquo; is a core part of the JavaScript language</a>, which meant that every single search result for &ldquo;prototype X&rdquo;, &ldquo;JavaScript prototype X&rdquo;, &ldquo;prototype js X&rdquo; or any other combination only referred to dealing with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">prototypal inheritance in JavaScript</a>.</p>
-
-<p>You may be the biggest fan of both The Simpsons and Ruby. Don&rsquo;t name your library &ldquo;Homer&rdquo;. Again, what happens if someone runs into a problem when using Homer? They&rsquo;re going to try to search for &ldquo;homer fix json serialization&rdquo; and get a bunch of funnier Simpsons quotes. Your JSON parsing library is never going to be more popular than <a href="https://www.youtube.com/watch?v=khSIYmTzt6U">Mr. Simpson</a>, so please, pick something else.</p>
-
-<p>Common words aren&rsquo;t necessarily bad. <a href="http://backbonejs.org/">Backbone</a>, <a href="http://underscorejs.org/">Underscore</a>, <a href="http://rubyonrails.org/">Rails</a>, <a href="http://nodejs.org/">node</a>, and <a href="http://expressjs.com/">express</a> are all fairly common English words, but none of them are common enough to pollute search results. Spend a few minutes searching around before putting together your splash page.</p>
-
-<p><div class="footnotes">
-<p><small>
-1. In the war between Prototype and jQuery, I was in the former&rsquo;s camp for a long time. Prototype seemed like magic back in 2006 when I was coding AJAX manually. Searching for jQuery issues was never a problem though.
 </small></p></p>
 ]]></content>
   </entry>

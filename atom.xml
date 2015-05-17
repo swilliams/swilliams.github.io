@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-04-04T14:21:13-07:00</updated>
+  <updated>2015-05-17T13:53:53-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
+    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
+    <updated>2015-05-17T13:37:51-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
+    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
+
+<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
+
+<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Half-baked Business Idea - Augmented Paintball/Airsoft/Laser Tag]]></title>
@@ -807,49 +820,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
   <ol>
     <li class="footnote" id="fn:1">
   <p>Yeah, it references *that*.</p>
-</li>
-  </ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Star Wars Episode VII Soundtrack Titles]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/30/star-wars-episode-vii-soundtrack-titles/"/>
-    <updated>2014-11-30T14:25:47-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/30/star-wars-episode-vii-soundtrack-titles</id>
-    <content type="html"><![CDATA[<p>I found the names of the songs on the Force Awakens Soundtrack. Don&rsquo;t worry, no spoilers. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-
-<ol>
-<li>20th Century Fox Theme</li>
-<li>Star Wars Main Theme</li>
-<li>Luke&rsquo;s Noble End</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>Han&rsquo;s Funeral</li>
-<li>Luke&rsquo;s Funeral (reprise)</li>
-<li>Luke&rsquo;s Funeral Again</li>
-<li>A Cube Death Star?</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>Falcon&rsquo;s Funeral</li>
-<li>Constructing a New Lightsaber</li>
-<li>Return of a Jedi Master</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>Darth Fangy Rises</li>
-<li>Darth Fangy&rsquo;s Funeral</li>
-<li>Chewbacca Sandwich</li>
-<li>Victory Fanfare</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>Luke&rsquo;s Funeral</li>
-<li>End Credits</li>
-</ol>
-
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>For those of you who don&#8217;t get the joke, <a href="http://www.cracked.com/blog/the-5-most-ridiculous-ways-studios-spoiled-their-own-movies/">read this</a>.</p>
 </li>
   </ol>
 </div>
