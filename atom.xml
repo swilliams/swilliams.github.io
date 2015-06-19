@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-05-17T14:00:13-07:00</updated>
+  <updated>2015-06-18T20:10:15-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Showing Your Screen with a Client]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client/"/>
+    <updated>2015-06-18T19:37:03-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client</id>
+    <content type="html"><![CDATA[<p>At some point in your career in technology, you&rsquo;re going to have to make some kind of presentation. This could be connecting your laptop to a projector, sharing your screen over some video conference, or just have people huddled around your desk. Since I care about you, I&rsquo;m gonna share some advice about avoiding common pitfalls that might occur.</p>
+
+<p><strong>Turn off notifications.</strong> Say you&rsquo;re right in the middle of explaining how beautifully designed your database is to an important client, and one of your friends sends you an email.</p>
+
+<figure class="center">
+    <img alt="oh dear" src="http://blog.swilliams.me/images/assets/vomit.png" />
+    <figcaption>Oh dear.</figcaption>
+</figure>
+
+
+<p>Your only options are to make an awkward joke, or ignore it completely. Hopefully Jane doesn&rsquo;t send any follow-ups.</p>
+
+<p>On OS X you can turn off notifications by clicking the button in the top right of the menu bar, scrolling down, and then turning &ldquo;Do not disturb&rdquo; on.</p>
+
+<figure class="center">
+    <img alt="do not disturb" src="http://blog.swilliams.me/images/assets/donotdisturb.png">
+</figure>
+
+
+<p><strong>Hide everything you aren&rsquo;t showing.</strong> Again, say you&rsquo;re presenting something amazing to the top brass at Giant Health Conglomerate Inc. You need to switch from Keynote to a spreadsheet. You minimize Keynote and your Inbox is now in full view. What if there are some strategy emails from your CEO sitting in front of everyone? What if Jane from above has graphically described other things found in her vomit?</p>
+
+<p>On OS X I like to move my presentation and ancillary windows to a <a href="https://support.apple.com/kb/PH18757?locale=en_US">separate space</a>. One with a very plain wallpaper.</p>
+
+<p><strong>Use Chrome? Double check the default sites when you open a new tab.</strong> Nothing instills confidence with a prospective client when you open a new tab and the top 8 sites you visit are right there in the open for everyone to see. &ldquo;Oh, I guess you <em>really</em> like Harry Potter/Star Trek slash fiction?&rdquo;</p>
+
+<p>An Incognito window is a quick way to hide all that.</p>
+
+<p><strong>Similarly, consider clearing your browser history.</strong> Maybe you need to open up a webpage you weren&rsquo;t anticipating. Maybe you&rsquo;re checking the <a href="http://redis.io/documentation">redis documentation</a>, but when you type <code>red</code> into the address bar, all the subreddits you&rsquo;ve ever visited are immediately available. Maybe you just browse <a href="http://www.reddit.com/r/aww">/r/aww</a> and everyone is happy, or maybe you visit more&hellip; <em>unconventional</em>&hellip; ones.</p>
+
+<p>Ultimately it&rsquo;s up to you how many awkward situations you want to have with your co-workers and/or clients. Try to just think about what would happen if your mother/rabbi/priest/psychologist were watching.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
@@ -791,35 +829,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
   <ol>
     <li class="footnote" id="fn:1">
   <p>Shoutout to <a href="https://twitter.com/jmetzendorf">Jim Metzendorf</a> for helping me out with this.</p>
-</li>
-  </ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My New Podcast]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/01/my-new-podcast/"/>
-    <updated>2014-12-01T14:37:23-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/01/my-new-podcast</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve been a fan of podcasts for ages. I listened to <a href="http://grantland.com/podcasts/bs-report/">Bill Simmons&rsquo;s show</a> since it was called &ldquo;Eye of the Sports Guy&rdquo;. I listened to <a href="http://5by5.tv">Dan Benjamin&rsquo;s</a> shows before he made 5by5. About half of my t-shirts are ads for podcasts. So, when some friends asked if I wanted to make a podcast, I jumped at the chance.</p>
-
-<p>It&rsquo;s a show about fathers raising their daughters. Our discussions range from the goofy stuff our girls do, to the idea that we need to maintain our masculinity being the sole male in the family, to heavier topics. We&rsquo;re calling it <a href="http://fronttoback.co">Front to Back</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. You can get it on <a href="https://itunes.apple.com/us/podcast/front-to-back/id945174610?mt=2">iTunes here</a>.</p>
-
-<figure class="pull-right">
-  <a href="http://fronttoback.co"><img alt="Front to Back art" src="http://blog.swilliams.me/images/assets/f2b-art.png" /></a>
-</figure>
-
-
-<p>I&rsquo;m co-hosting it along with my Internet friends <a href="http://jeffmueller.net">Jeff</a> and <a href="http://samdavies.me">Sam</a>. Right now we are aiming to record every other week. The first episode is a shade over half an hour, which seems like a pretty good duration to me.</p>
-
-<p>It&rsquo;s gonna be a learning experience too. Going into this, none of us had ever recorded a podcast. I&rsquo;ve already learned more than I expected about production and audio editing. Watch this space because I&rsquo;m going to write about that process too. We&rsquo;re going to make a bunch of mistakes, but I think we have something here.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>Yeah, it references *that*.</p>
 </li>
   </ol>
 </div>

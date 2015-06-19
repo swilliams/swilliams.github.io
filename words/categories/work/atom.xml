@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Work | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/work/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2015-06-18T20:10:15-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Showing Your Screen With a Client]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client/"/>
+    <updated>2015-06-18T19:37:03-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client</id>
+    <content type="html"><![CDATA[<p>At some point in your career in technology, you&rsquo;re going to have to make some kind of presentation. This could be connecting your laptop to a projector, sharing your screen over some video conference, or just have people huddled around your desk. Since I care about you, I&rsquo;m gonna share some advice about avoiding common pitfalls that might occur.</p>
+
+<p><strong>Turn off notifications.</strong> Say you&rsquo;re right in the middle of explaining how beautifully designed your database is to an important client, and one of your friends sends you an email.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="oh dear" src="http://blog.swilliams.me/images/assets/vomit.png" /&gt;
+&lt;figcaption&gt;Oh dear.&lt;/figcaption&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>Your only options are to make an awkward joke, or ignore it completely. Hopefully Jane doesn&rsquo;t send any follow-ups.</p>
+
+<p>On OS X you can turn off notifications by clicking the button in the top right of the menu bar, scrolling down, and then turning &ldquo;Do not disturb&rdquo; on.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="do not disturb" src="http://blog.swilliams.me/images/assets/donotdisturb.png"&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p><strong>Hide everything you aren&rsquo;t showing.</strong> Again, say you&rsquo;re presenting something amazing to the top brass at Giant Health Conglomerate Inc. You need to switch from Keynote to a spreadsheet. You minimize Keynote and your Inbox is now in full view. What if there are some strategy emails from your CEO sitting in front of everyone? What if Jane from above has graphically described other things found in her vomit?</p>
+
+<p>On OS X I like to move my presentation and ancillary windows to a <a href="https://support.apple.com/kb/PH18757?locale=en_US">separate space</a>. One with a very plain wallpaper.</p>
+
+<p><strong>Use Chrome? Double check the default sites when you open a new tab.</strong> Nothing instills confidence with a prospective client when you open a new tab and the top 8 sites you visit are right there in the open for everyone to see. &ldquo;Oh, I guess you <em>really</em> like Harry Potter/Star Trek slash fiction?&rdquo;</p>
+
+<p>An Incognito window is a quick way to hide all that.</p>
+
+<p><strong>Similarly, consider clearing your browser history.</strong> Maybe you need to open up a webpage you weren&rsquo;t anticipating. Maybe you&rsquo;re checking the <a href="http://redis.io/documentation">redis documentation</a>, but when you type <code>red</code> into the address bar, all the subreddits you&rsquo;ve ever visited are immediately available. Maybe you just browse <a href="http://www.reddit.com/r/aww">/r/aww</a> and everyone is happy, or maybe you visit more&hellip; <em>unconventional</em>&hellip; ones.</p>
+
+<p>Ultimately it&rsquo;s up to you how many awkward situations you want to have with your co-workers and/or clients. Try to just think about what would happen if your mother/rabbi/priest/psychologist were watching.</p>
+]]></content>
+  </entry>
+  
+</feed>
