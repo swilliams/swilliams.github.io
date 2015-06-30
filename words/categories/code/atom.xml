@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-06-18T20:11:25-07:00</updated>
+  <updated>2015-06-30T12:22:13-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Basic GitHub Workflow for Collaboration]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/"/>
+    <updated>2015-06-30T12:16:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration</id>
+    <content type="html"><![CDATA[<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
@@ -111,28 +177,6 @@
 <p>Enums have reams of power that could be used for evil. I like the way <a href="http://nsscreencast.com/episodes/130-swift-json-redux-part-1">NSScreencasts uses enums with JSON parsing</a>, but it&rsquo;s hard to comprehend. If you have more of a functional programming background, I suspect this would be easier.</p>
 
 <p>Swift is going to be huge. I think Apple does have a language on its hands that&rsquo;ll last for its next 20 years. There are still some rough edges and potential pitfalls, but It has become the language I prefer when creating iOS apps.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Porting DB5 to Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2014/08/12/porting-db5-to-swift/"/>
-    <updated>2014-08-12T16:41:51-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/08/12/porting-db5-to-swift</id>
-    <content type="html"><![CDATA[<p>I&rsquo;m a big fan of using the <a href="https://github.com/quartermaster/DB5">DB5 library</a> for customizing an iOS app via a <a href="http://en.wikipedia.org/wiki/Plist">plist configuration file</a>, and I&rsquo;ve used it in several projects so far. I&rsquo;ve also  been digging more into Swift and iOS 8 and thought it would be a good exercise to familiarize myself more with Swift to port DB5 from its original Objective C codebase to Swift.</p>
-
-<p>The result is over on Github: <a href="https://github.com/swilliams/DB5-Swift">DB5-Swift</a>.</p>
-
-<p>For grins, I wanted to go with a purely Swift approach, no NSWhatever classes unless there was no alternative. This meant using <code>Dictionary</code> instead of <code>NSDictionary</code>. Which turned into a bit of a headache. The biggest issue I ran into was that Swift&rsquo;s Dictionary doesn&rsquo;t seem to have an equivalent of NSDictionary&rsquo;s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/doc/uid/20000140-CBHBABID"><code>initWithContentsOfFile:</code></a><sup>1</sup>. Rather than try to parse the plist by hand, I just went back with good ole NSDictionary.</p>
-
-<p>Two of Swift&rsquo;s headlining features are <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_468">type inference</a> and <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_478">optional values</a>. I&rsquo;ve used both of these features before in C# for several years and have appreciated what they bring to the table. Swift is a little bit different though because it comes with the history of Objective C and Cocoa. NSDictionary was built to take advantage of Objective C&rsquo;s type system, and using it with Swift involved more casting and ? and ! operators than I expected. It didn&rsquo;t help that Xcode would often be wrong in its helper tooltips, suggesting addtional !&rsquo;s which wouldn&rsquo;t fix the problem.</p>
-
-<p>I&rsquo;m not entirely sure if DB5-Swift is 100% up to snuff right now. I think some of the methods should have better handling for nil values. I still have plenty of learning left before I&rsquo;d consider myself adept at Swift. Overall, it was  a good exercise, and I will use it in future apps.</p>
-
-<p><div class="footnotes">
-<p><small>
-1. Not necessarily true according to <a href="https://twitter.com/_lanceparker/status/499368493209239552">@_lanceparker</a> on Twitter.
-</small></p></p>
 ]]></content>
   </entry>
   

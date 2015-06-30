@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-06-18T20:11:25-07:00</updated>
+  <updated>2015-06-30T12:22:13-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Basic GitHub Workflow For Collaboration]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/"/>
+    <updated>2015-06-30T12:16:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration</id>
+    <content type="html"><![CDATA[<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Showing Your Screen to a Client]]></title>
@@ -784,51 +850,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 </li>
 <li class="footnote" id="fn:2">
   <p>Note that there is absolutely nothing you can do to keep someone else from grabbing your photo and uploading it to some other place and claim ownership. I mean you could sue them, but that&#8217;s using a grenade to kill a housefly.</p>
-</li>
-  </ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Add a Noise Gate in GarageBand 10]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10/"/>
-    <updated>2014-12-02T09:11:00-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10</id>
-    <content type="html"><![CDATA[<p>GarageBand is a decent amateur audio editor and is also free. I use it to edit <a href="http://fronttoback.co">my podcast</a>, which has worked out ok.</p>
-
-<p>Dealing with audio buzzing or humming can be a problem. Sometimes this can be <a href="http://en.wikipedia.org/wiki/Spill_%28audio%29">headphone bleed</a>, or ambient noise, or anything. A <a href="http://en.wikipedia.org/wiki/Noise_gate">noise gate</a> can fix that up pretty well if it isn&rsquo;t too loud<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. What a noise gate does is analyze your audio and mutes any sound that is below a certain volume. GarageBand has this built-in but it is a little hard to find. It&rsquo;s interface has changed over different versions, so googling around for it often yields out of date information. Here is where it is in version <strong>10</strong>.</p>
-
-<p>First click this knobby button.</p>
-
-<figure class="center">
-    <img alt="knobby button" src="http://blog.swilliams.me/images/assets/gb/knob.png">
-</figure>
-
-
-<p>This&rsquo;ll bring up a panel at the bottom with some additional controls. Click the information &ldquo;i&rdquo; button, turn off &ldquo;Master&rdquo;, and click &ldquo;Controls&rdquo; from the segmented control.</p>
-
-<figure class="center">
-    <img alt="controls" src="http://blog.swilliams.me/images/assets/gb/controls.png">
-</figure>
-
-
-<p>Finally, you&rsquo;ll have a checkbox labeled &ldquo;Noise Gate&rdquo; in that info side panel. Check it to turn it on, and use the slider to adjust how big of a gate you want.</p>
-
-<figure class="center">
-    <img alt="noise gate" src="http://blog.swilliams.me/images/assets/gb/noise-gate.png">
-</figure>
-
-
-<p>This will set the gate on the <em>entire</em> track that is selected up in the main UI. You can have different gates for different tracks, but I don&rsquo;t think you can different ones on a single track in GarageBand.</p>
-
-<p>Once I scrape together a little more cash I might go out and get <a href="https://itunes.apple.com/us/app/logic-pro-x/id634148309?mt=12&amp;uo=4&amp;at=11lxUn">Logic Pro</a>. For now though, GarageBand works well enough.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>Shoutout to <a href="https://twitter.com/jmetzendorf">Jim Metzendorf</a> for helping me out with this.</p>
 </li>
   </ol>
 </div>

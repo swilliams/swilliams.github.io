@@ -1,0 +1,268 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Basic GitHub Workflow For Collaboration - Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Basic GitHub Workflow for Collaboration Jun 30th, 2015 When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bigfoot-default.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="/javascripts/bigfoot.min.js"></script>
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-57339923-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing.</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p class="apps sidebar-stuff">I've made some Apps! Go get them.</p>
+    <ul class="apps sidebar-stuff">
+        <li>
+          <a class="app-icon" href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&mt=8"><img src="/images/emergencycontacts-40.png" alt="Emergency Contacts" />
+          <a href="http://emergencycontacts.org">Emergency Contacts</a> &mdash; Quick access emergency information on your iPhone
+        </li>
+        <li>
+          <a class="app-icon" href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8"><img src="/images/zartbonk-40.png" alt="Zartbonk" />
+          <a href="http://zartbonk.com">Zartbonk</a> &mdash; A soundboard for your iPad
+        </li>
+      </ul>
+    </p>
+
+    <hr class="sidebar" />
+
+    <p class="podcasts sidebar-stuff">I also make a podcast. Listen!</p>
+    <ul class="podcasts sidebar-stuff">
+      <li>
+      <a href="https://itunes" class="app-icon"><img src="/images/assets/f2b-art-icon.png" /></a>
+      <a href="http://fronttoback.co">Front to Back</a> &mdash; A show about fathers raising daughters
+      </li>
+    </ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Basic GitHub Workflow for Collaboration</h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-30T12:16:16-07:00" data-updated="true" itemprop="datePublished">Jun 30<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+</div>
+    <div class="tags">Tags: 
+
+
+	<a class='category' href='/words/categories/code/'>code</a>
+
+
+</div>
+
+</article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
