@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/coding/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-06-30T12:22:13-07:00</updated>
+  <updated>2015-07-02T15:10:50-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[WatchKit Connectivity and File Transfers]]></title>
+    <link href="http://blog.swilliams.me/words/2015/07/02/watchkit-connectivity-and-file-transfers/"/>
+    <updated>2015-07-02T13:51:36-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/07/02/watchkit-connectivity-and-file-transfers</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been noodling with an idea for a <a href="https://developer.apple.com/watchos/pre-release/">watchOS 2</a> app. It involves <a href="https://developer.apple.com/library/prerelease/watchos/documentation/WatchConnectivity/Reference/WatchConnectivity_framework/index.html#//apple_ref/doc/uid/TP40015269">Connectivity</a> &ndash; transferring files from the Watch to its paired iOS device. The WWDC sessions are very good, but I ran into a couple of snags with the framework. I had <a href="https://twitter.com/swilliams/status/616671359557599232">tweeted something that I thought was a bug</a>, but on closer inspection of the docs it actually wasn&rsquo;t. I <a href="https://twitter.com/swilliams/status/616673013417803776">tweeted another message stating as much</a>, but it hasn&rsquo;t gotten the notice that the original did.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Anyways, here&rsquo;s what I learned.</p>
+
+<p><em>[ed: This is with iOS 9, watchOS 2, and Xcode 7, all in beta 2. Stuff might change.]</em></p>
+
+<h2>You can run both simulators at once</h2>
+
+<p>But it&rsquo;s not obvious. First, run the watchOS simulator. In the scheme control, it&rsquo;s the &ldquo;[App Name] WatchKit App&rdquo; scheme, which has both the iPhone and Apple Watch available (for example, &ldquo;iPhone 6 + Apple Watch &ndash; 38mm&rdquo;), and run it.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Xcode Scheme for iPhone6 and Watch" src="http://blog.swilliams.me/images/assets/conn-iphone-6-and-watch.png"&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>When it&rsquo;s running, change the scheme (without stopping the simulator) to the normal iPhone scheme. In this case &ldquo;[App Name] > iPhone 6&rdquo;.</p>
+
+<p><figure class="center"></p>
+
+<pre><code>&lt;img alt="Xcode Scheme for iPhone6 and Watch" src="http://blog.swilliams.me/images/assets/conn-iphone-6.png"&gt;
+</code></pre>
+
+<p></figure></p>
+
+<p>Now, run this scheme <em>without</em> compiling: hold down ⌘ and click the Run button. The iOS app will now be running in the simulator. Sometimes the watch app will close, but you can open it back up again.</p>
+
+<p>The console and breakpoints may get a little squirrelly, so you probably won&rsquo;t be able to depend on them so well.</p>
+
+<h2>WCSessionDelegate</h2>
+
+<p>Connectivity has one main delegate to implement: <a href="https://developer.apple.com/library/prerelease/watchos/documentation/WatchConnectivity/Reference/WCSessionDelegate_protocol/"><code>WCSessionDelegate</code></a>. This can be implemented on <em>both</em> the iOS and watchOS apps, and different behavior will happen. For example, when you transfer a file, the <strong>receiver</strong> will need to implement <code>session:didReceiveFile:</code>. If you want to receive some kind of notification that the file was sent the <strong>sender</strong> needs to implement <code>session:didFinishFileTransfer:error:</code>.</p>
+
+<p>This seemed counter-intuitive to me at first, but on further reflection, it makes sense. I do wish the docs more clearly illustrated this though.</p>
+
+<h2>You&rsquo;re in the background</h2>
+
+<p>Don&rsquo;t forget that your iOS app is <strong>not</strong> guaranteed to be running when these notifications come in. And they will come in on a background queue too, so don&rsquo;t immediately try to update the UI without getting over there first.</p>
+
+<h2>Demo</h2>
+
+<p>I created a simple demo app to illustrate all of this. <a href="https://github.com/swilliams/watchkit-connectivity-demo">It&rsquo;s up on GitHub</a>. Take a look at the <code>AppDelegate</code> for the iOS app, the <code>ExtensionDelegate</code> and <code>InterfaceController</code> in the watchOS extension target. This demo was thrown together quickly without regard for best practices, blah blah blah.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Such is the nature of Twitter, alas.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Madness of Errors in Swift]]></title>

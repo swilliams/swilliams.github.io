@@ -1159,8 +1159,14 @@
         <lastmod>2015-06-30T12:22:13-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.swilliams.me/words/2015/07/02/watchkit-connectivity-and-file-transfers/
+        </loc>
+        <lastmod>2015-07-02T15:10:44-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2015-06-30T12:22:13-07:00</lastmod>
+        <lastmod>2015-07-02T15:10:44-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1168,7 +1174,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2015-06-30T12:22:13-07:00</lastmod>
+        <lastmod>2015-07-02T15:10:44-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
