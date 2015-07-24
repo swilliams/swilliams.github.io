@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-07-02T15:10:50-07:00</updated>
+  <updated>2015-07-24T09:06:01-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Great Moments in Customer Service]]></title>
+    <link href="http://blog.swilliams.me/words/2015/07/24/great-moments-in-customer-service/"/>
+    <updated>2015-07-24T09:02:27-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/07/24/great-moments-in-customer-service</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/10/15/the-best-customer-service/">Great Customer Service is not dead</a>! When I was doing freelance/independent work I used <a href="https://www.getharvest.com/">Harvest&rsquo;s</a> Solo plan to track my time and invoice clients. It was affordable for a single person and wasn&rsquo;t over-engineered. Since it was cheaper in the long run I paid for a yearly plan and renewed each time it came up. I would&rsquo;ve recommended them to anyone in a similar position. Now I&rsquo;ll recommend them even more heavily.</p>
+
+<p>A few months ago I took a full-time position and just didn&rsquo;t need the paid account any more. I couldn&rsquo;t figure out how to downgrade though so I sent a request to their customer service. The page told me to expect a response within an hour. Within 5 minutes I got a response from Jennifer telling me that my plan had been downgraded to the free one, AND they refunded the prorated amount for the remainder of the year back to me.</p>
+
+<p>Getting a refund wasn&rsquo;t even on my radar. I was perfectly happy with keeping the paid plan and just not renewing it when the time came. What I love about this is that Harvest didn&rsquo;t waffle around the issue for a long time only to end up doing the bare minimum to get the customer to go away. They were fast, proactive, and exceeded expectations. That&rsquo;s how you do customer service.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[WatchKit Connectivity and File Transfers]]></title>
@@ -50,7 +63,7 @@
 
 <h2>You&rsquo;re in the background</h2>
 
-<p>Don&rsquo;t forget that your iOS app is <strong>not</strong> guaranteed to be running when these notifications come in. And they will come in on a background queue too, so don&rsquo;t immediately try to update the UI without getting over there first.</p>
+<p>Don&rsquo;t forget that your iOS app is <strong>not</strong> guaranteed to be running when these notifications come in. And they will come in on a background queue too, so don&rsquo;t immediately try to update the UI without getting over to the main queue first.</p>
 
 <h2>Demo</h2>
 
@@ -815,36 +828,6 @@ Within our guts digesting<br /></p>
 </div>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Things I Learned When Making a Podcast]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/03/things-i-learned-when-making-a-podcast/"/>
-    <updated>2014-12-03T07:42:25-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/03/things-i-learned-when-making-a-podcast</id>
-    <content type="html"><![CDATA[<p>We just published episode 2 of <a href="https://scott-williams-bc50.squarespace.com/podcast/2014/12/3/2-the-proliferation-of-duplo">the podcast</a>. I&rsquo;m still very new at this, but I&rsquo;ve already learned more than I anticipated. Most of these are forehead slappers that now you can avoid when you make your podcast.</p>
-
-<p>If you want to do a <a href="http://thepodcastersstudio.com/tps-ep-47-recording-a-double-ender-podcast/">double-ender</a>, don&rsquo;t use Quicktime&rsquo;s built-in audio recording &ndash; it smushes all the audio into a single track. <a href="http://www.ecamm.com/mac/callrecorder/">Ecamm Call Recorder</a> or <a href="https://rogueamoeba.com/piezo/">Piezo</a> will keep them separate.</p>
-
-<p>Have each person say something like &ldquo;Recording&rdquo; when they start recording their end of the call. This makes it orders of magnitude easier to line up the separate audio tracks during post production. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-
-<p>Plug your headphones directly into your microphone. Doing something else will likely lead to some nasty <a href="http://blog.swilliams.me/words/2014/12/02/how-to-add-a-noise-gate-in-garageband-10/">headphone bleed</a>.</p>
-
-<p>If you&rsquo;re using a <a href="http://www.amazon.com/Blue-Microphones-Yeti-USB-Microphone/dp/B002VA464S/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=blue%2Byeti&amp;tag=thepetzoo-20&amp;qid=1417634348">Blue Yeti</a>, switch to Cardioid mode. It&rsquo;s the &ldquo;heart&rdquo; or &ldquo;pacman&rdquo; symbol. Turn the gain down on it too.</p>
-
-<p>You need to <a href="https://www.apple.com/itunes/podcasts/specs.html">submit your podcast feed to Apple</a> if you want your podcast to be in iTunes (and you really want that). According to their <a href="https://www.apple.com/itunes/podcasts/creatorfaq.html">FAQ</a> it can take 24 hours for that feed to be approved. But if you submit your feed on a common US holiday week, like say the Monday before Thanksgiving, it might take significantly longer.</p>
-
-<p>If you have something pre-made you want to say on air, write it down first because your brain will simply refuse to cooperate if you try to just remember it.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>Got this via <a href="http://www.theincomparable.com/theincomparable/">The Incomparable</a>, one of my absolute favorites.</p>
-</li>
-  </ol>
-</div>
 
 ]]></content>
   </entry>
