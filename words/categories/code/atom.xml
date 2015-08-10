@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-08-09T20:10:34-07:00</updated>
+  <updated>2015-08-09T21:10:13-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -24,7 +24,7 @@
 
 <p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
 
-<p>```
+<p>```swift
 import UIKit
 import Photos</p>
 
