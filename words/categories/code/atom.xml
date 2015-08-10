@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-07-24T09:07:18-07:00</updated>
+  <updated>2015-08-09T20:10:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
+    <link href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/"/>
+    <updated>2015-08-09T19:40:43-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken</id>
+    <content type="html"><![CDATA[<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
+
+<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
+
+<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
+
+<p>```
+import UIKit
+import Photos</p>
+
+<p>// I like to typealias my blocks, makes for easier reading
+typealias ImageCallback = (UIImage? &ndash;> Void)</p>
+
+<p>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {</p>
+
+<pre><code>let fetchOptions = PHFetchOptions()
+fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+</code></pre>
+
+<p>//        fetchOptions.fetchLimit = 1 // Available in iOS 9</p>
+
+<pre><code>if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
+    if let asset = fetchResult.firstObject as? PHAsset {
+        let manager = PHImageManager.defaultManager()
+        let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
+        manager.requestImageForAsset(asset,
+            targetSize: targetSize,
+            contentMode: .AspectFit,
+            options: nil,
+            resultHandler: { image, info in
+            imageCallback(image)
+        })
+    } else {
+        imageCallback(nil)
+    }
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
+
+<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
+
+<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
+
+<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
+
+<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
+
+<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
+
+<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Basic GitHub Workflow for Collaboration]]></title>
@@ -148,35 +210,6 @@
 <p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
 
 <p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Thoughts on Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/"/>
-    <updated>2014-09-10T08:24:30-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift</id>
-    <content type="html"><![CDATA[<p><figure class="center"></p>
-
-<pre><code>&lt;img src="http://blog.swilliams.me/images/assets/swift-logo.png" alt="Swift Logo" /&gt;
-&lt;figcaption&gt;&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
-
-<p>Swift is a new language developed by Apple. I&rsquo;ve been using for a few side projects.</p>
-
-<p>On my first glance, I thought Swift would be a great language for beginners. I&rsquo;m not 100% sure if that&rsquo;s still the case. A beginner language should push you into a positive feedback loop: do something, see it work, do some more, and so on. Swift and Xcode 6 do some of this with aplomb, especially with playgrounds, but I found some features of the language can be frustrating until you have a deeper understanding of what&rsquo;s going on.</p>
-
-<p>Optionals are the biggest part of that. They&rsquo;re kind of crazy at first. Lot&rsquo;s of ?&rsquo;s and !&rsquo;s running around. When I was starting with Swift, Xcode would constantly complain that I was missing one. Sometimes it would tell me which one was missing, but sometimes it didn&rsquo;t. After reading the documentation a little more and thinking about it, things started to click. Handling nil values is important in any language, and handling them poorly can lead to some truly marvelous bugs or security issues. Swift makes you face them much earlier in the process. I think this is a good thing, though it can make for a frustrating start. It&rsquo;s also made me think if I&rsquo;m handling nils properly in other languages I use.</p>
-
-<p>I&rsquo;m still working on my own personal style, but I think I should be using more computed properties. A rule I&rsquo;m toying with is to keep on making methods for &ldquo;verbs&rdquo; like <code>moveFileToThing</code>, but use properties for &ldquo;nouns&rdquo; like <code>allSampleAssets</code>, even if that property makes several other calls within its implementation. This might require renaming certain methods in order to better comply with that style; if <code>allSampleAssets</code> took a <code>sort</code> parameter it couldn&rsquo;t be a property, so I&rsquo;d rename it to <code>queryAllSampleAssets(sort: NSSortDescriptor)</code>.</p>
-
-<p>Even though it&rsquo;s a brand new thing, there is still a good amount of Objective C and Cocoa baggage. The standard collections use <code>AnyObject</code> where <code>id</code> used to be, which means you&rsquo;ll need to do some explicit casting to the type you need. I found it easier when dealing with an <code>NSDictionary</code> or <code>NSArray</code> to not try to cram all the casting and then manipulating into a single line of code.</p>
-
-<p>Enums have reams of power that could be used for evil. I like the way <a href="http://nsscreencast.com/episodes/130-swift-json-redux-part-1">NSScreencasts uses enums with JSON parsing</a>, but it&rsquo;s hard to comprehend. If you have more of a functional programming background, I suspect this would be easier.</p>
-
-<p>Swift is going to be huge. I think Apple does have a language on its hands that&rsquo;ll last for its next 20 years. There are still some rough edges and potential pitfalls, but It has become the language I prefer when creating iOS apps.</p>
 ]]></content>
   </entry>
   

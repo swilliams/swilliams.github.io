@@ -1,0 +1,287 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Finding the Last Photo Taken - Scott Williams</title>
+	<meta name="author" content="Scott Williams">
+
+	
+	<meta name="description" content="Finding the Last Photo Taken Aug 9th, 2015 Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bigfoot-default.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<script type="text/javascript" src="/javascripts/bigfoot.min.js"></script>
+<script type="text/javascript" src="//use.typekit.net/fni7doq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-57339923-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/c314e8a5296aeb512e30f0a11e357f7b?s=100" alt="Profile Picture" style="width: 100px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Scott Williams</a></h1>
+  
+    <h2>Code. Photos. Writing.</h2>
+  
+</hgroup>
+
+<nav id="marketing">
+    <p class="apps sidebar-stuff">I've made some Apps! Go get them.</p>
+    <ul class="apps sidebar-stuff">
+        <li>
+          <a class="app-icon" href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&mt=8"><img src="/images/emergencycontacts-40.png" alt="Emergency Contacts" />
+          <a href="http://emergencycontacts.org">Emergency Contacts</a> &mdash; Quick access emergency information on your iPhone
+        </li>
+        <li>
+          <a class="app-icon" href="https://itunes.apple.com/us/app/zartbonk/id727445952?ls=1&amp;mt=8"><img src="/images/zartbonk-40.png" alt="Zartbonk" />
+          <a href="http://zartbonk.com">Zartbonk</a> &mdash; A soundboard for your iPad
+        </li>
+      </ul>
+    </p>
+
+    <hr class="sidebar" />
+
+    <p class="podcasts sidebar-stuff">I also make a podcast. Listen!</p>
+    <ul class="podcasts sidebar-stuff">
+      <li>
+      <a href="https://itunes" class="app-icon"><img src="/images/assets/f2b-art-icon.png" /></a>
+      <a href="http://fronttoback.co">Front to Back</a> &mdash; A show about fathers raising daughters
+      </li>
+    </ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+			<a class="twitter" href="http://twitter.com/swilliams" title="Twitter"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS"></a>
+		
+	</div>
+</nav>
+<nav id="main-nav"><ul class="main-navigation">
+</ul>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Finding the Last Photo Taken</h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-08-09T19:40:43-07:00" data-updated="true" itemprop="datePublished">Aug 9<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
+
+<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
+
+<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import UIKit
+</span><span class='line'>import Photos
+</span><span class='line'>
+</span><span class='line'>// I like to typealias my blocks, makes for easier reading
+</span><span class='line'>typealias ImageCallback = (UIImage? -&gt; Void)
+</span><span class='line'>
+</span><span class='line'>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {
+</span><span class='line'>    let fetchOptions = PHFetchOptions()
+</span><span class='line'>    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+</span><span class='line'>    
+</span><span class='line'>//        fetchOptions.fetchLimit = 1 // Available in iOS 9
+</span><span class='line'>
+</span><span class='line'>    if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
+</span><span class='line'>        if let asset = fetchResult.firstObject as? PHAsset {
+</span><span class='line'>            let manager = PHImageManager.defaultManager()
+</span><span class='line'>            let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
+</span><span class='line'>            manager.requestImageForAsset(asset,
+</span><span class='line'>                targetSize: targetSize,
+</span><span class='line'>                contentMode: .AspectFit,
+</span><span class='line'>                options: nil,
+</span><span class='line'>                resultHandler: { image, info in
+</span><span class='line'>                imageCallback(image)
+</span><span class='line'>            })
+</span><span class='line'>        } else {
+</span><span class='line'>            imageCallback(nil)
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
+
+<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
+
+<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
+
+<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
+
+<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
+
+<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
+
+<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
+</div>
+    <div class="tags">Tags: 
+
+
+	<a class='category' href='/words/categories/code/'>code</a>
+
+
+</div>
+
+</article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Scott Williams -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

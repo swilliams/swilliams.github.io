@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-07-24T09:06:01-07:00</updated>
+  <updated>2015-08-09T20:10:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
+    <link href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/"/>
+    <updated>2015-08-09T19:40:43-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken</id>
+    <content type="html"><![CDATA[<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
+
+<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
+
+<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import UIKit
+</span><span class='line'>import Photos
+</span><span class='line'>
+</span><span class='line'>// I like to typealias my blocks, makes for easier reading
+</span><span class='line'>typealias ImageCallback = (UIImage? -&gt; Void)
+</span><span class='line'>
+</span><span class='line'>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {
+</span><span class='line'>    let fetchOptions = PHFetchOptions()
+</span><span class='line'>    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+</span><span class='line'>    
+</span><span class='line'>//        fetchOptions.fetchLimit = 1 // Available in iOS 9
+</span><span class='line'>
+</span><span class='line'>    if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
+</span><span class='line'>        if let asset = fetchResult.firstObject as? PHAsset {
+</span><span class='line'>            let manager = PHImageManager.defaultManager()
+</span><span class='line'>            let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
+</span><span class='line'>            manager.requestImageForAsset(asset,
+</span><span class='line'>                targetSize: targetSize,
+</span><span class='line'>                contentMode: .AspectFit,
+</span><span class='line'>                options: nil,
+</span><span class='line'>                resultHandler: { image, info in
+</span><span class='line'>                imageCallback(image)
+</span><span class='line'>            })
+</span><span class='line'>        } else {
+</span><span class='line'>            imageCallback(nil)
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
+
+<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
+
+<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
+
+<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
+
+<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
+
+<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
+
+<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Great Moments in Customer Service]]></title>
@@ -22,7 +107,9 @@
 
 <p>A few months ago I took a full-time position and just didn&rsquo;t need the paid account any more. I couldn&rsquo;t figure out how to downgrade though so I sent a request to their customer service. The page told me to expect a response within an hour. Within 5 minutes I got a response from Jennifer telling me that my plan had been downgraded to the free one, AND they refunded the prorated amount for the remainder of the year back to me.</p>
 
-<p>Getting a refund wasn&rsquo;t even on my radar. I was perfectly happy with keeping the paid plan and just not renewing it when the time came. What I love about this is that Harvest didn&rsquo;t waffle around the issue for a long time only to end up doing the bare minimum to get the customer to go away. They were fast, proactive, and exceeded expectations. That&rsquo;s how you do customer service.</p>
+<p>Getting a refund wasn&rsquo;t even on my radar. I was perfectly happy with keeping the paid plan and just not renewing it when the time came. What I love about this is that Harvest didn&rsquo;t waffle around the issue for a long time only to end up doing the bare minimum to get the customer to go away. They were fast, proactive, and exceeded expectations.</p>
+
+<p>That&rsquo;s how you do customer service.</p>
 ]]></content>
   </entry>
   
@@ -797,38 +884,6 @@ No other bite will fill my cheeks<br /></p>
 <p>O Christmas Roast, O Christmas Roast!<br />
 Within our guts digesting<br />
 Within our guts digesting<br /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
-    <updated>2014-12-08T14:04:40-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
-    <content type="html"><![CDATA[<p><strong>January</strong>: &ldquo;We just had our biggest sales quarter ever!&rdquo; &ndash; Apple, adding another $20B to their bank account.</p>
-
-<p><strong>April</strong>: Speculation of what&rsquo;s gonna be in the next version of iOS.</p>
-
-<p><strong>June</strong>: WWDC. New things! Wow! Ideas abound! Flurries of productivity. &ldquo;Guys, I think Apple&rsquo;s playing nicer with developers now!&rdquo; &ndash; some people.</p>
-
-<p><strong>July</strong>: Wow, this beta is really beta.</p>
-
-<p><strong>September</strong>: iOS Next ships! New iPhone! Ship your app! Bugs!</p>
-
-<p><strong>October</strong>: Weird rejections that don&rsquo;t make any sense.</p>
-
-<p><strong>December</strong>: Blog posts and tweets about how Apple is screwing themselves with the byzantine app review process.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Some rejections are overturned.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p><a href="http://www.panic.com/blog/transmit-ios-1-1-1/">You are here.</a></p>
-</li>
-  </ol>
-</div>
-
-
-
 ]]></content>
   </entry>
   
