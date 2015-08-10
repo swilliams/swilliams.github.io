@@ -12,7 +12,7 @@ In iOS 8, the Asset Library is still available, but Apple introduced a new frame
 
 Here's a function that'll get the most recent photo with the Photos Framework:
 
-```
+```swift
 import UIKit
 import Photos
 
