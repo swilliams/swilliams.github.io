@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="It&#8217;s Pretty Much When&#8230; Jul 27th, 2010 On the latest episode of The Pipeline. (And if you don&#8217;t listen to the 5by5 podcasts, what&# &hellip;">
+	<meta name="description" content="My Beef With Razor Jul 28th, 2010 (Note, for non-programmers, this is not about shaving) ASP.NET MVC has shipped the first preview of version 3. &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,55 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/07/28/my-beef-with-razor/" itemprop="url">My Beef With Razor</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 28<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<div>
+<span>(Note, for non-programmers, this is </span><i><span>not</span></i><span> about shaving)</span>
+</div> <p></p>
+<a href="http://ASP.NET">ASP.NET</a> MVC has <a href="http://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx">shipped the first preview of version 3</a>. This is a good thing, mostly. By default it will be using the brand spanking new <a href="http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx">Razor</a> view engine&#8230; and I&#8217;m having a hard time trying to figure out why it&#8217;s even in there.<p></p>
+<div>The <i>raison d&#8217;être</i> for Razor is to allow for less code in the Views. This too, is a good thing. But I just don&#8217;t think it does <i>enough</i>. Here&#8217;s one of the samples provided:</div>
+<p></p>
+<div>
+<div>@inherits System.Web.Mvc.WebViewPage</div>
+<p></p> <div>&lt;!DOCTYPE HTML&gt;</div>
+<p></p>
+<div>&lt;html&gt;</div> <div>&lt;head&gt;</div>
+<div>
+<span>	</span>&lt;title&gt;@View.Title&lt;/title&gt;</div> <div>&lt;/head&gt;</div>
+<div>&lt;body&gt;</div>
+<div>
+<span>	</span>@RenderBody()</div> <div>&lt;/body&gt;</div>
+<div>&lt;/html&gt;</div>
+</div>
+<p></p>
+<div>It <i>is</i> nice that you don&#8217;t need a gigantic header any more, and I like that the masterpage syntax is a little slimmer, but in general all you&#8217;re saving are a bunch of &lt;%= %&gt; tags. That&#8217;s nice, but is that really that great of an improvement to warrant an entirely new ViewEngine? Am I missing something important here? Especially once you get into non-trivial pages with hundreds of tags and template syntax.</div> <p></p>
+<div>What I think would have been awesome would be to use the reduced &lt;%= %&gt; footprint but also incorporate something like NHaml, which would <i>really</i> minimize the code footprint.</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -498,41 +547,6 @@
 	
 	</div>
 </div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/07/20/bill-murray-0/" itemprop="url">Bill Murray</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-20T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jul 20<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<a href="http://www.gq.com/entertainment/celebrities/201008/bill-murray-dan-fierman-gq-interview?currentPage=4">Interview with GQ</a>:<p></p>
-<blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"> <div>
-<div><p><b><span>Last question. I have to know, because I love this story and want it to be true. There have been stories about you sneaking up behind people in New York City, covering their eyes with your hands, and saying: </span></b></p></div>
-<i><span>Guess who</span></i><span>. And when they turn around, they see Bill Murray and hear the words &#8220;No one will ever believe you.&#8221;</span> </div>
-<div>
-<div><p><i><span>[long pause]</span></i></p></div>
-<span><span> I know. I know, I know, I know. I&#8217;ve heard about that from a lot of people. A lot of people. I don&#8217;t know what to say. There&#8217;s probably a really </span><i><span>appropriate</span></i><span> thing to say. Something exactly and just perfectly </span><i><span>right</span></i><span>. </span><i><span>[long beat, and then he breaks into a huge grin]</span></i><span> But by God, it sounds crazy, doesn&#8217;t</span></span> </div>
-</blockquote>*swoon*</div></div></div></div></div>
 		
 		
 	</div>

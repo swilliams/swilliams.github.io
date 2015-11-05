@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Finding the Last Photo Taken Aug 9th, 2015 Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking &hellip;">
+	<meta name="description" content="The Good, the Bad, and the Ugly With the Apple TV Nov 5th, 2015 A new Apple device! I&rsquo;m required to have opinions. Here they are in a &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,79 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv/" itemprop="url">The Good, the Bad, and the Ugly With the Apple TV</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-11-05T08:28:09-07:00" data-updated="true" itemprop="datePublished">Nov 5<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>A new Apple device! I&rsquo;m required to have opinions. Here they are in a contrived fashion!</p>
+
+<h1>The Good</h1>
+
+<p>Great UI and aesthetics.</p>
+
+<p>It&rsquo;s faster.</p>
+
+<p>Scrubbing through video is significantly improved. I almost don&rsquo;t believe how much better it is.</p>
+
+<p>Siri works as advertised. Accuracy, speed, and results are all great.</p>
+
+<p>All the potential!</p>
+
+<h1>The Bad</h1>
+
+<p>Siri doesn&rsquo;t index content stored in iTunes libraries on the network. So to get to all the DVDs and Blu-rays I&rsquo;ve ripped I have to use the same UI as the old Apple TV.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>Siri doesn&rsquo;t work with Music. Not for music libraries on the network, iTunes Match, or Apple Music. I really don&rsquo;t understand this one, I&rsquo;m hoping it comes soon.</p>
+
+<p>Only one remote can be paired with it. This makes gaming tricky. Hoping this changes soon too.</p>
+
+<h1>The Ugly</h1>
+
+<p>Passwords. This has already been discussed at length everywhere. One thought I had would be that it&rsquo;d be cool to enter passwords via Siri. Y&#8217;know, like that one scene in TNG:</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/oNrWgjh9tnU" frameborder="0" allowfullscreen></iframe>
+
+
+<p>(A Touch ID powered remote would probably be better)</p>
+
+<p>App discoverability. It&rsquo;s really bad, and I don&rsquo;t know how they&rsquo;re going to fix it. Top Charts was just added, which is better than nothing, but if someone wants to market their app anywhere online they have no way to provide a link to it! &ldquo;Go to the app store, search for s-o-m-e-t-h-i&hellip;&rdquo; is all kinds of awful.</p>
+
+<p>Overall I like it. I have almost no reason to use the Roku now<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>I do not have Plex, so I don&#8217;t know if that circumvents it. If it does, I may grab it asap.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>Other than the rare times there&#8217;s something on Amazon Video that isn&#8217;t anywhere else.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -808,84 +881,6 @@
   </ol>
 </div>
 
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift/" itemprop="url">Tracking Down an EXC_BAD_ACCESS in Swift</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-03-31T11:05:51-07:00" data-updated="true" itemprop="datePublished">Mar 31<span>st</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Managing memory has become easier. Things like <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">ARC</a> take away much of  what was once a painful and bug-ridden task. Things are not always panacea of course; it is still far too possible to do the wrong thing and access memory you are not supposed to and receive the dreaded <code>EXC_BAD_ACCESS</code> error.</p>
-
-<p>Today I was working on a project in Swift. And despite my <a href="">appreciation</a> of the language, the tooling still remains&hellip; <em>suspect</em>. I have covered that topic a <a href="http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift/">couple</a> of <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">times</a> before.</p>
-
-<p>Sometimes it&rsquo;s obvious where the problem is based on the call-stack. This time it was not so obvious. The problem occurred at the end of a series of steps in a wizard when all the prior screens were finally being released from memory. From what I could tell the error was when one of the view controllers that represented one of the steps in the wizard was being deinitialized, but otherwise I couldn&rsquo;t immediately see where the problem was.</p>
-
-<p>In Objective C you can turn on what&rsquo;s called <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/MemoryManagementforYourApp/MemoryManagementforYourApp.html">&ldquo;NS Zombies&rdquo; mode</a>, which keeps objects allocated (as a special &ldquo;Zombie&rdquo; object) and then raises warnings you try to access one of those Zombie objects. In my experience this has not worked quite was well with Swift. With Zombies mode enabled the app ran fine without crashing, but also didn&rsquo;t raise any warnings about accessing bad memory. It was a <a href="http://en.wikipedia.org/wiki/Heisenbug">Heisenbug</a>!</p>
-
-<figure class="center">
-    <img alt="Heisenberg" src="/images/assets/heisenberg.jpg">
-    <figcaption>Eh, close enough</figcaption>
-</figure>
-
-
-<p>Next I started to play around with the code thinking that I was improperly handling the lifecycle of some of the properties of several classes. I changed around some lazy properties and made certain other things optional, but this was just wheel spinning.</p>
-
-<p>I backed up and reviewed the callstack again. The last frame before explosion was now at <code>swift_unknownWeakRelease</code> in a helper class referenced by the offending ViewController. This helper had this property:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
-</span><span class='line'>private unowned let searchBar: UISearchBar</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I then re-checked the <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">documentation for <code>unowned</code></a>.</p>
-
-<blockquote><p>If you try to access an unowned reference after the instance that it references is deallocated, you will trigger a runtime error. Use unowned references only when you are sure that the reference will always refer to an instance.</p>
-
-<p>Note also that Swift guarantees your app will crash if you try to access an unowned reference after the instance it references is deallocated. You will never encounter unexpected behavior in this situation. Your app will always crash reliably, although you should, of course, prevent it from doing so.</p></blockquote>
-
-<p>That <code>searchBar</code> was originally defined as an <code>IBOutlet</code> on the ViewController:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// ViewController.swift
-</span><span class='line'>@IBOutlet weak var searchBar: UISearchBar!</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The lights turned on. <em>Of course</em> it was crashing. An outlet that&rsquo;s a weak property can and will be deallocated when the controller referencing it is no longer visible. I forgot about that when I created the other class to manage certain characteristics about that search bar. So, the <code>searchBar</code> was released at some point, and when the helper was next called (in deallocation) part of its representation in memory was an <code>unowned</code> property that was nil, a state it cannot be in. Thus, <code>EXC_BAD_ACCESS</code>.</p>
-
-<p>The solution was simple, I still didn&rsquo;t want <code>SearchBarHelper</code> to have ownership of the <code>searchBar</code>, so I changed it to a weak optional.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
-</span><span class='line'>private weak var searchBar: UISearchBar?</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Success!</p>
-
-<p>Takeaway lesson: read and understand the documentation. Memory and how it is handled is still something that absolutely must be understood if you want to manage it well.</p>
 
 		
 		

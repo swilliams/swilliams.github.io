@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-08-09T21:09:53-07:00</updated>
+  <updated>2015-11-05T08:57:13-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Good, the Bad, and the Ugly with the Apple TV]]></title>
+    <link href="http://blog.swilliams.me/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv/"/>
+    <updated>2015-11-05T08:28:09-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv</id>
+    <content type="html"><![CDATA[<p>A new Apple device! I&rsquo;m required to have opinions. Here they are in a contrived fashion!</p>
+
+<h1>The Good</h1>
+
+<p>Great UI and aesthetics.</p>
+
+<p>It&rsquo;s faster.</p>
+
+<p>Scrubbing through video is significantly improved. I almost don&rsquo;t believe how much better it is.</p>
+
+<p>Siri works as advertised. Accuracy, speed, and results are all great.</p>
+
+<p>All the potential!</p>
+
+<h1>The Bad</h1>
+
+<p>Siri doesn&rsquo;t index content stored in iTunes libraries on the network. So to get to all the DVDs and Blu-rays I&rsquo;ve ripped I have to use the same UI as the old Apple TV.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>Siri doesn&rsquo;t work with Music. Not for music libraries on the network, iTunes Match, or Apple Music. I really don&rsquo;t understand this one, I&rsquo;m hoping it comes soon.</p>
+
+<p>Only one remote can be paired with it. This makes gaming tricky. Hoping this changes soon too.</p>
+
+<h1>The Ugly</h1>
+
+<p>Passwords. This has already been discussed at length everywhere. One thought I had would be that it&rsquo;d be cool to enter passwords via Siri. Y&#8217;know, like that one scene in TNG:</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/oNrWgjh9tnU" frameborder="0" allowfullscreen></iframe>
+
+
+<p>(A Touch ID powered remote would probably be better)</p>
+
+<p>App discoverability. It&rsquo;s really bad, and I don&rsquo;t know how they&rsquo;re going to fix it. Top Charts was just added, which is better than nothing, but if someone wants to market their app anywhere online they have no way to provide a link to it! &ldquo;Go to the app store, search for s-o-m-e-t-h-i&hellip;&rdquo; is all kinds of awful.</p>
+
+<p>Overall I like it. I have almost no reason to use the Roku now<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>I do not have Plex, so I don&#8217;t know if that circumvents it. If it does, I may grab it asap.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>Other than the rare times there&#8217;s something on Amazon Video that isn&#8217;t anywhere else.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
@@ -838,53 +892,6 @@
 <p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
 
 <p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[O Christmas Roast]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/29/o-christmas-roast/"/>
-    <updated>2014-12-29T15:55:42-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/29/o-christmas-roast</id>
-    <content type="html"><![CDATA[<p><em>I posted this on Twitter. Here it is for posterity.</em></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br />
-O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br /></p>
-
-<p>Inside the oven you shall go<br />
-So that the juice within you flows<br />
-O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br />
-O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br /></p>
-
-<p>The thermometer will pierce your side<br />
-Until your temp reads 125<br />
-O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll set our teeth upon thee!<br />
-O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll set our teeth upon thee!<br /></p>
-
-<p>Two yards of plastic will we turn<br />
-To avoid a chilling freezer burn<br />
-O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll save you for another meal<br /></p>
-
-<p>Each tasty bite<br />
-Each dab of meat<br />
-No other bite will fill my cheeks<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Within our guts digesting<br />
-Within our guts digesting<br /></p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Appletv | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/appletv/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2015-11-05T08:57:13-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Good, the Bad, and the Ugly With the Apple TV]]></title>
+    <link href="http://blog.swilliams.me/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv/"/>
+    <updated>2015-11-05T08:28:09-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv</id>
+    <content type="html"><![CDATA[<p>A new Apple device! I&rsquo;m required to have opinions. Here they are in a contrived fashion!</p>
+
+<h1>The Good</h1>
+
+<p>Great UI and aesthetics.</p>
+
+<p>It&rsquo;s faster.</p>
+
+<p>Scrubbing through video is significantly improved. I almost don&rsquo;t believe how much better it is.</p>
+
+<p>Siri works as advertised. Accuracy, speed, and results are all great.</p>
+
+<p>All the potential!</p>
+
+<h1>The Bad</h1>
+
+<p>Siri doesn&rsquo;t index content stored in iTunes libraries on the network. So to get to all the DVDs and Blu-rays I&rsquo;ve ripped I have to use the same UI as the old Apple TV.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>Siri doesn&rsquo;t work with Music. Not for music libraries on the network, iTunes Match, or Apple Music. I really don&rsquo;t understand this one, I&rsquo;m hoping it comes soon.</p>
+
+<p>Only one remote can be paired with it. This makes gaming tricky. Hoping this changes soon too.</p>
+
+<h1>The Ugly</h1>
+
+<p>Passwords. This has already been discussed at length everywhere. One thought I had would be that it&rsquo;d be cool to enter passwords via Siri. Y'know, like that one scene in TNG:</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/oNrWgjh9tnU" frameborder="0" allowfullscreen></iframe>
+
+
+<p>(A Touch ID powered remote would probably be better)</p>
+
+<p>App discoverability. It&rsquo;s really bad, and I don&rsquo;t know how they&rsquo;re going to fix it. Top Charts was just added, which is better than nothing, but if someone wants to market their app anywhere online they have no way to provide a link to it! &ldquo;Go to the app store, search for s-o-m-e-t-h-i&hellip;&rdquo; is all kinds of awful.</p>
+
+<p>Overall I like it. I have almost no reason to use the Roku now<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>I do not have Plex, so I don't know if that circumvents it. If it does, I may grab it asap.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>Other than the rare times there's something on Amazon Video that isn't anywhere else.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>
