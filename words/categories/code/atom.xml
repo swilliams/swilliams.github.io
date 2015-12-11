@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Code | Scott Williams]]></title>
+  <title><![CDATA[Category: Code, | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-11-05T08:57:13-07:00</updated>
+  <updated>2015-12-11T11:25:51-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,202 +14,47 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
-    <link href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/"/>
-    <updated>2015-08-09T19:40:43-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken</id>
-    <content type="html"><![CDATA[<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
+    <title type="html"><![CDATA[Private Extensions in Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/"/>
+    <updated>2015-12-11T11:08:59-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
 
-<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
+<p><code>swift
+private class Foo {
+}
+</code></p>
 
-<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
+<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
+
+<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
 
 <p>```swift
-import UIKit
-import Photos</p>
+private extension HKQuantitySample {</p>
 
-<p>// I like to typealias my blocks, makes for easier reading
-typealias ImageCallback = (UIImage? &ndash;> Void)</p>
-
-<p>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {</p>
-
-<pre><code>let fetchOptions = PHFetchOptions()
-fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+<pre><code>var quantityInOunces: Double? { /* blah */ }
 </code></pre>
 
-<p>//        fetchOptions.fetchLimit = 1 // Available in iOS 9</p>
+<p>}</p>
 
-<pre><code>if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
-    if let asset = fetchResult.firstObject as? PHAsset {
-        let manager = PHImageManager.defaultManager()
-        let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
-        manager.requestImageForAsset(asset,
-            targetSize: targetSize,
-            contentMode: .AspectFit,
-            options: nil,
-            resultHandler: { image, info in
-            imageCallback(image)
-        })
-    } else {
-        imageCallback(nil)
-    }
+<p>class HealthKitManager {</p>
+
+<pre><code>func doStuff() {
+    // Calculate a bunch of ounces easy peasy.
 }
 </code></pre>
 
 <p>}
 ```</p>
 
-<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
-
-<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
-
-<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
-
-<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
-
-<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
-
-<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
-
-<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Basic GitHub Workflow for Collaboration]]></title>
-    <link href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/"/>
-    <updated>2015-06-30T12:16:16-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration</id>
-    <content type="html"><![CDATA[<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
-
-<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
-
-<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
-
-<h2>Create an Organization</h2>
-
-<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
-
-<h2>Everyone Forks from the Organization</h2>
-
-<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
-
-<h2>Clone Your Fork</h2>
-
-<p>Now get your local copy.</p>
-
-<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
-
-<h2>Set up Remotes</h2>
-
-<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
-
-<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
-
-<h2>Work in Branches</h2>
-
-<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
-
-<p><code>git checkout -b feature-abc</code></p>
-
-<h2>Push Branches to Origin</h2>
-
-<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
-
-<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
-
-<h2>Create a Pull Request</h2>
-
-<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
-
-<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
-
-<h2>Someone Else Reviews the Pull Request</h2>
-
-<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
-
-<h2>Rules for the Road</h2>
-
-<ol>
-<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
-<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
-<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
-<li>Keep branches small. Just reiterating it again.</li>
-<li>There are exceptions to every rule. Use them intelligently.</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
-    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
-    <updated>2015-05-17T13:37:51-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
-    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
-
-<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
-
-<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
-    <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
-    <updated>2014-12-08T14:04:40-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
-    <content type="html"><![CDATA[<p><strong>January</strong>: &ldquo;We just had our biggest sales quarter ever!&rdquo; &ndash; Apple, adding another $20B to their bank account.</p>
-
-<p><strong>April</strong>: Speculation of what&rsquo;s gonna be in the next version of iOS.</p>
-
-<p><strong>June</strong>: WWDC. New things! Wow! Ideas abound! Flurries of productivity. &ldquo;Guys, I think Apple&rsquo;s playing nicer with developers now!&rdquo; &ndash; some people.</p>
-
-<p><strong>July</strong>: Wow, this beta is really beta.</p>
-
-<p><strong>September</strong>: iOS Next ships! New iPhone! Ship your app! Bugs!</p>
-
-<p><strong>October</strong>: Weird rejections that don&rsquo;t make any sense.</p>
-
-<p><strong>December</strong>: Blog posts and tweets about how Apple is screwing themselves with the byzantine app review process.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Some rejections are overturned.</p>
-
 <div class="footnotes">
   <ol>
     <li class="footnote" id="fn:1">
-  <p><a href="http://www.panic.com/blog/transmit-ios-1-1-1/">You are here.</a></p>
+  <p>Couldn't think of a better word, but yeah I'm regular Vasco de Gama.</p>
 </li>
   </ol>
 </div>
 
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dealing With Xcode and Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/"/>
-    <updated>2014-10-30T10:46:09-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift</id>
-    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/09/10/thoughts-on-swift/">I like Swift</a>. But Xcode&rsquo;s support of Swift is&hellip; lacking (to be polite).</p>
-
-<p>My biggest woe is that code completion up and vanishes in projects. This is especially problematic when dealing with Cocoa libraries because method names tend to be verbose and descriptive. I find myself thinking &ldquo;I know it&rsquo;s called <a href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/UINavigationController_Class/index.html#//apple_ref/occ/instm/UINavigationController/popToRootViewControllerAnimated:">popToRoot-something-somthing</a> and was it on UIViewController or the navigationController?&rdquo;. What would&rsquo;ve taken two seconds of poking through code-completion to figure that out turned into a solid minute of searching documentation. Multiply this every time you can&rsquo;t explicitly remember every part of a method call (and spell it correctly) and tasks that normally take an hour are now a significant part of a day.</p>
-
-<p>The tools that Apple provides are now hindering development. I&rsquo;m not alone in that sentiment. On Apple&rsquo;s developer forums (account needed to view) there are a few threads with names like <a href="https://devforums.apple.com/message/1067119#1067119">&ldquo;Can SourceKit possibly crash more often on a Swift project?&rdquo;</a> and <a href="https://devforums.apple.com/thread/248397?start=0&amp;tstart=0">&ldquo;Xcode 6.1b3 Swift editing is becoming very difficult&rdquo;</a>.</p>
-
-<p>One of those threads recommends deleting two folders: <code>~/Library/Developer/Xcode/DerivedData</code> and <code>~/Library/Caches/com.apple.dt.Xcode</code>. This does the job for me. It happens often enough that I created a hot key for it with <a href="http://www.keyboardmaestro.com/main/">Keyboard Maestro</a>.</p>
-
-<p><figure class="center"></p>
-
-<pre><code>&lt;img alt="Keyboard Maestro Screenshot" src="http://blog.swilliams.me/images/assets/xcode-swift-maestro.png"&gt;
-&lt;figcaption&gt;This will yell at you if those folders don't exist, but I can live with that.&lt;/figcaption&gt;
-</code></pre>
-
-<p></figure></p>
-
-<p>You could do something similar with <a href="http://www.alfredapp.com/">Alfred</a> or any other launcher type of app.</p>
-
-<p>It&rsquo;s kind of sad that I have to create this kind of shortcut to maintain my sanity, but I remain hopeful. If Apple is betting big on Swift (and I think they are), then they&rsquo;ll <em>have</em> to improve the tool support for it.</p>
 ]]></content>
   </entry>
   

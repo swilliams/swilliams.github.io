@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Category: code, - Scott Williams</title>
+	<title>Private Extensions in Swift - Scott Williams</title>
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Category: code,">
+	<meta name="description" content="Private Extensions in Swift Dec 11th, 2015 Here&rsquo;s a quickie. In Swift, the default accessor for strcutures is internal, meaning that it is &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Scott Williams" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://blog.swilliams.mewords/categories/code/">
+	<link rel="canonical" href="http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -124,29 +124,90 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner">
-	
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Private Extensions in Swift</h1>
+    <div class="date">
 
 
-	
-	
-	<section class="archives"><h1 class="year">2015</h1>
 
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<span class="date"><time datetime="2015-12-11T11:08:59-07:00" itemprop="datePublished">Dec 11</time></span>
-		<br>
-		<span class="tags">
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-11T11:08:59-07:00" data-updated="true" itemprop="datePublished">Dec 11<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody"><p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">class</span> <span class="n">Foo</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
+
+<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">extension</span> <span class="n">HKQuantitySample</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">quantityInOunces</span><span class="p">:</span> <span class="n">Double</span><span class="o">?</span> <span class="p">{</span> <span class="cm">/* blah */</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">HealthKitManager</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">doStuff</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Calculate a bunch of ounces easy peasy.</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Couldn&#8217;t think of a better word, but yeah I&#8217;m regular Vasco de Gama.</p>
+</li>
+  </ol>
+</div>
+
+</div>
+    <div class="tags">Tags: 
 
 
 	<a class='category' href='/words/categories/code/'>code,</a>, <a class='category' href='/words/categories/swift/'>swift</a>
 
 
-</span>
-	    
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/12/11/private-extensions-in-swift/">Private Extensions in Swift</a></h1>
+</div>
+
 </article>
+
+	<!--<div class="share">-->
+	<!--<div class="addthis_toolbox addthis_default_style ">-->
+	<!---->
+	<!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_button_tweet"></a>-->
+	<!---->
+	<!---->
+	<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	<!--</div>-->
+  <!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>-->
+<!--</div>-->
+
 
 </div>
 			</div>

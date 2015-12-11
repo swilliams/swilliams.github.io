@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2015-11-05T08:57:13-07:00</updated>
+  <updated>2015-12-11T11:25:51-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Private Extensions in Swift]]></title>
+    <link href="http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/"/>
+    <updated>2015-12-11T11:08:59-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">class</span> <span class="n">Foo</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
+
+<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">extension</span> <span class="n">HKQuantitySample</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">quantityInOunces</span><span class="p">:</span> <span class="n">Double</span><span class="o">?</span> <span class="p">{</span> <span class="cm">/* blah */</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">HealthKitManager</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">doStuff</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Calculate a bunch of ounces easy peasy.</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Couldn&#8217;t think of a better word, but yeah I&#8217;m regular Vasco de Gama.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Good, the Bad, and the Ugly with the Apple TV]]></title>
@@ -847,51 +899,6 @@
   </ol>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Madness of Errors in Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift/"/>
-    <updated>2015-01-21T20:18:43-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift</id>
-    <content type="html"><![CDATA[<p>Let&rsquo;s take a common scenario. You are making an HTTP request and are checking the response for an error. If there is one, you&rsquo;d like to post a notification and let some error handler deal with it.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>    Alamofire.request(.GET, someURL).response { (request, response, data, error) in
-</span><span class='line'>        if error != nil {
-</span><span class='line'>            let userInfo = ["error": error]
-</span><span class='line'>            let nc = NSNotificationCenter.defaultCenter()
-</span><span class='line'>            nc.postNotificationName("HTTPERROR", object: nil, userInfo: userInfo)
-</span><span class='line'>        }
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Uh oh, there&rsquo;s a compiler error on the <code>userInfo</code> argument with the message &ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo;. Huh? <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNotificationCenter_Class/index.html#//apple_ref/occ/instm/NSNotificationCenter/postNotificationName:object:userInfo:"><code>postNotificationName</code> definitely allows for a <code>userInfo</code> parameter</a>. Maybe it&rsquo;s a hidden typing error? According to the docs <code>userInfo</code> is supposed to be an optional dictionary like of type: <code>[NSObject : AnyObject]</code>. My key is a String which is bridged from <code>NSString</code>, which is an <code>NSObject</code> and <code>NSError</code> is also an <code>AnyObject</code>, so what gives?</p>
-
-<figure class="center">
-    <img alt="Lying" src="http://blog.swilliams.me/images/assets/xcode-lying-cat.jpg">
-    <figcaption></figcaption>
-</figure>
-
-
-<p>After banging my head on the wall for a while I remembered that the <code>error</code> variable from <a href="https://github.com/Alamofire/Alamofire">AlamoFire</a> is an optional. Therefore, the correct declaration for <code>userInfo</code> is to unwrap the error:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let userInfo = ["error": error!]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And voilà, no more compilation errors.</p>
-
-<p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
-
-<p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
 ]]></content>
   </entry>
   

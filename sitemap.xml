@@ -1179,8 +1179,12 @@
         <lastmod>2015-11-05T08:52:07-07:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/</loc>
+        <lastmod>2015-12-11T11:25:36-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2015-11-05T08:52:07-07:00</lastmod>
+        <lastmod>2015-12-11T11:25:36-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1188,7 +1192,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2015-11-05T08:52:07-07:00</lastmod>
+        <lastmod>2015-12-11T11:25:36-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
