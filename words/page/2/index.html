@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Two Factor Authentication for GitHub Apr 1st, 2015 In the interest of security I&rsquo;ve started to turn on Two Factor Authentication (aka 2FA) for &hellip;">
+	<meta name="description" content="Retroactively Creating a Core Data Migration Apr 2nd, 2015 Let&rsquo;s take a completely hypothetical situation where you&rsquo;re developing an app &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,98 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/04/02/retroactively-creating-a-core-data-migration/" itemprop="url">Retroactively Creating a Core Data Migration</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-02T10:15:15-07:00" data-updated="true" itemprop="datePublished">Apr 2<span>nd</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Let&rsquo;s take a <em>completely hypothetical</em> situation where you&rsquo;re developing an app that uses <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> for the local storage and have a bunch of beta testers eagerly awaiting the next version before your product launch. Your previous attitude towards the data model was something along the lines of <em>&ldquo;It&rsquo;s still pre-1.0, I&rsquo;m not bothering with migrations yet, just delete and reinstall, c&#8217;mon.&rdquo;</em> However, you forgot that requiring the beta testers to deal with that isn&rsquo;t exactly a friendly experience for them, and you made at least three changes to the data model since your last Beta release. Now if they run the app it&rsquo;ll crash immediately because the database isn&rsquo;t in sync with the data model.</p>
+
+<p>Oops.</p>
+
+<p>Usually when you make changes to the data model, you do so by creating a new version and telling the <code>NSPersistentStoreCoordinator</code> to perform lightweight migrations, <em>then</em> make your changes. Adding a new version of the data model after changes were made accomplishes nothing. Fortunately, you&rsquo;re not screwed. We&rsquo;re going to jump back in time, grab the old data model then pretend it was there all along.</p>
+
+<p>Your <code>MyProject.xcdatamodeld</code> file is actually a directory. If you browse it in the Finder or Terminal, you&rsquo;ll see more folders inside it, one for each version of your model. Inside those folders is a file simply called <code>contents</code>. This is an XML representation of the editor you see in Xcode.</p>
+
+<h3>Step 1 — Find the data model from the last beta version you released</h3>
+
+<p>Look through the history the <code>xcdatamodeld</code> file in your source control system <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. Hopefully you&rsquo;ve been tagging all of your releases and can just checkout that specific one.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git checkout 1.0-beta4</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If not, you can mess around with <code>git log</code> to figure out where to go. This snippet can help you see the commits for a single file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git log --pretty=format:'%h : %s' --graph -n 45 FILENAME</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, checkout the particular commit with the right version.</p>
+
+<h3>Step 2 — Copy the contents file</h3>
+
+<p>Find  the <code>contents</code> file within your <code>.xcdatamodeld</code> file. Copy all that XML somewhere safe.</p>
+
+<p>Go back to your <code>HEAD</code> or wherever you were.</p>
+
+<h3>Step 3 — Create the new version of the data model</h3>
+
+<p>If you didn&rsquo;t know, the process is:</p>
+
+<ul>
+<li>Open the <code>.xcdatamodeld</code> file in Xcode</li>
+<li>In the Editor menu, click &ldquo;Add Model Version&rdquo;. Follow the instructions.</li>
+<li>Open the File Inspector for your <code>.xcdatamodeld</code>. There is a Model Version segment in the inspector, make sure it&rsquo;s on the version you just created.</li>
+</ul>
+
+
+<p>Now you have two data models that are identical. Let&rsquo;s change the history on the original one.</p>
+
+<h3>Step 4 — Change history</h3>
+
+<p>Close Xcode. That&rsquo;s not mandatory but I&rsquo;ve had it crash when mucking about with these files, and it&rsquo;s just not worth the hassle.</p>
+
+<p>Open the <code>contents</code> file for the <strong>original</strong> <code>.xcdatamodeld</code> in a text editor.</p>
+
+<p>Paste in the version you created in Step 2.</p>
+
+<p>Open Xcode. If you haven&rsquo;t set up the <code>NSPersistentStoreCoordinator</code> to run migrations, do so now. <a href="http://www.raywenderlich.com/27657/how-to-perform-a-lightweight-core-data-migration">This tutorial is pretty good</a>.</p>
+
+<p>Now when the app runs, the migrations update the users&#8217; data and keep things from crashing.</p>
+
+<p>Note: This is for <em>lightweight</em> migrations. Custom migrations are more complicated. <a href="http://www.objc.io/issue-4/core-data-migration.html">objc.io</a> has a great article on these. I don&rsquo;t know if you can play fast and loose with the data model file like you can here though.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>You ARE using Source Control, right? Sometimes new developers will ask me why they need Source Control. I usually parrot the usual answers - branching is good, undo mistakes, tool integration, etc - but situations like this are where it really shines. Without source control here, you&#8217;d be hosed. You&#8217;d have to manually fix the XML in the contents file, which would be monumentally hard or altogether impossible depending on what changed and how good your memory is.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -599,57 +691,6 @@
 <p>We just released our <a href="http://www.fronttoback.co/podcast/2015/1/27/6-practice-kid">6th(!) episode</a>. I&rsquo;ve really enjoyed making this show and have learned more and more about audio editing. This time around I used some <a href="http://en.wikipedia.org/wiki/Dynamic_range_compression">compression</a> to make our voices sound better.</p>
 
 <p>Please check them out!</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/01/27/surface-marketing/" itemprop="url">Surface Marketing</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-27T19:26:01-07:00" data-updated="true" itemprop="datePublished">Jan 27<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>The <a href="http://www.microsoft.com/surface/en-us">Surface</a> was never the barnburner that Microsoft hoped it would be. People have been <a href="http://www.deccanchronicle.com/140629/technology-mobiles-and-tabs/article/microsoft-discontinue-surface-tablet">predicting</a> <a href="http://arstechnica.com/gadgets/2014/08/surface-2-prices-slashed-hinting-at-discontinuation-or-replacement/">its demise</a> for the <a href="http://bgr.com/2014/10/09/microsoft-surface-pro-3/">last year</a>. It&rsquo;s suffered from <a href="https://www.youtube.com/watch?v=iqyTxiTKxgI">goofy advertising</a> and lately seems to be begging the masses to please think of it instead of an iPad, <a href="https://www.youtube.com/watch?v=1jP4O7rEHQ8">anything but an iPad, oh please</a>! <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-
-<p>I&rsquo;m certainly no Don Draper, but that&rsquo;s not gonna prevent my <del>ego</del> imagination to think of how I&rsquo;d do it instead. The idea is that the Surface apparently has a nice stylus/pen that can be used by artists. Penny Arcarde&rsquo;s <a href="http://www.penny-arcade.com/news/post/2013/10/28/surface-pro-2">Mike Krahulik has been a fan</a> and used them to draw their popular web comic. That&rsquo;s your angle right there. Now, not many people are artists that would benefit from a refined drawing interface, but plenty of people <em>fancy</em> themselves as such. Nike convinced you that sneakers with compressed air in them would make you Michael Jordan, why isn&rsquo;t Microsoft showing you that Surface would make you <a href="http://en.wikipedia.org/wiki/Jim_Lee">Jim Lee</a>?</p>
-
-<p>Here&rsquo;s your commercial: Camera fades in to reveal someone intently working on a Surface. They&rsquo;re sitting in a comfy chair, or on a couch, or some kind of hipster furniture. We don&rsquo;t see what&rsquo;s on the screen yet but we can see them concentrating and cranking away at <em>something</em> with the pen. Cut to the over-the-shoulder shot. We now see a painting/sketch/comic coming to life.</p>
-
-<p>Cut to closeups of the pen drawing right on the glass. There&rsquo;s no lag. The pen is able to draw with a fine point. There&rsquo;s obvious pressure sensitivity. (Things you pretty much can&rsquo;t do on an iPad, but without calling it by name.) They put the pen down and &ldquo;smudge&rdquo; things with their finger.</p>
-
-<p>Finally the art is done. The artist switches to their website and immediately publishes the work.</p>
-
-<p>Cut to a desk with the notorious Surface keyboard and a wireless mouse right next to it. The Surface clicks in to the keyboard, sits up on the kickstand and a modern 3D PC game (say, Far Cry 4) starts up (oh yeah, it&rsquo;s got an i5 and a GPU). Display the tagline: &ldquo;Make. Publish. Play.&rdquo;</p>
-
-<p>Wouldn&rsquo;t that be more interesting than breakdancing? Wouldn&rsquo;t that get you pumped up just a little bit? These days I&rsquo;m a Microsoft cynic, and that would at least get me to raise an eyebrow and <em>wish</em> my iPad could do something like that.</p>
-
-<p>If Apple is in fact <a href="http://9to5mac.com/2015/01/18/kgi-apple-likely-to-sell-stylus-accessory-alongside-12-inch-ipad-pro/">working on a stylus</a> that avenue will probably close.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>The funny thing is that out of all Apple&#8217;s products, the iPad is the one that has plateaued the most. Why are you aiming at that one?</p>
-</li>
-  </ol>
-</div>
-
 
 		
 		
