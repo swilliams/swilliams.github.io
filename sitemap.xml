@@ -1187,8 +1187,12 @@
         <lastmod>2016-05-05T11:01:11-07:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.swilliams.me/words/2016/05/15/introducing-gliphy/</loc>
+        <lastmod>2016-05-15T21:24:08-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2016-05-05T11:01:11-07:00</lastmod>
+        <lastmod>2016-05-15T21:24:08-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1196,7 +1200,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2016-05-05T11:01:11-07:00</lastmod>
+        <lastmod>2016-05-15T21:24:08-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>

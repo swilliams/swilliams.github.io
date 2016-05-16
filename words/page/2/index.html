@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Retroactively Creating a Core Data Migration Apr 2nd, 2015 Let&rsquo;s take a completely hypothetical situation where you&rsquo;re developing an app &hellip;">
+	<meta name="description" content="Half-baked Business Idea - Augmented Paintball/Airsoft/Laser Tag Apr 4th, 2015 Sometimes ideas pop into my head, and sometimes I think they&rsquo;re &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,123 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/04/04/half-baked-business-idea-augmented-paintball-slash-airsoft-slash-laser-tag/" itemprop="url">Half-baked Business Idea - Augmented Paintball/Airsoft/Laser Tag</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-04T14:08:14-07:00" data-updated="true" itemprop="datePublished">Apr 4<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p><em>Sometimes ideas pop into my head, and sometimes I think they&rsquo;re awesome. Most times though, they&rsquo;d require way more time and effort to implement properly than I have available. Since I&rsquo;ll never get around to making this myself, I&rsquo;ll just share it here.</em></p>
+
+<p>I was playing some <a href="http://www.teamfortress.com/">Team Fortress 2</a> a little while ago and enjoying myself when I had the epiphany, <em>you could do this in real life</em>. Or at least something similar<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>.</p>
+
+<p>Modern smartphones have very accurate GPS chips inside of them, such that things like <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html">geofencing</a> are possible<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>. Why not use that technology to add an additional layer of gameplay on top of things like paintball or airsoft? What if you could turn what is typically an unstructured free-for-all into a real-life tactical Capture the Flag game? Here&rsquo;s how I&rsquo;d do it.</p>
+
+<h3>Setup</h3>
+
+<p>The Creator creates a new game and divvies up players into teams, and assigns a Commander to each team. The Commander has special privileges (defined below).</p>
+
+<h3>The Map</h3>
+
+<figure class="center">
+    <img alt="The Map" src="/images/assets/halfbaked/01-Map.jpg">
+    <figcaption>Some desert</figcaption>
+</figure>
+
+
+<p>Take the strip of desert that you play in. The Creator defines the boundaries for the game. If a Player strays beyond those boundaries for more than, say 10 seconds, they&rsquo;re penalized.</p>
+
+<figure>
+    <img alt="Boundaries" src="/images/assets/halfbaked/02-Boundaries.jpg">
+    <figcaption>Drag to rearrange</figcaption>
+</figure>
+
+
+<p>Next up is defining team based boundaries.</p>
+
+<figure>
+    <img alt="Team Boundaries" src="/images/assets/halfbaked/03-TeamBoundaries.jpg">
+    <figcaption></figcaption>
+</figure>
+
+
+<p>Each team&rsquo;s Commander can setup their own map dependent points of interest: a base, the Flag, etc.</p>
+
+<h3>Gameplay</h3>
+
+<figure>
+    <img alt="Red Team" src="/images/assets/halfbaked/04-RedCommander.jpg">
+    <figcaption></figcaption>
+</figure>
+
+
+<p>The Commander can also see where each of their team members are currently located, and what directions they are going. The Commander can call out orders or instructions, set a rally point and draw directions on the map that will show up on Players devices.</p>
+
+<p>For Capture the Flag, the Flag could be another kind of device like an iBeacon tied to an actual flag. When the Flag is moved it sets off alarms for its team. Moving the other team&rsquo;s Flag back to your base scores points for your team.</p>
+
+<p>Other forms of gameplay can be defined here. If you want to have &ldquo;multiple lives&rdquo; the Commander can set the place you return to &ldquo;regenerate&rdquo;. Once the game starts, these places cannot be changed.</p>
+
+<h3>Communication</h3>
+
+<p>All communication would have to be done by some kind of bluetooth headset and microphone combination. All cues would have to be audio based to avoid having to stare at your screen all the time. Through this you&rsquo;d have:</p>
+
+<ul>
+<li>Open communication with your team</li>
+<li>Alerts from the game itself (&ldquo;You have left the playing field, you have 10 seconds to get back in&rdquo;, &ldquo;Now entering Blue Space&rdquo;, &ldquo;Your Flag has been taken&rdquo;, etc)</li>
+<li>Broadcast something to all Players (&ldquo;Game ends in 10 minutes&rdquo;)</li>
+</ul>
+
+
+<h3>After-game</h3>
+
+<p>When the game is over, players can view a replay and see all the movements and events from the game. This is similar to the Commander&rsquo;s view, but now everyone can see everything. This will let players review tactics and strategies for the next go-around.</p>
+
+<h3>Considerations and Potential Issues</h3>
+
+<p>Phones are fragile. They won&rsquo;t hold up very well to paintpalls or airsoft pellets. You can route around this by keeping them in a <a href="http://www.amazon.com/OtterBox-Defender-iPhone-Frustration-Packaging/dp/B00N1AFY1Q/ref=sr_1_2?ie=UTF8&amp;sr=1-2&amp;s=wireless&amp;keywords=otterbox%2Bdefender%2Biphone%2B6&amp;tag=thepetzoo-20&amp;qid=1428182286">protective case</a> and inside a deep pocket. The headset interaction becomes key since actually pulling out a phone and looking at it would be a good way to lose focus on the action and become a nice target for the other team. Now that smart watches are becoming a thing, these could also provide something useful, but again fragility would have to be considered.</p>
+
+<p>The Commander may have to use their device more often. I would assume they would be in more of a &ldquo;base&rdquo; or out of harm&rsquo;s way to allow this to happen. But hey, if General Patton was up close to enemy lines, then you can too I suppose.</p>
+
+<p>Battery is also an issue. Constant GPS and Network usage will suck a battery down in no time. I think a 100% charge on a modern phone would last long enough for a couple hours, but something like a <a href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%253Daps&amp;tag=thepetzoo-20&amp;field-keywords=mophie">Mophie</a> would be recommended.</p>
+
+<p>Lastly, networking could be tricky, especially in remote locations. Having something covered in wifi would ease this restriction (and help battery life) but those logistics could be a bear.</p>
+
+<h3>In Conclusion</h3>
+
+<p>As it says on the box, this is half-baked. I don&rsquo;t even think you&rsquo;d be able to create much of a business out of it, but goshdarnit it would be fun to play. If someone actually did make something like this, I&rsquo;d be all over it, and demand only a modest stake in the business.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>If you know how to double jump in real life, I&#8217;m all ears.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>Geofencing means that something happens when your phone enters or exits a pre-defined boundary. For example, you could have your lights automatically turn on when you get home.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -649,48 +766,6 @@
 <p>Now that I&rsquo;ve released a few episodes of <a href="http://www.fronttoback.co/">my own podcast</a> I&rsquo;ve seen the other side of the microphone. Talking and thinking at the same time is surprisingly difficult after say, 8 words in. I&rsquo;ll find myself stumbling over witty quips and forgetting familiar things that had been otherwise seared into my memory.</p>
 
 <p>So, I have a teensy bit more empathy for Pete Carroll the day after <a href="http://grantland.com/the-triangle/super-bowl-new-england-patriots-seattle-seahawks/">an impressive Super Bowl Loss</a>. Yeah, he probably should&rsquo;ve run Marshawn Lynch on that one play, but I don&rsquo;t know if I would&rsquo;ve had the brain power to make a different decision with under 30 seconds left, in the 4th quarter, of the Super Bowl.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/01/28/podcast-appearances/" itemprop="url">Podcast Appearances</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-28T14:36:00-07:00" data-updated="true" itemprop="datePublished">Jan 28<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Podcasts are Important Business. Here&rsquo;s an update.</p>
-
-<h3>Better Know a Jackal</h3>
-
-<p>The [rabid] fans of the 5by5 podcast network are informally known as &ldquo;Jackals&rdquo;. One of said Jackals, <a href="http://twitter.com/mikebeasterfeld">Mike Beasterfeld</a> had the brilliant idea to create a <a href="http://www.jackals.us/better-know-a-jackal">podcast to interview us</a>. I made it onto <a href="http://www.jackals.us/better-know-a-jackal/28">episode 28</a>. It&rsquo;s a nice little bio that you can use to gather information to steal my identity.</p>
-
-<h3>Less Than Or Equal</h3>
-
-<p>I was a guest on episode 25 of <a href="http://twitter.com/aleen">Aleen Simms&rsquo;s</a> <a href="http://www.lessthanorequal.com/episodes/25">Less Than Or Equal</a> podcast. I had a great time talking with her and we chatted about maturity, growing up, and how having daughters changed me; specifically some specific incidents in my personal history that formed me into what I am today. Speaking of daughters&hellip;</p>
-
-<h3>Front to Back</h3>
-
-<p>We just released our <a href="http://www.fronttoback.co/podcast/2015/1/27/6-practice-kid">6th(!) episode</a>. I&rsquo;ve really enjoyed making this show and have learned more and more about audio editing. This time around I used some <a href="http://en.wikipedia.org/wiki/Dynamic_range_compression">compression</a> to make our voices sound better.</p>
-
-<p>Please check them out!</p>
 
 		
 		
