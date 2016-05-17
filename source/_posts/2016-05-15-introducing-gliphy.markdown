@@ -2,8 +2,8 @@
 layout: post
 title: "Introducing Gliphy"
 date: 2016-05-15 13:47:59 -0700
-comments: true
-categories: code, open-source
+comments: false
+categories: code swift open-source
 ---
 I'm very happy to introduce a new open source library that I've been building. It's called [Gliphy](https://github.com/tallwave/gliphy) and it makes implementing [Dynamic Type](https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html#//apple_ref/doc/uid/TP40009542-CH4-SW65) on iOS with Swift a breeze.
 
@@ -28,30 +28,30 @@ But there's a catch. If a user launches your app, then changes the font size, yo
 The other big downside is that you're limited to the system font. So, San Francisco on iOS 9 and Helvetica Neue on older versions. I like those fonts just fine, but sometimes you need to switch it up.
 
 ## BNRDynamicTextManager
-I first came across [Big Nerd Ranch's](https://www.bignerdranch.com/) [BNRDynamicTextManager](https://github.com/bignerdranch/BNRDynamicTypeManager) library and found it to be pretty useful. You still have to wire up each control (or use subclasses), and you're still stuck with the system font, but it handled all the notification watching for you. Here's a sample: 
+I first came across [Big Nerd Ranch's](https://www.bignerdranch.com/) [BNRDynamicTextManager](https://github.com/bignerdranch/BNRDynamicTypeManager) library and found it to be pretty useful. You still have to wire up each field (or use subclasses), and you're still stuck with the system font, but it handled all the notification watching for you. Here's a sample: 
 
 ```objc
 [[BNRDynamicTypeManager sharedInstance] watchLabel:label
                                          textStyle:UIFontTextStyleBody];
 ```
 
-The library was nice and small and easy to understand<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>, which got me thinking.
+The library was lightweight and easy to understand<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>, which got me thinking.
 
 ## Gliphy
-I decided to port BNRDynamicTextManager to Swift and see if I could add some functionality to it. Porting it wasn't a big deal, although I made a couple of changes to better match Swift's idioms.
+I decided to port BNRDynamicTextManager to Swift and see if I could add some functionality to it. Porting it wasn't a big deal, although I made a couple of changes to better match Swift's idioms. I then added a couple of nice features on top.
 
 **Big Feature 1 — Custom Fonts**<br />
-Then, I added parameters to the watcher methods to take a custom font:
+Watcher methods can take the name of a custom font:
 
 ```swift
 DynamicTypeManager.sharedInstance.watchLabel(titleLabel,
                                              textStyle: UIFontTextStyleTitle1,
                                              fontName: "MarkerFelt-Thin")
 ```
-This will apply the font size of the "Headline" style to your label, but keep the glorious MarkerFelt font.
+This will apply the font size of the "Headline" style to your label, but keep the glorious MarkerFelt font. If the `fontName` is not associated with an installed font, it will fall back to the system font.
 
 **Big Feature 2 — Custom Styles**<br />
-iOS 7 brought us six text styles, and iOS 9 brought four more. They cover a decent range of use cases, but sometimes you still want your own. You can do that with the `DynamicFontRegistry` class:
+iOS 7 brought us six text styles, and iOS 9 brought four more<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>. They cover a decent range of use cases, but sometimes you still want your own. You can do that with the `DynamicFontRegistry` class:
 
 ```swift
 // This could be in AppDelegate, some custom Theme class, or wherever
@@ -59,7 +59,7 @@ DynamicFontRegistry.registry.addTextStyle("UIFontTextStyleReallyReallyBigTitle",
                                           scaledFrom: UIFontTextStyleHeadline,
                                           byFactor: 4)
 ```
-In order to keep with the feel of how Dynamic Type works, you pick a style to serves as a base reference for the new one and then scale it from there. That way you don't hardcode a point size. You can then watch it the same way you would before:
+In order to keep with the feel of how Dynamic Type works, you pick a style to serve as a base reference for the new one and then scale it from there. That way you don't hardcode a point size. You can then watch it the same way you would before:
 
 ```swift
 DynamicTypeManager.sharedInstance.watchLabel(titleLabel, 
@@ -68,7 +68,7 @@ DynamicTypeManager.sharedInstance.watchLabel(titleLabel,
 ```
 
 **Big Feature 3 — Global Styles**<br />
-I liked how it was working now, but it was still a long process to cover all the text based views that could be in an app. I wanted a solution that could make it super easy to handle the 90% scenario. Enter the `StyleWatcher` and `StyleConfig` constructs. The `StyleWatcher` will recursively examine each subview in a parent view and add them to the `DynamicTypeManager` if they have a text style associated with them. That way you can set up the UI within Interface Builder and remove an entire swath of code. Additionally, you can set a global style that the watcher will use to find your custom font (or style).
+I liked how it was working now, but it was still a long process to cover all the text based views that could be in an app. I wanted a solution that would make it super easy to handle the 90% scenario. Enter the `StyleWatcher` and `StyleConfig` constructs. The `StyleWatcher` will recursively examine each subview in a parent view and watch them with the `DynamicTypeManager` if they have a text style associated with them. That way you can set up the text-styles solely UI within Interface Builder and remove an entire swath of code. Additionally, you can set a global style that the watcher will use to find your custom font (or style).
 
 ```swift
 // AppDelegate
@@ -92,7 +92,7 @@ And the magic will happen.
 
 You can customize that process too. The `watchViews` method can take its own `StyleConfig` as well, allowing you to define multiple different styles and applying them where necessary.
 
-I'm pretty happy with the way Gliphy turned out. There are some downsides though. Attributed strings aren't handled at all, and due to their nature, they probably will never be. It only watches for four kinds of views, labels, buttons, textfields, and textviews, (plus their subclasses) and is a little difficult to extend beyond that.
+I'm pretty happy with the way Gliphy turned out. The [code](https://github.com/tallwave/gliphy) is pretty straightforward too; no mind bending swiftisms required. There are some downsides though. Attributed strings aren't handled at all, and due to their nature, they probably will never be. Gliphy only watches four kinds of views: labels, buttons, textfields, and textviews, (plus their subclasses) and is a little difficult to extend beyond that.
 
 All said though, it should make supporting Dynamic Type something more than an afterthought in your apps.
 
@@ -104,6 +104,22 @@ All said though, it should make supporting Dynamic Type something more than an a
 </li>
 <li class="footnote" id="fn:2">
   <p>I raise my glass to <a href="https://github.com/jgallagher">jgallagher</a> for that.</p>
+</li>
+<li class="footnote" id="fn:3">
+  <p>Here they are:
+  <ul>
+    <li>UIFontTextStyleHeadline</li>
+    <li>UIFontTextStyleSubheadline</li>
+    <li>UIFontTextStyleBody</li>
+    <li>UIFontTextStyleFootnote</li>
+    <li>UIFontTextStyleCaption1</li>
+    <li>UIFontTextStyleCaption2</li>
+    <li>UIFontTextStyleTitle1</li>
+    <li>UIFontTextStyleTitle2</li>
+    <li>UIFontTextStyleTitle3</li>
+    <li>UIFontTextStyleCallout</li>        
+  </ul>
+  </p>
 </li>
   </ol>
 </div>
