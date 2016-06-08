@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2016-06-07T13:40:16-07:00</updated>
+  <updated>2016-06-08T13:50:28-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Apps I Use and if they'd Work as a Subscription]]></title>
+    <link href="http://blog.swilliams.me/words/2016/06/08/apps-i-use-and-if-theyd-work-as-a-subscription/"/>
+    <updated>2016-06-08T13:48:04-07:00</updated>
+    <id>http://blog.swilliams.me/words/2016/06/08/apps-i-use-and-if-theyd-work-as-a-subscription</id>
+    <content type="html"><![CDATA[<p>Apps on my home screen that I use most often and my opinion if they&rsquo;d be appropriate for the <a href="https://developer.apple.com/app-store/subscriptions/whats-new/">new subscription service Apple is rolling out</a>.</p>
+
+<ul>
+<li><a href="https://geo.itunes.apple.com/us/app/heartwatch.-view-get-notified/id1062745479?mt=8">Heartwatch</a> — probably not</li>
+<li><a href="https://geo.itunes.apple.com/us/app/runkeeper-gps-running-walk/id300235330?mt=8">Runkeeper</a> — already has a <a href="https://runkeeper.com/go?utm_campaign=gogeneral&amp;utm_medium=web&amp;pchannel=web.mark.nav&amp;utm_source=homepage">separate subscription service</a></li>
+<li><a href="https://geo.itunes.apple.com/us/app/human-activity-tracker-walking/id692721875?mt=8">Human</a> — already has a separate subscription service</li>
+<li><a href="https://geo.itunes.apple.com/us/app/addapp-insights/id893111432?mt=8">Addapp Insights</a> — if they beefed their analysis up, maybe</li>
+<li><a href="https://geo.itunes.apple.com/us/app/activity++/id1089666978?mt=8">Activity++</a> — no</li>
+<li><a href="https://geo.itunes.apple.com/us/app/pedometer++/id712286167?mt=8">Pedometer++</a> — no</li>
+<li><a href="https://geo.itunes.apple.com/us/app/fantastical-2-for-ipad-calendar/id830708155?mt=8">Fantastical</a> — no</li>
+<li><a href="https://geo.itunes.apple.com/us/app/carrot-weather-talking-forecast/id961390574?mt=8">Carrot Weather</a> — no</li>
+<li><a href="https://geo.itunes.apple.com/us/app/simplenote/id289429962?mt=8">Simplenote</a> — had a <a href="https://simplenote.com/premium/">separate subscription service</a>, but it&rsquo;s on hold for now. I bet this news will change that.</li>
+<li><a href="https://geo.itunes.apple.com/us/app/unread-rss-news-reader/id911364254?mt=8">Unread</a> — piggyback&rsquo;s onto other subscription services, but doesn&rsquo;t have its own built-in</li>
+<li><a href="https://geo.itunes.apple.com/us/app/1password-password-manager/id568903335?mt=8">1Password</a> — already has a <a href="https://1password.com/families/">family</a> or <a href="https://1password.com/teams/">organization</a> plan</li>
+<li><a href="https://geo.itunes.apple.com/us/app/spark-love-your-email-again/id997102246?mt=8">Spark</a> — no</li>
+<li><a href="https://geo.itunes.apple.com/us/app/calorie-counter-diet-tracker/id341232718?mt=8">MyFitnessPal</a> — already has a <a href="http://blog.myfitnesspal.com/introducing-myfitnesspal-upgrade/">separate subscription service</a></li>
+<li><a href="https://geo.itunes.apple.com/us/app/paprika-recipe-manager-for/id406732590?mt=8">Paprika</a> — yes, though they already provide a sync service free of charge (via iCloud perhaps?)</li>
+<li><a href="https://geo.itunes.apple.com/us/app/day-one-2-diary-+-journal/id1044867788?mt=8">Day One</a> — yes, though they already provide a sync service free of charge</li>
+<li><a href="https://geo.itunes.apple.com/us/app/tweetbot-4-for-twitter/id1018355599?mt=8">Tweetbot</a> — not with the current feature set</li>
+<li><a href="https://geo.itunes.apple.com/us/app/overcast-podcast-player/id888422857?mt=8">Overcast</a> — I&rsquo;m betting <a href="https://marco.org/">Marco</a> is already working on integrating the subscription system into Overcast.</li>
+</ul>
+
+
+<p>I wonder how many, if any, will consider switching an existing subscription service to one built into Apple&rsquo;s systems. I wonder how many, if any, companies will <a href="http://mjtsai.com/blog/2016/04/06/textexpander-6-and-textexpander-com/">rush</a> into subscription without really thinking it through and angering all their users. There are a whole lot of economic factors at play to consider before doing that.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[One Year of Getting Healthy]]></title>
@@ -1101,46 +1133,6 @@ I liked how it was working now, but it was still a long process to cover all the
 <p>We haven&rsquo;t had to think about that much in the last few decades because quality of life has been increasing across almost all measures in a significant way, and that has led to a comfortable complacency. But here and there throughout history, we&rsquo;ll occasionally come across these periods where governments think more about what they &ldquo;can&rdquo; do rather than what they &ldquo;should&rdquo; do, and what is lawful will become increasingly distinct from what is moral.</p>
 
 <p>In such times, we&rsquo;d do well to remember that at the end of the day, the law doesn&rsquo;t defend us; we defend the law. And when it becomes contrary to our morals, we have both the right and the responsibility to rebalance it toward just ends.</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Podcast Technology]]></title>
-    <link href="http://blog.swilliams.me/words/2015/02/18/podcast-technology/"/>
-    <updated>2015-02-18T08:32:31-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/02/18/podcast-technology</id>
-    <content type="html"><![CDATA[<p>You should listen to <a href="http://www.relay.fm/">Relay.fm&rsquo;s</a> new series on Inquisitive, <a href="http://www.relay.fm/inquisitive/27">&ldquo;Behind the App&rdquo;</a>. Myke opens the show with how the iPhone (and smartphones in general) helped bring podcasts to a larger audience. He&rsquo;s absolutely right.</p>
-
-<p>Before smartphones, you had to sync everything to an iPod with your computer before you could listen to it. For me, this usually happened at home, and if I forgot to plug in my iPod and sync it, I&rsquo;d go without new episodes for the day; a fate worse than death. Syncing an iPod at the office was usually out of the question. IT policy at the time disallowed connecting personal hardware to company PCs <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> and blacklisted many of the sites hosting the audio files anyway.</p>
-
-<p>I could live with the first issue, but I would go to great lengths to work around the latter one. Even though the experience wasn&rsquo;t as nice, downloading and listening to a podcast on my work PC was still something. Here&rsquo;s how:</p>
-
-<ul>
-<li>SSH into my Linux based web server</li>
-<li><a href="http://www.gnu.org/software/wget/manual/wget.html#Overview"><code>wget</code></a> the RSS feed</li>
-<li>Find the link to the newest mp3 file</li>
-<li><code>wget</code> the mp3</li>
-<li>Copy it into a folder publicly accessible on my server (this wasn&rsquo;t blocked by IT)</li>
-<li>Download it locally with my web browser (this was Windows and installing something like wget was also strictly verboten from IT)</li>
-<li>Listen</li>
-</ul>
-
-
-<p>Easy peesy lemon squeezey, right?<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup> Now, if I want to listen to a podcast, I open up <a href="https://overcast.fm/">Overcast</a> and see if there&rsquo;s anything new. The only thing I have to think about now if I want to download over my cellular connection or not.</p>
-
-<p>The future is good.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>For <em>very</em> good reason. God only knows what kind of malware you brought along with your external drive&#8230;</p>
-</li>
-<li class="footnote" id="fn:2">
-  <p>&#8220;OK&#8230; First I&#8217;ll access the secret military spy satellite that&#8217;s in a geosynchronous orbit over the Midwest. Then, I&#8217;ll ID the limo by the vanity plate &#8216;MR. BIGGG&#8217; and get his approximate position. Then, I&#8217;ll reposition the transmitter dish on the remote truck to 17.32 degrees east, hit WESTAR 4 over the Atlantic, bounce the signal down into the Azores, up to COMSAT 6, beam it back to SATCOM 2 transmitter number 137, and down on the dish on the back of Mr. Big&#8217;s limo&#8230; It&#8217;s almost too easy.&#8221; — <a href="http://www.imdb.com/title/tt0105793/">Garth Algar</a></p>
-</li>
-  </ol>
-</div>
-
 ]]></content>
   </entry>
   

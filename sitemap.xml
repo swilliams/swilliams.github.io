@@ -1195,8 +1195,14 @@
         <lastmod>2016-06-07T13:39:32-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.swilliams.me/words/2016/06/08/apps-i-use-and-if-theyd-work-as-a-subscription/
+        </loc>
+        <lastmod>2016-06-08T13:50:15-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.swilliams.me/blog/archives/</loc>
-        <lastmod>2016-06-07T13:39:32-07:00</lastmod>
+        <lastmod>2016-06-08T13:50:15-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/blog/categories/</loc>
@@ -1204,7 +1210,7 @@
     </url>
     <url>
         <loc>http://blog.swilliams.me/</loc>
-        <lastmod>2016-06-07T13:39:32-07:00</lastmod>
+        <lastmod>2016-06-08T13:50:15-07:00</lastmod>
     </url>
     <url>
         <loc>http://blog.swilliams.me/robots.txt</loc>
