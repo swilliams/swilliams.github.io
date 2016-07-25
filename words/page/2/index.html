@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Showing Your Screen to a Client Jun 18th, 2015 At some point in your career in technology, you&rsquo;re going to have to make some kind of &hellip;">
+	<meta name="description" content="Basic GitHub Workflow for Collaboration Jun 30th, 2015 When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +126,91 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/06/30/basic-github-workflow-for-collaboration/" itemprop="url">Basic GitHub Workflow for Collaboration</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-30T12:16:16-07:00" data-updated="true" itemprop="datePublished">Jun 30<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -705,62 +790,6 @@
   </ol>
 </div>
 
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/02/24/the-law-doesnt-defend-us-we-defend-the-law/" itemprop="url">The Law Doesn&#8217;t Defend Us; We Defend the Law</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-24T08:51:07-07:00" data-updated="true" itemprop="datePublished">Feb 24<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Recently, <a href="https://firstlook.org/theintercept/greenwald/">Glenn Greenwald</a>, <a href="http://en.wikipedia.org/wiki/Laura_Poitras">Laura Poitras</a>, and <a href="http://en.wikipedia.org/wiki/Edward_Snowden">Edward Snowden</a> took part in an <a href="http://www.reddit.com/r/iama">&lsquo;IAMA&rsquo;</a> <a href="http://www.reddit.com/r/IAmA/comments/2wwdep/we_are_edward_snowden_laura_poitras_and_glenn">converstation on Reddit</a>. It&rsquo;s a long one, and somewhere down the page, <a href="http://www.reddit.com/r/IAmA/comments/2wwdep/we_are_edward_snowden_laura_poitras_and_glenn/coup7ld">this question was asked</a>:</p>
-
-<blockquote><p>What&rsquo;s the best way to make NSA spying an issue in the 2016 Presidential Election? It seems like while it was a big deal in 2013, ISIS and other events have put it on the back burner for now in the media and general public. What are your ideas for how to bring it back to the forefront?</p></blockquote>
-
-<p>Funny how this seems to happen. Snowden gave a tremendous answer. There&rsquo;s too many great quotes to pull from his response, so I&rsquo;ll just copy/paste the <a href="http://www.reddit.com/r/IAmA/comments/2wwdep/we_are_edward_snowden_laura_poitras_and_glenn/courx1i">whole thing</a>.</p>
-
-<blockquote><p>This is a good question, and there are some good traditional answers here. Organizing is important. Activism is important.</p>
-
-<p>At the same time, we should remember that governments don&rsquo;t often reform themselves. One of the arguments in a book I read recently (Bruce Schneier, &ldquo;Data and Goliath&rdquo;), is that perfect enforcement of the law sounds like a good thing, but that may not always be the case. The end of crime sounds pretty compelling, right, so how can that be?</p>
-
-<p>Well, when we look back on history, the progress of Western civilization and human rights is actually founded on the violation of law. America was of course born out of a violent revolution that was an outrageous treason against the crown and established order of the day. History shows that the righting of historical wrongs is often born from acts of unrepentant criminality. Slavery. The protection of persecuted Jews.</p>
-
-<p>But even on less extremist topics, we can find similar examples. How about the prohibition of alcohol? Gay marriage? Marijuana?</p>
-
-<p>Where would we be today if the government, enjoying powers of perfect surveillance and enforcement, had &mdash; entirely within the law &mdash; rounded up, imprisoned, and shamed all of these lawbreakers?</p>
-
-<p>Ultimately, if people lose their willingness to recognize that there are times in our history when legality becomes distinct from morality, we aren&rsquo;t just ceding control of our rights to government, but our agency in determing thour futures.</p>
-
-<p>How does this relate to politics? Well, I suspect that governments today are more concerned with the loss of their ability to control and regulate the behavior of their citizens than they are with their citizens&#8217; discontent.</p>
-
-<p>How do we make that work for us? We can devise means, through the application and sophistication of science, to remind governments that if they will not be responsible stewards of our rights, we the people will implement systems that provide for a means of not just enforcing our rights, but removing from governments the ability to interfere with those rights.</p>
-
-<p>You can see the beginnings of this dynamic today in the statements of government officials complaining about the adoption of encryption by major technology providers. The idea here isn&rsquo;t to fling ourselves into anarchy and do away with government, but to remind the government that there must always be a balance of power between the governing and the governed, and that as the progress of science increasingly empowers communities and individuals, there will be more and more areas of our lives where &mdash; if government insists on behaving poorly and with a callous disregard for the citizen &mdash; we can find ways to reduce or remove their powers on a new &mdash; and permanent &mdash; basis.</p>
-
-<p>Our rights are not granted by governments. They are inherent to our nature. But it&rsquo;s entirely the opposite for governments: their privileges are precisely equal to only those which we suffer them to enjoy.</p>
-
-<p>We haven&rsquo;t had to think about that much in the last few decades because quality of life has been increasing across almost all measures in a significant way, and that has led to a comfortable complacency. But here and there throughout history, we&rsquo;ll occasionally come across these periods where governments think more about what they &ldquo;can&rdquo; do rather than what they &ldquo;should&rdquo; do, and what is lawful will become increasingly distinct from what is moral.</p>
-
-<p>In such times, we&rsquo;d do well to remember that at the end of the day, the law doesn&rsquo;t defend us; we defend the law. And when it becomes contrary to our morals, we have both the right and the responsibility to rebalance it toward just ends.</p></blockquote>
 
 		
 		
