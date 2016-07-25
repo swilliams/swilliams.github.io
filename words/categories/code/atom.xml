@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Code, | Scott Williams]]></title>
+  <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2016-07-25T07:17:31-07:00</updated>
+  <updated>2016-07-25T08:50:52-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,46 +14,320 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Private Extensions in Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/"/>
-    <updated>2015-12-11T11:08:59-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift</id>
-    <content type="html"><![CDATA[<p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
+    <title type="html"><![CDATA[Introducing Gliphy]]></title>
+    <link href="http://blog.swilliams.me/words/2016/05/15/introducing-gliphy/"/>
+    <updated>2016-05-15T13:47:59-07:00</updated>
+    <id>http://blog.swilliams.me/words/2016/05/15/introducing-gliphy</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m very happy to introduce a new open source library that I&rsquo;ve been building. It&rsquo;s called <a href="https://github.com/tallwave/gliphy">Gliphy</a> and it makes implementing <a href="https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html#//apple_ref/doc/uid/TP40009542-CH4-SW65">Dynamic Type</a> on iOS with Swift a breeze.</p>
+
+<p>Accessibility is one of those things that everyone knows they should be better at implementing, but falls to the wayside when deadlines are looming. I liked the idea of supporting Dynamic Type in the apps I write, but it was kind of a slog to implement it. There are two main ways to do it right out of the gate with what is built in to iOS, code and Interface Builder.</p>
+
+<p>Let&rsquo;s go with code first. The easiest way to get the preferred font for a given text style.</p>
 
 <p><code>swift
-private class Foo {
-}
-</code></p>
+titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+</code>
+iOS will set whatever the &ldquo;Headline&rdquo; style is to your <code>titleLabel</code>&rsquo;s font. If a user changes their default font size in Settings, it&rsquo;ll scale with that.</p>
 
-<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
+<p>Interface Builder makes it fairly simple too:</p>
 
-<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
+<p><figure></p>
 
-<p>```swift
-private extension HKQuantitySample {</p>
-
-<pre><code>var quantityInOunces: Double? { /* blah */ }
+<pre><code>&lt;img alt="Interface Builder" src="https://raw.githubusercontent.com/Tallwave/Gliphy/gh-pages/images/ib.png"&gt;
+&lt;figcaption&gt;Choose a style from the font menu in Interface Builder&lt;/figcaption&gt;
 </code></pre>
 
-<p>}</p>
+<p></figure></p>
 
-<p>class HealthKitManager {</p>
+<p>But there&rsquo;s a catch. If a user launches your app, then changes the font size, your app won&rsquo;t display any new changes until it has quit and is relaunched. You can watch for the <code>UIContentSizeCategoryDidChangeNotification</code> notification though and then re-render your text based views then<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. So, regardless of your choice you&rsquo;ll have to code out <em>a lot</em> of labels, buttons, and text fields. In a normal app, that&rsquo;s hundreds of lines of boring code.</p>
 
-<pre><code>func doStuff() {
-    // Calculate a bunch of ounces easy peasy.
+<p>The other big downside is that you&rsquo;re limited to the system font. So, San Francisco on iOS 9 and Helvetica Neue on older versions. I like those fonts just fine, but sometimes you need to switch it up.</p>
+
+<h2>BNRDynamicTextManager</h2>
+
+<p>I first came across <a href="https://www.bignerdranch.com/">Big Nerd Ranch&rsquo;s</a> <a href="https://github.com/bignerdranch/BNRDynamicTypeManager">BNRDynamicTextManager</a> library and found it to be pretty useful. You still have to wire up each field (or use subclasses), and you&rsquo;re still stuck with the system font, but it handled all the notification watching for you. Here&rsquo;s a sample:</p>
+
+<p>```objc
+[[BNRDynamicTypeManager sharedInstance] watchLabel:label</p>
+
+<pre><code>                                     textStyle:UIFontTextStyleBody];
+</code></pre>
+
+<p>```</p>
+
+<p>The library was lightweight and easy to understand<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>, which got me thinking.</p>
+
+<h2>Gliphy</h2>
+
+<p>I decided to port BNRDynamicTextManager to Swift and see if I could add some functionality to it. Porting it wasn&rsquo;t a big deal, although I made a couple of changes to better match Swift&rsquo;s idioms. I then added a couple of nice features on top.</p>
+
+<p><strong>Big Feature 1 — Custom Fonts</strong><br />
+Watcher methods can take the name of a custom font:</p>
+
+<p>```swift
+DynamicTypeManager.sharedInstance.watchLabel(titleLabel,</p>
+
+<pre><code>                                         textStyle: UIFontTextStyleTitle1,
+                                         fontName: "MarkerFelt-Thin")
+</code></pre>
+
+<p><code>``
+This will apply the font size of the "Headline" style to your label, but keep the glorious MarkerFelt font. If the</code>fontName` is not associated with an installed font, it will fall back to the system font.</p>
+
+<p><strong>Big Feature 2 — Custom Styles</strong><br />
+iOS 7 brought us six text styles, and iOS 9 brought four more<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>. They cover a decent range of use cases, but sometimes you still want your own. You can do that with the <code>DynamicFontRegistry</code> class:</p>
+
+<p>```swift
+// This could be in AppDelegate, some custom Theme class, or wherever
+DynamicFontRegistry.registry.addTextStyle(&ldquo;UIFontTextStyleReallyReallyBigTitle&rdquo;,</p>
+
+<pre><code>                                      scaledFrom: UIFontTextStyleHeadline,
+                                      byFactor: 4)
+</code></pre>
+
+<p>```
+In order to keep with the feel of how Dynamic Type works, you pick a style to serve as a base reference for the new one and then scale it from there. That way you don&rsquo;t hardcode a point size. You can then watch it the same way you would before:</p>
+
+<p>```swift
+DynamicTypeManager.sharedInstance.watchLabel(titleLabel,</p>
+
+<pre><code>                                         textStyle: "UIFontTextStyleReallyReallyBigTitle"", 
+                                         fontName: "MarkerFelt-Thin")
+</code></pre>
+
+<p>```</p>
+
+<p><strong>Big Feature 3 — Global Styles</strong><br />
+I liked how it was working now, but it was still a long process to cover all the text based views that could be in an app. I wanted a solution that would make it super easy to handle the 90% scenario. Enter the <code>StyleWatcher</code> and <code>StyleConfig</code> constructs. The <code>StyleWatcher</code> will recursively examine each subview in a parent view and watch them with the <code>DynamicTypeManager</code> if they have a text style associated with them. That way you can set up the text-styles solely UI within Interface Builder and remove an entire swath of code. Additionally, you can set a global style that the watcher will use to find your custom font (or style).</p>
+
+<p><code>swift
+// AppDelegate
+// Setting up the global styles
+StyleWatcher.defaultConfig.label[UIFontTextStyleTitle1] = "MarkerFelt-Thin"
+StyleWatcher.defaultConfig.label[UIFontTextStyleTitle1] = "MarkerFelt-Thin"
+StyleWatcher.defaultConfig.textField[UIFontTextStyleBody] = "Avenir-Light"
+</code>
+Once that has been set up, tell the watcher to watch a view:</p>
+
+<p>```swift
+// In some View Controller
+let watcher = StyleWatcher()</p>
+
+<p>override func viewDidLoad() {</p>
+
+<pre><code>super.viewDidLoad()
+watcher.watchViews(inView: view)
+</code></pre>
+
+<p>}
+```
+And the magic will happen.</p>
+
+<p>You can customize that process too. The <code>watchViews</code> method can take its own <code>StyleConfig</code> as well, allowing you to define multiple different styles and applying them where necessary.</p>
+
+<p>I&rsquo;m pretty happy with the way Gliphy turned out. The <a href="https://github.com/tallwave/gliphy">code</a> is pretty straightforward too; no mind bending swiftisms required. There are some downsides though. Attributed strings aren&rsquo;t handled at all, and due to their nature, they probably will never be. Gliphy only watches four kinds of views: labels, buttons, textfields, and textviews, (plus their subclasses) and is a little difficult to extend beyond that.</p>
+
+<p>All said though, it should make supporting Dynamic Type something more than an afterthought in your apps.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>There is a bug in the iOS simulator and Xcode 7.3. You can change the font size, but the notification will not fire. It still works on a device though.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>I raise my glass to <a href="https://github.com/jgallagher">jgallagher</a> for that.</p>
+</li>
+<li class="footnote" id="fn:3">
+  <p>Here they are:
+  <ul>
+    <li>UIFontTextStyleHeadline</li>
+    <li>UIFontTextStyleSubheadline</li>
+    <li>UIFontTextStyleBody</li>
+    <li>UIFontTextStyleFootnote</li>
+    <li>UIFontTextStyleCaption1</li>
+    <li>UIFontTextStyleCaption2</li>
+    <li>UIFontTextStyleTitle1</li>
+    <li>UIFontTextStyleTitle2</li>
+    <li>UIFontTextStyleTitle3</li>
+    <li>UIFontTextStyleCallout</li>        
+  </ul>
+  </p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
+    <link href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/"/>
+    <updated>2015-08-09T19:40:43-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken</id>
+    <content type="html"><![CDATA[<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
+
+<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
+
+<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
+
+<p>```swift
+import UIKit
+import Photos</p>
+
+<p>// I like to typealias my blocks, makes for easier reading
+typealias ImageCallback = (UIImage? &ndash;> Void)</p>
+
+<p>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {</p>
+
+<pre><code>let fetchOptions = PHFetchOptions()
+fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+</code></pre>
+
+<p>//        fetchOptions.fetchLimit = 1 // Available in iOS 9</p>
+
+<pre><code>if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
+    if let asset = fetchResult.firstObject as? PHAsset {
+        let manager = PHImageManager.defaultManager()
+        let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
+        manager.requestImageForAsset(asset,
+            targetSize: targetSize,
+            contentMode: .AspectFit,
+            options: nil,
+            resultHandler: { image, info in
+            imageCallback(image)
+        })
+    } else {
+        imageCallback(nil)
+    }
 }
 </code></pre>
 
 <p>}
 ```</p>
 
+<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
+
+<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
+
+<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
+
+<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
+
+<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
+
+<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
+
+<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Basic GitHub Workflow for Collaboration]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/"/>
+    <updated>2015-06-30T12:16:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration</id>
+    <content type="html"><![CDATA[<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
+    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
+    <updated>2015-05-17T13:37:51-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
+    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
+
+<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
+
+<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
+    <updated>2014-12-08T14:04:40-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
+    <content type="html"><![CDATA[<p><strong>January</strong>: &ldquo;We just had our biggest sales quarter ever!&rdquo; &ndash; Apple, adding another $20B to their bank account.</p>
+
+<p><strong>April</strong>: Speculation of what&rsquo;s gonna be in the next version of iOS.</p>
+
+<p><strong>June</strong>: WWDC. New things! Wow! Ideas abound! Flurries of productivity. &ldquo;Guys, I think Apple&rsquo;s playing nicer with developers now!&rdquo; &ndash; some people.</p>
+
+<p><strong>July</strong>: Wow, this beta is really beta.</p>
+
+<p><strong>September</strong>: iOS Next ships! New iPhone! Ship your app! Bugs!</p>
+
+<p><strong>October</strong>: Weird rejections that don&rsquo;t make any sense.</p>
+
+<p><strong>December</strong>: Blog posts and tweets about how Apple is screwing themselves with the byzantine app review process.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Some rejections are overturned.</p>
+
 <div class="footnotes">
   <ol>
     <li class="footnote" id="fn:1">
-  <p>Couldn't think of a better word, but yeah I'm regular Vasco de Gama.</p>
+  <p><a href="http://www.panic.com/blog/transmit-ios-1-1-1/">You are here.</a></p>
 </li>
   </ol>
 </div>
+
+
 
 ]]></content>
   </entry>
