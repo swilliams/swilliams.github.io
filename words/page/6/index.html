@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="How I Started to Understand Model Binding Magic in Ember May 12th, 2014 I&rsquo;m learning Ember.js in efforts to stay reasonably up to date with &hellip;">
+	<meta name="description" content="What Is App.net? May 6th, 2014 Most people who have even heard of it would say that it&rsquo;s a Twitter clone, created out of frustrations over the &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,111 +126,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/05/12/how-i-started-to-understand-model-binding-magic-in-ember/" itemprop="url">How I Started to Understand Model Binding Magic in Ember</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-12T13:16:18-07:00" data-updated="true" itemprop="datePublished">May 12<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>I&rsquo;m learning <a href="http://emberjs.com/">Ember.js</a> in efforts to stay <a href="http://blog.swilliams.me/words/2014/01/20/keep-your-developer-saw-sharp/">reasonably up to date</a> with client side web technologies. <a href="http://blog.swilliams.me/words/2014/05/06/oh-cool-you-want-to-be-a-web-developer/">This hasn&rsquo;t been the easiest going.</a></p>
-
-<p>Ember&rsquo;s best feature is that it easily binds values in HTML to their corresponding properties on objects. I&rsquo;ve found the implementations of this a little confusing sometimes. Going through the Getting Started guide has been helpful, though <a href="http://emberjs.com/guides/getting-started/displaying-the-number-of-incomplete-todos/">this part tripped</a> me up for a good hour, specifically this snippet:</p>
-
-<figure class='code'><figcaption><span>Within todos_controller.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">remaining</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterBy</span><span class="p">(</span><span class="s1">&#39;isCompleted&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;@each.isCompleted&#39;</span><span class="p">),</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That last line turns the associatied method into a <a href="http://emberjs.com/guides/object-model/computed-properties/">computed property</a>.  My understanding of computed properties was as a means to provide a simple call to complex data (eg. a <code>fullName</code> property that joins <code>firstName</code> and <code>lastName</code> properties). This particular method is on a <em>controller</em>, has a previously foreign syntax (<code>@each</code>), and the template that refers to it still uses it&rsquo;s canonical name (<code>remaining</code>).</p>
-
-<figure>
-    <img src="/images/assets/ember/zoidberg.gif" alt="Wha?" />
-</figure>
-
-
-<p>In order to understand just what was happening, I pumped the brakes and dug into the sample application. My first question was why they were using a computed property altogether. I whipped up another method and added it to my controller:</p>
-
-<figure class='code'><figcaption><span>todos_controller.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">remaining</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterBy</span><span class="p">(</span><span class="s1">&#39;isCompleted&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;@each.isCompleted&#39;</span><span class="p">),</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">derp</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="s1">&#39;derp!&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>index.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>todos {{derp}}<span class="nt">&lt;/h1&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This resulted in the method body being substituted in the template, which reminded me that <code>{{derp}}</code> was just printing out whatever <code>derp</code> evaluated to, in this case a function.<sup>1</sup> So I made <code>derp</code> a computed property:</p>
-
-<figure class='code'><figcaption><span>todos_controller.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">derp</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="s1">&#39;derp!&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;what&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This worked. My <code>&lt;h1&gt;</code> was now &lsquo;todos derp!&rsquo;. In fact, you could simplify it even more by doing this: <code>property()</code> and leaving off a name altogether. It also demonstrated that the first argument to <code>property</code> didn&rsquo;t have a bearing on what goes in the Template. Next step was to substitute my static text with something useful.</p>
-
-<figure class='code'><figcaption><span>todos_controller.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">derp</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterBy</span><span class="p">(</span><span class="s1">&#39;isCompleted&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}.</span><span class="nx">property</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And sure enough, the title was now &lsquo;todos 2&rsquo;. I suspected this would work because my controller extended <code>Ember.ArrayController</code>, giving it access to <code>filterBy</code>. This lead me back to one of my original questions: what is the purpose of <code>'@each.isCompleted'</code>?</p>
-
-<p>I played around with the todo app a little more and noticed that my <code>{{derp}}</code> was not automatically updating when todos where checked off while the original <code>{{remaining}}</code> was. Then it hit me: <code>'@each'</code> must be a special directive for an <code>ArrayController</code> that bound that function to the <code>isCompleted</code> property of <a href="http://emberjs.com/api/classes/Ember.ArrayController.html#property__each"><em>each</em></a> object in its array. Putting a <code>console.log('called');</code> confirmed this suspicion — it&rsquo;s called every time <code>isCompleted</code> is accessed.</p>
-
-<p>After this bit of forensics, things make a little more sense now. I do wish this association was a little more spelled out in the documentation though for us thick-headed developers.</p>
-
-<div class="footnotes">
-1. This is what JavaScript does. Open the dev tools and log a function without executing it — the body of that function prints out.
-</div>
-
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1098,6 +993,73 @@ that it continues along as is, but with little to no growth. I did renew my paid
 <p>And, <code>included</code> is called when that module is included in a class. This means you can set off a chain reaction of includes with just a single one.</p>
 
 <p>This is just the start. Ruby gives you enough metaprogramming rope to build a hammock and then hang yourself with the leftovers. We&rsquo;ll get into some of the other ways to do this later on, including <a href="http://stackoverflow.com/q/4911353/736">blocks</a>, <a href="http://www.ruby-doc.org/core-2.1.0/Kernel.html#method-i-eval">eval</a>, and the infamous <a href="http://www.ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing">method-missing</a>. I encourage you to start digging into some code, and even trying a little of this yourself. Once you get a few reps in, understanding how DSLs work becomes much easier.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2014/01/25/my-computers-through-the-ages-part-ii/" itemprop="url">My Computers Through the Ages Part II</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-25T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 25<span>th</span>, 2014</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In <a href="/words/2014/01/09/my-computers-through-the-ages">Part 1</a> I talked about my first few computers. They were an important part of my childhood, and shaped the person I would become and the career I chose. When I went to college I started to build and upgrade my own PCs. Things went well enough at first, but then got a little out of hand.</p>
+
+<h3>Dark Ages</h3>
+
+<p><strong>Custom PC #1</strong> (2000) Since I was still in college, I didn&rsquo;t have very much money and bought some dirt cheap parts from websites that may have been run by questionable companies. These parts were leftover from <a href="http://en.wikipedia.org/wiki/Oem">OEMs</a> and didn&rsquo;t have real retail boxes. Some would just show up with a minimal layer of bubble wrap around the bare hardware. I had bought a <a href="http://en.wikipedia.org/wiki/Pentium_iii">Pentium III CPU</a>, but screwed up putting the heatsink on it. It was too unstable to run at its advertised speed, so I had to <em>underclock</em> it or it&rsquo;d just lock up the whole system within minutes. It could run <a href="http://en.wikipedia.org/wiki/Quake_III_Arena">Quake 3</a> well enough though at that speed.</p>
+
+<p><strong>Custom PC #2</strong> (2001) If at first you don&rsquo;t succeed right? This was the only time I strayed away from the Intel and bought an <a href="http://en.wikipedia.org/wiki/Amd_athlon">AMD Athlon processor</a>. I had learned from my mistake and assembled it correctly, but it also had problems and would lock up at odd times. I remember trying to show my parents just what a computer could do by playing an assortment of Led Zeppelin mp3s, and halfway through Stairway it froze and needed to be restarted. I was either not a very good PC builder or kept buying crummy parts. Probably a little from column A and a little from column B.</p>
+
+<p>I hit the nadir of my computer history while putting this computer together. During the assembly I saw that there were some weird red splotches on the inside of the case but couldn&rsquo;t figure out what they were. More started to appear and then I realized that I had cut my hand on a sharp hunk of metal from the bargain basement case and I was bleeding all over it.</p>
+
+<h3>Working Stiff</h3>
+
+<p><strong>Custom PC #3</strong> (2004) I had a real jobby-job and was earning more than the $Nothing I was in college, so I was finally able to afford computer parts that came in actual boxes, and wouldn&rsquo;t require keeping a roll of bandages nearby. I went back to Intel and got a <a href="http://en.wikipedia.org/wiki/Pentium_IV">Pentium 4</a> to run <a href="http://en.wikipedia.org/wiki/Windows_xp">Windows XP</a>. This was my first DIY computer that actually ran ok. It was also the first time I used an LCD monitor. The <a href="http://reviews.cnet.com/lcd-monitors/dell-ultrasharp-1905fp/4505-3174_7-31232074.html">19&#8221; Dell Ultrasharp</a> was a big upgrade to the cumbersome CRTs I had been using.</p>
+
+<p><strong>Custom PC #4</strong> (2007) My last Windows PC, and also the best. My brother-in-law worked at Intel and as &ldquo;payment&rdquo; for taking some pictures at his wedding gave me a nice <a href="http://en.wikipedia.org/wiki/Core_2_duo#Core_2_Duo">Core 2 Duo</a> CPU. The prior one worked well enough, but was very loud. Pentium 4&rsquo;s were known to run hot, and my case required a number of fans to keep mine from melting through to the Earth&rsquo;s core. The Core 2 Duo was much quieter.</p>
+
+<p>Honestly, there wasn&rsquo;t anything very memorable about this one. It was a Camry — reliable, but otherwise unremarkable.</p>
+
+<p>Things were starting to change for me. I had been a software developer working in the <a href="https://msdn.microsoft.com/">Microsoft stack</a> for a long time and felt a seven year itch to move on to different things.</p>
+
+<h3>Fruit</h3>
+
+<p>I never liked Apple computers. When I was growing up in the early-mid 90s, it was the &ldquo;dark&rdquo; times for Apple, when they kept releasing unremarkable computers with ancient notions of software. Even when Steve Jobs returned,  I thought of them as too expensive and fluffed up with a bunch of annoying marketing. I especially despised the original iMac<sup>1</sup> with the <a href="http://www.youtube.com/watch?v=83nS4EGKU04">goofy colors</a>, <a href="http://en.wikipedia.org/wiki/Apple_USB_Mouse">awful mouse</a>, and thought that it was dead in the water because it lacked a floppy drive. This wouldn&rsquo;t be the first time a technical prediction of mine was hilariously off base.</p>
+
+<p>As time went on I did start to like the industrial design of a few models. The original <a href="http://en.wikipedia.org/wiki/PowerBook_G4#Titanium_PowerBook_G4">Titanium Powerbooks</a> (so thin!), and the <a href="http://en.wikipedia.org/wiki/G4_cube">G4 Cube</a> looked especially nice to my eyes, but they were still way too expensive for my budget.</p>
+
+<p>Around the time they switched over to Intel processors I started to reconsider my position. I liked that they were <a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/OSX_Technology_Overview/SystemTechnology/SystemTechnology.html">Unixy</a>, making certain kinds of web development easier. Eventually, some of the more garish designs of OS X were <a href="http://arstechnica.com/apple/2007/10/mac-os-x-10-5/3/">stripped back</a>, and I decided to make the leap.</p>
+
+<figure>
+    <img alt="30 Years of the Mac" src="images/assets/30years.png" />
+    <figcaption>30 Years of the Mac</figcaption>
+</figure>
+
+
+<p>Apple recently celebrated the <a href="http://www.apple.com/30-years/">30th anniversary of the original Macintosh</a>. I joined the Mac train in 2009, and have [mostly] liked it ever since. Next time I&rsquo;ll go into the specifics of the Macs that I&rsquo;ve owned, and why I recommend them.</p>
+
+<div class="footnotes">
+1. It looked like a suppository, ok?
+</div>
+
 
 		
 		
