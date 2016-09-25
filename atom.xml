@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2016-07-25T08:49:52-07:00</updated>
+  <updated>2016-09-25T14:12:03-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,404 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Google OAuth, Ember, Hapi]]></title>
+    <link href="http://blog.swilliams.me/words/2016/09/07/google-oauth-ember-hapi/"/>
+    <updated>2016-09-07T08:10:50-07:00</updated>
+    <id>http://blog.swilliams.me/words/2016/09/07/google-oauth-ember-hapi</id>
+    <content type="html"><![CDATA[<p>OAuth is, to borrow a phrase, a bag of hurt. Not just any bag, but the kind that is thrown over your head right before you&rsquo;re thrown into a van and driven down to Tijuana and ransomed for $50,000. I don&rsquo;t like OAuth.</p>
+
+<p>Sometimes, though you need to use it. I&rsquo;m working on an internal tool at <a href="http://tallwave.com">work</a> and want to make sure that only co-workers can use it. I could do the username/password thing, but the world has enough of those. We use Google docs for the office, so everyone has a Google account that could, theoretically, be used to sign in. Thus, OAuth.</p>
+
+<p>The tool itself is a web app that uses <a href="http://emberjs.com/">Ember</a> on the front-end and <a href="http://hapijs.com/">Hapi</a> and <a href="https://www.mongodb.com/">MongoDB</a> as the API and database. It&rsquo;s my first time using Hapi, and I like it quite a bit, seems like a really good tool for API building.</p>
+
+<p>Since this is a completely separate client and server, it adds a bit of a wrinkle to the OAuth dance. There are plenty of &ldquo;Sign in with X&rdquo; libraries out there, but they mostly seem to be written with the intent that the user will only be interacting with that service. In other words, if I was building a Google Docs client app, my life would be easier, but no, I am only authenticating a user&rsquo;s account and then treating that as the key to my own system&hellip; which makes it more manual. It also doesn&rsquo;t help that Google&rsquo;s OAuth documentation is lousy. There are many different ways to authenticate, and <a href="https://github.com/google/google-auth-library-nodejs">multiple</a> <a href="https://github.com/google/google-api-nodejs-client">libraries</a> to support the different ways, and they&rsquo;ve changed over time, so searching for help is difficult.</p>
+
+<p>Here&rsquo;s how it&rsquo;s supposed to work:</p>
+
+<ol>
+<li>The client (Ember) &ldquo;signs in with Google&rdquo;. If this is successful it receives an <code>authorizationCode</code>. This code by itself is useless, it just means the user signed in ok.</li>
+<li>The server (Hapi) needs to validate this code and turn it into an <code>accessToken</code>.</li>
+<li>If <em>that</em> is successful, we can query the Google API (from the server still) for the account information, verify that they are from Tallwave, and then send credentials back down to the client.</li>
+<li>The client receives the credentials, stores them locally, and includes them for subsequent API requests.</li>
+</ol>
+
+
+<p>Errors need to be handled at all the steps along the way too.</p>
+
+<p><strong>Step 1 — Client Side</strong></p>
+
+<p><a href="https://github.com/Vestorly/torii">Torii</a> is a pretty good (though a wee bit out of date) library for Ember that handles a good amount of the Google sign in process. Follow its installation instructions and setup the configuration and the proper adapter. Here&rsquo;s my <code>environment.js</code> entry:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/* The following properties are in ENV */</span>
+</span><span class='line'><span class="nx">torii</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">sessionServiceName</span><span class="o">:</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">providers</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s1">&#39;google-oauth2&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">redirectUri</span><span class="o">:</span> <span class="nx">signinURL</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">apiKey</span><span class="o">:</span> <span class="nx">googleOAuthAPIKey</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;profile email&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <a href="https://developers.google.com/+/web/api/rest/oauth#authorization-scopes"><code>scope</code></a> property is important. That allows you to query for the user&rsquo;s account later on. The only other point with Torii worth mentioning is how I sent the authorization code to my API. The <code>open</code> method on the <code>torii-adapters/application.js</code> is called after Google auth finishes, and that is where you create the &ldquo;session&rdquo; for authentication.</p>
+
+<p>By default Ember uses the JSON API for the API layer, and I tend to go with the flow. But in this case, since we&rsquo;re sending a single value to the server and will throw it away immediately after&hellip; Setting up a model seems overkill for that. We can drop down to regular old jQuery for this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// This is in torii-adapters/application.js</span>
+</span><span class='line'><span class="nx">open</span><span class="p">(</span><span class="nx">authentication</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">RSVP</span><span class="p">.</span><span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">Ember</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">authorizationCode</span><span class="o">:</span> <span class="nx">authentication</span><span class="p">.</span><span class="nx">authorizationCode</span> <span class="p">},</span>
+</span><span class='line'>      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// this is the authentication URL in your API</span>
+</span><span class='line'>      <span class="nx">success</span><span class="o">:</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">resolve</span><span class="p">),</span> <span class="c1">// forward success/error to the Promise</span>
+</span><span class='line'>      <span class="nx">error</span><span class="o">:</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">account</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;sessionStore&#39;</span><span class="p">).</span><span class="nx">save</span><span class="p">(</span><span class="nx">account</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span> <span class="nx">currentUser</span><span class="o">:</span> <span class="nx">account</span> <span class="p">};</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Worth pointing out is that we are expecting our API to return some JSON that will be:</p>
+
+<ol>
+<li>Stored locally (<code>sessionStore</code> is a <a href="https://guides.emberjs.com/v2.7.0/applications/services/">service</a>, which we&rsquo;ll define later), and will be retrieved later.</li>
+<li>Returning the <code>currentUser</code> object will merge it into the underlying session, so that it can be retrieved in routes, components, templates etc. This isn&rsquo;t permanent storage though, if the user refreshes the page, it&rsquo;ll be gone, hence <code>sessionStore</code>.</li>
+</ol>
+
+
+<p><strong>Step 2 — On the Server</strong></p>
+
+<p>This is where the fun begins. If you&rsquo;re playing at home, I used Node 5 and Hapi 13.x.x. First, you&rsquo;ll need to get your credentials from the <a href="https://console.developers.google.com">Google Developer Console</a>. I&rsquo;m not going to walk through those steps, but you&rsquo;ll need an OAuth client ID for a Web Application. Specifically, you&rsquo;ll need the client id, client secret, and redirect URL (yes, even though you won&rsquo;t be redirecting to anything at this point).</p>
+
+<p>Then, install the <code>googleapis</code> dependency.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">googleapis</span> <span class="o">--</span><span class="nx">save</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&rsquo;s build a service that sends Google an <code>authorizationCode</code> and gets an accessToken back. You&rsquo;ll call this service from your route handler.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">const</span> <span class="nx">Google</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;googleapis&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kr">const</span> <span class="nx">OAuth2</span> <span class="o">=</span> <span class="nx">Google</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">OAuth2</span><span class="p">;</span>
+</span><span class='line'><span class="kr">const</span> <span class="nx">profile</span> <span class="o">=</span> <span class="nx">Google</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">(</span><span class="s1">&#39;v2&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// pull these from an ENV variable or something else</span>
+</span><span class='line'><span class="kr">const</span> <span class="nx">oauthClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OAuth2</span><span class="p">(</span><span class="nx">CLIENT_ID</span><span class="p">,</span> <span class="nx">CLIENT_SECRET</span><span class="p">,</span> <span class="nx">REDIRECT_URL</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Omitting the REDIRECT_URL will throw an error</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// callback is a function whose signature is (error, tokens)</span>
+</span><span class='line'>  <span class="nx">getTokens</span><span class="p">(</span><span class="nx">authorizationCode</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">oauthClient</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="nx">authorizationCode</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">tokens</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// the authorization code was bad</span>
+</span><span class='line'>        <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="c1">// At this point, we have an access token.</span>
+</span><span class='line'>      <span class="nx">oauthClient</span><span class="p">.</span><span class="nx">credentials</span> <span class="o">=</span> <span class="nx">tokens</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Each Google API method takes a params object, </span>
+</span><span class='line'>      <span class="c1">// which is where you provide your auth credentials</span>
+</span><span class='line'>      <span class="kr">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">auth</span><span class="o">:</span> <span class="nx">oauthClient</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Retrieve the user&#39;s account</span>
+</span><span class='line'>      <span class="nx">profile</span><span class="p">.</span><span class="nx">userinfo</span><span class="p">.</span><span class="nx">v2</span><span class="p">.</span><span class="nx">me</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span class='line'>          <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="c1">// The response object contains all of the account info</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// This is where you validate if the user is allowed or not.</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// If the user is valid, create a new session for them and save it.</span>
+</span><span class='line'>        <span class="c1">// It&#39;s up to you where you want to save this session. Could be </span>
+</span><span class='line'>        <span class="c1">// a redis cache, http session, whatever your needs are.</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// After that, we&#39;re going to send our session token and user </span>
+</span><span class='line'>        <span class="c1">// account back.</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>        <span class="kr">const</span> <span class="nx">sessionJSON</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">token</span><span class="o">:</span> <span class="nx">someSessionToken</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">account</span><span class="o">:</span> <span class="nx">response</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>        <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">newSession</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s kind of a mouthful and could definitely stand a good refactoring, but it goes through the steps needed to get some information from Google. You can see more <a href="http://google.github.io/google-api-nodejs-client/12.4.0/index.html">APIs</a> you can call, but the documentation on a lot of them is rather sparse. For example, adding the <code>oauthClient</code> to <code>params</code> is not apparent, but necessary for each call.</p>
+
+<p>We&rsquo;ve now determined if the user should actually have access to what they just signed in to and sent the response back to the client. That&rsquo;s pretty good! Refresh your beverage, take a deep breath and then let&rsquo;s get handle that response and get our client in order to keep moving.</p>
+
+<p><strong>Step 3 — Back on the Client</strong></p>
+
+<p>You might have noticed again that we did not send the session information back in JSON API format either. This was intentional since we aren&rsquo;t going to be storing this in the standard Ember store, and therefore don&rsquo;t need the additional benefit of using something that standardized. You could if you wanted to, but for this occasion, I did not want to set up a model (or in this case model<em>s</em> to support the nested structure).</p>
+
+<p>Back up in our <code>Ember.RSVP.Promise</code> handler there was this line:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// In torii-adapters/application.js</span>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;sessionStore&#39;</span><span class="p">).</span><span class="nx">save</span><span class="p">(</span><span class="nx">account</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once you receive a response, you&rsquo;ll need to store it. You could use Ember Data, but that felt overkill to me; I needed to access the tokens within the response for subsequent API calls, and nothing else. I ended up building an <a href="https://guides.emberjs.com/v2.8.0/applications/services/">Ember service</a> that serialized the content and stored it in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>. You can go your own way too.</p>
+
+<p><strong>Step 4 — Making authenticated requests</strong></p>
+
+<p>We&rsquo;re authorized (or have displayed a fancy error message) and are ready to make actual requests to get actual data. I like to authenticate my API requests by including my authorization token in the <code>Authorization</code> header on requests. Ember allows for this by overriding the <code>headers</code> computed property in your Adapter:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// adapters/application.js</span>
+</span><span class='line'>  <span class="nx">headers</span><span class="o">:</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">computed</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kr">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;sessionStore&#39;</span><span class="p">).</span><span class="nx">fetch</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">account</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s1">&#39;Authorization&#39;</span><span class="o">:</span> <span class="nx">account</span><span class="p">.</span><span class="nx">_id</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{};</span>
+</span><span class='line'>  <span class="p">}).</span><span class="kr">volatile</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Step 5 — Verify authentication on the server</strong></p>
+
+<p>There are may ways to <a href="http://hapijs.com/tutorials/auth">authenticate requests with Hapi</a>. Hapi calls these &ldquo;Schemes&rdquo;. A Scheme is made up of multiple Strategies but since we only have one, we&rsquo;ll just refer to it as a Scheme.</p>
+
+<p>You define a Scheme as a function that takes a <code>server</code> and some <code>options</code> as arguments and go from there. Here&rsquo;s <code>api-auth.js</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">server</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// These are the standard Hapi request/reply arguments</span>
+</span><span class='line'>    <span class="nx">authenticate</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Get the session token from the HTTP Headers of the request</span>
+</span><span class='line'>      <span class="kr">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">raw</span><span class="p">.</span><span class="nx">req</span><span class="p">;</span>
+</span><span class='line'>      <span class="kr">const</span> <span class="nx">authorization</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">;</span>
+</span><span class='line'>      <span class="c1">// Fail quickly if it isn&#39;t present.</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">authorization</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">reply</span><span class="p">(</span><span class="nx">Boom</span><span class="p">.</span><span class="nx">unauthorized</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;Basic&#39;</span><span class="p">));</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Pull the credentials from the session store that are </span>
+</span><span class='line'>      <span class="c1">// associated with the session token. Fail if it&#39;s not valid.</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">tokenIsValid</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">reply</span><span class="p">(</span><span class="nx">Boom</span><span class="p">.</span><span class="nx">unauthorized</span><span class="p">(</span><span class="s1">&#39;Authenication failed&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic&#39;</span><span class="p">),</span> <span class="kc">null</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Authenticated, so send the credentials along the chain in </span>
+</span><span class='line'>      <span class="c1">// case they need to be used later.</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">reply</span><span class="p">.</span><span class="k">continue</span><span class="p">({</span> <span class="nx">credentials</span><span class="o">:</span> <span class="nx">credentials</span> <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now that we&rsquo;ve defined our Scheme, we need to register it with Hapi. Wherever the server is set up add this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Import our Scheme</span>
+</span><span class='line'><span class="kr">const</span> <span class="nx">apiScheme</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./config/api-scheme&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">register</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">server</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Auth</span>
+</span><span class='line'>  <span class="c1">// Schemes have a name which you define here.</span>
+</span><span class='line'>  <span class="nx">server</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">scheme</span><span class="p">(</span><span class="s1">&#39;auth-scheme&#39;</span><span class="p">,</span> <span class="nx">apiScheme</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Strategies also have a name. This is what you&#39;ll refer </span>
+</span><span class='line'>  <span class="c1">// to when setting schemes for routes.</span>
+</span><span class='line'>  <span class="nx">server</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">strategy</span><span class="p">(</span><span class="s1">&#39;basic-strategy&#39;</span><span class="p">,</span> <span class="s1">&#39;auth-scheme&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// You can declare all routes to use a one Strategy by default.</span>
+</span><span class='line'>  <span class="nx">server</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="k">default</span><span class="p">(</span><span class="s1">&#39;basic-strategy&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Routes might go here</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you do use a default auth strategy, you can override that on individual routes in their handler config:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">handler</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">{</span> <span class="nx">reply</span><span class="p">();</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">auth</span><span class="o">:</span> <span class="s1">&#39;another-strategy&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or use the boolean <code>false</code> to skip auth altogether for a route, such as your session creation API.</p>
+
+<p>And we&rsquo;re done! You now have an authenticated API. There are plenty of other points that could be expanded on, but it&rsquo;s getting a little long in the tooth now.</p>
+
+<p><strong>Wait, why not use Bell?</strong></p>
+
+<p>The Hapi organization maintains a project called <a href="https://github.com/hapijs/bell">Bell</a> that is a &ldquo;Third-party login plugin for hapi&rdquo;, including OAuth services. It&rsquo;s great, but the catch is that since half of our authentication takes place in the browser, we can&rsquo;t quite use it the way it is intended to be used.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Maine and Back Again]]></title>
@@ -234,7 +632,7 @@
 
 <figure class="center">
     <a href="http://swilliams.me/static/photos/maine/nh1-full.jpg"><img alt="Beach" src="http://swilliams.me/static/photos/maine/nh1.jpg"></a>
-    <figcaption>Rock climber</figcaption>
+    <figcaption>Rock climber (definitely not me)</figcaption>
 </figure>
 
 
@@ -1306,31 +1704,6 @@ I liked how it was working now, but it was still a long process to cover all the
 
 
 <p>Is that a little reductive? Sure. But if you find yourself feeling angrier and angrier over what happens on Twitter, it might be time to reconsider how you&rsquo;re using it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Front to Back #8 — My First Diablo]]></title>
-    <link href="http://blog.swilliams.me/words/2015/02/25/front-to-back-number-8-my-first-diablo/"/>
-    <updated>2015-02-25T08:54:52-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/02/25/front-to-back-number-8-my-first-diablo</id>
-    <content type="html"><![CDATA[<p><a href="http://fronttoback.co/podcast/8">My First Diablo</a> is the newest episode of my <a href="http://fronttoback.co">podcast</a>. It&rsquo;s also the first episode where we have a guest: <a href="http://twitter.com/wickedgood">Steve Lubitz</a> of <a href="http://5by5.tv/isometric">Isometric</a> fame. We talk video games and how that works when you have a bunch of kids in the house. I&rsquo;d wanted to discuss this topic because my kids are now old enough to play console games without getting too frustrated over the experience, and I&rsquo;d been out of the loop for quite some time.</p>
-
-<p>Steve had some solid recommendations and now my wife and I are discussing when would be a good time to re-introduce consoles into the house. That might happen this summer when the kids are done with school, and there will be more time available to figure out limits and such. I&rsquo;m thinking a Wii U would be the right way to go since there&rsquo;s a better selection of kid-friendly games there. What I&rsquo;m not looking forward to is all the controllers/accessories that Nintendo seems to think are required for their games. Most <a href="http://www.amazon.com/Nintendo-Wii-Deluxe-Set-Bundle-3ds/dp/B00MVUKM0A/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=wii%2Bu&amp;tag=thepetzoo-20&amp;qid=1424881179">bundles for the Wii U</a> come with the controller with a screen on it. I can&rsquo;t tell if you can buy more of those or not<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. But you can get <a href="http://www.amazon.com/Nintendo-Wii-Remote-Plus-Black/dp/B00N4OAELY/ref=sr_1_1?ie=UTF8&amp;sr=1-1&amp;s=videogames&amp;keywords=wii%2Bmote&amp;tag=thepetzoo-20&amp;qid=1424881298">Wii-motes</a>, <a href="http://www.amazon.com/Nintendo-Nunchuk-Controller-Black-Wii/dp/B0094X1ZXU/ref=pd_bxgy_vg_img_y?tag=thepetzoo-20">nunchucks</a>, <a href="http://www.amazon.com/Nintendo-Pro-Controller-Black-Wii-u/dp/B00MUY0OFU/ref=pd_sim_vg_3?refRID=0SQ5Z19AHMG8VE30V0TD&amp;tag=thepetzoo-20&amp;ie=UTF8">pro controllers</a>, and various third party gizmos. I&rsquo;m not exactly looking forward to sifting through exactly what kind of those we&rsquo;ll need, nor storing them. I&rsquo;m not even going to touch handheld systems.<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
-
-<p>Video games were a big part of my childhood (some might say obsessive&hellip; I had a subscription to Nintendo Power without owning a Nintendo system). My hope is that rather than just consuming all the video game minutiae like I did, my kids will just have fun playing them with their family and friends.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>Amazon and other retailers seem to be sold out of official ones.</p>
-</li>
-<li class="footnote" id="fn:2">
-  <p>Scientifically speaking, there are 327 different versions of the Nintendo DS to choose from.</p>
-</li>
-  </ol>
-</div>
-
 ]]></content>
   </entry>
   
