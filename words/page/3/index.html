@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="The Woe of Newspapers Mar 22nd, 2015 The other day a couple of salespeople for the Arizona Republic came knocking on my door. Here was their pitch &hellip;">
+	<meta name="description" content="Tracking Down an EXC_BAD_ACCESS in Swift Mar 31st, 2015 Managing memory has become easier. Things like ARC take away much of what was once a painful &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,84 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/03/31/tracking-down-an-exc-bad-access-with-swift/" itemprop="url">Tracking Down an EXC_BAD_ACCESS in Swift</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-31T11:05:51-07:00" data-updated="true" itemprop="datePublished">Mar 31<span>st</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Managing memory has become easier. Things like <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">ARC</a> take away much of  what was once a painful and bug-ridden task. Things are not always panacea of course; it is still far too possible to do the wrong thing and access memory you are not supposed to and receive the dreaded <code>EXC_BAD_ACCESS</code> error.</p>
+
+<p>Today I was working on a project in Swift. And despite my <a href="">appreciation</a> of the language, the tooling still remains&hellip; <em>suspect</em>. I have covered that topic a <a href="http://blog.swilliams.me/words/2015/01/21/the-madness-of-errors-in-swift/">couple</a> of <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">times</a> before.</p>
+
+<p>Sometimes it&rsquo;s obvious where the problem is based on the call-stack. This time it was not so obvious. The problem occurred at the end of a series of steps in a wizard when all the prior screens were finally being released from memory. From what I could tell the error was when one of the view controllers that represented one of the steps in the wizard was being deinitialized, but otherwise I couldn&rsquo;t immediately see where the problem was.</p>
+
+<p>In Objective C you can turn on what&rsquo;s called <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/MemoryManagementforYourApp/MemoryManagementforYourApp.html">&ldquo;NS Zombies&rdquo; mode</a>, which keeps objects allocated (as a special &ldquo;Zombie&rdquo; object) and then raises warnings you try to access one of those Zombie objects. In my experience this has not worked quite was well with Swift. With Zombies mode enabled the app ran fine without crashing, but also didn&rsquo;t raise any warnings about accessing bad memory. It was a <a href="http://en.wikipedia.org/wiki/Heisenbug">Heisenbug</a>!</p>
+
+<figure class="center">
+    <img alt="Heisenberg" src="/images/assets/heisenberg.jpg">
+    <figcaption>Eh, close enough</figcaption>
+</figure>
+
+
+<p>Next I started to play around with the code thinking that I was improperly handling the lifecycle of some of the properties of several classes. I changed around some lazy properties and made certain other things optional, but this was just wheel spinning.</p>
+
+<p>I backed up and reviewed the callstack again. The last frame before explosion was now at <code>swift_unknownWeakRelease</code> in a helper class referenced by the offending ViewController. This helper had this property:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
+</span><span class='line'>private unowned let searchBar: UISearchBar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I then re-checked the <a href="https://developer.apple.com/library/prerelease/mac/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">documentation for <code>unowned</code></a>.</p>
+
+<blockquote><p>If you try to access an unowned reference after the instance that it references is deallocated, you will trigger a runtime error. Use unowned references only when you are sure that the reference will always refer to an instance.</p>
+
+<p>Note also that Swift guarantees your app will crash if you try to access an unowned reference after the instance it references is deallocated. You will never encounter unexpected behavior in this situation. Your app will always crash reliably, although you should, of course, prevent it from doing so.</p></blockquote>
+
+<p>That <code>searchBar</code> was originally defined as an <code>IBOutlet</code> on the ViewController:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// ViewController.swift
+</span><span class='line'>@IBOutlet weak var searchBar: UISearchBar!</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The lights turned on. <em>Of course</em> it was crashing. An outlet that&rsquo;s a weak property can and will be deallocated when the controller referencing it is no longer visible. I forgot about that when I created the other class to manage certain characteristics about that search bar. So, the <code>searchBar</code> was released at some point, and when the helper was next called (in deallocation) part of its representation in memory was an <code>unowned</code> property that was nil, a state it cannot be in. Thus, <code>EXC_BAD_ACCESS</code>.</p>
+
+<p>The solution was simple, I still didn&rsquo;t want <code>SearchBarHelper</code> to have ownership of the <code>searchBar</code>, so I changed it to a weak optional.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// SearchBarHelper.swift
+</span><span class='line'>private weak var searchBar: UISearchBar?</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Success!</p>
+
+<p>Takeaway lesson: read and understand the documentation. Memory and how it is handled is still something that absolutely must be understood if you want to manage it well.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -528,72 +606,6 @@
 <p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
 
 <p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/12/29/o-christmas-roast/" itemprop="url">O Christmas Roast</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-29T15:55:42-07:00" data-updated="true" itemprop="datePublished">Dec 29<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p><em>I posted this on Twitter. Here it is for posterity.</em></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br />
-O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br /></p>
-
-<p>Inside the oven you shall go<br />
-So that the juice within you flows<br />
-O Christmas Roast, O Christmas Roast!<br />
-Thy rawness shall be ending<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br />
-O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br /></p>
-
-<p>The thermometer will pierce your side<br />
-Until your temp reads 125<br />
-O Christmas Roast, O Christmas Roast!<br />
-Such gravy will you make me!<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll set our teeth upon thee!<br />
-O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll set our teeth upon thee!<br /></p>
-
-<p>Two yards of plastic will we turn<br />
-To avoid a chilling freezer burn<br />
-O Christmas Roast, O Christmas Roast!<br />
-We&rsquo;ll save you for another meal<br /></p>
-
-<p>Each tasty bite<br />
-Each dab of meat<br />
-No other bite will fill my cheeks<br /></p>
-
-<p>O Christmas Roast, O Christmas Roast!<br />
-Within our guts digesting<br />
-Within our guts digesting<br /></p>
 
 		
 		

@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Dreamers and Doers Jan 5th, 2018 Let me tell you about &ldquo;Jake&rdquo;. Jake was a colleague of mine and he loved to watch TED talks. If you had &hellip;">
+	<meta name="description" content="Red/Blue Game Jan 6th, 2018 My kids and I like to play with Nerf guns. My younger daughter in particular likes to sneak up behind people and shoot &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,105 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2018/01/06/red-slash-blue-game/" itemprop="url">Red/Blue Game</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2018-01-06T15:37:07-07:00" data-updated="true" itemprop="datePublished">Jan 6<span>th</span>, 2018</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>My kids and I like to play with Nerf guns. My younger daughter in particular likes to sneak up behind people and shoot them in the back. <a href="https://youtu.be/3ebPsZl4k5k?t=13s">She&rsquo;s devious like that</a>. While running around and shooting each other can be fun, it does start to get a little boring after a while.</p>
+
+<p>So, we started to implement rules and make more of a contest out of it. We started with a little capture-the-flag, but that was still a little dicey, certain members of the family would either really want a particular stuffed animal to be the flag, while others definitely didn&rsquo;t want that one to be the flag ever ever ever ever.</p>
+
+<p>I was familiar with a simple game mechanic of capture points. Each team flips over a card-type thing to their color and they get points for that. The more capture points the better — it keeps everyone moving. If you get shot, you have to go back to your re-spawn point and start over. The catch was that keeping score was too tricky without some kind of impartial observer.</p>
+
+<p>Being the coder that I am I whipped up something quickly for iOS and called it Red/Blue, for the two teams it had. It&rsquo;s a basic premise:</p>
+
+<ul>
+<li>When the app launches, choose how many minutes to play and tap Start.</li>
+<li>The game starts and displays a split screen with two different colors.</li>
+<li>When someone taps a color, ex. Red, a clock associated with Red starts to increment.</li>
+<li>When Blue is tapped, Red is paused, and Blue increments. I added some sound effects to denote when this happens. (it&rsquo;s just my voice saying &ldquo;Red&rdquo; and &ldquo;Blue&rdquo;. My kids think this is hilarious.)</li>
+<li>When the main clock counts down to 0, the game is over and whichever color got incremented the most wins.</li>
+</ul>
+
+
+<h3>Screenshots</h3>
+
+<figure class="center">
+    <img alt="Start Screen" class="halfsize border" src="https://github.com/swilliams/redblue/blob/master/readme-assets/redblue1.PNG?raw=true" />
+    <figcaption>Start Screen</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="Game Screen" class="halfsize border" src="https://github.com/swilliams/redblue/blob/master/readme-assets/redblue2.PNG?raw=true" />
+    <figcaption>Game Screen</figcaption>
+</figure>
+
+
+
+
+<figure class="center">
+    <img alt="End Screen" class="halfsize border" src="https://github.com/swilliams/redblue/blob/master/readme-assets/redblue3.PNG?raw=true" />
+    <figcaption>End Screen</figcaption>
+</figure>
+
+
+<p>This worked pretty well. We ended up pulling out old iPhones and iPads and laying them on flat surfaces and threatening all kinds of trouble if one of the kids moved or picked up a device. Ultimately we had four control points which led to all kinds of mayhem.</p>
+
+<p>One thing we noticed was that it was annoying to start a round with the four control points we usually played with. Everyone would have to be by a device to manually start off each timer. A quick googling revealed that <a href="https://www.ralfebert.de/tutorials/ios-swift-multipeer-connectivity/">Multipeer Connectivity is pretty easy to pull off</a>. Another hour of coding and now all of the devices will start off when the first device hits start.</p>
+
+<p>I do not plan to submit this to the app store. I just don&rsquo;t want to have to deal with it. The code is under an MIT license, so that you can do whatever you&rsquo;d like with it.</p>
+
+<p><strong>To install</strong></p>
+
+<ul>
+<li>You&rsquo;ll need <a href="https://developer.apple.com/xcode/">Xcode</a> and an iOS device running iOS 10 or higher.</li>
+<li><a href="https://github.com/swilliams/redblue">Clone or download the code from GitHub</a>.</li>
+<li>Open the <code>RedBlue.xcodeproj</code> file in Xcode.</li>
+<li>You may need to adjust the Signing stuff to get it to run on your own devices.</li>
+<li>Connect your device to your Mac.</li>
+<li>From the Product menu, select Run.</li>
+<li>Xcode will build the app and then install it on your device.</li>
+</ul>
+
+
+<p><strong>Details</strong></p>
+
+<ul>
+<li>There are no tests. I should probably fix that. We&rsquo;ll see.</li>
+<li>Once a round starts there&rsquo;s no way to end it prematurely other than force-quitting the app. I don&rsquo;t think that&rsquo;s a big deal.</li>
+<li>The code could stand to be refactored a bit. I only spent a few hours on it so it&rsquo;s a little haphazard. <a href="https://www.urbandictionary.com/define.php?term=patches%20are%20welcome">Patches are welcome</a> ;).</li>
+</ul>
+
+
+<h3>In the future!</h3>
+
+<p>I may add other gameplay modes. Some sort of King of the Hill mode may be interesting, or chained control points (point 2 isn&rsquo;t enabled until point 1 is captured), or any number of other things, but I don&rsquo;t know if I&rsquo;ll ever get to that.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1393,79 +1492,6 @@ I liked how it was working now, but it was still a long process to cover all the
   <ol>
     <li class="footnote" id="fn:1">
   <p>Couldn&#8217;t think of a better word, but yeah I&#8217;m regular Vasco de Gama.</p>
-</li>
-  </ol>
-</div>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/11/05/the-good-the-bad-and-the-ugly-with-the-apple-tv/" itemprop="url">The Good, the Bad, and the Ugly With the Apple TV</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-11-05T08:28:09-07:00" data-updated="true" itemprop="datePublished">Nov 5<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>A new Apple device! I&rsquo;m required to have opinions. Here they are in a contrived fashion!</p>
-
-<h1>The Good</h1>
-
-<p>Great UI and aesthetics.</p>
-
-<p>It&rsquo;s faster.</p>
-
-<p>Scrubbing through video is significantly improved. I almost don&rsquo;t believe how much better it is.</p>
-
-<p>Siri works as advertised. Accuracy, speed, and results are all great.</p>
-
-<p>All the potential!</p>
-
-<h1>The Bad</h1>
-
-<p>Siri doesn&rsquo;t index content stored in iTunes libraries on the network. So to get to all the DVDs and Blu-rays I&rsquo;ve ripped I have to use the same UI as the old Apple TV.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-
-<p>Siri doesn&rsquo;t work with Music. Not for music libraries on the network, iTunes Match, or Apple Music. I really don&rsquo;t understand this one, I&rsquo;m hoping it comes soon.</p>
-
-<p>Only one remote can be paired with it. This makes gaming tricky. Hoping this changes soon too.</p>
-
-<h1>The Ugly</h1>
-
-<p>Passwords. This has already been discussed at length everywhere. One thought I had would be that it&rsquo;d be cool to enter passwords via Siri. Y&#8217;know, like that one scene in TNG:</p>
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/oNrWgjh9tnU" frameborder="0" allowfullscreen></iframe>
-
-
-<p>(A Touch ID powered remote would probably be better)</p>
-
-<p>App discoverability. It&rsquo;s really bad, and I don&rsquo;t know how they&rsquo;re going to fix it. Top Charts was just added, which is better than nothing, but if someone wants to market their app anywhere online they have no way to provide a link to it! &ldquo;Go to the app store, search for s-o-m-e-t-h-i&hellip;&rdquo; is all kinds of awful.</p>
-
-<p>Overall I like it. I have almost no reason to use the Roku now<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>I do not have Plex, so I don&#8217;t know if that circumvents it. If it does, I may grab it asap.</p>
-</li>
-<li class="footnote" id="fn:2">
-  <p>Other than the rare times there&#8217;s something on Amazon Video that isn&#8217;t anywhere else.</p>
 </li>
   </ol>
 </div>
