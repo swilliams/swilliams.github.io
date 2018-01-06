@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Command Central Oct 31st, 2007 This is what my desk looked like about a week ago: As my wife can attest, I had become a little disgruntled with the &hellip;">
+	<meta name="description" content="WPF Margins Feb 13th, 2008 Since Intellisense doesn&#8217;t tell you this, here is a quick reminder for what each of the values in the Margin &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,36 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2008/02/13/wpf-margins/" itemprop="url">WPF Margins</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-13T00:00:00-07:00" data-updated="true" itemprop="datePublished">Feb 13<span>th</span>, 2008</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>Since Intellisense doesn&#8217;t tell you this, here is a quick reminder for what each of the values in the Margin attribute do:</p>  <blockquote class="posterous_short_quote">   <p>Margin=&#8221;left,top,right,bottom&#8221;</p>
+</blockquote>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -430,45 +460,6 @@ Link: <a href="http://www.mattberther.com/?p=913">http://www.mattberther.com/?p=
 
 </article>
 
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2007/08/29/tfs-installation/" itemprop="url">TFS - Installation</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-08-29T00:00:00-07:00" data-updated="true" itemprop="datePublished">Aug 29<span>th</span>, 2007</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>Before I could actually use the fancier parts of <a href="http://www.krazyyak.com/category/tfs/" title="TFS Experience Blog">Visual Studio Team Foundation Server</a>, I had to first install it. I began by following this <a href="http://blogs.vertigosoftware.com/teamsystem/archive/2006/04/04/2512.aspx" title="Vertigo Software TFS blog">Cliffs&#8217; Notes version of the process</a>, but changed up halfway through for reasons I&#8217;ll describe below.</p> <p>I didn&#8217;t have a spare machine around that was <a href="http://msdn2.microsoft.com/en-us/library/ms400749(VS.80).aspx" title="TFS Server Requirements">beefy</a> enough to run TFS, but decided that it would be able to run fine in a Virtual Machine. According to <a href="http://msdn2.microsoft.com/en-us/library/ms400745(VS.80).aspx" title="TFS software requirements">this page</a>, TFS needs IIS, SQL Server 2005, and SharePoint Services all installed as prerequisites. Fortunately I happened to have a partially built VM lying around from when I thought I was going to be using SQL Reporting Services.  I had already installed SQL Server, just not with all of the components to go along with it. </p> <p>Setting up SharePoint was a little more obnoxious<sup><a href="#foot33">1</a></sup> than I remembered. Getting the stupid config database set up properly is a royal pain for someone who isn&#8217;t very familiar with the finer details of IIS and SQL Server. I could probably write a long rant about just that, but I&#8217;ll save it for another post&#8230;</p> <p>And of course, there are always snags&#8230; The default hard drive size for the VM was only 8 GB, too small for TFS to reliably use. The recommended minimum size is 10, so I increased it to 16 for good measure.</p> <p>Hilariously<sup><a href="#foot33">2</a></sup>, once I finally got all this done and started the actual TFS installer, it informed me that SharePoint was configured incorrectly and needed to be uninstalled, and then reinstalled again. At that point I just went to bed.</p> <p>Perhaps I should have heeded the warning in the Vertigo blog:</p> <blockquote> <p>And if there&#8217;s any question about any of this, don&#8217;t listen to me! I&#8217;m just Some Guy on the Internet(tm)! Refer to <a href="http://go.microsoft.com/fwlink/?linkid=40042">the official install guide</a>, man!</p>
-</blockquote> <p>The next morning, I decided to go straight to the horse&#8217;s mouth and consulted the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=E54BF6FF-026B-43A4-ADE4-A690388F310E&amp;displaylang=en" title="TFS Installation Guide download">manual</a> for any SharePoint advice. Apparently, I should have done this in the first place, because one of the how-to&#8217;s listed a simple command-line script to run to get everything set up properly:</p>
-<div>
-  <div><pre>stsv2.exe /C:"setupsts.exe /remoteSql=yes /provision=no /qn+"</pre></div>
-</div>
-
-<p>This took all of 5 seconds to run and install, then politely informed me that SharePoint was good to go. </p>
-<p>Once again, I started to install TFS, and finally had success!  Lastly, I installed the Team Explorer client just to take a quick poke around. </p>
-<p>That about covers the installation. I&#8217;ll start doing some basic functionality testing soon and then try to do some of the more advanced stuff.</p>
-<div>1. Understatement: I was cursing in languages that hadn&#8217;t been invented yet. <a href="#33_1">Â«</a>
-2. Not hilarious. <a href="#33_2">Â«</a> </div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
@@ -481,7 +472,7 @@ Link: <a href="http://www.mattberther.com/?p=913">http://www.mattberther.com/?p=
 </nav></div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2017 - Scott Williams -
+  Copyright &copy; 2018 - Scott Williams -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

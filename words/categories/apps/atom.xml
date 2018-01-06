@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Apps | Scott Williams]]></title>
+  <title><![CDATA[Category: Apps, | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/apps/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2017-01-28T14:50:42-07:00</updated>
+  <updated>2018-01-05T20:37:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,61 +14,38 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Thoughts on App Store Beta Review]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/11/thoughts-on-app-store-beta-review/"/>
-    <updated>2014-11-11T19:37:07-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/11/thoughts-on-app-store-beta-review</id>
-    <content type="html"><![CDATA[<p>A little while ago Apple <a href="http://techcrunch.com/2014/02/21/rumor-testflight-owner-burstly-is-being-acquired-by-apple/">acquired the parent company</a> of <a href="http://testflightapp.com/">TestFlight</a> and began integrating its beta testing services into the iOS development ecosystem for iOS 8. Whenever there&rsquo;s a change to iOS there are always &ldquo;gotchas&rdquo;  and this was no exception: every app submitted as a beta still has to go through review.</p>
+    <title type="html"><![CDATA[App #2 - Emergency Contacts]]></title>
+    <link href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/"/>
+    <updated>2014-11-06T14:16:17-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts</id>
+    <content type="html"><![CDATA[<p>I made <a href="http://blog.swilliams.me/words/2013/12/16/i-made-an-app/">another</a> App(!)</p>
 
-<p>This has been an ongoing topic on the <a href="http://www.relay.fm/upgrade">Upgrade podcast</a>. I recently submitted an update for <a href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/">Emergency Contacts</a> and decided to finally check this out myself. It took about 24 hours for the beta to be approved. I voiced my concern of this to the hosts:</p>
+<p><figure class="pull-right"></p>
 
-<blockquote class="twitter-tweet" lang="en"><p>.<a href="https://twitter.com/jsnell">@jsnell</a> <a href="https://twitter.com/imyke">@imyke</a> Took about 24 hours from time of uploading a build to it passing review for a TestFlight beta. Much too long in my opinion.</p>&mdash; Scott Williams (@swilliams) <a href="https://twitter.com/swilliams/status/530898595550339073">November 8, 2014</a></blockquote>
-
-
-<script async src="http://blog.swilliams.me//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p>And got a shout out on <a href="http://www.relay.fm/upgrade/9">episode #9</a> at the <a href="https://overcast.fm/podcasts/episode/244136329243311#t=1550">25:51 mark</a> (edited for length):</p>
-
-<blockquote><p><strong>Myke Hurley</strong> — In his opinion that&rsquo;s too long&hellip; I hadn&rsquo;t thought of it that way. We&rsquo;d been previously saying &ldquo;Oh how great, 24 hours is perfectly fine.&rdquo; But, maybe you just want to get it out immediately, which is what you&rsquo;re used to. So 24 hours is 24 hours longer than 10 seconds.</p>
-
-<p><strong>Jason Snell</strong> — You get all of the extra features of that. <a href="http://hockeyapp.net/">HockeyApp</a> is still out there. The idea of Apple&rsquo;s TestFlight is that it&rsquo;s got all these other advantages going for it, including linking it to an id instead of a device id. But yeah, it&rsquo;ll be interesting to see how it goes and if it settles down over time.</p></blockquote>
-
-<p>It&rsquo;s impossible to add nuance to Twitter, so I figured I could expand on my thought here. As a developer, I value this virtuous cycle:</p>
-
-<p><figure class="center"></p>
-
-<pre><code>&lt;img alt="Virtuous Cycle" src="http://blog.swilliams.me/images/assets/dev-virtuous-cycle.png"&gt;
+<pre><code>&lt;img alt="Emergency Contacts screenshot" src="http://blog.swilliams.me/images/assets/ec-screenshot.png"&gt;
 </code></pre>
 
 <p></figure></p>
 
-<p>When things work properly it creates a nice feedback loop and encourages me to keep going. Taking an entire day off between one of those steps resets momentum back to 0, and at least for me, momentum is huge.</p>
+<p>It&rsquo;s called <a href="http://emergencycontacts.org/">Emergency Contacts</a> and is available for your iOS 8 device. It&rsquo;s a real fast way to display information that might come in handy when things go bad. You can display an emergency contact, medical information, or whatever you&rsquo;d like in three rows of text. It displays as a widget on the <a href="http://www.imore.com/how-use-today-view-widgets-ios-8">Today View</a>.</p>
 
-<p>But, like Jason said, I think Apple&rsquo;s TestFlight offers compelling advantages, especially when compared to TestFlight&rsquo;s old service. The ability to upload a build right from Xcode without having to mess around with archives and symlinks is huge. I think the UI in iTunes Connect is better too. So the $64,000 question is, Whatcha Gonna Do About It?</p>
+<p><a href="https://itunes.apple.com/us/app/emergency-contacts-ice-widget/id931010448?ls=1&amp;mt=8">Get it now for just $0.99</a>. Read on if you want to hear the origin story.</p>
 
-<p>After mulling over it for a little while I think I&rsquo;ll start to switch over to Apple&rsquo;s TestFlight. In my <a href="http://swilliams.me">consulting work</a>, walking clients through the UDID process was painful and fraught with peril. I&rsquo;ll have to educate them that their builds will take a while even though I&rsquo;m &ldquo;done,&rdquo; but that&rsquo;s still less of a headache than the old way.</p>
+<p>The idea originated from my mother-in-law. She is new to the iPhone and asked me if there was a way to display an emergency contact, since she had something like that in her old feature-phone. Other than adding text to your wallpaper (which is pretty cheesy) I didn&rsquo;t have an answer. About an hour later it hit, <em>hey, I bet it would be real simple to put that stuff on the Today screen.</em></p>
 
-<p><a href="http://appreviewtimes.com">App review time</a> tends to get longer at certain intervals (new iPhones and Christmas), but picks back up as the staff works through the deluge of apps. I remain hopeful that beta review will follow suit.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pricing for Emergency Contacts]]></title>
-    <link href="http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts/"/>
-    <updated>2014-11-07T15:15:57-07:00</updated>
-    <id>http://blog.swilliams.me/words/2014/11/07/pricing-for-emergency-contacts</id>
-    <content type="html"><![CDATA[<p>Pricing is tricky for mobile apps these days. When I was <a href="http://blog.swilliams.me/words/2014/11/06/app-number-2-emergency-contacts/">developing Emergency Contacts</a>, I knew I had a few options to choose from:</p>
+<p>It took about 3 days of programming time, most of which was sunk by fighting with <a href="http://blog.swilliams.me/words/2014/10/30/dealing-with-xcode-and-swift/">Xcode+Swift issues</a>, and iOS 8 bugs<sup>1</sup>. Probably another day or so to put together a simple website and icon. Then about 4 excruciating hours of getting all the screenshots necessary for the App Store.<sup>2</sup></p>
 
-<ul>
-<li><strong>Free</strong> — The app didn&rsquo;t take too long to make, but I wasn&rsquo;t sure that I wanted to just give it away for free. I thought that it had provided a modest amount of utility, so I figured that just straight up free wouldn&rsquo;t work.</li>
-<li><strong>Free with an In-App Purchase</strong> — I did this with <a href="http://zartbonk.com">Zartbonk</a>. But since the feature set on Emergency Contacts is pretty small, I couldn&rsquo;t think of what to lock in an extra purchase.</li>
-<li><strong>Free with ads</strong> — I just don&rsquo;t like ads in apps. I didn&rsquo;t even look to see how to get this set up.</li>
-<li><strong>Paid</strong> — The choice was really between free and $0.99. Since I had ruled out free, that left me here.</li>
-</ul>
+<p>I don&rsquo;t expect this to make me rich, but felt it would be worth at least a few days of my time. I hope you like it.</p>
 
+<div class="footnotes">
+<p><small>
+1. Ever wanted to hide one of the navigation buttons on a `ABPeoplePickerNavigationController`? <a href="http://openradar.appspot.com/radar?id=5234709428699136">You used to be able to in iOS 7, not so much in 8</a>.
+</small></p>
+<p><small>
+2. You have a 3.5" device, a 4" device, a 4.7" device, and a 5.5" device. And nowadays you can't have anything in the status bar for a screenshot. You can't just crop it out though. So, once you've gone to the effort of setting up the same state on 4 devices, you have to crack open Photoshop and properly airbrush out the status bar. This is extra fun when doing a Today View screenshot, because everything is nice and blurry underneath the status bar, and a giant black rectangle would be every noticeable. Even with just 2 screenshots per device, I wanted to die so bad.
+</small></p>
+</div>
 
-<p>Figuring out pricing is hard. I think I made the right choice here, though with a more complex app, I&rsquo;m not sure if I&rsquo;d do the same thing.</p>
 ]]></content>
   </entry>
   

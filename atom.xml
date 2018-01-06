@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2017-01-28T14:50:42-07:00</updated>
+  <updated>2018-01-05T20:37:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dreamers and Doers]]></title>
+    <link href="http://blog.swilliams.me/words/2018/01/05/dreamers-and-doers/"/>
+    <updated>2018-01-05T20:33:14-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/01/05/dreamers-and-doers</id>
+    <content type="html"><![CDATA[<p>Let me tell you about &ldquo;Jake&rdquo;. Jake was a colleague of mine and he <em>loved</em> to watch TED talks. If you had lunch with him, you were guaranteed to have a stimulating discussion of the blockchain, or AI, or AR &amp; VR, or some other topic. You&rsquo;d walk away from it with ideas blasting out of your brain. He had that much sincere passion about all the things that others may have passed over as fads.</p>
+
+<p>Jake and I used to to get into it because I tended to be more focused on the present and tended to get annoyed with some of the &ldquo;everything will be better in the future because of [insert-hot-technology]&rdquo; talk. I do believe that change doesn’t happen through technology alone, but tech can facilitate faster and easier change. Facebook didn’t change the world because it had a neat timeline algorithm but it sure did make it easier for millions of people to bump into each other, for better or for worse.</p>
+
+<p>Everybody needs to dream a little. The yearning for something new and better is powerful, and can cause all sorts of ideas to hatch. But there is such a thing as too much dreaming. It’s easy to fall in love with tech. It can be <strong>fun</strong> to imagine what it’ll be like when your house responds intelligently to a wave of your hand. But imagining never brought about anything if work didn’t go with it.</p>
+
+<p>On occasion I&rsquo;ve been called too pragmatic. I tend to focus on honest to goodness tangible products. I get all kinds of itchy when I hear that someone is an &ldquo;enthusiast&rdquo; or &ldquo;thought leader&rdquo; on something like cryptocurrencies. Usually they have both of those titles on their LinkedIn profiles. Because there seems to be a lot of <a href="https://en.wiktionary.org/wiki/all_hat_and_no_cattle">hat and no cattle</a> surrounding those hot topics, I tend to roll my eyes a bit and go back to focusing on what&rsquo;s in front of me.</p>
+
+<p>This means I have a tendency to be a little behind the curve when something new comes along that I would actually benefit. I&rsquo;m more of a &ldquo;doer&rdquo; than a &ldquo;dreamer&rdquo;. But, then I have to play catch-up. I hate playing catch-up. This isn&rsquo;t scientific but it feels like there is a spectrum here. Some people have their heads totally in the clouds and never get anything done. Some are so focused on the work that they are constantly missing the next big thing.</p>
+
+<p>The ones who are really dangerous are those who have equal parts dreamer and equal parts doer. One of Alan Kay&rsquo;s maxims at Xerox PARC was <a href="https://en.wikiquote.org/wiki/Alan_Kay">“The best way to predict the future is to invent it.”</a> Those who can see the trends and how to build businesses and products around them are in the best position to truly bring about change.</p>
+
+<p>I do think that it is possible to move along that spectrum to an extent. In my job, I’ve been working on dreaming a little more. I should be taking a closer look at some of the things I’ve dismissed because while they may be a little far away from reality right now, they may not be in a year or two, and I don’t want to be on my heels if there’s a big enough shift in the market. I love building cool stuff and goshdarnit, if the blockchain really, truly becomes A Thing, then I want to be there for it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Race Report — Phoenix Rock 'n Roll Half Marathon]]></title>
@@ -1740,23 +1761,6 @@ I liked how it was working now, but it was still a long process to cover all the
 <p>Success!</p>
 
 <p>Takeaway lesson: read and understand the documentation. Memory and how it is handled is still something that absolutely must be understood if you want to manage it well.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Woe of Newspapers]]></title>
-    <link href="http://blog.swilliams.me/words/2015/03/22/the-woe-of-newspapers/"/>
-    <updated>2015-03-22T13:59:53-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/03/22/the-woe-of-newspapers</id>
-    <content type="html"><![CDATA[<p>The other day a couple of salespeople for the Arizona Republic came knocking on my door. Here was their pitch:</p>
-
-<p>&ldquo;We&rsquo;re going to start delivering you a paper every Wednesday and Sunday. Would you like it in your driveway or on the roof?&rdquo; and then a pause for laughter. I was more confused; her delivery was pretty bad, and there was a distinct waft of desperation.</p>
-
-<p>I started to explain that I didn&rsquo;t want a newspaper even if it was free.</p>
-
-<p>&ldquo;But it&rsquo;s only $.95 per week! You&rsquo;ll make that up with all the coupons you&rsquo;ll be getting!&rdquo; She was pushing the coupons pretty hard. I guess this is why people get newspapers, in order to buy cereal for $.20 off?</p>
-
-<p>I said I didn&rsquo;t really care about coupons and politely told them to have a good afternoon. After extricating myself from the conversation I realized something: not once during their pitch did they mention the actual <em>content</em> of the paper. That&rsquo;s got to be depressing if you&rsquo;re a journalist — according to your sales staff your work is nothing more than a coupon delivery system with some words in between.</p>
 ]]></content>
   </entry>
   

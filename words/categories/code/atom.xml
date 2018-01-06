@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Code, | Scott Williams]]></title>
+  <title><![CDATA[Category: Code | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/code/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2017-01-28T14:50:42-07:00</updated>
+  <updated>2018-01-05T20:37:34-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -14,321 +14,320 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Google OAuth, Ember, Hapi]]></title>
-    <link href="http://blog.swilliams.me/words/2016/09/07/google-oauth-ember-hapi/"/>
-    <updated>2016-09-07T08:10:50-07:00</updated>
-    <id>http://blog.swilliams.me/words/2016/09/07/google-oauth-ember-hapi</id>
-    <content type="html"><![CDATA[<p>OAuth is, to borrow a phrase, a bag of hurt. Not just any bag, but the kind that is thrown over your head right before you&rsquo;re thrown into a van and driven down to Tijuana and ransomed for $50,000. I don&rsquo;t like OAuth.</p>
+    <title type="html"><![CDATA[Introducing Gliphy]]></title>
+    <link href="http://blog.swilliams.me/words/2016/05/15/introducing-gliphy/"/>
+    <updated>2016-05-15T13:47:59-07:00</updated>
+    <id>http://blog.swilliams.me/words/2016/05/15/introducing-gliphy</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m very happy to introduce a new open source library that I&rsquo;ve been building. It&rsquo;s called <a href="https://github.com/tallwave/gliphy">Gliphy</a> and it makes implementing <a href="https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html#//apple_ref/doc/uid/TP40009542-CH4-SW65">Dynamic Type</a> on iOS with Swift a breeze.</p>
 
-<p>Sometimes, though you need to use it. I&rsquo;m working on an internal tool at <a href="http://tallwave.com">work</a> and want to make sure that only co-workers can use it. I could do the username/password thing, but the world has enough of those. We use Google docs for the office, so everyone has a Google account that could, theoretically, be used to sign in. Thus, OAuth.</p>
+<p>Accessibility is one of those things that everyone knows they should be better at implementing, but falls to the wayside when deadlines are looming. I liked the idea of supporting Dynamic Type in the apps I write, but it was kind of a slog to implement it. There are two main ways to do it right out of the gate with what is built in to iOS, code and Interface Builder.</p>
 
-<p>The tool itself is a web app that uses <a href="http://emberjs.com/">Ember</a> on the front-end and <a href="http://hapijs.com/">Hapi</a> and <a href="https://www.mongodb.com/">MongoDB</a> as the API and database. It&rsquo;s my first time using Hapi, and I like it quite a bit, seems like a really good tool for API building.</p>
+<p>Let&rsquo;s go with code first. The easiest way to get the preferred font for a given text style.</p>
 
-<p>Since this is a completely separate client and server, it adds a bit of a wrinkle to the OAuth dance. There are plenty of &ldquo;Sign in with X&rdquo; libraries out there, but they mostly seem to be written with the intent that the user will only be interacting with that service. In other words, if I was building a Google Docs client app, my life would be easier, but no, I am only authenticating a user&rsquo;s account and then treating that as the key to my own system&hellip; which makes it more manual. It also doesn&rsquo;t help that Google&rsquo;s OAuth documentation is lousy. There are many different ways to authenticate, and <a href="https://github.com/google/google-auth-library-nodejs">multiple</a> <a href="https://github.com/google/google-api-nodejs-client">libraries</a> to support the different ways, and they&rsquo;ve changed over time, so searching for help is difficult.</p>
-
-<p>Here&rsquo;s how it&rsquo;s supposed to work:</p>
-
-<ol>
-<li>The client (Ember) &ldquo;signs in with Google&rdquo;. If this is successful it receives an <code>authorizationCode</code>. This code by itself is useless, it just means the user signed in ok.</li>
-<li>The server (Hapi) needs to validate this code and turn it into an <code>accessToken</code>.</li>
-<li>If <em>that</em> is successful, we can query the Google API (from the server still) for the account information, verify that they are from Tallwave, and then send credentials back down to the client.</li>
-<li>The client receives the credentials, stores them locally, and includes them for subsequent API requests.</li>
-</ol>
-
-
-<p>Errors need to be handled at all the steps along the way too.</p>
-
-<p><strong>Step 1 — Client Side</strong></p>
-
-<p><a href="https://github.com/Vestorly/torii">Torii</a> is a pretty good (though a wee bit out of date) library for Ember that handles a good amount of the Google sign in process. Follow its installation instructions and setup the configuration and the proper adapter. Here&rsquo;s my <code>environment.js</code> entry:</p>
-
-<p>```javascript
-/<em> The following properties are in ENV </em>/
-torii: {
-  sessionServiceName: &lsquo;session&rsquo;,
-  providers: {</p>
-
-<pre><code>'google-oauth2': {
-  redirectUri: signinURL,
-  apiKey: googleOAuthAPIKey,
-  scope: 'profile email'
-}
-</code></pre>
-
-<p>  }
-}
-```</p>
-
-<p>The <a href="https://developers.google.com/+/web/api/rest/oauth#authorization-scopes"><code>scope</code></a> property is important. That allows you to query for the user&rsquo;s account later on. The only other point with Torii worth mentioning is how I sent the authorization code to my API. The <code>open</code> method on the <code>torii-adapters/application.js</code> is called after Google auth finishes, and that is where you create the &ldquo;session&rdquo; for authentication.</p>
-
-<p>By default Ember uses the JSON API for the API layer, and I tend to go with the flow. But in this case, since we&rsquo;re sending a single value to the server and will throw it away immediately after&hellip; Setting up a model seems overkill for that. We can drop down to regular old jQuery for this.</p>
-
-<p>```javascript
-// This is in torii-adapters/application.js
-open(authentication) {
-  return new Ember.RSVP.Promise((resolve, reject) => {</p>
-
-<pre><code>Ember.$.ajax({
-  method: 'POST',
-  data: { authorizationCode: authentication.authorizationCode },
-  url: '', // this is the authentication URL in your API
-  success: Ember.run.bind(null, resolve), // forward success/error to the Promise
-  error: Ember.run.bind(null, reject)
-});
-</code></pre>
-
-<p>  }).then((account) => {</p>
-
-<pre><code>this.get('sessionStore').save(account);
-return { currentUser: account };
-</code></pre>
-
-<p>  });
-}
-```
-Worth pointing out is that we are expecting our API to return some JSON that will be:</p>
-
-<ol>
-<li>Stored locally (<code>sessionStore</code> is a <a href="https://guides.emberjs.com/v2.7.0/applications/services/">service</a>, which we&rsquo;ll define later), and will be retrieved later.</li>
-<li>Returning the <code>currentUser</code> object will merge it into the underlying session, so that it can be retrieved in routes, components, templates etc. This isn&rsquo;t permanent storage though, if the user refreshes the page, it&rsquo;ll be gone, hence <code>sessionStore</code>.</li>
-</ol>
-
-
-<p><strong>Step 2 — On the Server</strong></p>
-
-<p>This is where the fun begins. If you&rsquo;re playing at home, I used Node 5 and Hapi 13.x.x. First, you&rsquo;ll need to get your credentials from the <a href="https://console.developers.google.com">Google Developer Console</a>. I&rsquo;m not going to walk through those steps, but you&rsquo;ll need an OAuth client ID for a Web Application. Specifically, you&rsquo;ll need the client id, client secret, and redirect URL (yes, even though you won&rsquo;t be redirecting to anything at this point).</p>
-
-<p>Then, install the <code>googleapis</code> dependency.</p>
-
-<p><code>
-npm install googleapis --save
+<p><code>swift
+titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 </code>
-Now, let&rsquo;s build a service that sends Google an <code>authorizationCode</code> and gets an accessToken back. You&rsquo;ll call this service from your route handler.</p>
+iOS will set whatever the &ldquo;Headline&rdquo; style is to your <code>titleLabel</code>&rsquo;s font. If a user changes their default font size in Settings, it&rsquo;ll scale with that.</p>
 
-<p>```javascript</p>
+<p>Interface Builder makes it fairly simple too:</p>
 
-<p>const Google = require(&lsquo;googleapis&rsquo;);
-const OAuth2 = Google.auth.OAuth2;
-const profile = Google.oauth2(&lsquo;v2&rsquo;);</p>
+<p><figure></p>
 
-<p>// pull these from an ENV variable or something else
-const oauthClient = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
-// Omitting the REDIRECT_URL will throw an error</p>
-
-<p>module.exports = {
-  // callback is a function whose signature is (error, tokens)
-  getTokens(authorizationCode, callback) {</p>
-
-<pre><code>oauthClient.getToken(authorizationCode, (err, tokens) =&gt; {
-  if (err) { // the authorization code was bad
-    callback(err);
-    return;
-  }
-  // At this point, we have an access token.
-  oauthClient.credentials = tokens;
-
-  // Each Google API method takes a params object, 
-  // which is where you provide your auth credentials
-  const params = {
-    auth: oauthClient
-  };
-
-  // Retrieve the user's account
-  profile.userinfo.v2.me.get(params, (err, response) =&gt; {
-    if (err) {
-      callback(err);
-      return;
-    }
-    // The response object contains all of the account info
-
-    // This is where you validate if the user is allowed or not.
-
-    // If the user is valid, create a new session for them and save it.
-    // It's up to you where you want to save this session. Could be 
-    // a redis cache, http session, whatever your needs are.
-
-    // After that, we're going to send our session token and user 
-    // account back.
-
-
-    const sessionJSON = {
-      token: someSessionToken,
-      account: response
-    };
-    callback(null, newSession);
-  }
-});
+<pre><code>&lt;img alt="Interface Builder" src="https://raw.githubusercontent.com/Tallwave/Gliphy/gh-pages/images/ib.png"&gt;
+&lt;figcaption&gt;Choose a style from the font menu in Interface Builder&lt;/figcaption&gt;
 </code></pre>
 
-<p>  }
-};
-```</p>
+<p></figure></p>
 
-<p>That&rsquo;s kind of a mouthful and could definitely stand a good refactoring, but it goes through the steps needed to get some information from Google. You can see more <a href="http://google.github.io/google-api-nodejs-client/12.4.0/index.html">APIs</a> you can call, but the documentation on a lot of them is rather sparse. For example, adding the <code>oauthClient</code> to <code>params</code> is not apparent, but necessary for each call.</p>
+<p>But there&rsquo;s a catch. If a user launches your app, then changes the font size, your app won&rsquo;t display any new changes until it has quit and is relaunched. You can watch for the <code>UIContentSizeCategoryDidChangeNotification</code> notification though and then re-render your text based views then<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. So, regardless of your choice you&rsquo;ll have to code out <em>a lot</em> of labels, buttons, and text fields. In a normal app, that&rsquo;s hundreds of lines of boring code.</p>
 
-<p>We&rsquo;ve now determined if the user should actually have access to what they just signed in to and sent the response back to the client. That&rsquo;s pretty good! Refresh your beverage, take a deep breath and then let&rsquo;s get handle that response and get our client in order to keep moving.</p>
+<p>The other big downside is that you&rsquo;re limited to the system font. So, San Francisco on iOS 9 and Helvetica Neue on older versions. I like those fonts just fine, but sometimes you need to switch it up.</p>
 
-<p><strong>Step 3 — Back on the Client</strong></p>
+<h2>BNRDynamicTextManager</h2>
 
-<p>You might have noticed again that we did not send the session information back in JSON API format either. This was intentional since we aren&rsquo;t going to be storing this in the standard Ember store, and therefore don&rsquo;t need the additional benefit of using something that standardized. You could if you wanted to, but for this occasion, I did not want to set up a model (or in this case model<em>s</em> to support the nested structure).</p>
+<p>I first came across <a href="https://www.bignerdranch.com/">Big Nerd Ranch&rsquo;s</a> <a href="https://github.com/bignerdranch/BNRDynamicTypeManager">BNRDynamicTextManager</a> library and found it to be pretty useful. You still have to wire up each field (or use subclasses), and you&rsquo;re still stuck with the system font, but it handled all the notification watching for you. Here&rsquo;s a sample:</p>
 
-<p>Back up in our <code>Ember.RSVP.Promise</code> handler there was this line:</p>
+<p>```objc
+[[BNRDynamicTypeManager sharedInstance] watchLabel:label</p>
 
-<p><code>javascript
-// In torii-adapters/application.js
-this.get('sessionStore').save(account);
-</code></p>
-
-<p>Once you receive a response, you&rsquo;ll need to store it. You could use Ember Data, but that felt overkill to me; I needed to access the tokens within the response for subsequent API calls, and nothing else. I ended up building an <a href="https://guides.emberjs.com/v2.8.0/applications/services/">Ember service</a> that serialized the content and stored it in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>. You can go your own way too.</p>
-
-<p><strong>Step 4 — Making authenticated requests</strong></p>
-
-<p>We&rsquo;re authorized (or have displayed a fancy error message) and are ready to make actual requests to get actual data. I like to authenticate my API requests by including my authorization token in the <code>Authorization</code> header on requests. Ember allows for this by overriding the <code>headers</code> computed property in your Adapter:</p>
-
-<p>```javascript
-// adapters/application.js
-  headers: Ember.computed(function() {</p>
-
-<pre><code>const account = this.get('sessionStore').fetch();
-if (account) {
-  return {
-    'Authorization': account._id
-  };
-}
-return {};
+<pre><code>                                     textStyle:UIFontTextStyleBody];
 </code></pre>
 
-<p>  }).volatile()
-```</p>
+<p>```</p>
 
-<p><strong>Step 5 — Verify authentication on the server</strong></p>
+<p>The library was lightweight and easy to understand<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>, which got me thinking.</p>
 
-<p>There are may ways to <a href="http://hapijs.com/tutorials/auth">authenticate requests with Hapi</a>. Hapi calls these &ldquo;Schemes&rdquo;. A Scheme is made up of multiple Strategies but since we only have one, we&rsquo;ll just refer to it as a Scheme.</p>
+<h2>Gliphy</h2>
 
-<p>You define a Scheme as a function that takes a <code>server</code> and some <code>options</code> as arguments and go from there. Here&rsquo;s <code>api-auth.js</code>:</p>
+<p>I decided to port BNRDynamicTextManager to Swift and see if I could add some functionality to it. Porting it wasn&rsquo;t a big deal, although I made a couple of changes to better match Swift&rsquo;s idioms. I then added a couple of nice features on top.</p>
 
-<p>```javascript
-module.exports = function (server, options) {</p>
+<p><strong>Big Feature 1 — Custom Fonts</strong><br />
+Watcher methods can take the name of a custom font:</p>
 
-<p>  return {</p>
+<p>```swift
+DynamicTypeManager.sharedInstance.watchLabel(titleLabel,</p>
 
-<pre><code>// These are the standard Hapi request/reply arguments
-authenticate: function (request, reply) {
-
-  // Get the session token from the HTTP Headers of the request
-  const req = request.raw.req;
-  const authorization = req.headers.authorization;
-  // Fail quickly if it isn't present.
-  if (!authorization) {
-    return reply(Boom.unauthorized(null, 'Basic'));
-  }
-
-  // Pull the credentials from the session store that are 
-  // associated with the session token. Fail if it's not valid.
-  if (!tokenIsValid) {
-    return reply(Boom.unauthorized('Authenication failed', 'Basic'), null);
-  }
-
-  // Authenticated, so send the credentials along the chain in 
-  // case they need to be used later.
-  return reply.continue({ credentials: credentials });
-}
+<pre><code>                                         textStyle: UIFontTextStyleTitle1,
+                                         fontName: "MarkerFelt-Thin")
 </code></pre>
 
-<p>  };
-};
-```</p>
+<p><code>``
+This will apply the font size of the "Headline" style to your label, but keep the glorious MarkerFelt font. If the</code>fontName` is not associated with an installed font, it will fall back to the system font.</p>
 
-<p>Now that we&rsquo;ve defined our Scheme, we need to register it with Hapi. Wherever the server is set up add this:</p>
+<p><strong>Big Feature 2 — Custom Styles</strong><br />
+iOS 7 brought us six text styles, and iOS 9 brought four more<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>. They cover a decent range of use cases, but sometimes you still want your own. You can do that with the <code>DynamicFontRegistry</code> class:</p>
 
-<p>```javascript
-// Import our Scheme
-const apiScheme = require(&lsquo;./config/api-scheme&rsquo;);</p>
+<p>```swift
+// This could be in AppDelegate, some custom Theme class, or wherever
+DynamicFontRegistry.registry.addTextStyle(&ldquo;UIFontTextStyleReallyReallyBigTitle&rdquo;,</p>
 
-<p>exports.register = function (server, options, next) {</p>
-
-<p>  // Auth
-  // Schemes have a name which you define here.
-  server.auth.scheme(&lsquo;auth-scheme&rsquo;, apiScheme);</p>
-
-<p>  // Strategies also have a name. This is what you&rsquo;ll refer
-  // to when setting schemes for routes.
-  server.auth.strategy(&lsquo;basic-strategy&rsquo;, &lsquo;auth-scheme&rsquo;);</p>
-
-<p>  // You can declare all routes to use a one Strategy by default.
-  server.auth.default(&lsquo;basic-strategy&rsquo;);</p>
-
-<p>  // Routes might go here
-};
-```</p>
-
-<p>If you do use a default auth strategy, you can override that on individual routes in their handler config:</p>
-
-<p>```javascript
-{
-  method: &lsquo;GET&rsquo;,
-  path: &lsquo;/&rsquo;,
-  handler: function(req, reply) { reply(); },
-  config: {</p>
-
-<pre><code>auth: 'another-strategy'
+<pre><code>                                      scaledFrom: UIFontTextStyleHeadline,
+                                      byFactor: 4)
 </code></pre>
 
-<p>  }
-}
-```</p>
+<p>```
+In order to keep with the feel of how Dynamic Type works, you pick a style to serve as a base reference for the new one and then scale it from there. That way you don&rsquo;t hardcode a point size. You can then watch it the same way you would before:</p>
 
-<p>Or use the boolean <code>false</code> to skip auth altogether for a route, such as your session creation API.</p>
+<p>```swift
+DynamicTypeManager.sharedInstance.watchLabel(titleLabel,</p>
 
-<p>And we&rsquo;re done! You now have an authenticated API. There are plenty of other points that could be expanded on, but it&rsquo;s getting a little long in the tooth now.</p>
+<pre><code>                                         textStyle: "UIFontTextStyleReallyReallyBigTitle"", 
+                                         fontName: "MarkerFelt-Thin")
+</code></pre>
 
-<p><strong>Wait, why not use Bell?</strong></p>
+<p>```</p>
 
-<p>The Hapi organization maintains a project called <a href="https://github.com/hapijs/bell">Bell</a> that is a &ldquo;Third-party login plugin for hapi&rdquo;, including OAuth services. It&rsquo;s great, but the catch is that since half of our authentication takes place in the browser, we can&rsquo;t quite use it the way it is intended to be used.</p>
+<p><strong>Big Feature 3 — Global Styles</strong><br />
+I liked how it was working now, but it was still a long process to cover all the text based views that could be in an app. I wanted a solution that would make it super easy to handle the 90% scenario. Enter the <code>StyleWatcher</code> and <code>StyleConfig</code> constructs. The <code>StyleWatcher</code> will recursively examine each subview in a parent view and watch them with the <code>DynamicTypeManager</code> if they have a text style associated with them. That way you can set up the text-styles solely UI within Interface Builder and remove an entire swath of code. Additionally, you can set a global style that the watcher will use to find your custom font (or style).</p>
+
+<p><code>swift
+// AppDelegate
+// Setting up the global styles
+StyleWatcher.defaultConfig.label[UIFontTextStyleTitle1] = "MarkerFelt-Thin"
+StyleWatcher.defaultConfig.label[UIFontTextStyleTitle1] = "MarkerFelt-Thin"
+StyleWatcher.defaultConfig.textField[UIFontTextStyleBody] = "Avenir-Light"
+</code>
+Once that has been set up, tell the watcher to watch a view:</p>
+
+<p>```swift
+// In some View Controller
+let watcher = StyleWatcher()</p>
+
+<p>override func viewDidLoad() {</p>
+
+<pre><code>super.viewDidLoad()
+watcher.watchViews(inView: view)
+</code></pre>
+
+<p>}
+```
+And the magic will happen.</p>
+
+<p>You can customize that process too. The <code>watchViews</code> method can take its own <code>StyleConfig</code> as well, allowing you to define multiple different styles and applying them where necessary.</p>
+
+<p>I&rsquo;m pretty happy with the way Gliphy turned out. The <a href="https://github.com/tallwave/gliphy">code</a> is pretty straightforward too; no mind bending swiftisms required. There are some downsides though. Attributed strings aren&rsquo;t handled at all, and due to their nature, they probably will never be. Gliphy only watches four kinds of views: labels, buttons, textfields, and textviews, (plus their subclasses) and is a little difficult to extend beyond that.</p>
+
+<p>All said though, it should make supporting Dynamic Type something more than an afterthought in your apps.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>There is a bug in the iOS simulator and Xcode 7.3. You can change the font size, but the notification will not fire. It still works on a device though.</p>
+</li>
+<li class="footnote" id="fn:2">
+  <p>I raise my glass to <a href="https://github.com/jgallagher">jgallagher</a> for that.</p>
+</li>
+<li class="footnote" id="fn:3">
+  <p>Here they are:
+  <ul>
+    <li>UIFontTextStyleHeadline</li>
+    <li>UIFontTextStyleSubheadline</li>
+    <li>UIFontTextStyleBody</li>
+    <li>UIFontTextStyleFootnote</li>
+    <li>UIFontTextStyleCaption1</li>
+    <li>UIFontTextStyleCaption2</li>
+    <li>UIFontTextStyleTitle1</li>
+    <li>UIFontTextStyleTitle2</li>
+    <li>UIFontTextStyleTitle3</li>
+    <li>UIFontTextStyleCallout</li>        
+  </ul>
+  </p>
+</li>
+  </ol>
+</div>
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Private Extensions in Swift]]></title>
-    <link href="http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift/"/>
-    <updated>2015-12-11T11:08:59-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/12/11/private-extensions-in-swift</id>
-    <content type="html"><![CDATA[<p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
+    <title type="html"><![CDATA[Finding the Last Photo Taken]]></title>
+    <link href="http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken/"/>
+    <updated>2015-08-09T19:40:43-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/08/09/finding-the-last-photo-taken</id>
+    <content type="html"><![CDATA[<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
 
-<p><code>swift
-private class Foo {
-}
-</code></p>
+<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
 
-<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
-
-<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
+<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
 
 <p>```swift
-private extension HKQuantitySample {</p>
+import UIKit
+import Photos</p>
 
-<pre><code>var quantityInOunces: Double? { /* blah */ }
+<p>// I like to typealias my blocks, makes for easier reading
+typealias ImageCallback = (UIImage? &ndash;> Void)</p>
+
+<p>func fetchLastPhoto(resizeTo size: CGSize?, imageCallback: ImageCallback) {</p>
+
+<pre><code>let fetchOptions = PHFetchOptions()
+fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 </code></pre>
 
-<p>}</p>
+<p>//        fetchOptions.fetchLimit = 1 // Available in iOS 9</p>
 
-<p>class HealthKitManager {</p>
-
-<pre><code>func doStuff() {
-    // Calculate a bunch of ounces easy peasy.
+<pre><code>if let fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions) {
+    if let asset = fetchResult.firstObject as? PHAsset {
+        let manager = PHImageManager.defaultManager()
+        let targetSize = size == nil ? CGSize(width: asset.pixelWidth, height: asset.pixelHeight) : size!
+        manager.requestImageForAsset(asset,
+            targetSize: targetSize,
+            contentMode: .AspectFit,
+            options: nil,
+            resultHandler: { image, info in
+            imageCallback(image)
+        })
+    } else {
+        imageCallback(nil)
+    }
 }
 </code></pre>
 
 <p>}
 ```</p>
 
+<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
+
+<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
+
+<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
+
+<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
+
+<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
+
+<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
+
+<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Basic GitHub Workflow for Collaboration]]></title>
+    <link href="http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration/"/>
+    <updated>2015-06-30T12:16:16-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/06/30/basic-github-workflow-for-collaboration</id>
+    <content type="html"><![CDATA[<p>When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No branching? Ok. Branch on everything? Sure. Want all your commit messages to consist of &ldquo;stuff&rdquo;? Knock yourself out. You might regret some of that in the long run, but it&rsquo;s not hassling anyone else. But, as soon as you add another person into the mix, things will have to change.</p>
+
+<p>One gigantic benefit from collaboration is having a second set of eyes look at your code. GitHub makes this easy if you follow a few steps.</p>
+
+<p><em>[ed: This might be old hat for some of you, but I don&rsquo;t know if I&rsquo;ve ever read an entire guide for this, so I&rsquo;m writing it all down. Please send me <a href="https://twitter.com/swilliams">feedback</a>, nicely, if there&rsquo;s a problem.]</em></p>
+
+<h2>Create an Organization</h2>
+
+<p>This one is optional, but does help in a few ways. The Organization becomes the face of any projects underneath it. It also makes a few things a little easier with regard to deployments, issue tracking, and documentation.</p>
+
+<h2>Everyone Forks from the Organization</h2>
+
+<p>If the repository is called <code>some-org/project-x</code>, then each developer forks that to create <code>swilliams/project-x</code>, <code>sally-developer/project-x</code>, and so on. If a repository is private on the Organization, your forks will be private too, and won&rsquo;t count against your own private project count.</p>
+
+<h2>Clone Your Fork</h2>
+
+<p>Now get your local copy.</p>
+
+<p><code>git clone https://github.com/swilliams/project-x.git</code></p>
+
+<h2>Set up Remotes</h2>
+
+<p>Your fork on GitHub will automatically be your <code>origin</code> remote. Add a remote for the Organizations repository. By convention this is typically called <code>upstream</code>.</p>
+
+<p><code>git remote add upstream https://github.com/some-org/project-x.git</code></p>
+
+<h2>Work in Branches</h2>
+
+<p>Working on a feature? Create a branch <code>feature-abc</code>. Fixing a bug? Create a branch <code>issue-254-login-done-broke</code>. Keep <code>master</code> clean.</p>
+
+<p><code>git checkout -b feature-abc</code></p>
+
+<h2>Push Branches to Origin</h2>
+
+<p>Done with a feature or an issue? Push it back up to <code>origin</code> (your fork).</p>
+
+<p><code>git push origin feature-abc</code> (you can add a <code>-u</code> flag too to track the remote branch too)</p>
+
+<h2>Create a Pull Request</h2>
+
+<p>Why do we go to the hassle of creating all those branches? Because with branches, you can create multiple outstanding Pull Requests at once. If you did all your development in <code>master</code>, any additional commits you push up will be added to an open Pull Request, which can cause issues.</p>
+
+<p>Multiple small Pull Requests are much easier to review. Would you rather review 3 files over 5 commits or 50 files and 75 commits?</p>
+
+<h2>Someone Else Reviews the Pull Request</h2>
+
+<p>Perhaps my favorite piece of functionality in GitHub is the Pull Request review process. Use it to annotate code and discuss. Merge it in if everything is good.</p>
+
+<h2>Rules for the Road</h2>
+
+<ol>
+<li>Keep the master branch clean. That should be ready to go live if necessary. This means tests should be passing, everything compiles, nothing important should be broken, etc.</li>
+<li>Never commit directly to <code>upstream</code>. Upstream should only be updated through Pull Requests. Exception: pushing tags.</li>
+<li>Pull from <code>upstream</code> regularly. The more codebases diverge, the more likely a nasty merge problem will occur.</li>
+<li>Keep branches small. Just reiterating it again.</li>
+<li>There are exceptions to every rule. Use them intelligently.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
+    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
+    <updated>2015-05-17T13:37:51-07:00</updated>
+    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
+    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
+
+<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
+
+<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The iOS Development Calendarw]]></title>
+    <link href="http://blog.swilliams.me/words/2014/12/08/the-ios-development-year/"/>
+    <updated>2014-12-08T14:04:40-07:00</updated>
+    <id>http://blog.swilliams.me/words/2014/12/08/the-ios-development-year</id>
+    <content type="html"><![CDATA[<p><strong>January</strong>: &ldquo;We just had our biggest sales quarter ever!&rdquo; &ndash; Apple, adding another $20B to their bank account.</p>
+
+<p><strong>April</strong>: Speculation of what&rsquo;s gonna be in the next version of iOS.</p>
+
+<p><strong>June</strong>: WWDC. New things! Wow! Ideas abound! Flurries of productivity. &ldquo;Guys, I think Apple&rsquo;s playing nicer with developers now!&rdquo; &ndash; some people.</p>
+
+<p><strong>July</strong>: Wow, this beta is really beta.</p>
+
+<p><strong>September</strong>: iOS Next ships! New iPhone! Ship your app! Bugs!</p>
+
+<p><strong>October</strong>: Weird rejections that don&rsquo;t make any sense.</p>
+
+<p><strong>December</strong>: Blog posts and tweets about how Apple is screwing themselves with the byzantine app review process.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Some rejections are overturned.</p>
+
 <div class="footnotes">
   <ol>
     <li class="footnote" id="fn:1">
-  <p>Couldn't think of a better word, but yeah I'm regular Vasco de Gama.</p>
+  <p><a href="http://www.panic.com/blog/transmit-ios-1-1-1/">You are here.</a></p>
 </li>
   </ol>
 </div>
+
+
 
 ]]></content>
   </entry>

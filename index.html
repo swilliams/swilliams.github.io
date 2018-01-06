@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Race Report — Phoenix Rock &#8216;N Roll Half Marathon Jan 28th, 2017 I tend to function better when I have specific goals. As part of improving my &hellip;">
+	<meta name="description" content="Dreamers and Doers Jan 5th, 2018 Let me tell you about &ldquo;Jake&rdquo;. Jake was a colleague of mine and he loved to watch TED talks. If you had &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,46 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2018/01/05/dreamers-and-doers/" itemprop="url">Dreamers and Doers</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2018-01-05T20:33:14-07:00" data-updated="true" itemprop="datePublished">Jan 5<span>th</span>, 2018</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Let me tell you about &ldquo;Jake&rdquo;. Jake was a colleague of mine and he <em>loved</em> to watch TED talks. If you had lunch with him, you were guaranteed to have a stimulating discussion of the blockchain, or AI, or AR &amp; VR, or some other topic. You&rsquo;d walk away from it with ideas blasting out of your brain. He had that much sincere passion about all the things that others may have passed over as fads.</p>
+
+<p>Jake and I used to to get into it because I tended to be more focused on the present and tended to get annoyed with some of the &ldquo;everything will be better in the future because of [insert-hot-technology]&rdquo; talk. I do believe that change doesn’t happen through technology alone, but tech can facilitate faster and easier change. Facebook didn’t change the world because it had a neat timeline algorithm but it sure did make it easier for millions of people to bump into each other, for better or for worse.</p>
+
+<p>Everybody needs to dream a little. The yearning for something new and better is powerful, and can cause all sorts of ideas to hatch. But there is such a thing as too much dreaming. It’s easy to fall in love with tech. It can be <strong>fun</strong> to imagine what it’ll be like when your house responds intelligently to a wave of your hand. But imagining never brought about anything if work didn’t go with it.</p>
+
+<p>On occasion I&rsquo;ve been called too pragmatic. I tend to focus on honest to goodness tangible products. I get all kinds of itchy when I hear that someone is an &ldquo;enthusiast&rdquo; or &ldquo;thought leader&rdquo; on something like cryptocurrencies. Usually they have both of those titles on their LinkedIn profiles. Because there seems to be a lot of <a href="https://en.wiktionary.org/wiki/all_hat_and_no_cattle">hat and no cattle</a> surrounding those hot topics, I tend to roll my eyes a bit and go back to focusing on what&rsquo;s in front of me.</p>
+
+<p>This means I have a tendency to be a little behind the curve when something new comes along that I would actually benefit. I&rsquo;m more of a &ldquo;doer&rdquo; than a &ldquo;dreamer&rdquo;. But, then I have to play catch-up. I hate playing catch-up. This isn&rsquo;t scientific but it feels like there is a spectrum here. Some people have their heads totally in the clouds and never get anything done. Some are so focused on the work that they are constantly missing the next big thing.</p>
+
+<p>The ones who are really dangerous are those who have equal parts dreamer and equal parts doer. One of Alan Kay&rsquo;s maxims at Xerox PARC was <a href="https://en.wikiquote.org/wiki/Alan_Kay">“The best way to predict the future is to invent it.”</a> Those who can see the trends and how to build businesses and products around them are in the best position to truly bring about change.</p>
+
+<p>I do think that it is possible to move along that spectrum to an extent. In my job, I’ve been working on dreaming a little more. I should be taking a closer look at some of the things I’ve dismissed because while they may be a little far away from reality right now, they may not be in a year or two, and I don’t want to be on my heels if there’s a big enough shift in the market. I love building cool stuff and goshdarnit, if the blockchain really, truly becomes A Thing, then I want to be there for it.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1437,111 +1477,6 @@ I liked how it was working now, but it was still a long process to cover all the
 
 </article>
 
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/08/09/finding-the-last-photo-taken/" itemprop="url">Finding the Last Photo Taken</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-08-09T19:40:43-07:00" data-updated="true" itemprop="datePublished">Aug 9<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Getting the last photo taken is a convenient feature to have in your app when dealing with photo picking. Prior to iOS 8, you could get it by using the <a href="https://developer.apple.com/library/ios/documentation/AssetsLibrary/Reference/AssetsLibraryFramework/index.html#//apple_ref/doc/uid/TP40009730">Assets Library Framework</a> and then <a href="http://stackoverflow.com/a/10200857/736">looping through the various groups</a> to get the right photo.</p>
-
-<p>In iOS 8, the Asset Library is still available, but Apple introduced a new framework to go along with <a href="http://www.apple.com/osx/photos/">Photos.app</a>. It&rsquo;s creatively called the <a href="https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/index.html#//apple_ref/doc/uid/TP40014408">Photos Framework</a> and it makes certain things, such as querying for the recent image much easier. To further entice you to use it, the Assets Library is deprecated in iOS 9.</p>
-
-<p>Here&rsquo;s a function that&rsquo;ll get the most recent photo with the Photos Framework:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">UIKit</span>
-</span><span class='line'><span class="k">import</span> <span class="n">Photos</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// I like to typealias my blocks, makes for easier reading</span>
-</span><span class='line'><span class="k">typealias</span> <span class="n">ImageCallback</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIImage</span><span class="o">?</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">func</span> <span class="n">fetchLastPhoto</span><span class="p">(</span><span class="n">resizeTo</span> <span class="nl">size</span><span class="p">:</span> <span class="bp">CGSize</span><span class="o">?</span><span class="p">,</span> <span class="nl">imageCallback</span><span class="p">:</span> <span class="n">ImageCallback</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">let</span> <span class="n">fetchOptions</span> <span class="o">=</span> <span class="n">PHFetchOptions</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">fetchOptions</span><span class="p">.</span><span class="n">sortDescriptors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSSortDescriptor</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="s">&quot;creationDate&quot;</span><span class="p">,</span> <span class="nl">ascending</span><span class="p">:</span> <span class="nb">false</span><span class="p">)]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//        fetchOptions.fetchLimit = 1 // Available in iOS 9</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="k">let</span> <span class="n">fetchResult</span> <span class="o">=</span> <span class="n">PHAsset</span><span class="p">.</span><span class="n">fetchAssetsWithMediaType</span><span class="p">(.</span><span class="n">Image</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">fetchOptions</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="k">let</span> <span class="n">asset</span> <span class="o">=</span> <span class="n">fetchResult</span><span class="p">.</span><span class="n">firstObject</span> <span class="kt">as</span><span class="o">?</span> <span class="n">PHAsset</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">let</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">PHImageManager</span><span class="p">.</span><span class="n">defaultManager</span><span class="p">()</span>
-</span><span class='line'>            <span class="k">let</span> <span class="n">targetSize</span> <span class="o">=</span> <span class="n">size</span> <span class="o">==</span> <span class="nb">nil</span> <span class="o">?</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">asset</span><span class="p">.</span><span class="n">pixelWidth</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">asset</span><span class="p">.</span><span class="n">pixelHeight</span><span class="p">)</span> <span class="o">:</span> <span class="n">size</span><span class="o">!</span>
-</span><span class='line'>            <span class="n">manager</span><span class="p">.</span><span class="n">requestImageForAsset</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span>
-</span><span class='line'>                <span class="nl">targetSize</span><span class="p">:</span> <span class="n">targetSize</span><span class="p">,</span>
-</span><span class='line'>                <span class="nl">contentMode</span><span class="p">:</span> <span class="p">.</span><span class="n">AspectFit</span><span class="p">,</span>
-</span><span class='line'>                <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
-</span><span class='line'>                <span class="nl">resultHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">image</span><span class="p">,</span> <span class="n">info</span> <span class="k">in</span>
-</span><span class='line'>                <span class="n">imageCallback</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">})</span>
-</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>            <span class="n">imageCallback</span><span class="p">(</span><span class="nb">nil</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&rsquo;s a fair amount going on in there. First, we create a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchOptions_Class/index.html#//apple_ref/occ/cl/PHFetchOptions"><code>PHFetchOptions</code></a> object which we can use to pass in additional information to filter the query. In this case we only need to sort by <code>creationDate</code> descending. iOS 9 introduces <code>fetchLimit</code> which could reduce a bit of overhead since we know we only need 1 image.</p>
-
-<p><code>PHFetchOptions</code> also has a <code>predicate</code> property that has a bunch of interesting capabilities, such as restricting the search to specific <code>mediaSubtypes</code> like <code>PhotoHDR</code> or <code>PhotoPanorama</code>. If you want all photos just ignore it; that&rsquo;s determined later. Do note that <em>&ldquo;Photos does not support predicates created with the <code>predicateWithBlock:</code> method.&rdquo;</em>.</p>
-
-<p>Once we have our options we are ready to query. The Photos Framework gives you access to 3 types of things that are stored in Photos.app: <code>PHAsset</code>, <code>PHAssetCollection</code>, and <code>PHCollectionList</code>. We only care about <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/occ/cl/PHAsset"><code>PHAsset</code></a> right now. A <code>PHAsset</code> is a representation of the media stored on the device (photo or video). The other two are ways to group those assets in general.</p>
-
-<p>Querying happens through class-level methods on the <code>PHAsset</code> class. There are <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHAsset_Class/index.html#//apple_ref/doc/uid/TP40014383-CH1-SW2">a few to choose from</a>, but we want <code>fetchAssetsWithMediaType:options:</code>. This returns a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHFetchResult_Class/index.html#//apple_ref/occ/cl/PHFetchResult"><code>PHFetchResult</code></a> which is kinda like an <code>NSArray</code>, but not exactly. In Swift it&rsquo;s filled with optional <code>AnyObject</code>s. The first one should be the most recently created file so we cast it to a <code>PHAsset</code>.</p>
-
-<p>Now comes the time to convert that <code>PHAsset</code> into what we really want: a <code>UIImage</code>. This is the responsibility of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHImageManager_Class/index.html#//apple_ref/occ/cl/PHImageManager"><code>PHImageManager</code></a>.</p>
-
-<p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
-
-<p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
-
-		
-		
-	</div>
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
@@ -1552,7 +1487,7 @@ I liked how it was working now, but it was still a long process to cover all the
 </nav></div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2017 - Scott Williams -
+  Copyright &copy; 2018 - Scott Williams -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
