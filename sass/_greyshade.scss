@@ -355,6 +355,15 @@ figure.center {
     text-align: center;
 }
 
+figure img.halfsize {
+	width: 50%;
+	height: 50%;
+}
+
+img.border {
+	border: 1px solid #333;
+}
+
 h3 + figure {
     margin-top: 30px;
 }
