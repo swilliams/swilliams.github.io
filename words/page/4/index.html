@@ -9,8 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="O Christmas Roast Dec 29th, 2014 I posted this on Twitter. Here it is for posterity. O Christmas Roast, O Christmas Roast!
-Thy rawness shall be &hellip;">
+	<meta name="description" content="The Madness of Errors in Swift Jan 21st, 2015 Let&rsquo;s take a common scenario. You are making an HTTP request and are checking the response for &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +111,70 @@ Thy rawness shall be &hellip;">
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/01/21/the-madness-of-errors-in-swift/" itemprop="url">The Madness of Errors in Swift</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-21T20:18:43-07:00" data-updated="true" itemprop="datePublished">Jan 21<span>st</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Let&rsquo;s take a common scenario. You are making an HTTP request and are checking the response for an error. If there is one, you&rsquo;d like to post a notification and let some error handler deal with it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>    Alamofire.request(.GET, someURL).response { (request, response, data, error) in
+</span><span class='line'>        if error != nil {
+</span><span class='line'>            let userInfo = ["error": error]
+</span><span class='line'>            let nc = NSNotificationCenter.defaultCenter()
+</span><span class='line'>            nc.postNotificationName("HTTPERROR", object: nil, userInfo: userInfo)
+</span><span class='line'>        }
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Uh oh, there&rsquo;s a compiler error on the <code>userInfo</code> argument with the message &ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo;. Huh? <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNotificationCenter_Class/index.html#//apple_ref/occ/instm/NSNotificationCenter/postNotificationName:object:userInfo:"><code>postNotificationName</code> definitely allows for a <code>userInfo</code> parameter</a>. Maybe it&rsquo;s a hidden typing error? According to the docs <code>userInfo</code> is supposed to be an optional dictionary like of type: <code>[NSObject : AnyObject]</code>. My key is a String which is bridged from <code>NSString</code>, which is an <code>NSObject</code> and <code>NSError</code> is also an <code>AnyObject</code>, so what gives?</p>
+
+<figure class="center">
+    <img alt="Lying" src="/images/assets/xcode-lying-cat.jpg">
+    <figcaption></figcaption>
+</figure>
+
+
+<p>After banging my head on the wall for a while I remembered that the <code>error</code> variable from <a href="https://github.com/Alamofire/Alamofire">AlamoFire</a> is an optional. Therefore, the correct declaration for <code>userInfo</code> is to unwrap the error:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let userInfo = ["error": error!]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And voilà, no more compilation errors.</p>
+
+<p>&ldquo;Extra argument &lsquo;userInfo&rsquo; in call&rdquo; is a crappy error message. The proper one should have been something about values in the <code>userInfo</code> dictionary not being optional.</p>
+
+<p>Swift is full of these unfortunately. Between these and your friendly SourceKit crashes it&rsquo;s getting untenable. My wish for 2015 is for Apple to address these shortcomings.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -631,64 +694,6 @@ for any purpose, even commercially&hellip; No additional restrictions — You ma
 
 
 <p>Once again, the logic here is flawless. No conjecture. For realsies.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2014/11/14/i-once-caught-a-comet-that-was-this-big/" itemprop="url">I Once Caught a Comet That Was THIS Big</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-11-14T19:56:14-07:00" data-updated="true" itemprop="datePublished">Nov 14<span>th</span>, 2014</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p><a href="http://www.theguardian.com/science/gallery/2014/nov/12/rosetta-mission-lands-philae-probe-on-67p-comet-in-pictures">We landed a spacecraft on a comet</a>. This in itself is pretty cool, but apparently not many people are familiar with the size of the comet in question. These images might just help.</p>
-
-<figure class="center">
-    <img alt="Star Destroyer" src="/images/assets/philae-star-destroyer.jpg" style="width:350px">
-    <figcaption>Via the Washington Post</figcaption>
-</figure>
-
-
-
-
-<figure class="center">
-    <img alt="Star Trek" src="/images/assets/philae-startrek.jpg">
-    <figcaption>Star Wars not your thing? We got you covered.</figcaption>
-</figure>
-
-
-
-
-<figure class="center"> 
-    <img alt="Rome" src="/images/assets/philae-rome.jpg">
-    <figcaption>Keep it on Earth? Ok.</figcaption>
-</figure>
-
-
-
-
-<figure class="center">
-    <img alt="LA" src="/images/assets/comet_v_la.png">
-    <figcaption>How &#8216;bout some AMERICA?</figcaption>
-</figure>
-
 
 		
 		

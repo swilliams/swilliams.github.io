@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-01-06T16:38:38-07:00</updated>
+  <updated>2018-01-21T14:54:29-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I Read Resumés]]></title>
+    <link href="http://blog.swilliams.me/words/2018/01/21/how-i-read-resumes/"/>
+    <updated>2018-01-21T13:46:50-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/01/21/how-i-read-resumes</id>
+    <content type="html"><![CDATA[<p>I see a lot of resumés. <a href="https://tallwave.com">We&rsquo;re a growing company</a>, and <a href="https://jobs.lever.co/tallwave.com">are hiring often</a>, so the rate of resumés that cross my desk has only gone up. I care quite a bit about my team and hire with great care, so I say &lsquo;no&rsquo; most of the time. If you wanted to know how to get a leg up on my hiring process, and perhaps others&#8217;, here&rsquo;s how I scan and determine pass/reject on resumés.</p>
+
+<p><em>[Note: this is <strong>my</strong> process. I am not stating it is the best or that it will work in any other situation. This is just how I do it.]</em></p>
+
+<p><strong>Step 1</strong>. Reject the grossly unqualified. These are the people who may very well have applied for the wrong job by accident, or just don&rsquo;t care and apply to every single job they can find. The most memorable of these was someone who&rsquo;s closest relevant experience to a senior developer position was that they were a college mascot&hellip;</p>
+
+<p>Also, double check to make sure you find and replace the right strings in your cover letter. &ldquo;I really want to work at [Some Other Company]!&rdquo; looks bad on you. Speaking of cover letters:</p>
+
+<p><strong>Step 2</strong>. Reject those who don&rsquo;t read the job description. I include a blurb like this on every job description I post:</p>
+
+<blockquote><p>Do not just send in a resume. Tell us your story. What have you built that makes you proud? How have you demonstrated leadership? What are your aspirations? What are you passionate about? What are you dying to learn next? Share with us the stuff that makes you stand out. This could be something as simple as a well-crafted cover letter, or something public that you had a hand in creating.</p></blockquote>
+
+<p>You&rsquo;d be surprised how many people don&rsquo;t do any of that (or actually, if you&rsquo;ve ever hired anyone before, you are completely not surprised in the least). If there is nothing but a resume attached, it goes in the reject pile.</p>
+
+<p>&ldquo;How can you automatically disqualify people without even reading their names?&rdquo; you say? Well, in this job, the details matter. If you are the type of person that does not read that, you are not going to do <a href="https://tallwave.github.io/guidelines/Quality">well</a> by our clients, and that is just not gonna fly.</p>
+
+<p>Those two steps will whittle down a pool of 200 applicants to 20 or so. I want to get that number down to below 10. The next steps are a little more involved. But before that, there are a couple of smaller things to consider.</p>
+
+<p><strong>How much school stuff should I put include?</strong>. School kinda matters for an entry-level job. The school, your GPA, and if what you studied is related to the job are data points, but not deciding factors. Graduating summa cum laude from MIT is a nice feather in your cap, but it does not guarantee that you are a good software developer.</p>
+
+<p>Nobody cares about your high school. Seriously. Don&rsquo;t put it on your resumé.</p>
+
+<p><strong>Bits and bobs</strong>. Have up to date contact information on there. That includes easy URLs to any social media you feel like sharing. If I&rsquo;m interested, I&rsquo;ll try to look you up on LinkedIn. Sometimes it&rsquo;s easier to glean information there than a resumé.</p>
+
+<p>Ok, more important stuff now.</p>
+
+<p><strong>Step 3</strong>. More Hemingway, less Faulkner. I will not be spending more than a few minutes at this stage on your resume. I do not have the time to read your 5000 word treatise on how awesome you are. It is possible to convey your passion for the craft in a couple of paragraphs, I&rsquo;ve seen it.</p>
+
+<p>Also, take 5 minutes and do a Google search on the company and position you&rsquo;re applying for. &ldquo;I saw that you recently did [some thing] and I love [key component of it]. I&rsquo;d like to talk about that!&rdquo; Flattery will get you everywhere, and this is the easiest way to get in the good graces of the person screening resumés.</p>
+
+<p><strong>Step 4</strong>. Evaluate skills and job history. If I&rsquo;m hiring a web developer, can you, y&#8217;know, develop software for the web? When I&rsquo;m doing this I&rsquo;m looking for something that makes you stand out to me. Do your best to make this easy for me. &ldquo;I designed and built a load balanced RESTful API that scaled to 200,000 sessions&rdquo; is good. &ldquo;I took a junior dev under my wing and helped her get a promotion&rdquo; is great.</p>
+
+<p>For a senior type position, I&rsquo;m only going to look about 5 years back on job history or so. The industry changes so quickly, it doesn&rsquo;t really matter that you were a <a href="http://backbonejs.org">Backbone.js</a> expert if we&rsquo;re jumping into <a href="http://vuejs.org">Vue</a>. You should still include it for history&rsquo;s sake, but it should be short.</p>
+
+<p>For the juniors and entry-level folks, don&rsquo;t include non-relevant part-time jobs. It&rsquo;s cool that you worked at Chili&rsquo;s for 9 months, but putting noise like that on a resumé makes me grumpy. <strong>Note:</strong> If you worked crap jobs to put yourself through school and are proud of that, and you should be, put it in the cover letter.</p>
+
+<p>If you are changing careers, definitely include that, and make it apparent. Last year I hired someone who got her PhD in physics and after 20 years of that decided to become a developer. She was clearly smart and has been a great addition to the team.</p>
+
+<p>So, if you do all of that, you&rsquo;ll very likely make it to a phone screen interview. That&rsquo;s a whole other post though. But, what about bigger companies? The ones with giant HR departments that have other people phone screen?</p>
+
+<p>In that scenario, your resumé will very likely be screened by a non-technical person. Someone who may not know that if you can build APIs with <a href="https://expressjs.com">Express</a>, you can do it with <a href="https://hapijs.com">Hapi</a>, and is looking for that magic buzzword and will reject you if it is not there. If you feel like you&rsquo;re applying to a company like that (and if they have more than a few hundred employees, you probably are), take special care that your resumé has all of the right bullet points and that they are obvious.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Red/Blue Game]]></title>
@@ -1704,80 +1753,6 @@ I liked how it was working now, but it was still a long process to cover all the
   <ol>
     <li class="footnote" id="fn:1">
   <p>You ARE using Source Control, right? Sometimes new developers will ask me why they need Source Control. I usually parrot the usual answers - branching is good, undo mistakes, tool integration, etc - but situations like this are where it really shines. Without source control here, you&#8217;d be hosed. You&#8217;d have to manually fix the XML in the contents file, which would be monumentally hard or altogether impossible depending on what changed and how good your memory is.</p>
-</li>
-  </ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Two Factor Authentication for GitHub]]></title>
-    <link href="http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github/"/>
-    <updated>2015-04-01T10:48:48-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/04/01/two-factor-authentication-for-github</id>
-    <content type="html"><![CDATA[<p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure them all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
-
-<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
-
-<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>No dice.</p>
-
-<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>± git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>Counting objects: 80, done.
-</span><span class='line'>Delta compression using up to 4 threads.
-</span><span class='line'>Compressing objects: 100% (78/78), done.
-</span><span class='line'>Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
-</span><span class='line'>Total 80 (delta 58), reused 0 (delta 0)
-</span><span class='line'>To https://github.com/swilliams/my-repo.git
-</span><span class='line'>   01efb2c..445a0b6  master -&gt; master</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Yay!</p>
-
-<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>For standard git operations, I don&#8217;t think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
 </li>
   </ol>
 </div>

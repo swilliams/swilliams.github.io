@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="The Good, the Bad, and the Ugly With the Apple TV Nov 5th, 2015 A new Apple device! I&rsquo;m required to have opinions. Here they are in a &hellip;">
+	<meta name="description" content="Private Extensions in Swift Dec 11th, 2015 Here&rsquo;s a quickie. In Swift, the default accessor for strcutures is internal, meaning that it is &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,77 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/12/11/private-extensions-in-swift/" itemprop="url">Private Extensions in Swift</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-11T11:08:59-07:00" data-updated="true" itemprop="datePublished">Dec 11<span>th</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Here&rsquo;s a quickie. In Swift, the default <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html">accessor</a> for strcutures is <code>internal</code>, meaning that it is available to everything else within the module. You can change this by adding <code>private</code> or <code>public</code> in front of them like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">class</span> <span class="n">Foo</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>private</code> means that the construct is only available within the same file. I just &ldquo;discovered&rdquo;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> that you can also mark an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html">Extension</a> as <code>private</code>, which I hadn&rsquo;t considered before. This let&rsquo;s you add functionality to a struct or class that may be useful in the current context of everything within that same file, but doesn&rsquo;t make sense elsewhere.</p>
+
+<p>For example, in a <a href="https://developer.apple.com/healthkit/">HealthKit</a> project you may be only dealing with fluid ounces for an <code>HKQuantitySample</code> and converting all the time is a bit of a pain. You don&rsquo;t necessarily want to make a <code>quantityInOunces</code> computed variable  available on the whole app, but in a specific file where you&rsquo;re computed all those ounces, it makes sense.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">private</span> <span class="k">extension</span> <span class="n">HKQuantitySample</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">quantityInOunces</span><span class="p">:</span> <span class="n">Double</span><span class="o">?</span> <span class="p">{</span> <span class="cm">/* blah */</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">HealthKitManager</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">doStuff</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Calculate a bunch of ounces easy peasy.</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Couldn&#8217;t think of a better word, but yeah I&#8217;m regular Vasco de Gama.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -769,99 +840,6 @@
   <ol>
     <li class="footnote" id="fn:1">
   <p>You ARE using Source Control, right? Sometimes new developers will ask me why they need Source Control. I usually parrot the usual answers - branching is good, undo mistakes, tool integration, etc - but situations like this are where it really shines. Without source control here, you&#8217;d be hosed. You&#8217;d have to manually fix the XML in the contents file, which would be monumentally hard or altogether impossible depending on what changed and how good your memory is.</p>
-</li>
-  </ol>
-</div>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/04/01/two-factor-authentication-for-github/" itemprop="url">Two Factor Authentication for GitHub</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-04-01T10:48:48-07:00" data-updated="true" itemprop="datePublished">Apr 1<span>st</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p>In the interest of security I&rsquo;ve started to turn on <a href="http://en.wikipedia.org/wiki/Multi-factor_authentication">Two Factor Authentication</a> (aka 2FA) for some of the services I use. I tried it out with GitHub about a year ago, but turned it off shortly thereafter because I encountered a bunch of problems and didn&rsquo;t have the time to figure them all out. That and <a href="https://support.google.com/accounts/answer/3376859?hl=en">Google&rsquo;s Authenticator app having data loss issues after an update</a> was a big red flag too.</p>
-
-<p>Today it&rsquo;s a little easier to manage. <a href="https://itunes.apple.com/us/app/1password-password-manager/id443987910?mt=12&amp;at=11lxUn">1Password</a> has 2FA support built in now, and there&rsquo;s also <a href="https://itunes.apple.com/us/app/duo-mobile/id422663827?mt=8&amp;at=11lxUn">Duo Mobile&rsquo;s app</a>. Turning it on was pretty easy: Go to the <a href="https://github.com/settings/security">security</a> page, click a few buttons, and follow instructions. Once it was enabled I decided to push some changes for a project, and then this happened:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Umm, ok. I mean, I guess the most secure repository is one that <strong>nobody</strong> can access.</p>
-
-<p>The solution isn&rsquo;t immediately obvious. I looked at <a href="https://help.github.com/articles/caching-your-github-password-in-git/">GitHub&rsquo;s setup docs</a> again, but they didn&rsquo;t mention anything about 2FA. When in doubt, try it again right? This time I got a username/password prompt. I had assumed I would get some sort of additional prompt to enter a single use code for the 2FA, so I pasted in my GitHub password.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>remote: Invalid username or password.
-</span><span class='line'>fatal: Authentication failed for 'https://github.com/swilliams/my-repo.git/'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>No dice.</p>
-
-<p>Googling around a bit finally brought me to <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this page, &ldquo;Creating an access token for command-line use&rdquo;</a>. When you enable 2FA you need to use a token as your password for the Terminal. I created this with the default scopes provided<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, then copy/pasted the resulting token into the password prompt in my Terminal window.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>± git push origin master
-</span><span class='line'>Username for 'https://github.com': swilliams
-</span><span class='line'>Password for 'https://swilliams@github.com':
-</span><span class='line'>Counting objects: 80, done.
-</span><span class='line'>Delta compression using up to 4 threads.
-</span><span class='line'>Compressing objects: 100% (78/78), done.
-</span><span class='line'>Writing objects: 100% (80/80), 9.02 KiB | 0 bytes/s, done.
-</span><span class='line'>Total 80 (delta 58), reused 0 (delta 0)
-</span><span class='line'>To https://github.com/swilliams/my-repo.git
-</span><span class='line'>   01efb2c..445a0b6  master -&gt; master</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Yay!</p>
-
-<p>I <em>think</em> that should handle all the headaches for 2FA with GitHub. I like the warm security feeling it brings, and it seems like the user experience has been cleared up too.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>For standard git operations, I don&#8217;t think you would need any of the other scopes available for apps, and you could probably remove <pre>gist</pre> from it too.</p>
 </li>
   </ol>
 </div>
