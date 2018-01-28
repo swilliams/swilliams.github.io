@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-01-21T14:54:29-07:00</updated>
+  <updated>2018-01-28T16:02:15-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Book Report: Dead Mountain]]></title>
+    <link href="http://blog.swilliams.me/words/2018/01/28/book-report-dead-mountain/"/>
+    <updated>2018-01-28T15:45:39-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/01/28/book-report-dead-mountain</id>
+    <content type="html"><![CDATA[<p>I have a weird fascination with high altitude/cold weather disasters and mysteries. I’ve watched every documentary on Netflix about Everest disasters, <a href="https://www.netflix.com/watch/70268450?trackId=13752289&amp;tctx=0%2C0%2Cfcfcdc13-2e02-4aa4-be4f-53f68f4238ee-107915969">K2 disasters</a>, read Krakauer’s books, and I still can’t get enough of the stuff. I&rsquo;ve watched so many that they&rsquo;ve started to all blur together, and I have trouble remembering which is which&hellip; I’m not sure why I find it all so fascinating; I have no interest in actually going and having those adventures, but something about confronting those extremes are just interesting to me.</p>
+
+<p>I also dig unexplained phenomenons. I watched a lot of <a href="https://en.wikipedia.org/wiki/Unsolved_Mysteries">Unsolved Mysteries</a> as a kid, and they always stuck with me. So, the story of the <a href="https://en.wikipedia.org/wiki/Dyatlov_Pass_incident">Dyatlov Pass Incident</a> is right in my wheelhouse. The gist is: in 1959 a group of Russian college students went on a long hike/camping trip through the Ural Mountains. One night they all abandoned their tent and ran out in the middle of the night in -40 degree weather without shoes or proper cold-weather gear on. They were discovered a month later buried in the snow, and nobody could figure out the cause. They were all experienced campers in a very remote region. Theories included avalanche, a lovers quarrel, wild animals, indigenous people turned murders, the KGB, rogue science experiments gone wrong, and, of course, aliens.</p>
+
+<p>So, it was only natural that I’d be interested in <a href="https://www.amazon.com/Dead-Mountain-Untold-Dyatlov-Incident-ebook/dp/B00CUSQOA0/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=dead%2Bmountain%2Bthe%2Buntold%2Btrue%2Bstory%2Bof%2Bthe%2Bdyatlov%2Bpass%2Bincident&amp;tag=thepetzoo-20&amp;qid=1516651192">Dead Mountain &ndash; The Untold True Story of the Dyatlov Pass Incident</a>. The author goes through meticulous detail to find out everything he possibly could about the expedition, the rescue (and then recovery) party, and his own experiences traveling to Russia to try to retrace some of their steps 50 years later.</p>
+
+<p>I enjoyed reading this. The author provided enough context of the group, their motivations, and the climate of the Soviet Union at the time without going too far off the rails. He also breaks down each theory, even some of the outlandish ones, and points out the strengths and flaws in each of them.</p>
+
+<p>My favorite chapter came towards the end when he switches into speculation mode, and weighs all of the facts and evidence and then comes up with a plausible explanation. I don’t want to spoil anything, but it seems convincing.</p>
+
+<p>If you’re into this kind of thing, it’s worth checking out.</p>
+
+<p>Oh yeah, Hollywood also made a movie “about” the story a few years ago. I didn’t see that one, but it included time-travel and teleporting mutants apparently. I think we can rule that one out.</p>
+
+<p><em>[One of my goals for 2018 is to read 12 books in the year. Some of you may scoff at that number but while I love to read, I haven’t had time as of late to indulge in that. This year I am making the time.]</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How I Read Resumés]]></title>
@@ -1680,79 +1703,6 @@ I liked how it was working now, but it was still a long process to cover all the
 </li>
 <li class="footnote" id="fn:2">
   <p>Geofencing means that something happens when your phone enters or exits a pre-defined boundary. For example, you could have your lights automatically turn on when you get home.</p>
-</li>
-  </ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Retroactively Creating a Core Data Migration]]></title>
-    <link href="http://blog.swilliams.me/words/2015/04/02/retroactively-creating-a-core-data-migration/"/>
-    <updated>2015-04-02T10:15:15-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/04/02/retroactively-creating-a-core-data-migration</id>
-    <content type="html"><![CDATA[<p>Let&rsquo;s take a <em>completely hypothetical</em> situation where you&rsquo;re developing an app that uses <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> for the local storage and have a bunch of beta testers eagerly awaiting the next version before your product launch. Your previous attitude towards the data model was something along the lines of <em>&ldquo;It&rsquo;s still pre-1.0, I&rsquo;m not bothering with migrations yet, just delete and reinstall, c&#8217;mon.&rdquo;</em> However, you forgot that requiring the beta testers to deal with that isn&rsquo;t exactly a friendly experience for them, and you made at least three changes to the data model since your last Beta release. Now if they run the app it&rsquo;ll crash immediately because the database isn&rsquo;t in sync with the data model.</p>
-
-<p>Oops.</p>
-
-<p>Usually when you make changes to the data model, you do so by creating a new version and telling the <code>NSPersistentStoreCoordinator</code> to perform lightweight migrations, <em>then</em> make your changes. Adding a new version of the data model after changes were made accomplishes nothing. Fortunately, you&rsquo;re not screwed. We&rsquo;re going to jump back in time, grab the old data model then pretend it was there all along.</p>
-
-<p>Your <code>MyProject.xcdatamodeld</code> file is actually a directory. If you browse it in the Finder or Terminal, you&rsquo;ll see more folders inside it, one for each version of your model. Inside those folders is a file simply called <code>contents</code>. This is an XML representation of the editor you see in Xcode.</p>
-
-<h3>Step 1 — Find the data model from the last beta version you released</h3>
-
-<p>Look through the history the <code>xcdatamodeld</code> file in your source control system <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. Hopefully you&rsquo;ve been tagging all of your releases and can just checkout that specific one.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git checkout 1.0-beta4</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If not, you can mess around with <code>git log</code> to figure out where to go. This snippet can help you see the commits for a single file:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; git log --pretty=format:'%h : %s' --graph -n 45 FILENAME</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then, checkout the particular commit with the right version.</p>
-
-<h3>Step 2 — Copy the contents file</h3>
-
-<p>Find  the <code>contents</code> file within your <code>.xcdatamodeld</code> file. Copy all that XML somewhere safe.</p>
-
-<p>Go back to your <code>HEAD</code> or wherever you were.</p>
-
-<h3>Step 3 — Create the new version of the data model</h3>
-
-<p>If you didn&rsquo;t know, the process is:</p>
-
-<ul>
-<li>Open the <code>.xcdatamodeld</code> file in Xcode</li>
-<li>In the Editor menu, click &ldquo;Add Model Version&rdquo;. Follow the instructions.</li>
-<li>Open the File Inspector for your <code>.xcdatamodeld</code>. There is a Model Version segment in the inspector, make sure it&rsquo;s on the version you just created.</li>
-</ul>
-
-
-<p>Now you have two data models that are identical. Let&rsquo;s change the history on the original one.</p>
-
-<h3>Step 4 — Change history</h3>
-
-<p>Close Xcode. That&rsquo;s not mandatory but I&rsquo;ve had it crash when mucking about with these files, and it&rsquo;s just not worth the hassle.</p>
-
-<p>Open the <code>contents</code> file for the <strong>original</strong> <code>.xcdatamodeld</code> in a text editor.</p>
-
-<p>Paste in the version you created in Step 2.</p>
-
-<p>Open Xcode. If you haven&rsquo;t set up the <code>NSPersistentStoreCoordinator</code> to run migrations, do so now. <a href="http://www.raywenderlich.com/27657/how-to-perform-a-lightweight-core-data-migration">This tutorial is pretty good</a>.</p>
-
-<p>Now when the app runs, the migrations update the users&#8217; data and keep things from crashing.</p>
-
-<p>Note: This is for <em>lightweight</em> migrations. Custom migrations are more complicated. <a href="http://www.objc.io/issue-4/core-data-migration.html">objc.io</a> has a great article on these. I don&rsquo;t know if you can play fast and loose with the data model file like you can here though.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>You ARE using Source Control, right? Sometimes new developers will ask me why they need Source Control. I usually parrot the usual answers - branching is good, undo mistakes, tool integration, etc - but situations like this are where it really shines. Without source control here, you&#8217;d be hosed. You&#8217;d have to manually fix the XML in the contents file, which would be monumentally hard or altogether impossible depending on what changed and how good your memory is.</p>
 </li>
   </ol>
 </div>
