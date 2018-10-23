@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="My New Email Signature Sep 13th, 2011 Spurred on by some of the more recent mails I&#8217;ve received.  I did blur my phone number and address &hellip;">
+	<meta name="description" content="Your JavaScript Sucks Dec 17th, 2011 JavaScript has been getting a lot of press lately. You can write servers with it, talk to databases, and of &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,97 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/12/17/your-javascript-sucks/" itemprop="url">Your JavaScript Sucks</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-17T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 17<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>JavaScript has been getting a lot of press lately. You can write <a href="http://nodejs.org/">servers</a> with it, talk to <a href="http://www.couchbase.com/">databases</a>, and of course, it’s the most <a href="http://javascript.crockford.com/popular.html">common language</a> in the world. Yet, in its most popular form, client-side scripting on the Internet, it’s just a giant mess.</p>
+<p>You know what I’m talking about, that mass of thousands of lines of code that does something-but-oh-God-I-hope-it-doesn’t-break. I’ve written that kind of JavaScript. You have too. It’s a big problem that needs to be addressed.</p>
+<h2>Why?</h2>
+<p>First, let’s identify the problems. Here’s a function that I just made up, but it’s not too far from the truth.</p>
+<p> Fig 1 - A Common Site</p>
+<p>How many differentthings are going on here? I can see four right off the bat. <em>Individually,</em> each is not a Bad Thing, but when they’re all within the same function, it’s a problem.</p>
+<p></p>
+<p>Fig 2 - Event Binding. We’re looking for something in the DOM, and then attaching an event handler to it.  </p>
+<p></p>
+<p>Fig 3 - AJAX. Specifically, communication with our persistance layer.</p>
+<p></p>
+<p>Fig 4 - Business Logic. This a simplification, but we’re analyzing the data and making a logical decision based on it.</p>
+<p></p>
+<p>Fig 5 - DOM/UI Manipulation. We’re not just reading the DOM here, but changing it.</p>
+<p> </p>
+<p>And this little ditty is only 11 lines long. This is the equivalent of inlining your security checks right next to SQL statements, all within a UI template. God help you if you want to actually uncovered a bug in this rat nest down the road.</p>
+<p>And let’s not even get into testing. How would you even start writing a unit test for this function? (Hint: it sucks)</p>
+<h2>Enter MVC</h2>
+<p>Fortunately, messy code is not a new problem. There is an embarrassment of riches out there to help you get your crap together.</p>
+<p>The MVC pattern has been around since the neolithic era of programming. Rails, Django, ASP.NET MVC, CakePHP, etc. have been making developers’ lives much easier on the server side for years. And now, some of that has trickled down to JavaScript.</p>
+<p></p>
+<p>A common reaction.</p>
+<p>What makes MVC so popular amongst developers is that it forces you to break your code down into manageable chunks. Mixing AJAX calls and DOM Manipulation in the same functions just doesn’t fly there.</p>
+<p>And, you have a bunch to choose from. In future posts, I’ll be giving a brief description of some of the popular ones. Spoiler: I myself have been using <a href="http://documentcloud.github.com/backbone/#">Backbone</a> and will be going into deeper detail on that one.</p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/10/28/my-reaction-to-the-rumor-that-nikon-is-lookin/" itemprop="url">My Reaction to the Rumor That Nikon Is Looking to Buy WebOS</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-28T00:00:00-07:00" data-updated="true" itemprop="datePublished">Oct 28<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<div>In the span of about 30 seconds.</div>
+<p></p>
+<div>&#8220;What? <b>WHY</b>?&#8221;</div>
+<p></p>
+<div><i>Thinks for a minute about a sweet WebOS powered camera.</i></div>
+<p></p>
+<div>&#8220;Well, it could work&#8221;</div>
+<p></p>
+<div><i>Thinks about every other piece of software Nikon has made.</i></div>
+<p></p>
+<div>&#8220;They&#8217;ll screw it up.&#8221;</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -501,136 +592,6 @@
 <b>Step 5</b> Right click on your To Print folder on your computer, and click &#8220;Folder Action Setup&#8230;&#8221; This&#8217;ll open a multicolumn window and then a modal dialog. Find your script in the list and click &#8220;Attach&#8221;. Make sure the &#8220;Enable Folder Actions&#8221; checkbox is checked too, and close the dialog. Here&#8217;s the final result:</div>
 <div></div>
 <div>Bingo! Now, anything that is placed in that folder will be printed. And since it is tied in to DropBox, you can do this from anywhere. Now, if I want to frighten my wife, I can create a threatening document on my iPad at a coffee shop and print it from there!</div>
-</div>
-			</div>
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2011/04/18/trip-report-onelight-workshop/" itemprop="url">Trip Report: OneLight Workshop</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-18T00:00:00-07:00" data-updated="true" itemprop="datePublished">Apr 18<span>th</span>, 2011</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>It&#8217;s been a whirlwind last 48 hours, and I now finally have a few minutes. My mind is still spinning. </p>
-<p></p>
-<div>My Saturday, Sunday, (and part of Monday) was spent at the <a href="http://zackarias.com/workshop/">OneLight Workshop</a> that <a href="http://zackarias.com">Zack Arias</a> puts on. I&#8217;ve been following his blog for some time and as soon as I saw that he was coming to Phoenix, I jumped at the chance.</div>
-<p></p>
-<div>Saturday night was just a mixer to get to know Zack and the other photographers. It was at <a href="http://gangplankhq.com/">Gangplank&#8217;s workspace</a>, and if you haven&#8217;t been there before, do make the trip. They have a great vibe and community at the place. If I lived just a little bit closer, I&#8217;d frequent the place much more often.</div>
-<p></p>
-<div>If you&#8217;ve ever read Zack&#8217;s blog, or heard him in an interview, he is the exact same dude in person. Which I love.  When Erica and I walked into the mixer he put out his hand and said &#8220;Hi, I&#8217;m Zack&#8221;. I, and everyone else there knew who he was (his name was in the freaking title of the workshop), but he still introduced himself like salf-of-the-earth kind of guy that he is.</div>
-<p></p>
-<div>All of the morning and part of the afternoon was a lecture on lighting. I wasn&#8217;t sure what to expect out of this. When I hear &#8220;5 hour lecture&#8221; I look for my pillow, or start dinking around on <a href="http://twitter.com/swilliams">Twitter</a>. However, the first time I checked my phone, it was already 1pm. He had managed to talk so effectively that my stomach didn&#8217;t even harass me at its normal time. This is no small feat. </div>
-<p></p>
-<div>I had precisely two huge light-bulb moments during the lecture too. The first was regarding dialing in the best exposure, and the second was me finally really grasping how to use the <a href="http://en.wikipedia.org/wiki/Inverse-square_law">inverse-square law</a>. These alone were worth the price of admission.</div>
-<p></p>
-<div>Everything else went swimmingly. The models were incredibly gracious and patient in putting up with 10 relative newbies. I&#8217;ve included my favorites from our time with them. Just in case I didn&#8217;t have enough reasons to love the guy, I stuck around for a little while longer and Zack gave me some input on <a href="http://shootsy.com">Shootsy</a>. We ended at around 2am on Monday. And yes, I had to go to work about 6 hours after that.</div>
-<p></p>
-<div>All in all, I would <strong>highly</strong> recommend this to anyone looking to get better at flash based lighting.</div>
-<p></p>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/12/07/rails-3-routing-gotcha/" itemprop="url">Rails 3 Routing Gotcha</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-07T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 7<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img alt="Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, 3.0.3). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system. In general this guide does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &quot;RESTful Routes&quot;. I'm rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &quot;Photo&quot;. This will create the following routes (stolen from the aforementioned guide): This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &quot;DoThis&quot;. You can simply modify your Photo route like so:     resources :photos do         member do             get :dothis         end     end And then /photos/1/dothis will map to a dothis method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:     post :dothat I then attempted to submit a form to the dothat action, but got a Routing Error telling me the route wasn't found. I double checked and the URL was definitely correct.     &lt;%= form_for(@photo, :url =&gt; {:controller =&gt; 'photos', :action =&gt; 'dothat'} ) do |f| %&gt; It generated the correct URL: photos/1/dothat, which I confirmed by calling rake routes at the command line.  After searching the Interent and only getting frustrated I finally saw something that jogged my memory. In REST, 'post' is for creating new resources. I was editing my model. Simply changing it to:     put :dothat Fixed everything.  I'll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn't exactly help that Rails doesn't use a &quot;real&quot; PUT in the form's method attribute. It uses POST, but includes a hidden input, &quot;_method&quot; to store the verb it should respond to." src="/images/assets/1291761300000.jpg">
-</div>
-			
-
-			
-			<div>
-				<div>
-<p></p>
-<p>Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, <a href="http://weblog.rubyonrails.org/2010/11/15/rails-3-0-3-faster-active-record-plus-plenty-of-fixes">3.0.3</a>). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system.</p>
-<p></p>
-<div>In general this <a href="http://guides.rubyonrails.org/routing.html">guide</a> does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &#8221;<a href="http://en.wikipedia.org/wiki/REST">RESTful</a> Routes&#8221;. I&#8217;m rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &#8220;Photo&#8221;. This will create the following routes (stolen from the aforementioned guide):</div>
-<p></p>
-<p></p>
-<p></p>
-<div>This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &#8220;DoThis&#8221;. You can simply modify your Photo route like so:</div>
-<p></p>
-<div>
-<div><span>    resources :photos do</span></div>
-<div><span>        member do</span></div>
-<div><span>            get :dothis</span></div>
-<div><span>        end</span></div>
-<div><span>    end</span></div>
-</div>
-<p></p>
-<div>And then <span>/photos/1/dothis</span> will map to a <span>dothis</span> method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:</div>
-<p></p>
-<div>    <span>post :dothat</span>
-</div>
-<p></p>
-<div>I then attempted to submit a form to the <span>dothat</span> action, but got a Routing Error telling me the route wasn&#8217;t found. I double checked and the URL was definitely correct.</div>
-<p></p>
-<div>    <span>&lt;%= form_for(@photo, :url =&gt; {:controller =&gt; &#8216;photos&#8217;, :action =&gt; &#8216;dothat&#8217;} ) do |f| %&gt;</span>
-</div>
-<p></p>
-<div>It generated the correct URL: <span>photos/1/dothat</span>, which I confirmed by calling rake routes at the command line. </div>
-<p></p>
-<div>After searching the Interent and only getting frustrated I finally saw <a href="http://asciicasts.com/episodes/203-routing-in-rails-3">something</a> that jogged my memory.</div>
-<p></p>
-<div>In REST, &#8216;post&#8217; is for <em>creating</em> new resources. I was <em>editing</em> my model. Simply changing it to:</div>
-<p></p>
-<div>    <span>put :dothat</span>
-</div>
-<p></p>
-<div>Fixed everything. </div>
-<p></p>
-<div>I&#8217;ll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn&#8217;t exactly help that Rails doesn&#8217;t use a &#8220;real&#8221; PUT in the form&#8217;s method attribute. It uses POST, but includes a hidden input, &#8221;<span>_method</span>&#8221; to store the verb it should respond to.</div>
 </div>
 			</div>
 			

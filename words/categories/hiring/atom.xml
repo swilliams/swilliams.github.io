@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hiring | Scott Williams]]></title>
+  <link href="http://blog.swilliams.me/words/categories/hiring/atom.xml" rel="self"/>
+  <link href="http://blog.swilliams.me/"/>
+  <updated>2018-10-23T10:12:24-07:00</updated>
+  <id>http://blog.swilliams.me/</id>
+  <author>
+    <name><![CDATA[Scott Williams]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[I'm a Fast Learner]]></title>
+    <link href="http://blog.swilliams.me/words/2018/10/23/im-a-fast-learner/"/>
+    <updated>2018-10-23T10:07:07-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/10/23/im-a-fast-learner</id>
+    <content type="html"><![CDATA[<p>When I&rsquo;m hiring, I hear this one a lot. A candidate is nervous about something that I just asked, let&rsquo;s use <a href="https://graphql.org">GraphQL</a> as an example, about and they&rsquo;ll say &ldquo;Well, I don&rsquo;t know much about GraphQL, but I&rsquo;m a fast learner!!&rdquo; and their earnestness nearly jumps out of their body and does a little dance.</p>
+
+<p>Here&rsquo;s the thing. I hear that phrase <em>all the time</em>. I imagine so does every other hiring manager. And this may sound mean, but so what? If everyone is truly a fast learner, what separates you from the rest? Also, I can probably find someone who already knows GraphQL in the stack of resumes I&rsquo;m procrastinating in sifting through. What&rsquo;s my motivation to keep going with you?</p>
+
+<p>Yeah, that&rsquo;s definitely harsh, but it&rsquo;s reality. Hiring managers are usually stressed and need to find the right person very badly. Here&rsquo;s a way to play to that need and flip the situation. Start with this:</p>
+
+<blockquote><p>Wow, it sounds like GraphQL is a bigger deal for this role than I originally thought, and it sounds like I&rsquo;m a little out of my depth. This still sounds like a dynamite job though, so here&rsquo;s what I&rsquo;m going to do: Tonight I&rsquo;m going to watch the <a href="https://egghead.io">egghead.io</a> series on GraphQL. Then over the next week I&rsquo;m going to build a little project that consumes the GitHub GraphQL API. I&rsquo;ll send it to you if you&rsquo;re still interested. How does that sound?</p></blockquote>
+
+<p>That&rsquo;s a lot better than &ldquo;I&rsquo;m a fast learner, please hire me.&rdquo; It acknowledges the problem (a gap in expectations), and then presents a solid plan for how to overcome it. Further, that candidate shows crazy kinds of initiative, as well as a strong desire for the job, without coming off as begging. And lastly, it&rsquo;d show me some code, which is very useful when hiring a developer.</p>
+
+<p>It&rsquo;s not a guarantee that you&rsquo;ll get the gig, but will at least impress the interviewer.</p>
+
+<p>Other things:</p>
+
+<p>If the job description wasn&rsquo;t clear about the requirements for GraphQL in the first place&hellip; that&rsquo;s a miss on the hiring manager&rsquo;s part.</p>
+
+<p>Also, that response presumes that the candidate has the free-time to do all that, which is not the case for everybody.</p>
+]]></content>
+  </entry>
+  
+</feed>

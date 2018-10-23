@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-01-28T16:02:15-07:00</updated>
+  <updated>2018-10-23T10:12:24-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[I'm a Fast Learner]]></title>
+    <link href="http://blog.swilliams.me/words/2018/10/23/im-a-fast-learner/"/>
+    <updated>2018-10-23T10:07:07-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/10/23/im-a-fast-learner</id>
+    <content type="html"><![CDATA[<p>When I&rsquo;m hiring, I hear this one a lot. A candidate is nervous about something that I just asked, let&rsquo;s use <a href="https://graphql.org">GraphQL</a> as an example, about and they&rsquo;ll say &ldquo;Well, I don&rsquo;t know much about GraphQL, but I&rsquo;m a fast learner!!&rdquo; and their earnestness nearly jumps out of their body and does a little dance.</p>
+
+<p>Here&rsquo;s the thing. I hear that phrase <em>all the time</em>. I imagine so does every other hiring manager. And this may sound mean, but so what? If everyone is truly a fast learner, what separates you from the rest? Also, I can probably find someone who already knows GraphQL in the stack of resumes I&rsquo;m procrastinating in sifting through. What&rsquo;s my motivation to keep going with you?</p>
+
+<p>Yeah, that&rsquo;s definitely harsh, but it&rsquo;s reality. Hiring managers are usually stressed and need to find the right person very badly. Here&rsquo;s a way to play to that need and flip the situation. Start with this:</p>
+
+<blockquote><p>Wow, it sounds like GraphQL is a bigger deal for this role than I originally thought, and it sounds like I&rsquo;m a little out of my depth. This still sounds like a dynamite job though, so here&rsquo;s what I&rsquo;m going to do: Tonight I&rsquo;m going to watch the <a href="https://egghead.io">egghead.io</a> series on GraphQL. Then over the next week I&rsquo;m going to build a little project that consumes the GitHub GraphQL API. I&rsquo;ll send it to you if you&rsquo;re still interested. How does that sound?</p></blockquote>
+
+<p>That&rsquo;s a lot better than &ldquo;I&rsquo;m a fast learner, please hire me.&rdquo; It acknowledges the problem (a gap in expectations), and then presents a solid plan for how to overcome it. Further, that candidate shows crazy kinds of initiative, as well as a strong desire for the job, without coming off as begging. And lastly, it&rsquo;d show me some code, which is very useful when hiring a developer.</p>
+
+<p>It&rsquo;s not a guarantee that you&rsquo;ll get the gig, but will at least impress the interviewer.</p>
+
+<p>Other things:</p>
+
+<p>If the job description wasn&rsquo;t clear about the requirements for GraphQL in the first place&hellip; that&rsquo;s a miss on the hiring manager&rsquo;s part.</p>
+
+<p>Also, that response presumes that the candidate has the free-time to do all that, which is not the case for everybody.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Agile Trap]]></title>
+    <link href="http://blog.swilliams.me/words/2018/02/03/the-agile-trap/"/>
+    <updated>2018-02-03T13:11:47-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/02/03/the-agile-trap</id>
+    <content type="html"><![CDATA[<p>It may sometimes appear that I am a <a href="https://pragmaticmarketing.com/resources/articles/getting-back-to-the-roots-of-agile">little harsh on Agile</a>. In general though, I really like the principles behind it. I&rsquo;m a big fan of breaking big things into smaller things. That way you have a better chance of truly understanding the problem in front of you. But, like all things, it has problems. If you get really good at Agile (capital A), you are dilligent about keeping a tidy backlog made of hundreds (or more) issues/stories/tasks/blah. Those are assigned to developers each sprint. And, after enough sprints, you are done, and it&rsquo;s perfect! Right? Right??? Anyone?</p>
+
+<p>Ok, ok. The word &ldquo;perfect&rdquo; was tongue-in-cheek because it&rsquo;s never perfect. Chances are there was a time crunch and shortcuts were taken. &ldquo;Workarounds&rdquo; are needed in too many places. To borrow a carpentry term, certain corners just don&rsquo;t line up the way they should.</p>
+
+<p>And yet, each of the stories were completed. What happened?</p>
+
+<p>Something that I&rsquo;ve been seeing, on large projects especially, has been a kind of tunnel vision that developers adopt when working through a queue of issues. Software projects have a tendency to fall behind schedule all on their own, and as developers start to feel the pressure to ship, it turns into <em>get as many of these stories done as quickly as possible omg</em>. Rather than thinking of the project they are building, they are only seeing the individual tasks in front of them.</p>
+
+<p>This isn&rsquo;t to place blame on developers, it&rsquo;s the nature of working through a queue and only a queue. This is a bad analogy, but think of it as a database schema that is far too normalized for its own good. Getting something worthwhile out of that scenario takes more work and time than it should.</p>
+
+<p>So what do you do to fix that? I don&rsquo;t think you can throw out the bad parts of The Process without throwing out the good parts too. Breaking things into smaller pieces and creating a backlog is <em>still good</em>. I think the issue stems from what happens around the issues and not the issues themselves.</p>
+
+<p>How do most developers start a project? If they were not there at the genesis of the project, they&rsquo;re probably rolled immediately into that backlog. Even if they were at the beginning of a project, what did they do? They may have helped with the scoping, or seen some initial designs, but that&rsquo;s about it. There&rsquo;s a good chance they got a brief intro and then had issues assigned to them. I know I&rsquo;ve certainly guilty of this. On one particularly massive project that I lead I could really only spare a couple of hours of walking through a codebase at a high level, and then wishing them godspeed, and rushing off to my next meeting. Is it any surprise that the people on the receiving end of that end up not &ldquo;getting it&rdquo;?</p>
+
+<p>Empathy is critical in all things, and software development is no exception.</p>
+
+<p>full-part of the process
+Onboarding after work begins is treacherous
+Empathy</p>
+
+<pre><code>Leadership needs to instill this value
+Leads are leads because they have some form of charisma.
+</code></pre>
+
+<p>Meet the users [if possible]</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Book Report: Dead Mountain]]></title>
@@ -1596,117 +1654,6 @@ I liked how it was working now, but it was still a long process to cover all the
 <p><strong>Similarly, consider clearing your browser history.</strong> Maybe you need to open up a webpage you weren&rsquo;t anticipating. Maybe you&rsquo;re checking the <a href="http://redis.io/documentation">redis documentation</a>, but when you type <code>red</code> into the address bar, all the subreddits you&rsquo;ve ever visited are immediately available. Maybe you just browse <a href="http://www.reddit.com/r/aww">/r/aww</a> and everyone is happy, or maybe you visit more&hellip; <em>unconventional</em>&hellip; ones.</p>
 
 <p>Ultimately it&rsquo;s up to you how many awkward situations you want to have with your co-workers and/or clients. Try to just think about what would happen if your mother/rabbi/priest/psychologist were watching.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Archiving Old GitHub Repositories]]></title>
-    <link href="http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories/"/>
-    <updated>2015-05-17T13:37:51-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/05/17/archiving-old-github-repositories</id>
-    <content type="html"><![CDATA[<p>What do you do with a codebase for a client project that ended years ago? Since it&rsquo;s client work it shouldn&rsquo;t be made public, but if you keep it &ldquo;live&rdquo; in GitHub your private repository count will creep up. Deleting the repository outright seems wrong; it&rsquo;s not that unusual to have an old client cold call you with an update, and having that old codebase handy can save some headaches. The lazy way to fix this would be to just give GitHub more money to increase the limit. But I felt the itch to solve the problem with code.</p>
-
-<p>Git itself is flexible. It&rsquo;s trivial to clone a repository, put it in a safe place (or alternate service) and call it a day. But with GitHub, that doesn&rsquo;t include Issues. There could be some solid ideas (or bugs) stored in Open Issues that should be preserved. <a href="https://developer.github.com/v3/issues/">GitHub has a great API</a> to retrieve those, and I decided to create a simple Ruby script to make it a smooth process.</p>
-
-<p>Take a look at <a href="https://github.com/Tallwave/github_issue_exporter">GitHub Issue Exporter</a>. It&rsquo;s pretty basic right now — just downloads Issues into a bunch of JSON and will also let you import them back into a new project. The idea is that you clone the repository you want to archive, then export all the open issues, store it all in a safe place, then you can safely delete the repository and free up some space.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Half-baked Business Idea - Augmented Paintball/Airsoft/Laser Tag]]></title>
-    <link href="http://blog.swilliams.me/words/2015/04/04/half-baked-business-idea-augmented-paintball-slash-airsoft-slash-laser-tag/"/>
-    <updated>2015-04-04T14:08:14-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/04/04/half-baked-business-idea-augmented-paintball-slash-airsoft-slash-laser-tag</id>
-    <content type="html"><![CDATA[<p><em>Sometimes ideas pop into my head, and sometimes I think they&rsquo;re awesome. Most times though, they&rsquo;d require way more time and effort to implement properly than I have available. Since I&rsquo;ll never get around to making this myself, I&rsquo;ll just share it here.</em></p>
-
-<p>I was playing some <a href="http://www.teamfortress.com/">Team Fortress 2</a> a little while ago and enjoying myself when I had the epiphany, <em>you could do this in real life</em>. Or at least something similar<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>.</p>
-
-<p>Modern smartphones have very accurate GPS chips inside of them, such that things like <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html">geofencing</a> are possible<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>. Why not use that technology to add an additional layer of gameplay on top of things like paintball or airsoft? What if you could turn what is typically an unstructured free-for-all into a real-life tactical Capture the Flag game? Here&rsquo;s how I&rsquo;d do it.</p>
-
-<h3>Setup</h3>
-
-<p>The Creator creates a new game and divvies up players into teams, and assigns a Commander to each team. The Commander has special privileges (defined below).</p>
-
-<h3>The Map</h3>
-
-<figure class="center">
-    <img alt="The Map" src="http://blog.swilliams.me/images/assets/halfbaked/01-Map.jpg">
-    <figcaption>Some desert</figcaption>
-</figure>
-
-
-<p>Take the strip of desert that you play in. The Creator defines the boundaries for the game. If a Player strays beyond those boundaries for more than, say 10 seconds, they&rsquo;re penalized.</p>
-
-<figure>
-    <img alt="Boundaries" src="http://blog.swilliams.me/images/assets/halfbaked/02-Boundaries.jpg">
-    <figcaption>Drag to rearrange</figcaption>
-</figure>
-
-
-<p>Next up is defining team based boundaries.</p>
-
-<figure>
-    <img alt="Team Boundaries" src="http://blog.swilliams.me/images/assets/halfbaked/03-TeamBoundaries.jpg">
-    <figcaption></figcaption>
-</figure>
-
-
-<p>Each team&rsquo;s Commander can setup their own map dependent points of interest: a base, the Flag, etc.</p>
-
-<h3>Gameplay</h3>
-
-<figure>
-    <img alt="Red Team" src="http://blog.swilliams.me/images/assets/halfbaked/04-RedCommander.jpg">
-    <figcaption></figcaption>
-</figure>
-
-
-<p>The Commander can also see where each of their team members are currently located, and what directions they are going. The Commander can call out orders or instructions, set a rally point and draw directions on the map that will show up on Players devices.</p>
-
-<p>For Capture the Flag, the Flag could be another kind of device like an iBeacon tied to an actual flag. When the Flag is moved it sets off alarms for its team. Moving the other team&rsquo;s Flag back to your base scores points for your team.</p>
-
-<p>Other forms of gameplay can be defined here. If you want to have &ldquo;multiple lives&rdquo; the Commander can set the place you return to &ldquo;regenerate&rdquo;. Once the game starts, these places cannot be changed.</p>
-
-<h3>Communication</h3>
-
-<p>All communication would have to be done by some kind of bluetooth headset and microphone combination. All cues would have to be audio based to avoid having to stare at your screen all the time. Through this you&rsquo;d have:</p>
-
-<ul>
-<li>Open communication with your team</li>
-<li>Alerts from the game itself (&ldquo;You have left the playing field, you have 10 seconds to get back in&rdquo;, &ldquo;Now entering Blue Space&rdquo;, &ldquo;Your Flag has been taken&rdquo;, etc)</li>
-<li>Broadcast something to all Players (&ldquo;Game ends in 10 minutes&rdquo;)</li>
-</ul>
-
-
-<h3>After-game</h3>
-
-<p>When the game is over, players can view a replay and see all the movements and events from the game. This is similar to the Commander&rsquo;s view, but now everyone can see everything. This will let players review tactics and strategies for the next go-around.</p>
-
-<h3>Considerations and Potential Issues</h3>
-
-<p>Phones are fragile. They won&rsquo;t hold up very well to paintpalls or airsoft pellets. You can route around this by keeping them in a <a href="http://www.amazon.com/OtterBox-Defender-iPhone-Frustration-Packaging/dp/B00N1AFY1Q/ref=sr_1_2?ie=UTF8&amp;sr=1-2&amp;s=wireless&amp;keywords=otterbox%2Bdefender%2Biphone%2B6&amp;tag=thepetzoo-20&amp;qid=1428182286">protective case</a> and inside a deep pocket. The headset interaction becomes key since actually pulling out a phone and looking at it would be a good way to lose focus on the action and become a nice target for the other team. Now that smart watches are becoming a thing, these could also provide something useful, but again fragility would have to be considered.</p>
-
-<p>The Commander may have to use their device more often. I would assume they would be in more of a &ldquo;base&rdquo; or out of harm&rsquo;s way to allow this to happen. But hey, if General Patton was up close to enemy lines, then you can too I suppose.</p>
-
-<p>Battery is also an issue. Constant GPS and Network usage will suck a battery down in no time. I think a 100% charge on a modern phone would last long enough for a couple hours, but something like a <a href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%253Daps&amp;tag=thepetzoo-20&amp;field-keywords=mophie">Mophie</a> would be recommended.</p>
-
-<p>Lastly, networking could be tricky, especially in remote locations. Having something covered in wifi would ease this restriction (and help battery life) but those logistics could be a bear.</p>
-
-<h3>In Conclusion</h3>
-
-<p>As it says on the box, this is half-baked. I don&rsquo;t even think you&rsquo;d be able to create much of a business out of it, but goshdarnit it would be fun to play. If someone actually did make something like this, I&rsquo;d be all over it, and demand only a modest stake in the business.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>If you know how to double jump in real life, I&#8217;m all ears.</p>
-</li>
-<li class="footnote" id="fn:2">
-  <p>Geofencing means that something happens when your phone enters or exits a pre-defined boundary. For example, you could have your lights automatically turn on when you get home.</p>
-</li>
-  </ol>
-</div>
-
 ]]></content>
   </entry>
   

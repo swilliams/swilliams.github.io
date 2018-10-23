@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Religion and Signs Nov 4th, 2010 From a collection of signs from the Sanity Rally in DC.  More on Why I&#8217;m Done Building PC&#8217;s Oct 4th, &hellip;">
+	<meta name="description" content="Trip Report: OneLight Workshop Apr 18th, 2011 It&#8217;s been a whirlwind last 48 hours, and I now finally have a few minutes. My mind is still &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,136 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2011/04/18/trip-report-onelight-workshop/" itemprop="url">Trip Report: OneLight Workshop</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-18T00:00:00-07:00" data-updated="true" itemprop="datePublished">Apr 18<span>th</span>, 2011</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>It&#8217;s been a whirlwind last 48 hours, and I now finally have a few minutes. My mind is still spinning. </p>
+<p></p>
+<div>My Saturday, Sunday, (and part of Monday) was spent at the <a href="http://zackarias.com/workshop/">OneLight Workshop</a> that <a href="http://zackarias.com">Zack Arias</a> puts on. I&#8217;ve been following his blog for some time and as soon as I saw that he was coming to Phoenix, I jumped at the chance.</div>
+<p></p>
+<div>Saturday night was just a mixer to get to know Zack and the other photographers. It was at <a href="http://gangplankhq.com/">Gangplank&#8217;s workspace</a>, and if you haven&#8217;t been there before, do make the trip. They have a great vibe and community at the place. If I lived just a little bit closer, I&#8217;d frequent the place much more often.</div>
+<p></p>
+<div>If you&#8217;ve ever read Zack&#8217;s blog, or heard him in an interview, he is the exact same dude in person. Which I love.  When Erica and I walked into the mixer he put out his hand and said &#8220;Hi, I&#8217;m Zack&#8221;. I, and everyone else there knew who he was (his name was in the freaking title of the workshop), but he still introduced himself like salf-of-the-earth kind of guy that he is.</div>
+<p></p>
+<div>All of the morning and part of the afternoon was a lecture on lighting. I wasn&#8217;t sure what to expect out of this. When I hear &#8220;5 hour lecture&#8221; I look for my pillow, or start dinking around on <a href="http://twitter.com/swilliams">Twitter</a>. However, the first time I checked my phone, it was already 1pm. He had managed to talk so effectively that my stomach didn&#8217;t even harass me at its normal time. This is no small feat. </div>
+<p></p>
+<div>I had precisely two huge light-bulb moments during the lecture too. The first was regarding dialing in the best exposure, and the second was me finally really grasping how to use the <a href="http://en.wikipedia.org/wiki/Inverse-square_law">inverse-square law</a>. These alone were worth the price of admission.</div>
+<p></p>
+<div>Everything else went swimmingly. The models were incredibly gracious and patient in putting up with 10 relative newbies. I&#8217;ve included my favorites from our time with them. Just in case I didn&#8217;t have enough reasons to love the guy, I stuck around for a little while longer and Zack gave me some input on <a href="http://shootsy.com">Shootsy</a>. We ended at around 2am on Monday. And yes, I had to go to work about 6 hours after that.</div>
+<p></p>
+<div>All in all, I would <strong>highly</strong> recommend this to anyone looking to get better at flash based lighting.</div>
+<p></p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/12/07/rails-3-routing-gotcha/" itemprop="url">Rails 3 Routing Gotcha</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-07T00:00:00-07:00" data-updated="true" itemprop="datePublished">Dec 7<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+	<div>
+	
+		<div>
+			
+				<div>
+					<img alt="Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, 3.0.3). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system. In general this guide does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &quot;RESTful Routes&quot;. I'm rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &quot;Photo&quot;. This will create the following routes (stolen from the aforementioned guide): This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &quot;DoThis&quot;. You can simply modify your Photo route like so:     resources :photos do         member do             get :dothis         end     end And then /photos/1/dothis will map to a dothis method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:     post :dothat I then attempted to submit a form to the dothat action, but got a Routing Error telling me the route wasn't found. I double checked and the URL was definitely correct.     &lt;%= form_for(@photo, :url =&gt; {:controller =&gt; 'photos', :action =&gt; 'dothat'} ) do |f| %&gt; It generated the correct URL: photos/1/dothat, which I confirmed by calling rake routes at the command line.  After searching the Interent and only getting frustrated I finally saw something that jogged my memory. In REST, 'post' is for creating new resources. I was editing my model. Simply changing it to:     put :dothat Fixed everything.  I'll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn't exactly help that Rails doesn't use a &quot;real&quot; PUT in the form's method attribute. It uses POST, but includes a hidden input, &quot;_method&quot; to store the verb it should respond to." src="/images/assets/1291761300000.jpg">
+</div>
+			
+
+			
+			<div>
+				<div>
+<p></p>
+<p>Since I have a certain level of self-loathing I decided to upgrade our app to the latest version of Rails (as of now, <a href="http://weblog.rubyonrails.org/2010/11/15/rails-3-0-3-faster-active-record-plus-plenty-of-fixes">3.0.3</a>). Rails 3 is a big upgrade and change from Rails 2. One of the biggest areas getting a facelift is the routing system.</p>
+<p></p>
+<div>In general this <a href="http://guides.rubyonrails.org/routing.html">guide</a> does a great job explaining everything, but I recently ran into a rather specific wall. By default Rails prefers you to use what they call &#8221;<a href="http://en.wikipedia.org/wiki/REST">RESTful</a> Routes&#8221;. I&#8217;m rather indifferent to the idea, but I go along with it. This provides you with 7 default routes for a resource. For example, say you create routes for a Model called &#8220;Photo&#8221;. This will create the following routes (stolen from the aforementioned guide):</div>
+<p></p>
+<p></p>
+<p></p>
+<div>This kind of approach works for 95% of my needs, but sometimes you just need to define something beyond the defaults. Say you need an action called &#8220;DoThis&#8221;. You can simply modify your Photo route like so:</div>
+<p></p>
+<div>
+<div><span>    resources :photos do</span></div>
+<div><span>        member do</span></div>
+<div><span>            get :dothis</span></div>
+<div><span>        end</span></div>
+<div><span>    end</span></div>
+</div>
+<p></p>
+<div>And then <span>/photos/1/dothis</span> will map to a <span>dothis</span> method in your controller. This works as expected, but I needed to submit a form to a custom route as well. So, I just added this to my member do function:</div>
+<p></p>
+<div>    <span>post :dothat</span>
+</div>
+<p></p>
+<div>I then attempted to submit a form to the <span>dothat</span> action, but got a Routing Error telling me the route wasn&#8217;t found. I double checked and the URL was definitely correct.</div>
+<p></p>
+<div>    <span>&lt;%= form_for(@photo, :url =&gt; {:controller =&gt; &#8216;photos&#8217;, :action =&gt; &#8216;dothat&#8217;} ) do |f| %&gt;</span>
+</div>
+<p></p>
+<div>It generated the correct URL: <span>photos/1/dothat</span>, which I confirmed by calling rake routes at the command line. </div>
+<p></p>
+<div>After searching the Interent and only getting frustrated I finally saw <a href="http://asciicasts.com/episodes/203-routing-in-rails-3">something</a> that jogged my memory.</div>
+<p></p>
+<div>In REST, &#8216;post&#8217; is for <em>creating</em> new resources. I was <em>editing</em> my model. Simply changing it to:</div>
+<p></p>
+<div>    <span>put :dothat</span>
+</div>
+<p></p>
+<div>Fixed everything. </div>
+<p></p>
+<div>I&#8217;ll attribute that mixup to years and years of having only GET and POST available drilled into my head. It doesn&#8217;t exactly help that Rails doesn&#8217;t use a &#8220;real&#8221; PUT in the form&#8217;s method attribute. It uses POST, but includes a hidden input, &#8221;<span>_method</span>&#8221; to store the verb it should respond to.</div>
+</div>
+			</div>
+			
+
+		</div>
+	
+	</div>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -424,114 +554,6 @@
 
 </div>
 <div>Makes sense once you realize what&#8217;s going on, but was rather frustrating before that point was reached.</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/09/03/yeah-this-is-what-i-wanted-to-see-at-espncom/" itemprop="url">Yeah This Is What I Wanted to See at espn.com</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-03T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 3<span>rd</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-	<div>
-	
-		<div>
-			
-				<div>
-					<img src="/images/assets/1283565591000.jpg">
-</div>
-			
-
-			
-
-		</div>
-	
-	</div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/09/03/how-to-use-twilio-to-send-an-sms/" itemprop="url">How to Use Twilio to Send an SMS</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-03T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 3<span>rd</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>I wrote about <a href="/images/assets/1279646643000.jpg">liking Twilio&#8217;s UI</a> not too long ago. Unfortunately the actual usability of their API isn&#8217;t quite as sharp.</p>
-<div>Signing up was straightforward enough, but beyond that things got incredibly murky. All I want is to be able to send an SMS from my app; I don&#8217;t really care about anything else. </div>
-<p></p>
-<div>The examples provided for ruby don&#8217;t detail this, but fortunately I stumbled around long enough to figure it out.</div>
-<p></p>
-<div>First, you need to <a href="https://www.twilio.com/user/account/phone-numbers/">register the phone number</a> you will be sending the SMSes to (this limitation is only for the developer trial period, I believe). Under &#8220;My Outgoing CallerID Numbers&#8221; section click the &#8220;Add Caller ID&#8221; button. This will prompt you for a phone number. Enter yours, and it will present you with a PIN and call the number entered. Pick up the call when it rings and enter the PIN when prompted.</div>
-<p></p>
-<div>Next grab the helper library <a href="http://www.twilio.com/docs/libraries/">over here</a>. I did this in Ruby, so just extract the zip and get &#8216;twiliolib.rb&#8217; from the &#8216;lib&#8217; folder. For a simple test I wrote the following script:</div>
-<div>
-  <div><pre>require 'twiliolib.rb'
-
-# your Twilio authentication credentials
-ACCOUNT_SID = 'xxx' # these are on your account page
-ACCOUNT_TOKEN = 'xxx'
- 
-# version of the Twilio REST API to use
-API_VERSION = '2010-04-01'
-
-account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
-
-d = {
-    'From' =&gt; '415-599-2671',
-    'To' =&gt; '480-555-1234', # this is the number you registered
-    'Body' =&gt; 'This is an SMS Test',
-}
-
-resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
-    'POST', d)
-    
-resp.error! unless resp.kind_of? Net::HTTPSuccess
-puts "code: %s\nbody: %s" % [resp.code, resp.body]</pre></div>
-</div>
-
-<div>The key here is that the &#8216;From&#8217; number is the Sandbox Phone Number listed on your account dashboard, and the &#8216;To&#8217; number is the one you registered up above. <strong>Any other numbers will not work</strong>. Don&#8217;t forget to put in your ACCOUNT_SID and ACCOUNT_TOKEN too, those are also on the dashboard.</div>
-<p></p>
-<div>Fire up your console and run the script. If you see a bunch of XML and a &#8216;code: 201&#8217; returned, you should be receiving and SMS shortly. If you see a &#8216;400 &#8220;Bad Request&#8221; (Net::HTTPServerException)&#8217; error, then double check that the From and To numbers are right.</div>
-<p></p>
-<div>This information is buried and I was very close to just throwing my hands up and looking elsewhere. If you are writing an application, these details are critical.</div>
 </div></div></div></div></div>
 		
 		
