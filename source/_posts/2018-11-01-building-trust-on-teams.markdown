@@ -33,3 +33,7 @@ _[Note: if it is catastrophic, [like the whole company is shutting down](https:/
 
 This list is not exhaustive, but I have found these things to be particularly effective. Trust is built up over time. It takes constant care and attention to grow, must be demonstrated consistently, and can be lost in a heartbeat if you ever stop treating your employees like the fully actualized humans that they are.
 
+---
+
+_Shout out to [Sam Davies](http://samdavies.me) for helping edit this._
+
