@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Photoblog 0.4 Released Sep 11th, 2008 I&#8217;ve deployed the latest version of my Photoblog, 0.4.0. There are a few behind the scenes stuff that &hellip;">
+	<meta name="description" content="SVN Report Generator Sep 27th, 2008 I have always hated writing status reports. Some of my past managers can attest to this. And since I&#8217;d &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,38 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2008/09/27/svn-report-generator/" itemprop="url">SVN Report Generator</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-27T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 27<span>th</span>, 2008</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>I have always hated writing status reports. Some of my past managers can attest to this. And since I&#8217;d always put them off to the last minute, I&#8217;d forget exactly what it was I&#8217;d been working on, and bosses don&#8217;t like it when a status report consists solely of &#8220;I did stuff.&#8221;</p>  <p>Since I am a programmer, I figured that computers could automate part, if not most, of the process for me. I generally prefer to use <a href="http://subversion.tigris.org/">SubVersion</a> as my Source Control Management system, and there is a handy api out there called <a href="http://pysvn.tigris.org/">pysvn</a>. Using this and the <a href="http://www.djangoproject.com/">Django web framework</a>, I cooked up a <a href="http://krazyyak.com/svnreport/">neat little application</a> that automatically creates a report based on the messages logged with each check-in. </p>  <p>This is a 0.1 release, so it doesn&#8217;t do a whole lot other than look pretty and make a report. But, here are some other features nonetheless:</p>  <ul>
+<li>Works with a password protected repository, just enter the username and password (these are not stored). </li>    <li>Intelligent date ranges. If you enter a start date and no enter, it assumes you want every check-in from that date on. Vice versa with end date as well. </li>    <li>Check-in messages can be formatted using the <a href="http://textism.com/tools/textile/">Textile</a> markup generator to look extra pretty. </li> </ul>
+<p>Additionally, if and when bugs are discovered, they can be logged in <a href="https://swilliams.fogbugz.com/default.asp?pg=pgPublicEdit">FogBugz</a>. I do have a slate of features I want to implement in the next revision, but I&#8217;m not sure when I will have the time.</p>  <p></p>  <h3>Screenshots</h3>  <p></p>  <p>    </p>  <hr>
+<p>Link to the site: <a href="http://krazyyak.com/svnreport">http://krazyyak.com/svnreport</a></p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -420,46 +452,6 @@ It is generally a Bad Thing<sup>tm</sup> when I am presented with a dialog from 
 </p>
 <p><strong>4 years ago - With a point &amp; shoot</strong> - Now, it&#8217;s digital so just look at the screen.</p>
 <p><strong>Today - With an SLR</strong> - No, you have to look through the viewfinder. No really, that screen is going to stay black. Yes, like a <em>real</em> camera.</p>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2007/09/15/fogbugz-for-free/" itemprop="url">FogBugz for Free</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-15T00:00:00-07:00" data-updated="true" itemprop="datePublished">Sep 15<span>th</span>, 2007</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>
-<p>One of my favorite tech/programming blogs has been Joel Spolsky&#8217;s <a href="http://www.joelonsoftware.com">Joel On Software</a>. I&#8217;ve also been interested in his <a href="http://www.fogcreek.com">company&#8217;s</a> premier product, <a href="http://www.fogcreek.com/FogBugz/">FogBugz</a>, but the $129+ license fee turned away small time developers like myself.
-</p>
-<p>
-Recently, they put together a version of FogBugz that is 100% hosted by Fog Creek&#8217;s servers, and included a &#8220;startup and student&#8221; version, which is free. It is limited to only 2 users, but last I checked, I was only using about 50% of that limit.
-</p>
-<p class="center">
-
-</p>
-<p>
-To take part, first <a href="https://shop.fogcreek.com/default.asp?sCategory=HOSTEDFB&amp;sStep=stepEnterEmailAddress">sign up</a> for a normal On Demand account. You do have to provide credit card info, but nothing is billed for 45 days, and you&#8217;ll be switching immediately. Once everything is initialized, you can change your account to the free version in Settings &gt; Your FogBugz On Demand Account.
-</p>
-<p>I&#8217;ve only given it a cursory glance, but I like what I see. It looks very intuitive and powerful. Big thanks to the Fog Creek guys for removing the cost barrier for people like me! I&#8217;ll definitely be recommending it to others.</p>
 </div></div></div></div></div>
 		
 		

@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Rental Car Surprise Apr 20th, 2010 As you may remember, a few weeks ago Avis gave me a FORD LAND TANK. I didn&#8217;t enjoy driving it, so when I &hellip;">
+	<meta name="description" content="Amusing Bad Programming Tip Apr 27th, 2010 Say you have a class with a property that&#8217;s a string. Using object initializers you can do this &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,45 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2010/04/27/amusing-bad-programming-tip/" itemprop="url">Amusing Bad Programming Tip</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-27T00:00:00-07:00" data-updated="true" itemprop="datePublished">Apr 27<span>th</span>, 2010</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<div><div><div><div><div>
+<p>Say you have a class with a property that&#8217;s a <span>string</span>. Using object initializers you can do this little nugget:</p>
+<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+<div>
+<div>
+  <div><pre>Product p = new Product { ProductName = Console.ReadLine() };</pre></div>
+</div>
+
+</div>
+<p></p>
+</blockquote>
+<p><span>It will work as you&#8217;d expect (prompt you for input, then assign it to </span><span>ProductName)</span><span>. <em>However</em>, that&#8217;s pretty easy to miss when you&#8217;re quickly scanning code. I&#8217;m generally in favor of fewer lines of code, but in this case it would be good design to just break this into two lines.</span></p>
+</div></div></div></div></div>
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -466,40 +505,6 @@
 <p></p>
 <div> <span>2. Why is this so awful? First, any decent bug tracker will automatically make images easy to browse through and view; hiding it in a Word doc prevents that. Second pasting a screen capture will automatically save it as an uncompressed bitmap and result in a large file size. Even over a corporate intranet, it would still take far too long to download and extract. Seriously, friends don&#8217;t let friends use a take poor screenshots.</span>
 </div>
-</div></div></div></div></div>
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2010/01/27/video-chat-on-a-mobile-device/" itemprop="url">Video Chat on a Mobile Device</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-27T00:00:00-07:00" data-updated="true" itemprop="datePublished">Jan 27<span>th</span>, 2010</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<div><div><div><div><div>Alright, I&#8217;m going to try to avoid slipping into Rant Mode here.<p></p>
-<div>Apple just announced their newest super gizmo, the <a href="http://apple.com/ipad">iPad</a>. Like the iPhone, iPod, and pretty much every other mobile device, it does not have a front facing video camera to allow video chat. Of course, a certain subset of people really wish it did, and continually whine about said lack. But do you know why it doesn&#8217;t have video chat?</div> <p></p>
-<div><i>Because video chat on a mobile device just doesn&#8217;t work.</i></div>
-<p></p>
-<div>Here&#8217;s how I know: Take your phone. Now, hold it out in front of you in a position that you think would be fitting for a video chat. Keep holding it there, and be steady; no shaking. Keep holding. Try it for just 30 seconds. Is your arm tired yet?</div> <p></p>
-<div>There simply is no way to comfortably hold something like a phone out in front of you without support. You could hold it lower and try to support your arm with your body at the elbow (like a normal phone), but then your chat buddy will get a good look at what is currently up your nose.</div> <p></p>
-<div>The iPad could work with a stand/dock, but in that situation, it&#8217;s not really <i>mobile</i> is it?</div>
 </div></div></div></div></div>
 		
 		

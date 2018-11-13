@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-11-02T10:55:48-07:00</updated>
+  <updated>2018-11-13T10:41:05-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Whining vs Venting]]></title>
+    <link href="http://blog.swilliams.me/words/2018/11/13/whining-vs-venting/"/>
+    <updated>2018-11-13T08:14:11-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/11/13/whining-vs-venting</id>
+    <content type="html"><![CDATA[<p>It was time for my one-on-one with Ron and I could tell it would be a doozy. He slumped into a chair and before I could even start with a basic “how’s it going?” he launched into a tirade about Sales and how they were screwing us over <em>again</em> and that he had to pick up the extra load. This is a not exactly a unique case—there’s a natural tension between promise and delivery and there’s more than a kernel of truth to it. Ron was really steamed this time though. It could be he needed to vent, but maybe he was just whining.</p>
+
+<p>I don’t like whining. I have two kids who are approaching teenage-dom, and I have enough of it in my life already, thank you very much. Whining from adults is especially grating—they should know better, but it still happens.</p>
+
+<p>I view whining as subtly but distinctly different from venting. And what is that difference you ask? Whining focuses on “woe is me!” and doesn’t lend itself to finding solutions. A whiner wants everything and everyone around them to change to accommodate themselves and their needs. Further, whining tends to beget more whining; whereas when a good old fashion vent is complete, progress can be made. Venting can be healthy.</p>
+
+<p>I actually kinda like hearing a good <a href="http://randsinrepose.com/archives/the-update-the-vent-and-the-disaster/">vent</a> session. If someone is venting to me directly, then it means they have some level of <a href="http://blog.swilliams.me/words/2018/11/01/building-trust-on-teams/">trust</a> with me. They’re opening up and spilling out a little bit of themselves. This means you need to be wearing your listening hat. Vents can get emotional—this is good—it means the venter is invested deeply in something and that they care. So, listen! With empathy!</p>
+
+<p>As you’re listening (with empathy), consider the context. They have their point of view and you have yours. They are much closer to the ground floor of the situation they are experiencing, but as a manager you Know Things that they may not. You can use this knowledge to nudge the conversation and keep it a vent rather than a whine, but don’t try to fix the problem. Something incredible can happen when someone is venting: by talking through it they may discover a solution all on their own. This is good. If it sounds like therapy, it kind of is!</p>
+
+<p>Can you turn a whine into a vent? I think you can, but it may be a struggle. Sometimes it may be asking a pointed question: “Oh wow, that <em>is</em> a mess… what can we do to tweak it a bit?” Dig in and ask constructive questions, though try to steer things towards the realm of productivity. If you have a strong enough relationship consider plainly stating it, “this almost sounds like a whine. Is there a way to frame it so that there is the potential for a solution here?” It may not work, but that’s a whole other ball of wax.</p>
+
+<p>Fortunately, once Ron got it all off his chest he calmed down a bit and evaluated his own communication with the sales team. It wasn’t actually the end of the world (this time), and he picked up a few pointers for how to work a little more effectively with them in the next go around.</p>
+
+<hr />
+
+<p><em>Shout out to <a href="http://jeffmueller.net">Jeff Mueller</a> for helping edit this.</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Building Trust on Teams]]></title>
@@ -1622,44 +1647,6 @@ I liked how it was working now, but it was still a long process to cover all the
 <li>There are exceptions to every rule. Use them intelligently.</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Showing Your Screen to a Client]]></title>
-    <link href="http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client/"/>
-    <updated>2015-06-18T19:37:03-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/06/18/sharing-your-screen-with-a-client</id>
-    <content type="html"><![CDATA[<p>At some point in your career in technology, you&rsquo;re going to have to make some kind of presentation. This could be connecting your laptop to a projector, sharing your screen over some video conference, or just have people huddled around your desk. Since I care about you, I&rsquo;m gonna share some advice about avoiding common pitfalls that might occur.</p>
-
-<p><strong>Turn off notifications.</strong> Say you&rsquo;re right in the middle of explaining how beautifully designed your database is to an important client, and one of your friends sends you an email.</p>
-
-<figure class="center">
-    <img alt="oh dear" src="http://blog.swilliams.me/images/assets/vomit.png" />
-    <figcaption>Oh dear.</figcaption>
-</figure>
-
-
-<p>Your only options are to make an awkward joke, or ignore it completely. Hopefully Jane doesn&rsquo;t send any follow-ups.</p>
-
-<p>On OS X you can turn off notifications by clicking the button in the top right of the menu bar, scrolling down, and then turning &ldquo;Do not disturb&rdquo; on.</p>
-
-<figure class="center">
-    <img alt="do not disturb" src="http://blog.swilliams.me/images/assets/donotdisturb.png">
-</figure>
-
-
-<p><strong>Hide everything you aren&rsquo;t showing.</strong> Again, say you&rsquo;re presenting something amazing to the top brass at Giant Health Conglomerate Inc. You need to switch from Keynote to a spreadsheet. You minimize Keynote and your Inbox is now in full view. What if there are some strategy emails from your CEO sitting in front of everyone? What if Jane from above has graphically described other things found in her vomit?</p>
-
-<p>On OS X I like to move my presentation and ancillary windows to a <a href="https://support.apple.com/kb/PH18757?locale=en_US">separate space</a>. One with a very plain wallpaper.</p>
-
-<p><strong>Use Chrome? Double check the default sites when you open a new tab.</strong> Nothing instills confidence with a prospective client when you open a new tab and the top 8 sites you visit are right there in the open for everyone to see. &ldquo;Oh, I guess you <em>really</em> like Harry Potter/Star Trek slash fiction?&rdquo;</p>
-
-<p>An Incognito window is a quick way to hide all that.</p>
-
-<p><strong>Similarly, consider clearing your browser history.</strong> Maybe you need to open up a webpage you weren&rsquo;t anticipating. Maybe you&rsquo;re checking the <a href="http://redis.io/documentation">redis documentation</a>, but when you type <code>red</code> into the address bar, all the subreddits you&rsquo;ve ever visited are immediately available. Maybe you just browse <a href="http://www.reddit.com/r/aww">/r/aww</a> and everyone is happy, or maybe you visit more&hellip; <em>unconventional</em>&hellip; ones.</p>
-
-<p>Ultimately it&rsquo;s up to you how many awkward situations you want to have with your co-workers and/or clients. Try to just think about what would happen if your mother/rabbi/priest/psychologist were watching.</p>
 ]]></content>
   </entry>
   
