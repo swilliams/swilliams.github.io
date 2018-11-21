@@ -9,7 +9,7 @@
 	<meta name="author" content="Scott Williams">
 
 	
-	<meta name="description" content="Basic GitHub Workflow for Collaboration Jun 30th, 2015 When you&rsquo;re a solo developer, you can use Git in nearly any darn way you choose. No &hellip;">
+	<meta name="description" content="WatchKit Connectivity and File Transfers Jul 2nd, 2015 I&rsquo;ve been noodling with an idea for a watchOS 2 app. It involves Connectivity &ndash; &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,6 +111,79 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/words/2015/07/02/watchkit-connectivity-and-file-transfers/" itemprop="url">WatchKit Connectivity and File Transfers</a></h1>
+    <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-02T13:51:36-07:00" data-updated="true" itemprop="datePublished">Jul 2<span>nd</span>, 2015</time></div>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I&rsquo;ve been noodling with an idea for a <a href="https://developer.apple.com/watchos/pre-release/">watchOS 2</a> app. It involves <a href="https://developer.apple.com/library/prerelease/watchos/documentation/WatchConnectivity/Reference/WatchConnectivity_framework/index.html#//apple_ref/doc/uid/TP40015269">Connectivity</a> &ndash; transferring files from the Watch to its paired iOS device. The WWDC sessions are very good, but I ran into a couple of snags with the framework. I had <a href="https://twitter.com/swilliams/status/616671359557599232">tweeted something that I thought was a bug</a>, but on closer inspection of the docs it actually wasn&rsquo;t. I <a href="https://twitter.com/swilliams/status/616673013417803776">tweeted another message stating as much</a>, but it hasn&rsquo;t gotten the notice that the original did.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> Anyways, here&rsquo;s what I learned.</p>
+
+<p><em>[ed: This is with iOS 9, watchOS 2, and Xcode 7, all in beta 2. Stuff might change.]</em></p>
+
+<h2>You can run both simulators at once</h2>
+
+<p>But it&rsquo;s not obvious. First, run the watchOS simulator. In the scheme control, it&rsquo;s the &ldquo;[App Name] WatchKit App&rdquo; scheme, which has both the iPhone and Apple Watch available (for example, &ldquo;iPhone 6 + Apple Watch &ndash; 38mm&rdquo;), and run it.</p>
+
+<figure class="center">
+    <img alt="Xcode Scheme for iPhone6 and Watch" src="/images/assets/conn-iphone-6-and-watch.png">
+</figure>
+
+
+<p>When it&rsquo;s running, change the scheme (without stopping the simulator) to the normal iPhone scheme. In this case &ldquo;[App Name] > iPhone 6&rdquo;.</p>
+
+<figure class="center">
+    <img alt="Xcode Scheme for iPhone6 and Watch" src="/images/assets/conn-iphone-6.png">
+</figure>
+
+
+<p>Now, run this scheme <em>without</em> compiling: hold down ⌘ and click the Run button. The iOS app will now be running in the simulator. Sometimes the watch app will close, but you can open it back up again.</p>
+
+<p>The console and breakpoints may get a little squirrelly, so you probably won&rsquo;t be able to depend on them so well.</p>
+
+<h2>WCSessionDelegate</h2>
+
+<p>Connectivity has one main delegate to implement: <a href="https://developer.apple.com/library/prerelease/watchos/documentation/WatchConnectivity/Reference/WCSessionDelegate_protocol/"><code>WCSessionDelegate</code></a>. This can be implemented on <em>both</em> the iOS and watchOS apps, and different behavior will happen. For example, when you transfer a file, the <strong>receiver</strong> will need to implement <code>session:didReceiveFile:</code>. If you want to receive some kind of notification that the file was sent the <strong>sender</strong> needs to implement <code>session:didFinishFileTransfer:error:</code>.</p>
+
+<p>This seemed counter-intuitive to me at first, but on further reflection, it makes sense. I do wish the docs more clearly illustrated this though.</p>
+
+<h2>You&rsquo;re in the background</h2>
+
+<p>Don&rsquo;t forget that your iOS app is <strong>not</strong> guaranteed to be running when these notifications come in. And they will come in on a background queue too, so don&rsquo;t immediately try to update the UI without getting over to the main queue first.</p>
+
+<h2>Demo</h2>
+
+<p>I created a simple demo app to illustrate all of this. <a href="https://github.com/swilliams/watchkit-connectivity-demo">It&rsquo;s up on GitHub</a>. Take a look at the <code>AppDelegate</code> for the iOS app, the <code>ExtensionDelegate</code> and <code>InterfaceController</code> in the watchOS extension target. This demo was thrown together quickly without regard for best practices, blah blah blah.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>Such is the nature of Twitter, alas.</p>
+</li>
+  </ol>
+</div>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -731,50 +804,6 @@
 
 
 <p>Is that a little reductive? Sure. But if you find yourself feeling angrier and angrier over what happens on Twitter, it might be time to reconsider how you&rsquo;re using it.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/words/2015/02/25/front-to-back-number-8-my-first-diablo/" itemprop="url">Front to Back #8 — My First Diablo</a></h1>
-    <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-25T08:54:52-07:00" data-updated="true" itemprop="datePublished">Feb 25<span>th</span>, 2015</time></div>
-	<div class="entry-content" itemprop="articleBody">
-		<p><a href="http://fronttoback.co/podcast/8">My First Diablo</a> is the newest episode of my <a href="http://fronttoback.co">podcast</a>. It&rsquo;s also the first episode where we have a guest: <a href="http://twitter.com/wickedgood">Steve Lubitz</a> of <a href="http://5by5.tv/isometric">Isometric</a> fame. We talk video games and how that works when you have a bunch of kids in the house. I&rsquo;d wanted to discuss this topic because my kids are now old enough to play console games without getting too frustrated over the experience, and I&rsquo;d been out of the loop for quite some time.</p>
-
-<p>Steve had some solid recommendations and now my wife and I are discussing when would be a good time to re-introduce consoles into the house. That might happen this summer when the kids are done with school, and there will be more time available to figure out limits and such. I&rsquo;m thinking a Wii U would be the right way to go since there&rsquo;s a better selection of kid-friendly games there. What I&rsquo;m not looking forward to is all the controllers/accessories that Nintendo seems to think are required for their games. Most <a href="http://www.amazon.com/Nintendo-Wii-Deluxe-Set-Bundle-3ds/dp/B00MVUKM0A/ref=sr_1_1?sr=8-1&amp;ie=UTF8&amp;keywords=wii%2Bu&amp;tag=thepetzoo-20&amp;qid=1424881179">bundles for the Wii U</a> come with the controller with a screen on it. I can&rsquo;t tell if you can buy more of those or not<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>. But you can get <a href="http://www.amazon.com/Nintendo-Wii-Remote-Plus-Black/dp/B00N4OAELY/ref=sr_1_1?ie=UTF8&amp;sr=1-1&amp;s=videogames&amp;keywords=wii%2Bmote&amp;tag=thepetzoo-20&amp;qid=1424881298">Wii-motes</a>, <a href="http://www.amazon.com/Nintendo-Nunchuk-Controller-Black-Wii/dp/B0094X1ZXU/ref=pd_bxgy_vg_img_y?tag=thepetzoo-20">nunchucks</a>, <a href="http://www.amazon.com/Nintendo-Pro-Controller-Black-Wii-u/dp/B00MUY0OFU/ref=pd_sim_vg_3?refRID=0SQ5Z19AHMG8VE30V0TD&amp;tag=thepetzoo-20&amp;ie=UTF8">pro controllers</a>, and various third party gizmos. I&rsquo;m not exactly looking forward to sifting through exactly what kind of those we&rsquo;ll need, nor storing them. I&rsquo;m not even going to touch handheld systems.<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
-
-<p>Video games were a big part of my childhood (some might say obsessive&hellip; I had a subscription to Nintendo Power without owning a Nintendo system). My hope is that rather than just consuming all the video game minutiae like I did, my kids will just have fun playing them with their family and friends.</p>
-
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="fn:1">
-  <p>Amazon and other retailers seem to be sold out of official ones.</p>
-</li>
-<li class="footnote" id="fn:2">
-  <p>Scientifically speaking, there are 327 different versions of the Nintendo DS to choose from.</p>
-</li>
-  </ol>
-</div>
-
 
 		
 		
