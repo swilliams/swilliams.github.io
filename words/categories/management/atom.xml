@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Management | Scott Williams]]></title>
   <link href="http://blog.swilliams.me/words/categories/management/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-11-21T09:58:25-07:00</updated>
+  <updated>2018-11-21T12:12:45-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -26,7 +26,7 @@
 
 <p>“Oh, that’s been broken for weeks. The only way to bring up the site is to run it in prod.”</p>
 
-<p><strange high-pitched sound I make when I’m trying to remain calm but not doing so great at it></p>
+<p>&lt;strange high-pitched sound I make when I’m trying to remain calm but not doing so great at it></p>
 
 <p>This was bad. Not <a href="/words/2018/11/18/failure-and-ultimately-fixing-it/">“we’re screwed”</a> bad, but still, not good. A production build on this app meant that even if a change was small, the build system would need to process all tens of thousands of lines of code to implement the change. A developer will make hundreds of changes to code in a day, and then compound that by the number of people on the team and pretty soon you’re talking a big chunk of time. Further, production mode meant that a lot of debugging tools weren’t available. This was a React app, and there was a <a href="https://github.com/facebook/react-devtools">rich ecosystem of tooling</a> that couldn’t be used.</p>
 
