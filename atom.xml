@@ -4,7 +4,7 @@
   <title><![CDATA[Scott Williams]]></title>
   <link href="http://blog.swilliams.me/atom.xml" rel="self"/>
   <link href="http://blog.swilliams.me/"/>
-  <updated>2018-11-21T12:12:14-07:00</updated>
+  <updated>2018-11-30T10:39:51-07:00</updated>
   <id>http://blog.swilliams.me/</id>
   <author>
     <name><![CDATA[Scott Williams]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What Are You Struggling With?]]></title>
+    <link href="http://blog.swilliams.me/words/2018/11/30/what-are-you-struggling-with/"/>
+    <updated>2018-11-30T10:33:40-07:00</updated>
+    <id>http://blog.swilliams.me/words/2018/11/30/what-are-you-struggling-with</id>
+    <content type="html"><![CDATA[<p>Here’s another interview question you’ll face: “What is something that you’ve struggled with and what have you done to fix it?” I view this differently from <a href="http://blog.swilliams.me/words/2018/11/18/failure-and-ultimately-fixing-it/">“What have you failed at?”</a> Because to me this is more of a behavior than a single point in history.</p>
+
+<p>I struggle with being organized. In my youth, I had a very good memory and could keep a ton of things in my head. This helped out quite a bit in school, but it also allowed me to develop some pretty bad habits: Namely, I never developed a way to keep my crap together. I still have an excellent memory for certain things that don’t matter at all. If you need a Star Wars or a Star Trek reference? I’m your guy. But God help me if you’re depending on me to remember to take the trash out before bed.</p>
+
+<p>In my 20’s this became a problem and I needed to fix it because I was missing stuff. I started to develop my own system over time. I’ve iterated on it, blown it up, and tried most of the $11.99 Getting Things Done methodologies out there. What I’ve ended up with are some relatively basic tasks that work for me and my broken brain.</p>
+
+<p>I am religious about my calendar. If it is not on my calendar it does not exist. If it’s on my calendar there is a 99% chance I will attend whatever it is, though there’s the odd occasion where the blast of notifications about pending meetings will be completely missed. <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<p>I’ve become more diligent about writing things down. I don’t have a perfect system for this yet. I’ve oscillated between pen &amp; paper, typing on a laptop, and iPad + Pencil. My goal is to have all of my notes from the day tracked in a searchable format. I’ve used <a href="https://dayoneapp.com">Day One</a> for this in the past, but I haven’t been terribly thrilled with some of their design decisions as of late. I’m reconsidering iPad + Pencil since I’ve seen some colleagues do some great stuff with that and <a href="https://www.gingerlabs.com">Notability</a>.</p>
+
+<p>I use <a href="https://www.omnigroup.com/omnifocus/">OmniFocus</a> in a fairly simplistic way. I keep a few running lists called “Today”, “This Week”, and “This Quarter” where I put all of my todos. These could be “Reply to Jake’s email from the 4th” or “Make a feeding chart for the fish”. I try to find a balance between detail and speed when creating  task names. I will forget what “Reply to Jake” means. Reply where? Text? Email? Slack? If there’s more than one email from Jake I’ll add that detail too. I know I’m only using the tip of the iceberg that OmniFocus provides, but I don’t need any more <em>right now</em>. I’ve tried to go hog wild with automations and shortcuts and all that and I get overwhelmed and then regress even further. I need my task management system to be nearly brainless, otherwise it will fall by the wayside. If it’s more than “unlock phone → tap a couple buttons → type words” then there’s a good chance it won’t be entered.</p>
+
+<p>I’m also a little wary of the time required to automate task management. Often times I don’t think it balances out to a valuable amount of time saved. And then remembering how to use the automations or shortcuts adds to the cognitive load… leading to a less likelihood of actually getting done.</p>
+
+<p>Lastly, I am still working on the discipline of starting and ending my work day properly. Ideally I’ll get in to work, review my calendar and outstanding tasks for the day and update everything, and start things off well. And then at the end of the day, close things down by reviewing/entering notes, prepping for tomorrow, and setting things up for success. That’s still not a practice I’ve made into a habit yet, but I’m working on it.</p>
+
+<div class="footnotes">
+  <ol>
+    <li class="footnote" id="fn:1">
+  <p>This is one of the few things where I want MORE and STRONGER notifications than normal.</p>
+</li>
+  </ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Deciding When a Fix is Worthwhile]]></title>
@@ -1591,21 +1623,6 @@ I liked how it was working now, but it was still a long process to cover all the
 <p>Most of the time when querying for images, we just want to resize the photo to fit into a <code>UIImageView</code> so Photos does most of the heavy lifting for you. Give it the size you want and a couple other options and off it will go. This happens asynchronously, so hand off the results to your callback block when it&rsquo;s done. This&rsquo;d be especially handy for generating a bunch of thumbnails.</p>
 
 <p>Photos gives you quite a bit of flexability. We didn&rsquo;t touch on how it helps you to edit assets, manage/query video, or observe changes to photos. I wasn&rsquo;t aware of this framework until today, but it looks like a powerful one worth getting to know if you do anything with the images on your device.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Great Moments in Customer Service]]></title>
-    <link href="http://blog.swilliams.me/words/2015/07/24/great-moments-in-customer-service/"/>
-    <updated>2015-07-24T09:02:27-07:00</updated>
-    <id>http://blog.swilliams.me/words/2015/07/24/great-moments-in-customer-service</id>
-    <content type="html"><![CDATA[<p><a href="http://blog.swilliams.me/words/2014/10/15/the-best-customer-service/">Great Customer Service is not dead</a>! When I was doing freelance/independent work I used <a href="https://www.getharvest.com/">Harvest&rsquo;s</a> Solo plan to track my time and invoice clients. It was affordable for a single person and wasn&rsquo;t over-engineered. Since it was cheaper in the long run I paid for a yearly plan and renewed each time it came up. I would&rsquo;ve recommended them to anyone in a similar position. Now I&rsquo;ll recommend them even more heavily.</p>
-
-<p>A few months ago I took a full-time position and just didn&rsquo;t need the paid account any more. I couldn&rsquo;t figure out how to downgrade though so I sent a request to their customer service. The page told me to expect a response within an hour. Within 5 minutes I got a response from Jennifer telling me that my plan had been downgraded to the free one, AND they refunded the prorated amount for the remainder of the year back to me.</p>
-
-<p>Getting a refund wasn&rsquo;t even on my radar. I was perfectly happy with keeping the paid plan and just not renewing it when the time came. What I love about this is that Harvest didn&rsquo;t waffle around the issue for a long time only to end up doing the bare minimum to get the customer to go away. They were fast, proactive, and exceeded expectations.</p>
-
-<p>That&rsquo;s how you do customer service.</p>
 ]]></content>
   </entry>
   
